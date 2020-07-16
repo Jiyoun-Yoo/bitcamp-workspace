@@ -8,6 +8,7 @@
 
 ### 1일차
 
+
 - 개발 입문자 오리엔테이션
 - 애플리케이션 개발 소개
 - 애플리케이션 개발 도구 설치
@@ -34,3 +35,15 @@
     - src/main/java/Hello2.java
     - src/main/java/com/eomcs/basic 폴더 생성
     - src/main/java/com/eomcs/basic/Hello2.java 생성
+    - 패키지 소속 클래스 실행하기
+      java -classpath [클래스파일있는폴더] [패키지명.클래스이름]
+
+### 4일차
+
+- 소스 파일고 클래스 블록, 클래스 파일의 관계
+    - com.eomcs.basic.ex01 패키지 예제
+- 주석 종류와 사용법
+    - com.eomcs.basic.ex02 패지키 예제
+- 자바 언어로 값을 표현하는 문법(Literal)
+
+    - com.eomcs.basic.ex03 패지키 예제
