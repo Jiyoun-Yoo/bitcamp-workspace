@@ -17,18 +17,20 @@ package com.eomcs.basic.ex02;
  * @author jiyounyou
  */
 public class Exam0200 {    
-    
+
+  
   /**
    * 필드에 대한 설명<br>
    * <b>필드</b>에 대한 설명<br>
    */
+
 
   /**
    * 변수에 대한 설명
    * 변수 선언 앞에 설명을 붙여 놓으면 나중에 HTML 문서를 만들 때 추출할 수 있다.
    */
   static String message = "Hello, world!";
-  
+
 
   /**
    * 메서드에 대한 설명<br>
@@ -37,9 +39,11 @@ public class Exam0200 {
    * @param args 파라미터에 대한 설명
    */
 
+
      public static void main(String[] args){
          
      }
+
 
    /**
     메서드 설명

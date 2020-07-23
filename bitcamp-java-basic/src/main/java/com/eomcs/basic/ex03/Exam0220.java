@@ -1,7 +1,7 @@
-package com.eomcs.basic.ex03;
+// 정수 리터럴 - 자릿수 표기
+//  - 정수를 읽기 쉽도록 밑줄(underscore; _)을 숫자 사이에 삽입할 수 있다.
 
-// #정수 리터럴 - 자릿수 표기
-// - 정수를 읽기 쉽도록 밑줄(underscore; _)을 숫자 사이에 삽입할 수 있다.
+package com.eomcs.basic.ex03;
 
 class Exam0220 {
     public static void main(String[] args){

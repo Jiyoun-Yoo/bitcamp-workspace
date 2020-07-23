@@ -1,6 +1,7 @@
+// 문자 리터럴II
+
 package com.eomcs.basic.ex03;
 
-// 문자 리터럴2
 public class Exam0420 {
   public static void main(String[] args) {
     System.out.println(0x41);

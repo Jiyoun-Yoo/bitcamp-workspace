@@ -1,10 +1,7 @@
-// Exam0100.java
-// 주제 : 리터럴
+// 리터럴(literal)
+//  - 자바 언어로 표현한 값
 
 package com.eomcs.basic.ex03;
-
-// # 리터럴(literal)
-//  - 자바 언어로 표현한 값.
 
 class Exam0100 {
     public static void main(String[] args){

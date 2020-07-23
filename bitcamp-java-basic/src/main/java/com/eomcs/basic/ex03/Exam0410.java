@@ -1,7 +1,8 @@
+// 문자 리터럴I
+//  - 작은 따옴표 ''를 사용하여 문자를 표현한다.
+
 package com.eomcs.basic.ex03;
 
-// 문자 리터럴
-//  - 작은 따옴표 ''를 사용하여 문자를 표현한다.
 public class Exam0410 {
   public static void main(String[] args) {
     // 자바는 문자를 메모리에 저장할 때 Unicode 규칙에 따

@@ -1,6 +1,7 @@
-package com.eomcs.basic.ex03;
+// 정수 리터럴
+//  - 다양한 기수법으로 정수를 표현하기
 
-// # 정수 리터럴 - 다양한 기수법으로 정수를 표현하기
+package com.eomcs.basic.ex03;
 
 class Exam0210 {
     public static void main(String[] args){

@@ -1,4 +1,4 @@
-// 주제 : 메모리 크기에 따른 표기법
+// 메모리 크기에 따른 표기법
 
 package com.eomcs.basic.ex03;
 

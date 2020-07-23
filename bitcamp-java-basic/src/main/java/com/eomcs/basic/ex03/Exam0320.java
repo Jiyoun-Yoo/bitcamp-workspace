@@ -1,8 +1,9 @@
-// 주제 : 부동 소수점을 저장하는 메모리의 크기
+// 부동소수점 리터럴
+// - 메모리 크기에 따른 표기법
 
 package com.eomcs.basic.ex03;
 
-// # 부동소수점 리터럴 - 메모리 크기에 따른 표기법
+
 
 class Exam0320 // 클래스 선언(class declaration)
 { // 클래스 정의(class definition)
