@@ -1,61 +1,98 @@
 package com.eomcs.pms;
 
+import java.util.Scanner;
+import java.sql.Date;
+
 public class App3 {
 
   public static void main(String[] args) {
     
-    java.util.Scanner keyInput = new java.util.Scanner(System.in);
+    Scanner keyInput = new Scanner(System.in);
+    
+    final int MAX_LENGTH = 5;
+    String project = null;
+    
+    int[] no = new int[MAX_LENGTH];
+    String[] content = new String[MAX_LENGTH];
+    Date[] completeDate = new Date[MAX_LENGTH];
+    String[] state = new String[MAX_LENGTH];
+    String[] worker = new String[MAX_LENGTH];
+    
+    int count = 0;
     
     System.out.println("[작업]");
-        
+    
     System.out.print("프로젝트? ");
-    String project = keyInput.nextLine();
+    project = keyInput.nextLine();
     
-    System.out.print("번호? ");
-    String str = keyInput.nextLine();
-    int no = Integer.parseInt(str); // 문자열을 숫자로 바꾼다. 
-    
-    System.out.print("내용? ");
-    String content = keyInput.nextLine();
-    
-    System.out.print("완료일? ");
-    java.sql.Date completeDate = java.sql.Date.valueOf(keyInput.nextLine());
-    
-    System.out.println("상태? ");
-    System.out.println("0: 신규");
-    System.out.println("1: 진행중");
-    System.out.println("2: 완료");
-    System.out.println("> ");
-    String state = keyInput.nextLine();
-        
-    System.out.print("담당자? ");
-    String worker = keyInput.nextLine();
+    for (int i = 0; i < 5; i++) {
+      count++;
+      
+      System.out.print("번호? ");
+      no[i] = keyInput.nextInt();
+      keyInput.nextLine();
+      
+      System.out.print("내용? ");
+      content[i] = keyInput.nextLine();
+      
+      System.out.print("마감일? ");
+      completeDate[i] = Date.valueOf(keyInput.nextLine());
+      
+      System.out.println("상태? ");
+      System.out.println("0: 신규");
+      System.out.println("1: 진행중");
+      System.out.println("2: 완료");
+      System.out.print("> ");
+      state[i] = keyInput.nextLine();
+      switch (state[i]) {
+        case "0":
+          state[i] = "신규";
+//          break;
+        case "1":
+          state[i] = "진행중";
+//          break;
+        default:
+          state[i] = "완료";
+      }
+      
+      System.out.print("담당자? ");
+      worker[i] = keyInput.nextLine();
+      System.out.println();
+      
+      System.out.print("계속 입력하시겠습니까?(y/N) ");
+      String response = keyInput.nextLine();
+      System.out.println();
+      
+      if (response.equalsIgnoreCase("y") == false) {
+        break;
+      }
+    }
     
     keyInput.close();
     
     System.out.println("---------------------------------");
-    System.out.printf("프로젝트: %s\n", project);
-    System.out.printf("번호: %d\n", no);
-    System.out.printf("내용: %s\n", content);
-    System.out.printf("완료일: %s\n", completeDate.toString());
-    System.out.print("상태: ");
-//    if (state.equals("0")) {
-//      System.out.println("신규");
-//    } else if (state.equals("1")) {
-//      System.out.println("진행");
-//    } else {
-//      System.out.println("완료");
-//    }    
-    switch (state) {
-      case "0":
-        System.out.println("신규");
+    
+    System.out.printf("[%s]\n",project);
+    for (int i =0; i < 5; i++) {
+      if (no[i] == 0) {
         break;
-      case "1":
-        System.out.println("진행중");
-        break;
-      default:
-          System.out.println("완료");
+      }
+      
+      System.out.printf("%d, %s, %s, %s, %s\n",
+          no[i], content[i], completeDate[i], state[i], worker[i]);
+     
+//      switch (state[i]) {
+//        case "0":
+//          System.out.println("신규");
+//          break;
+//        case "1":
+//          System.out.println("진행중");
+//          break;
+//        default:
+//            System.out.println("완료");
+//      }
+      
+//      System.out.printf("%s", worker[i]);
     }
-    System.out.printf("담당자: %s\n", worker);
   }
 }
