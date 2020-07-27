@@ -4,7 +4,7 @@ package com.eomcs.basic.ex04;
 
 public class Exam0920 {
   public static void main(String[] args) {
-    float f = 3.14;
+    float f = 3.14f;
     double d = 9876.56789;
     
     // 부동소수점 메모리의 값을 정수 메모리에 저장할 수 없다.
@@ -14,8 +14,7 @@ public class Exam0920 {
     //    문법에서 막는다.
     
     // int i = f; // 컴파일 오류!
-    // int l = d; // 컴파일 오류!
-    
+    // int l = d; // 컴파일 오류!    
   }
 
 }
