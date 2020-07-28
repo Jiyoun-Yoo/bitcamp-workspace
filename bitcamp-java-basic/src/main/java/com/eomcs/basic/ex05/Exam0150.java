@@ -14,36 +14,36 @@ public class Exam0150 {
     char c = 7;
 
     // byte + byte = int
-    // => 연산을 하기 전에 byte 값이 int로 암시적 형변환 된다.
+    //  => 연산을 하기 전에 byte 값이 int로 암시적 형변환 된다.
     //byte r1 = b + b; // 컴파일 오류!
 
     // short + short = int
-    // => 연산을 하기 전에 short 값이 int로 암시적 형변환 된다.
+    //  => 연산을 하기 전에 short 값이 int로 암시적 형변환 된다.
     //short r2 = s + s; // 컴파일 오류!
 
     // byte + short = int
-    // => byte와 short 값은 int로 암시적 형변환 된다.
+    //  => byte와 short 값은 int로 암시적 형변환 된다.
     //short r3 = b + s; // 컴파일 오류!
 
     // byte + int = int
-    // => byte가 int로 암시적 형변환 한 이후 연산을 수행한다.
+    //  => byte가 int로 암시적 형변환 한 이후 연산을 수행한다.
     int r4 = b + i; // OK
 
     // short + int = int
-    // => short가 int로 암시적 형변환 한 이후 연산을 수행한다.
+    //  => short가 int로 암시적 형변환 한 이후 연산을 수행한다.
     int r5 = s + i; // OK
 
     // int + long = long
-    // => int가 long으로 암시적 형변환 한 이후에 연산을 수행한다. (작은 메모리를 큰 메모리로 형변환)
+    //  => int가 long으로 암시적 형변환 한 이후에 연산을 수행한다. (작은 메모리를 큰 메모리로 형변환)
     //int r6 = i + l; // 컴파일 오류!
 
     // long + float = float
-    // => long이 float으로 암시적 형변환 한 후에 연산을 수행한다. (정수는 부동소수점으로 형변환)
+    //  => long이 float으로 암시적 형변환 한 후에 연산을 수행한다. (정수는 부동소수점으로 형변환)
     //long r7 = l + f; // 컴파일 오류!
 
     // int + float = float
-    // => 정수 타입의 값과 부동소수점 타입의 값을 연산하면
-    //    정수 타입의 값이 암시적 형변환을 통해 부동소수점으로 바뀐다. (값이 잘릴 수 있다)
+    //  => 정수 타입의 값과 부동소수점 타입의 값을 연산하면
+    //     정수 타입의 값이 암시적 형변환을 통해 부동소수점으로 바뀐다. (값이 잘릴 수 있다)
     //int r8 = i + f; // 컴파일 오류!
 
     // float + double = double
@@ -56,9 +56,9 @@ public class Exam0150 {
     //long r11 = f + i + l; // 컴파일 오류!
 
     // boolean + int = 컴파일 오류!
-    // => 산술 연산자는 정수 타입(byte, short, char, int, long)과
-    //    부동소수점 타입(float, double)에 대해서만 
-    //    실행할 수 있다. 
+    //  => 산술 연산자는 정수 타입(byte, short, char, int, long)과
+    //     부동소수점 타입(float, double)에 대해서만 
+    //     실행할 수 있다. 
     //int r12 = bool + i; // 컴파일 오류!
   }
 }
