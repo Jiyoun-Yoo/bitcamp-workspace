@@ -38,5 +38,6 @@ public class Exam0220 {
     //  => 다음과 같이 개발자가 직접 처리해야 한다.
     double EPSILON = 0.00001;
     System.out.println(Math.abs((d1 + d2) - (x + y)) < EPSILON);
+    // 두 수의 차이가 EPSILON보다 작으면 두 수를 같게 취급하기!
   }
 }

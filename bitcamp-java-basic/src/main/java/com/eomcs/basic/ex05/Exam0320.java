@@ -1,7 +1,7 @@
+// 논리 연산자 : &, |
+
 package com.eomcs.basic.ex05;
 
-//# 논리 연산자 : &, |
-//
 public class Exam0320 {
   public static void main(String[] args) {
     // AND 연산자

@@ -1,20 +1,20 @@
+// 증감 연산자 : 후위(post-fix) 증감 연산자 응용 I
+
 package com.eomcs.basic.ex05;
 
-//# 증감 연산자 : 후위(post-fix) 증감 연산자 응용 I
-//
 public class Exam0630 {
   public static void main(String[] args) {
     int i = 7;
     
     int j = i++;
     // 위 문장은 다음과 같이 실행된다.  
-    //int temp = i;
-    //i = i + 1;
-    //j = temp;
+    //  - int temp = i;
+    //  - i = i + 1;
+    //  - j = temp;
     //
     // 1) i 값을 그자리에 놓는다.
-    //    => j = 7;    
-    //    => 7 값을 j에 저장할 수 없다. 
+    //    => j = 7;
+    //    => 아직 7 값을 j에 저장할 수 없다. 
     //    => 왜? 아직 = 연산자 오른쪽의 모든 식이 수행되지 않는다.
     // 2) ++ 연산 실행 
     //    => 즉 i = i + 1 실행

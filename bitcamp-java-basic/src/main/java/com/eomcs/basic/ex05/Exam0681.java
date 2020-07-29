@@ -1,7 +1,7 @@
+// 증감 연산자 : 전위(pre-fix) 증감 연산자 응용 II
+
 package com.eomcs.basic.ex05;
 
-//# 증감 연산자 : 전위(pre-fix) 증감 연산자 응용 II
-//
 public class Exam0681 {
   public static void main(String[] args) {
     int a = 5;
@@ -15,9 +15,3 @@ public class Exam0681 {
     // r = 5;
   }
 }
-
-
-
-
-
-
