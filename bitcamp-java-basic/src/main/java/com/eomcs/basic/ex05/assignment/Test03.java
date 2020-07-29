@@ -6,6 +6,8 @@ package com.eomcs.basic.ex05.assignment;
 
 // 실행 예)
 //  값: 0xaabbccd
+
+// 출력) 
 //  aa
 //  bb
 //  cc
@@ -13,29 +15,20 @@ package com.eomcs.basic.ex05.assignment;
 public class Test03 {
 
   public static void main(String[] args) {
-    int value = 0xaabbccdd; // 10101010_10111011_11001100_11011101
-    
+    int value = 0xaabbccdd; // [10101010_10111011_11001100_11011101]
+
     // 코드를 완성하시오!
-    // ex05.Exam0440 참고
     
-    int first, second, third, fourth;
-    
-    first = (value >> 24) & 0xff;
-    second = (value >> 16) & 0xff;
-    third = (value >> 8) & 0xff;
-    fourth = value & 0xff;
-    
-    // value >> 24
-    //  = 11111111_11111111_11111111_10101010
-    //  = ffffffaa
-    
-    System.out.println(Integer.toHexString(value));
-    System.out.println(Integer.toHexString(first));
-    System.out.println(Integer.toHexString(second));
-    System.out.println(Integer.toHexString(third));
-    System.out.println(Integer.toHexString(fourth));
-    
-    }
+    System.out.println(Integer.toHexString(value >> 24 & 0xff));
+    //   [11111111_11111111_11111111_10101010] = ffffffaa
+    // & [00000000_00000000_00000000_11111111]
+    //--------------------------------------
+    //   [00000000_00000000_00000000_10101010] = 000000aa
+
+    System.out.println(Integer.toHexString(value >> 16 & 0xff));
+    System.out.println(Integer.toHexString(value >> 8 & 0xff));
+    System.out.println(Integer.toHexString(value & 0xff));
+  }
 }
 
 

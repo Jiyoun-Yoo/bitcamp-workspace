@@ -17,47 +17,20 @@ package com.eomcs.basic.ex05.assignment;
 //  3
 //  2
 
-public class Test04 {
+public class Test04_a {
 
   public static void main(String[] args) {
     int value = 23459876;
     
     // 코드를 완성하시오!
     
-    // 선생님 풀이1
-    System.out.println(value%10);
-    value = value/10;
-    System.out.println(value%10);
-    value = value/10;
-    System.out.println(value%10);
-    value = value/10;
-    System.out.println(value%10);
-    value = value/10;
-    System.out.println(value%10);
-    value = value/10;
-    System.out.println(value%10);
-    value = value/10;
-    System.out.println(value%10);
-    value = value/10;
-    System.out.println(value%10);
-    value = value/10;
-    
-    // 선생님 풀이2
-    while (value > 0) {
-      System.out.println(value % 10);
-      value = value / 10;
-    }
-    
-    
-    /*
-     * 나의 풀이2
+    // 나의 풀이2
     int no = 0;
     for (int i = 0; value > 0; i++) {
       no = value % 10;
       System.out.println(no);
       value /= 10;
     }
-    */
     
     
     /*
@@ -95,6 +68,9 @@ public class Test04 {
     h = value % 10;
     System.out.println(h);
     */
+    
+    // 배운 점
+    // 단순히 출력만 할 때는 굳이 변수를 선언하지 않아도 된다.
     }
 }
 
