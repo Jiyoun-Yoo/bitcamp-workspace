@@ -19,6 +19,5 @@ public class Exam0320 {
     System.out.println(true | false);
     System.out.println(false | true);
     System.out.println(false | false);
-
   }
 }

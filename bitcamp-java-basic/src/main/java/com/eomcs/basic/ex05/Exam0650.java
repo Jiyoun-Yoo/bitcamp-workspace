@@ -14,11 +14,10 @@ public class Exam0650 {
 
     System.out.println(i); // 4
 
-    System.out.println(++i); 
+    System.out.println(++i);
     // i = i + 1
     // System.out.println(5)
 
     System.out.println(i); // 5
-
   }
 }

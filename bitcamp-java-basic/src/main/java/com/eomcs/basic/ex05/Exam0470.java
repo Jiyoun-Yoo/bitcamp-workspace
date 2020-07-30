@@ -18,13 +18,13 @@ public class Exam0470 {
 
     // 정수 값에서 특정 비트의 값만 검사하는 방법
     //  - 조사하려는 값과 AND(&)한다.
-    //    조사하려는 값에 0을 AND 하면 무조건 0으로 만든다.  
-    //    조사하려는 값에 1을 AND 하면 원래 값 그래도 리턴한다.  
+    //    조사하려는 값에 0을 AND 하면 무조건 0으로 만든다.
+    //    조사하려는 값에 1을 AND 하면 원래 값 그래도 리턴한다.
 
     // 예) 1010 1010
     //
     //     CPP 언어를 할 줄 아는지 검사하기
-    //         1010 1010 
+    //         1010 1010
     //       & 0100 0000 (조사하려는 값과 AND 연산)
     //       ------------
     //         0000 0000
@@ -43,9 +43,9 @@ public class Exam0470 {
     System.out.printf("Java       : %b\n", (lang & JAVA) == JAVA);
     System.out.printf("C++        : %b\n", (lang & CPP) == CPP);
     System.out.printf("C          : %b\n", (lang & C) == C);
-    
+
     System.out.println("-----------------------");
-    
+
     // 위의 코드를 다른 방식으로 작성1
     System.out.printf("CSS        : %b\n", (lang & CSS) > 0);
     System.out.printf("HTML       : %b\n", (lang & HTML) > 0);
@@ -55,9 +55,9 @@ public class Exam0470 {
     System.out.printf("Java       : %b\n", (lang & JAVA) > 0);
     System.out.printf("C++        : %b\n", (lang & CPP) > 0);
     System.out.printf("C          : %b\n", (lang & C) > 0);
-    
+
     System.out.println("-----------------------");
-    
+
     // 위의 코드를 다른 방식으로 작성2
     System.out.printf("CSS        : %b\n", (lang & CSS) != 0);
     System.out.printf("HTML       : %b\n", (lang & HTML) !=  0);
