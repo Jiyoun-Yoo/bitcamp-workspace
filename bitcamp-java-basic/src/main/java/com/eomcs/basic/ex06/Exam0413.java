@@ -15,5 +15,6 @@ public class Exam0413 {
       System.out.println(i);
       i++;
     }
+    // for(;;)는 while(true)와 동일!
   }
 }

@@ -1,25 +1,21 @@
 package com.eomcs.pms;
 
 import java.sql.Date;
-import java.util.Scanner;
 
 public class App2 {
   public static void main(String[] args) {
+    java.util.Scanner keyInput = new java.util.Scanner(System.in);
 
-    class Project{
-        int no;
-        String title;
-        String content;
-        Date startDate;
-        Date endDate;
-        String owner;
-        String members;
-    }
-
-    Scanner keyInput = new Scanner(System.in);
-
+    // 여러 개의 프로젝트 정보를 입력받기 위해 변수 준비
     final int LENGTH = 100;
-    Project[] projects = new Project[LENGTH];
+
+    int[] no = new int[LENGTH];
+    String[] title = new String[LENGTH];
+    String[] content = new String[LENGTH];
+    Date[] startDate = new Date[LENGTH];
+    Date[] endDate = new Date[LENGTH];
+    String[] owner = new String[LENGTH];
+    String[] members = new String[LENGTH];
 
     int count = 0;
 
@@ -28,32 +24,28 @@ public class App2 {
     for (int i = 0; i < LENGTH; i ++) {
       count ++;
 
-      Project p = new Project();
-
       System.out.print("번호? ");
-      p.no = keyInput.nextInt();
+      no[i] = keyInput.nextInt();
       keyInput.nextLine(); // 쓰레기 버리기
 
       System.out.print("프로젝트명? ");
-      p.title = keyInput.nextLine();
+      title[i] = keyInput.nextLine();
 
       System.out.print("내용? ");
-      p.content = keyInput.nextLine();
+      content[i] = keyInput.nextLine();
 
       System.out.print("시작일? ");
-      p.startDate = Date.valueOf(keyInput.nextLine());
+      startDate[i] = java.sql.Date.valueOf(keyInput.nextLine());
       // 날짜라는 리모콘에 담는다. <- 사용자가 입력한 숫자를 날짜 도구에 담겠다.
 
       System.out.print("종료일? ");
-      p.endDate = Date.valueOf(keyInput.nextLine());
+      endDate[i] = java.sql.Date.valueOf(keyInput.nextLine());
 
       System.out.print("만든이? ");
-      p.owner = keyInput.nextLine();
+      owner[i] = keyInput.nextLine();
 
       System.out.print("팀원? ");
-      p.members = keyInput.nextLine();
-
-      projects[i] = p;
+      members[i] = keyInput.nextLine();
 
       System.out.println();
 
@@ -69,9 +61,8 @@ public class App2 {
 
     System.out.println("---------------------------------------");
     for (int i = 0; i < count; i++) {
-      Project p = projects[i];
       System.out.printf("%d, %s, %s, %s, %s\n",
-        p.no, p.title, p.startDate, p.endDate, p.owner);
+          no[i], title[i], startDate[i], endDate[i], owner[i]);
     }
   }
 }

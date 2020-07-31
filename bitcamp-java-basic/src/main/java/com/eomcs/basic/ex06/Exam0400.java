@@ -55,5 +55,64 @@ public class Exam0400 {
     for (int i = 1, j =2; i <= 10; i += 2, j += 2) {
       System.out.printf("=> %d, %d\n", i, j);
     }
+
+    System.out.println("-----------------------------");
+
+    // 구구단 출력
+    for (int i = 2; i <= 9; i++) {
+      for (int j = 1; j <=9; j++) {
+        System.out.printf("%d x %d = %d\n", i, j, i*j);
+      }
+    }
+
+    System.out.println("-----------------------------");
+
+    // 구구단에서 5단을 제외하고 출력
+    for (int i = 2; i <= 9; i++) {
+      if (i == 5) {
+        continue;
+      }
+      for (int j = 1; j <=9; j++) {
+        System.out.printf("%d x %d = %d\n", i, j, i*j);
+      }
+    }
+
+    System.out.println("-----------------------------");
+
+    // 구구단에서 Ox5까지만 출력하기
+    for (int i = 2; i <= 9; i++) {
+      for (int j = 1; j <=9; j++) {
+        System.out.printf("%d x %d = %d\n", i, j, i*j);
+        if (i == 5) {
+          break; // 현재 반복문을 그만 두고 다음 라인으로 이동
+        }
+      }
+    }
+
+    System.out.println("-----------------------------");
+
+    // 구구단에서 5x5=25까지만 출력하기
+    loop1:
+      for (int i = 2; i <= 9; i++) {
+        for (int j = 1; j <=9; j++) {
+          System.out.printf("%d x %d = %d\n", i, j, i*j);
+          if (i == 5 && j == 5) {
+            break loop1;
+          }
+        }
+      }
+
+    System.out.println("-----------------------------");
+
+    loop2:
+      for (int i = 2; i <= 9; i++) { // continue를 만나면 증감문
+        for (int j = 1; j <=9; j++) {
+          System.out.printf("%d x %d = %d\n", i, j, i*j);
+          if (i == 5 && j == 5) {
+            continue loop2; // continue + 라벨은 라벨의 증감문으로 이동!
+          }
+        }
+        System.out.println("-----------");
+      }
   }
 }

@@ -9,7 +9,7 @@ public class Exam0410 {
 
     // for문의 전형적인 예
     for (int i = 1; i <= 5; i++)
-      System.out.println("i");
+      System.out.println(i);
 
     // 실행 순서
     //  1) 변수 초기화 => int i = 1
