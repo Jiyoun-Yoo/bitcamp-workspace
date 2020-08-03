@@ -5,19 +5,15 @@ import java.sql.Date;
 public class App3 {
 
   public static void main(String[] args) {
-
-    class Task {
-      int no;
-      String content;
-      Date completeDate;
-      String state;
-      String worker;
-      }
-
     java.util.Scanner keyInput = new java.util.Scanner(System.in);
 
     final int LENGTH = 100;
-    Task[] task = new Task[LENGTH];
+
+    int[] no = new int[LENGTH];
+    String[] content = new String[LENGTH];
+    Date[] completeDate = new Date[LENGTH];
+    String[] state = new String[LENGTH];
+    String[] worker = new String[LENGTH];
 
     int count = 0;
 
@@ -28,17 +24,15 @@ public class App3 {
     for (int i = 0; i < LENGTH; i++) {
       count++;
 
-      Task t = new Task();
-
       System.out.print("번호? ");
-      t.no = keyInput.nextInt();
+      no[i] = keyInput.nextInt();
       keyInput.nextLine();
 
       System.out.print("내용? ");
-      t.content = keyInput.nextLine();
+      content[i] = keyInput.nextLine();
 
       System.out.print("완료일? ");
-      t.completeDate = Date.valueOf(keyInput.nextLine());
+      completeDate[i] = Date.valueOf(keyInput.nextLine());
 
       System.out.println("상태? ");
       System.out.println("0: 신규");
@@ -48,21 +42,19 @@ public class App3 {
       int stateTitle = keyInput.nextInt();
       switch (stateTitle) {
         case 0:
-          t.state = "신규";
+          state[i] = "신규";
           break;
         case 1:
-          t.state = "진행중";
+          state[i] = "진행중";
           break;
         case 2:
-          t.state = "완료";
+          state[i] = "완료";
           break;
       }
       keyInput.nextLine();
 
       System.out.print("담당자? ");
-      t.worker = keyInput.nextLine();
-
-      task[i] = t;
+      worker[i] = keyInput.nextLine();
 
       System.out.println();
       System.out.print("계속 입력하시겠습니까?(y/N) ");
@@ -79,9 +71,8 @@ public class App3 {
 
     System.out.println("["+ project +"]");
     for (int i = 0; i < count; i ++) {
-      Task t = task[i];
       System.out.printf("%d, %s, %s, %s, %s ",
-          t.no, t.content, t.completeDate.toString(), t.state, t.worker);
+          no[i], content[i], completeDate[i].toString(), state[i], worker[i]);
     }
   }
 }

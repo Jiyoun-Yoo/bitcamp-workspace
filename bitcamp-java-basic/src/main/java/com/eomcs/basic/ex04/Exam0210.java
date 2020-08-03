@@ -8,14 +8,14 @@ public class Exam0210 {
     int age;
     int weight;
     int height;
-    
+
     age = 20;
     weight = 100;
     height = 200;
-    
+
     // 변수가 필요할 때 블록({}) 중간 부분에 언제든 선언할 수 있다.
     int score;
-    
+
     score = 100;
   }
 }

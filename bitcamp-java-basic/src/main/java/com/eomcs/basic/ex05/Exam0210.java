@@ -20,6 +20,5 @@ public class Exam0210 {
     System.out.println(a >= b); // false
     System.out.println(a == b); // false
     System.out.println(a != b); // true
-
   }
 }

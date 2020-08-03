@@ -3,101 +3,179 @@ package com.eomcs.pms;
 import java.sql.Date;
 import java.util.Scanner;
 
-// 1) 회원의 번호, 이름, 이메일, 암호, 사진, 전화번호, 등록일을 담을 수 있는
-//    메모리를 설계한다. => Member 클래스 정의
-// 2) Member 클래스의 레퍼런스 배열을 만들어 인스턴스를 Member의 인스턴스를 보관한다.
-// 3) 레퍼런스 배열을 사용하여 인스턴스를 다루기 보다는
-//    한 개의 레퍼런스를 담는 새로운 레퍼런스를 만들어 인스턴스를 다루는 것이 더 간결하다.
+// 1) 회원 데이터를 입력하는 코드를 메서드로 분리한다.
+// 2) 회원 데이터 목록을 출력하는 코드를 메서드로 분리한다.
+// 3) 프로젝트 데이터를 입력하는 코드를 메서드로 분리한다.
+// 4) 프로젝트 데이터 목록을 출력하는 코드를 메서드로 분리한다.
+// 5) 작업 데이터를 입력하는 코드를 메서드로 분리한다.
+// 6) 작업 데이터 목록을 출력하는 코드를 메서드로 분리한다.
+// 7) 사용자로부터 입력 받는 코드를 메서드로 분리한다.
+// 8) prompt()를 목적에 따라 더 세분화하여 분리한다.
 public class App {
+
+  static Scanner keyInput = new Scanner(System.in);
+
+  // 회원
+  static final int LENGTH = 5;
+  static int[] no = new int[LENGTH];
+  static String[] name = new String[LENGTH];
+  static String[] email = new String[LENGTH];
+  static String[] password = new String[LENGTH];
+  static String[] photo = new String[LENGTH];
+  static String[] tel = new String[LENGTH];
+  static Date[] now = new Date[LENGTH];
+  static int count = 0;
+
+  // 프로젝트
+  static final int PLENGTH = 100;
+  static int[] pno = new int[PLENGTH];
+  static String[] ptitle = new String[PLENGTH];
+  static String[] pcontent = new String[PLENGTH];
+  static Date[] pstartDate = new Date[PLENGTH];
+  static Date[] pendDate = new Date[PLENGTH];
+  static String[] powner = new String[PLENGTH];
+  static String[] pmembers = new String[PLENGTH];
+  static int pcount = 0;
+
+  // 작업
+  static final int TLENGTH = 100;
+  static int[] tno = new int[TLENGTH];
+  static String[] tcontent = new String[TLENGTH];
+  static Date[] tcompletedDate = new Date[TLENGTH];
+  static String[] tstate = new String[TLENGTH];
+  static String[] tworker = new String[TLENGTH];
+  static int tcount = 0;
 
   public static void main(String[] args) {
 
-    // 값을 담기 위해 메모리를 준비할 때
-    // 어떤 종류의 메모리를 준비해야 하는지 설계도를 작성한다.
-    //  => 이것을 "클래스 정의"라 부른다.
-    // 각각의 변수를 낱개로 다루지 않고 묶음으로 다룬다.
-    class Member {
-      int no;
-      String name;
-      String email;
-      String password;
-      String photo;
-      String tel;
-      Date createdDate;
+      loop:
+        while (true) {
+          System.out.print("명령> ");
+          String command = keyInput.nextLine();
+
+          switch (command.toLowerCase()) {
+            case "/member/add":
+              addMember();
+              break;
+            case "/member/list":
+              listMember();
+              break;
+            case "/project/add":
+              addProejct();
+              break;
+            case "/project/list":
+              listProject();
+              break;
+            case "/task/add":
+              addTask();
+              break;
+            case "/task/list":
+              listTask();
+              break;
+            case "exit":
+            case "quit":
+              System.out.println("안녕!");
+              break loop;
+            default:
+              System.out.println("실행할 수 없는 명령입니다.");
+          }
+          System.out.println();
+        }
+
+      keyInput.close();
+
+      System.out.println("종료!");
     }
 
-    // Member 인스턴스의 주소를 담을 레퍼런스 배열을 준비한다.
-    final int LENGTH = 100;
-    Member[] members = new Member[LENGTH];
-    // [null, null, null, null, null] 주소를 담는 배열 members
+  static void addMember() {
+    System.out.println("[회원 등록]");
 
-    Scanner keyInput = new Scanner(System.in);
+    no[count] = promptInt("번호? ");
+    name[count] = promptString("이름? ");
+    email[count] = promptString("이메일? ");
+    password[count] = promptString("암호? ");
+    photo[count] = promptString("사진? ");
+    tel[count] = promptString("전화? ");
+    now[count] = new Date(System.currentTimeMillis());
 
-    System.out.println("[회원]");
+    count++;
+  }
 
-    long currentMillis = 0;
-    int count = 0;
+  static void listMember() {
+    System.out.println("[회원 목록]");
 
-    for (int i = 0; i < LENGTH; i++) {
-      count++;
-
-      Member m = new Member();
-      // 이 반복문 안에서 입력받는 데이터를 저장할 인스턴스를 만들고,
-      // 그 인스턴스를 가리키는 레퍼런스를 m이라 한다.
-      // 한 사이클을 완료하면 그 인스턴스의 주소를 members 배열에 저장한다.
-
-      // 새로운 사이클이 시작되면 기존의 인스턴스가 초기화 되는 것이 아니라,
-      // 새로운 인스턴스가 만들어지고, m은 그 인스턴스의 주소를 가지게 된다.
-
-      System.out.print("번호? ");
-      m.no = keyInput.nextInt();
-      keyInput.nextLine();
-
-      System.out.print("이름? ");
-      m.name = keyInput.nextLine();
-
-      System.out.print("이메일? ");
-      m.email = keyInput.nextLine();
-
-      System.out.print("암호? ");
-      m.password = keyInput.nextLine();
-
-      System.out.print("사진? ");
-      m.photo = keyInput.nextLine();
-
-      System.out.print("전화? ");
-      m.tel = keyInput.nextLine();
-
-      currentMillis = System.currentTimeMillis();
-      m.createdDate = new Date(currentMillis);
-      System.out.println();
-
-      // 위에서 입력받은 정보를 담은 인스턴스의 주소를
-      // members 배열에 차례로 넣는다.
-      members[i] = m;
-
-      System.out.print("계속 입력하시겠습니까?(y/N) ");
-      String response = keyInput.nextLine();
-
-      if (response.equalsIgnoreCase("y") == false) {
-        break; // 반복문을 멈춰라.
-      }
-    }
-
-    keyInput.close();
-
-    System.out.println("---------------------------------");
-
-    for (int i =0; i < count; i++) {
-      Member m = members[i];
-      // members 배열에 저장된 레퍼런스의 주소를 m이라는 레퍼런스로 불러오면,
-      // m이 가리키는 인스턴스의 데이터에 접근할 수 있다.
+    for (int i = 0; i < count; i++) {
       System.out.printf("%d, %s, %s, %s, %s\n",
-          m.no,
-          m.name,
-          m.email,
-          m.tel,
-          m.createdDate.toString());
+          no[i], name[i], email[i], tel[i], now[i].toString());
     }
   }
+
+  static void addProejct() {
+    System.out.println("[프로젝트 등록]");
+    pno[pcount] = promptInt("번호? ");
+    ptitle[pcount] = promptString("프로젝트명? ");
+    pcontent[pcount] = promptString("내용? ");
+    pstartDate[pcount] = promptDate("시작일? ");
+    pendDate[pcount] = promptDate("종료일? ");
+    powner[pcount] = promptString("만든이? ");
+    pmembers[pcount] = promptString("팀원? ");
+
+    pcount++;
+  }
+
+  static void listProject() {
+    System.out.println("[프로젝트 목록]");
+
+    for (int i = 0; i < pcount; i++) {
+      System.out.printf("%d, %s, %s, %s, %s\n",
+          pno[i], ptitle[i], pstartDate[i], pendDate[i], powner[i]);
+    }
+  }
+
+  static void addTask() {
+    System.out.println("[작업 등록]");
+
+    tno[tcount] = promptInt("번호? ");
+    tcontent[tcount] = promptString("내용? ");
+    tcompletedDate[tcount] = promptDate("완료일? ");
+    tstate[tcount] = promptString("상태?\n0: 신규\n1:진행중\n2: 완료\n> ");
+    tworker[tcount] = promptString("담당자? ");
+
+    tcount++;
+  }
+
+  static void listTask() {
+    System.out.println("[작업 목록]");
+
+    for (int i = 0; i < tcount; i++) {
+      String stateTitle;
+      switch (tstate[i]) {
+        case "0":
+          stateTitle = "신규";
+          break;
+        case "1":
+          stateTitle = "진행중";
+          break;
+        default:
+          stateTitle = "완료";
+      }
+      System.out.printf("%d, %s, %s, %s, %s\n",
+          tno[i], tcontent[i], tcompletedDate[i], stateTitle, tworker[i]);
+    }
+  }
+
+  static String promptString(String title) {
+    System.out.print(title);
+    return keyInput.nextLine();
+  }
+
+  static int promptInt(String title) {
+    return Integer.parseInt(promptString(title));
+  }
+
+  static Date promptDate(String title) {
+    return Date.valueOf(promptString(title));
+  }
+
+
 }

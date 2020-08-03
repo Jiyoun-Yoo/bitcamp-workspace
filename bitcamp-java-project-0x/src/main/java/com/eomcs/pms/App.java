@@ -6,13 +6,16 @@ import java.util.Scanner;
 // 1) 회원의 번호, 이름, 이메일, 암호, 사진, 전화번호, 등록일을 담을 수 있는
 //    메모리를 설계한다. => Member 클래스 정의
 // 2) Member 클래스의 레퍼런스 배열을 만들어 인스턴스를 Member의 인스턴스를 보관한다.
-public class App_b {
+// 3) 레퍼런스 배열을 사용하여 인스턴스를 다루기 보다는
+//    한 개의 레퍼런스를 담는 새로운 레퍼런스를 만들어 인스턴스를 다루는 것이 더 간결하다.
+public class App {
 
   public static void main(String[] args) {
 
     // 값을 담기 위해 메모리를 준비할 때
     // 어떤 종류의 메모리를 준비해야 하는지 설계도를 작성한다.
     //  => 이것을 "클래스 정의"라 부른다.
+    // 각각의 변수를 낱개로 다루지 않고 묶음으로 다룬다.
     class Member {
       int no;
       String name;
@@ -38,30 +41,40 @@ public class App_b {
     for (int i = 0; i < LENGTH; i++) {
       count++;
 
-      members[i] = new Member();
+      Member m = new Member();
+      // 이 반복문 안에서 입력받는 데이터를 저장할 인스턴스를 만들고,
+      // 그 인스턴스를 가리키는 레퍼런스를 m이라 한다.
+      // 한 사이클을 완료하면 그 인스턴스의 주소를 members 배열에 저장한다.
+
+      // 새로운 사이클이 시작되면 기존의 인스턴스가 초기화 되는 것이 아니라,
+      // 새로운 인스턴스가 만들어지고, m은 그 인스턴스의 주소를 가지게 된다.
 
       System.out.print("번호? ");
-      members[i].no = keyInput.nextInt();
+      m.no = keyInput.nextInt();
       keyInput.nextLine();
 
       System.out.print("이름? ");
-      members[i].name = keyInput.nextLine();
+      m.name = keyInput.nextLine();
 
       System.out.print("이메일? ");
-      members[i].email = keyInput.nextLine();
+      m.email = keyInput.nextLine();
 
       System.out.print("암호? ");
-      members[i].password = keyInput.nextLine();
+      m.password = keyInput.nextLine();
 
       System.out.print("사진? ");
-      members[i].photo = keyInput.nextLine();
+      m.photo = keyInput.nextLine();
 
       System.out.print("전화? ");
-      members[i].tel = keyInput.nextLine();
+      m.tel = keyInput.nextLine();
 
       currentMillis = System.currentTimeMillis();
-      members[i].createdDate = new Date(currentMillis);
+      m.createdDate = new Date(currentMillis);
       System.out.println();
+
+      // 위에서 입력받은 정보를 담은 인스턴스의 주소를
+      // members 배열에 차례로 넣는다.
+      members[i] = m;
 
       System.out.print("계속 입력하시겠습니까?(y/N) ");
       String response = keyInput.nextLine();
@@ -76,13 +89,15 @@ public class App_b {
     System.out.println("---------------------------------");
 
     for (int i =0; i < count; i++) {
+      Member m = members[i];
+      // members 배열에 저장된 레퍼런스의 주소를 m이라는 레퍼런스로 불러오면,
+      // m이 가리키는 인스턴스의 데이터에 접근할 수 있다.
       System.out.printf("%d, %s, %s, %s, %s\n",
-          members[i].no,
-          members[i].name,
-          members[i].email,
-          members[i].tel,
-          members[i].createdDate.toString());
+          m.no,
+          m.name,
+          m.email,
+          m.tel,
+          m.createdDate.toString());
     }
-
   }
 }

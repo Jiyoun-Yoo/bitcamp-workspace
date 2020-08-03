@@ -11,7 +11,7 @@ public class Exam0120 {
     int i1;
     int i2;
     int i3;
-    
+
     //콤마(,)를 사용하여 여러 개의 변수를 한 번에 선언할 수 있다.
     int j1, j2, j3;
   }
