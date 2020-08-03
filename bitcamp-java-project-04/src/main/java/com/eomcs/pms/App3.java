@@ -39,19 +39,7 @@ public class App3 {
       System.out.println("1: 진행중");
       System.out.println("2: 완료");
       System.out.println("> ");
-      int stateTitle = keyInput.nextInt();
-      switch (stateTitle) {
-        case 0:
-          state[i] = "신규";
-          break;
-        case 1:
-          state[i] = "진행중";
-          break;
-        case 2:
-          state[i] = "완료";
-          break;
-      }
-      keyInput.nextLine();
+      state[i] = keyInput.nextLine();
 
       System.out.print("담당자? ");
       worker[i] = keyInput.nextLine();
@@ -69,10 +57,22 @@ public class App3 {
 
     System.out.println("--------------------------");
 
-    System.out.println("["+ project +"]");
-    for (int i = 0; i < count; i ++) {
-      System.out.printf("%d, %s, %s, %s, %s ",
-          no[i], content[i], completeDate[i].toString(), state[i], worker[i]);
+    System.out.printf("[%s]\n", project);
+    
+    for (int i = 0; i < count; i++) {
+      String stateTitle;
+      switch (state[i]) {
+        case "0":
+          stateTitle = "신규";
+          break;
+        case "1":
+          stateTitle = "진행중";
+          break;
+        default:
+          stateTitle = "완료";
+      }
+      System.out.printf("%d, %s, %s, %s, %s\n",
+          no[i], content[i], completedDate[i], stateTitle, worker[i]);
     }
   }
 }

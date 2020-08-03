@@ -58,21 +58,18 @@ public class App05 {
         switch (command.toLowerCase()) {
           case "/member/add":
             addMember();
-            count++;
             break;
           case "/member/list":
             listMember();
             break;
           case "/project/add":
             addProject();
-            pcount++;
             break;
           case "/project/list":
             listProject();
             break;
           case "/task/add":
             addTask();
-            tcount++;
             break;
           case "/task/list":
             listTask();
@@ -92,6 +89,19 @@ public class App05 {
     System.out.println("종료!");
   }
 
+  static String promptString(String title) {
+    System.out.print(title);
+    return keyInput.nextLine();
+  }
+
+  static int promptInt(String title) {
+    return Integer.parseInt(promptString(title));
+  }
+
+  static Date promptDate(String title) {
+    return Date.valueOf(promptString(title));
+  }
+
   static void addMember() {
     System.out.println("[회원 등록]");
 
@@ -102,6 +112,8 @@ public class App05 {
     photo[count] = promptString("사진? ");
     tel[count] = promptString("전화? ");
     now[count] = new Date(System.currentTimeMillis());
+
+    count++;
   }
 
   static void listMember() {
@@ -121,8 +133,10 @@ public class App05 {
     pcontent[pcount] = promptString("내용? ");
     pstartDate[pcount] = promptDate("시작일? ");
     pendDate[pcount] = promptDate("종료일? ");
-    powner[pcount] =  promptString("만든이? ");
+    powner[pcount] = promptString("만든이? ");
     pmembers[pcount] = promptString("팀원? ");
+
+    pcount++;
   }
 
   static void listProject() {
@@ -140,8 +154,10 @@ public class App05 {
     tno[tcount] = promptInt("번호? ");
     tcontent[tcount] = promptString("내용? ");
     tcompletedDate[tcount] = promptDate("완료일? ");
-    tstate[tcount] = promptString("상태?\n0: 신규\n1: 진행중\n2: 완료\n> ");
+    tstate[tcount] = promptString("상태?\n0: 신규\n1: 진행중\n2:완료\n> ");
     tworker[tcount] = promptString("담당자? ");
+
+    tcount++;
   }
 
   static void listTask() {
@@ -163,18 +179,4 @@ public class App05 {
           tno[i], tcontent[i], tcompletedDate[i], stateTitle, tworker[i]);
     }
   }
-
-  static String promptString(String title) {
-    System.out.print(title);
-    return keyInput.nextLine();
-  }
-
-  static int promptInt(String title) {
-    return Integer.parseInt(promptString(title));
-  }
-
-  static Date promptDate(String title) {
-    return Date.valueOf(promptString(title));
-  }
-
 }

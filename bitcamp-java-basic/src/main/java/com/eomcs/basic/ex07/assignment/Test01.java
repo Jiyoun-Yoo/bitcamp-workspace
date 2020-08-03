@@ -2,7 +2,7 @@ package com.eomcs.basic.ex07.assignment;
 
 // 과제 : 단위 행렬을 출력하시오
 
-public class Test1 {
+public class Test01 {
   public static void main(String[] args) {
     int[][] arr = new int[6][6];
 
