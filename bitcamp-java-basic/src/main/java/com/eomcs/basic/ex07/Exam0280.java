@@ -9,7 +9,7 @@ public class Exam0280 {
 
     // 1) 메서드의 리턴 값을 변수로 받을 때
     int result = plus(2, 3);
-    result = plus(result, 4);
+    result = plus(result, 4); // return 변수가 넘어가는 것이 아니라 return 변수의 값이 넘어간다.
     result = plus(result, 5);
     System.out.println(result);
 
@@ -25,12 +25,9 @@ public class Exam0280 {
     System.out.println(result);
 
     System.out.printf("100 + 200 = %d\n", plus(100, 200));
-
-
   }
 
   static int plus(int a, int b) {
     return a + b;
   }
-
 }
