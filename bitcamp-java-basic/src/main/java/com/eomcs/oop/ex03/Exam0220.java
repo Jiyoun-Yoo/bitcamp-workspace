@@ -33,7 +33,6 @@ public class Exam0220 {
       this.value = 300; // 인스턴스 변수
       // 따라서 로컬 변수가 아닌 인스턴스 변수를 가리키고 싶으면 this를 붙여야 한다.
     }
-
   }
 
   public static void main(String[] args) {
@@ -57,6 +56,5 @@ public class Exam0220 {
     // 인스턴스 메서드의 this 변수는 메서드를 호출할 때 전달한 인스턴스 주소 값을 가진다.
     // 그래서 메서드가 호출될 때마다 this 변수의 값이 바뀐다.
     obj2.m2();
-
   }
 }

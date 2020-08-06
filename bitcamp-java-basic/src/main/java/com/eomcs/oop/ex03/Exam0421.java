@@ -16,9 +16,11 @@ public class Exam0421 {
   }
 
   public static void main(String[] args) {
-    //SmartPhone objs1 = new SmartPhone();
+    //SmartPhone objs1 = new SmartPhone(); // 컴파일 오류!
+                                           // 기본생성자가 자동으로 생성되지 않아 호출할 수 없다.
     SmartPhone objs1 = new SmartPhone(100); // OK!
-    //SmartPhone objs1 = new SmartPhone(3.14);
+    //SmartPhone objs1 = new SmartPhone(3.14); // 컴파일 오류!
+                                               // 파라미터값이 일치하지 않는다.
   }
 
 }

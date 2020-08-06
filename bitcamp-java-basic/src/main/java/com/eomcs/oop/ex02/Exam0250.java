@@ -16,7 +16,7 @@ public class Exam0250 {
       // 인스턴스 변수를 다루는 메서드는 작업을 수행할 때 그 인스턴스 주소를 받아야 한다.
       // result는 더이상 클래스 변수가 아니기 때문에 직접 접근할 수 없다.
       // 오직 인스턴스 주소를 통해서만 접근할 수 있다.
-      // that은 Calculator의 참조변수!
+      // that은 Calculator의 레퍼런스!
       that.result += value;
     }
 
@@ -32,7 +32,6 @@ public class Exam0250 {
       that.result /= value;
     }
 
-    // 인스턴스를 사용하지 않는 메서드라면 그냥 클래스 메서드로 두어라.
     static int abs(int a) {
       return a>=0 ? a : a * -1;
     }
@@ -51,6 +50,7 @@ public class Exam0250 {
     Calculator c2 = new Calculator(); // 식2의 계산 결과를 보관할 메모리 준비
 
     // 계산을 수행할 때 계산 결과를 보관할 메모리를 전달한다.
+    //  - 스태틱 메서드를 사용할 경우 인스턴스의 주소를 파라미터로 넘겨줘야 한다.
     Calculator.plus(c1, 2);
     Calculator.plus(c2, 3);
 

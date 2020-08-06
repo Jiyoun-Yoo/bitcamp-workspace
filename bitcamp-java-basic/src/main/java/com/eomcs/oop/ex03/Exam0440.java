@@ -39,7 +39,6 @@ public class Exam0440 {
       this.sum = this.kor + this.eng + this.math;
       this.average = this.sum / 3f;
     }
-
   }
 
   public static void main(String[] args) {

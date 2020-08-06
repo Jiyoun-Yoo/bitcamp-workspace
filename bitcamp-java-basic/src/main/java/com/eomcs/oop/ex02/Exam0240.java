@@ -5,7 +5,6 @@ package com.eomcs.oop.ex02;
 public class Exam0240 {
 
   static class Calculator {
-
     // 클래스 변수는 클래스가 로딩될 때 한 번 생성된다.
     static int result = 0;
 
@@ -25,7 +24,6 @@ public class Exam0240 {
       result /= value; // result = result / value;
     }
 
-    // 인스턴스를 사용하지 않는 메서드라면 그냥 클래스 메서드로 두어라.
     static int abs(int a) {
       return a>=0 ? a : a * -1;
     }

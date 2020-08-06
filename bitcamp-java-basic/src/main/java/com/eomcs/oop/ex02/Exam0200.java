@@ -53,9 +53,7 @@ public class Exam0200 {
     c1.multiple(7);
     c1.divide(3);
 
-
     printResult(c1.result); // 9를 넘겨준다
-
   }
 
   static void printResult(int value) {

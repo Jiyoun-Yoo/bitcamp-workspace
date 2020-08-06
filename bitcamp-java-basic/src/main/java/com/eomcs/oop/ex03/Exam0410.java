@@ -5,7 +5,6 @@ package com.eomcs.oop.ex03;
 public class Exam0410 {
 
   static class SmartPhone {
-
     // Exam0410 클래스 조차도 기본 생성자가 자동으로 추가된다.
     // 즉 다음 생성자를 컴파일러가 자동으로 붙일 것이다.
     //public Exam0410() {}
@@ -31,7 +30,7 @@ public class Exam0410 {
     //  - 이것이 생성자다!
 
     // 생성자 문법
-    //      클래스명(파라미터, ...){}
+    //      클래스명(파라미터, ...) {}
     //  - 생성자를 선언할 때는 리턴 타입을 지정하지 않는다.
     //  - 즉 값을 리턴하지 않는다.
 
@@ -46,7 +45,6 @@ public class Exam0410 {
 
     // 이 클래스에 생성자를 정의하지 않으면 다음과 같이 기본 생성자가 추가된다.
     // public SmartPhone() {}
-
   }
 
   public static void main(String[] args) {
@@ -55,7 +53,7 @@ public class Exam0410 {
     //  => 문법
     //          new 클래스명(생성자에 넘겨줄 값);
     //  예) new A();  <-- 생성자에 파라미터가 없기 때문에 값을 넘겨주지 않는다.
-    //  예) new A(100);  <-- 생성자의 파라미터가 int이기 때문에점수 값을 넘긴다.
+    //  예) new A(100);  <-- 생성자의 파라미터가 int이기 때문에 점수 값을 넘긴다.
 
     // new A; // 컴파일 오류!
 

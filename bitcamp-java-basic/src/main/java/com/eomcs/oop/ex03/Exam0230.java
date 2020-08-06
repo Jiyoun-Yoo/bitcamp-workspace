@@ -5,11 +5,11 @@ package com.eomcs.oop.ex03;
 public class Exam0230 {
   static class Calculator {
     // main()에 new 명령을 실행하면,
-    // 다음 변수 선언이 실행되어 Heap에 메모리를 만든다.
+    // 다음 변수 선언이 실행되어 heap에 result라는 메모리를 만든다.
     int result;
 
     // 주의!
-    //  => 이름에 인스턴스가 붙었다고 해서 인스턴스 메서드가 Heap에 만들어지는 것이 아니다.
+    //  => 이름에 인스턴스가 붙었다고 해서 인스턴스 메서드가 heap에 만들어지는 것이 아니다.
     //  => 클래스의 모든 코드는 Method Area 영역에 로딩된다.
     public void plus(int value) {
       this.result += value;
