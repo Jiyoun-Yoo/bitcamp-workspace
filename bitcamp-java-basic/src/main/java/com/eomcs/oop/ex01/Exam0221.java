@@ -1,7 +1,7 @@
+// 레퍼런스 배열 - 사용 후
+
 package com.eomcs.oop.ex01;
 
-//# 레퍼런스 배열 - 사용 후
-//
 public class Exam0221 {
   public static void main(String[] args) {
     // 여러 개의 인스턴스 주소 저장하기
@@ -51,11 +51,3 @@ public class Exam0221 {
         arr[2].name, arr[2].kor, arr[2].eng, arr[2].math, arr[2].sum, arr[2].aver);
   }
 }
-
-
-
-
-
-
-
-

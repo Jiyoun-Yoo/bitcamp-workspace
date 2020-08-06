@@ -1,7 +1,6 @@
+// 레퍼런스와 인스턴스 - 인스턴스 주소 주고 받기
 package com.eomcs.oop.ex01;
 
-//# 레퍼런스와 인스턴스 - 인스턴스 주소 주고 받기
-//
 public class Exam0310 {
   public static void main(String[] args) {
     class Score {

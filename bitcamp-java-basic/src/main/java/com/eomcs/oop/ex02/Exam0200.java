@@ -39,7 +39,6 @@ public class Exam0200 {
     // 2 + 3 - 1 * 7 / 3 = ?
 
     Calculator c1 = new Calculator();
-    Calculator c2 = new Calculator();
 
     // int result = 0;
     // 작업을 하는 쪽에서 작업 결과를 관리하도록

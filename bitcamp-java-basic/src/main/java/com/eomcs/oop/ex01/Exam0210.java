@@ -1,7 +1,7 @@
+// 레퍼런스 배열 - 사용 전
+
 package com.eomcs.oop.ex01;
 
-// # 레퍼런스 배열 - 사용 전
-//
 public class Exam0210 {
   public static void main(String[] args) {
     // 여러 개의 인스턴스 주소 저장하기
@@ -58,5 +58,4 @@ public class Exam0210 {
 // 코딩하기가 매우 불편하다.
 // 만약 수 백 개라면 더더욱 불편할 것이다.
 // 해결책?
-// - 레퍼런스를 배열로 만드는 것이다.
-//
+//  - 레퍼런스를 배열로 만드는 것이다.

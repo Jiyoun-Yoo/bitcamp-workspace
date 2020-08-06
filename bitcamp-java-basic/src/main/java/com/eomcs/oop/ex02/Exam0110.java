@@ -17,7 +17,7 @@ public class Exam0110 {
     int eng;
     int math;
     int sum;
-    float average;
+    float aver;
   }
 
   public static void main(String[] args) {
@@ -27,19 +27,25 @@ public class Exam0110 {
     //  - 메모리는 Heap 영역에 생성된다.
     //  - 메모리 주소를 레퍼런수(주소 변수)에 저장한다.
 
-    Score score = new Score();
+    Score s;
+    s = new Score();
 
     //  - 클래스로 만든 메모리는 레퍼런스를 통해 접근한다.
-    score.name = "홍길동";
-    score.kor = 100;
-    score.eng = 90;
-    score.math = 85;
-    score.sum= score.kor + score.eng + score.eng;
-    score.average = score.sum / 3f;
+    s.name = "홍길동";
+    s.kor = 100;
+    s.eng = 90;
+    s.math = 85;
+    s.sum= s.kor + s.eng + s.eng;
+    s.aver = s.sum / 3f;
 
-    System.out.printf("%s, %d, %d, %d, %d %.1f\n", score.name, score.kor, score.eng, score.math,
-        score.sum, score.average);
+    printScore(s);
   }
+
+  //각각의 데이터를 넘기지 않고 주소 변수만 넘겨주면 된다.
+  static void printScore(Score s) {
+    System.out.printf("%s: %d, %d, %d, %d, %.1f\n", s.name, s.kor, s.eng, s.math, s.sum, s.aver );
+  }
+
 }
 
 // 클래스 문법의 용도?

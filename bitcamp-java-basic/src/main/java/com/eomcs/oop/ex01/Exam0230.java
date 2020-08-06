@@ -1,11 +1,10 @@
+// 레퍼런스 배열 - 반복문 결합
+
 package com.eomcs.oop.ex01;
 
-//# 레퍼런스 배열 - 반복문 결합
-//
 public class Exam0230 {
   public static void main(String[] args) {
     // 여러 개의 인스턴스 주소 저장하기
-    //
     class Score {
       String name;
       int kor;
@@ -54,9 +53,5 @@ public class Exam0230 {
 }
 
 // 결론!
-// - 배열은 반복문과 함께 쓸 때 특히 유용한다.
-
-
-
-
+//  - 배열은 반복문과 함께 쓸 때 특히 유용하다.
 
