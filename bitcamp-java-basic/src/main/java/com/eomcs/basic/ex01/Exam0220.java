@@ -6,5 +6,4 @@ package com.eomcs.basic.ex01;
 //다음과 같이 클래스명과 소스 파일명이 다르면 컴파일 오류가 발생한다.
 public class Exam0220x {
     // 자바 명령 작성
-
 }

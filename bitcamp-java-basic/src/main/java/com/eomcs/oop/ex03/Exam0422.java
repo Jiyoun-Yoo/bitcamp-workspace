@@ -2,7 +2,7 @@
 
 package com.eomcs.oop.ex03;
 
-public class Exam0430 {
+public class Exam0422 {
 
   static class SmartPhone {
     int volume;
@@ -34,10 +34,10 @@ public class Exam0430 {
     // 자동으로 호출될 생성자가 결정된다.
 
     // 생성자가 여러 개 존재할 때는 파라미터에 전달하는 값으로 구분한다.
-    new SmartPhone();
-    new SmartPhone(100);
-    new SmartPhone("aaa", 100);
-    new SmartPhone(100, "aaa");
+    new SmartPhone(); // 파라미터가 없는 기본 생성자
+    new SmartPhone(100); // int 값을 받는 생성자
+    new SmartPhone("aaa", 100); // str과 int 값을 (순서대로) 받는 생성자
+    new SmartPhone(100, "aaa"); // int과 str 값을 (순서대로) 받는 생성자
 
     // 인스턴스를 생성한 후에 나중에 따로 생성자를 호출할 수는 없다!!
   }

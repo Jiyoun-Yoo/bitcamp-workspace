@@ -19,7 +19,6 @@ public class Exam0520 {
   }
 
   public static void main(String[] args) {
-
     // 인스턴스 변수도 클래스 변수와 마찬가지이다.
     // 힙(heap)에 생성되는 인스턴스 필드(변수)는 자동으로 초기화된다.
     // 그래서 인스턴스 필드(변수)는 생성되는 즉시 0으로 초기화된다.

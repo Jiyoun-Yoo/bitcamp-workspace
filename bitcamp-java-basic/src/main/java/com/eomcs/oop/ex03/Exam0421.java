@@ -10,6 +10,9 @@ public class Exam0421 {
     int contrast;
 
     // 생성자가 한 개라도 있으면 기본 생성자가 자동으로 생성되지 않는다.
+
+    // 파라미터가 있는 생성자
+    //  - 실무에서는 '파라미터를 받는 생성자'라고도 한다.
     public SmartPhone(int a) {
       System.out.println("SmartPhone() 생성자 호출됨!");
     }

@@ -17,6 +17,8 @@ public class Exam0420 {
 
   public static void main(String[] args) {
     SmartPhone objs1 = new SmartPhone();
+    // 기본 생성자가 정말 호출되는지 알아본다.
+    // 출력문이 없지만, 생성자가 호출된다면 생성자의 출력문이 호출될 것!
   }
 
 }

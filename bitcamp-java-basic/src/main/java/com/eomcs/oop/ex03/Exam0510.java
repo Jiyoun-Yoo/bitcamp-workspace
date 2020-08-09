@@ -19,7 +19,6 @@ public class Exam0510 {
   }
 
   public static void main(String[] args) {
-
     // 클래스 변수(스태틱 변수)는 생성되는 순간 0으로 자동 초기화된다.
     //  => 정수(byte, short, int, long, char) : 0
     //  => 부동소수점(float, double) : 0.0 = 0

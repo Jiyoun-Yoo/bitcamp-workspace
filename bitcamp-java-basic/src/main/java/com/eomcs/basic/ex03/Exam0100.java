@@ -11,11 +11,11 @@ class Exam0100 {
         // [숫자]
         //  - 정수
         System.out.println(78);
-        System.out.println(+78);
-        System.out.println(-78);
-        System.out.println(0116);
-        System.out.println(0x4e);
-        System.out.println(0b01001110);
+        System.out.println(+78); // 78 출력
+        System.out.println(-78); // -78 출력
+        System.out.println(0116); // 8진수
+        System.out.println(0x4e); // 16진수
+        System.out.println(0b01001110); // 2진수
 
         //  - 부동소수점(실수)
         System.out.println(3.14);

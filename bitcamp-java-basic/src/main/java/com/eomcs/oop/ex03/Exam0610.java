@@ -4,12 +4,12 @@ package com.eomcs.oop.ex03;
 
 public class Exam0610 {
   public static class A {
-    static int a;
+    static int a; // 스태틱 변수
 
-    static void m() {}
+    static void m() {} // 스태틱 메서드
 
     // 클래스가 로딩될 때 스태틱 초기화 블록은 실행된다.
-    // 여러 개의 스태틱 블록이 있을 떄, 컴파일러는 한 개의 블록으로 합친다.
+    // 여러 개의 스태틱 블록이 있을 때, 컴파일러는 한 개의 블록으로 합친다.
     //  - 바이트 코드(Exam0610$A.class)를 확인해 보라.
 
     static {
@@ -23,10 +23,9 @@ public class Exam0610 {
 
   public static void main(String[] args) {
 
-    // 클래스가 로딩되는 경우,
+    // 클래스가 로딩되는 경우
     //  - 레퍼런스를 선언할 때는 클래스가 로딩되지 않는다.
     //  - 그래서 스태틱 초기화 블록이 실행되지 않는다.
-
     A obj1;
     A obj2;
 
