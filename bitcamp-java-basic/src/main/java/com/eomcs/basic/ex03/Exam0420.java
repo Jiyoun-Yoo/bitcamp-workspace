@@ -7,7 +7,7 @@ public class Exam0420 {
     System.out.println(0x41);
     System.out.println(65);
 
-    // println()에게 문자 코드임을 알려줘
+    // (char)의 의미: println()에게 문자 코드임을 알려줘
     System.out.println((char)0x41);
     System.out.println((char)65);
     System.out.println((char)0xd5d0);
