@@ -34,9 +34,11 @@ public class Exam0300 {
     while (count++ < 100 ) {
       sum = sum + count;
     }
-    // count를 증가하는 방법은 다양하게 변경 가능!
-    // 조건문에서 count를 증가시키지 않고, sum = sum + ++count;로 해도 출력 결과는 동일!
     System.out.println(sum);
+
+    // count를 증가하는 방법은 다양하게 변경 가능!
+    // 조건문에서 count를 증가시키지 않고,
+    // sum = sum + ++count;로 해도 출력 결과는 동일!
 
     System.out.println("-----------------------------");
 
@@ -44,7 +46,7 @@ public class Exam0300 {
     count = 0;
     while (count++ < 20) {
       if (count % 2 != 0) // count & 1  ==>  맨 오른쪽의 비트가 1인지 확인
-        continue; // 다음의 문장은 실행하지 않고, 즉시 조건문으로 실행을 이동한다.
+        continue; // 다음의 문장은 실행하지 않고, 즉시 반복문의 조건문으로 실행을 이동한다.
       System.out.println(count);
     }
 

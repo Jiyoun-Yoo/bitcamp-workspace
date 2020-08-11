@@ -28,7 +28,7 @@ public class Exam0321 {
     while (count < 100) {
       count++;
       if (count % 2 == 1)
-        continue;
+        continue; // 아래 문장 실행X
       sum += count;
     }
     System.out.printf("count=%d, sum=%d\n", count, sum);

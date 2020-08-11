@@ -1,4 +1,4 @@
-// 흐름 제어문 - switch 문법II
+// 흐름 제어문 - switch 문법 II
 
 package com.eomcs.basic.ex06;
 
@@ -13,7 +13,6 @@ public class Exam0242 {
     GUEST, MEMBER, ADMIN
   }
   public static void main(String[] args) {
-
 
     Level level = Level.MEMBER;
 

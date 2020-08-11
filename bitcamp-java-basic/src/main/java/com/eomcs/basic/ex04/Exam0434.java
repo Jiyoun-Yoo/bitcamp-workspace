@@ -14,8 +14,8 @@ public class Exam0434 {
     for (int i = 0; i < 26; i++) {
       // 정수를 그냥 출력하면 10진수를 출력한다.
       // 정수가 문자 코드임을 알려줘야만 println()은 해당 코드의 문자를 출력한다.
-      // - 문법
-      //   (char) 정수
+      //  - 문법
+      //    (char) 정수
 
       System.out.println((char)(a + i));
     }

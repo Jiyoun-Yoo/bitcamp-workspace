@@ -6,9 +6,9 @@ public class Exam0141 {
   public static void main(String[] args) {
     int age = 17;
 
-    // 잘못사용한 예)
-    //   - else문만 단독으로 사용할 수 없다.
-    //     항상 if문과 짝을 이루어 사용한다.
+    // 잘못 사용한 예)
+    //  - else문만 단독으로 사용할 수 없다.
+    //    항상 if문과 짝을 이루어 사용한다.
 
     /*
       else

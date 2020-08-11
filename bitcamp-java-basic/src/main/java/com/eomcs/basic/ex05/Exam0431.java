@@ -4,7 +4,7 @@ package com.eomcs.basic.ex05;
 
 public class Exam0431 {
   public static void main(String[] args) {
-    // 음수를 이동:
+    // 음수를 >>> 이동:
     //  - 왼쪽 빈자리는 0으로 채운다.
     //  - 음수 양수 상관없이 무조건 0으로 채운다.
 

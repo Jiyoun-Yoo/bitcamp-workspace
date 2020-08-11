@@ -4,6 +4,7 @@ package com.eomcs.basic.ex04;
 
 public class Exam0430 {
   public static void main(String[] args) {
+    // 문자 변수
     char c;
 
     c = 0;
@@ -13,10 +14,10 @@ public class Exam0430 {
 
     c = 65;
     c = 0x41;
-    System.out.println(c);
+    System.out.println(c); // 헐
 
     short s = 65;
-    System.out.println(s);
+    System.out.println(s); // 65
 
     // 똑같은 65를 저장하는 메모리라 하더라도
     // 변수 타입에 따라 출력하는 값이 다르다.
@@ -28,10 +29,10 @@ public class Exam0430 {
     System.out.println(c);
 
     c = '헐'; // '' 연산자는 문자의 2바이트 유니코드 값을 리턴한다.
-    System.out.println(c);
+    System.out.println(c); // 헐
 
-    int i = '헐';
-    System.out.println(i); // 유니코드 값을 10진수로 출력한다.
+    int i = '헐'; // 유니코드 값을 10진수로 출력한다.
+    System.out.println(i); // 54736
 
     for (int x = 65; x < 80; x++) {
       System.out.println(x); // 65~79까지 출력
@@ -41,6 +42,7 @@ public class Exam0430 {
       System.out.println((char)x); // A~O까지 출력
     }
 
+    // 논리 변수
     boolean b1, b2;
     b1 = true;
     b2 = false;

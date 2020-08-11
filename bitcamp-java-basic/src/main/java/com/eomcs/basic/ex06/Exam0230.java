@@ -1,4 +1,4 @@
-// 흐름 제어문 - switch 문법I
+// 흐름 제어문 - switch 문법 I
 
 package com.eomcs.basic.ex06;
 

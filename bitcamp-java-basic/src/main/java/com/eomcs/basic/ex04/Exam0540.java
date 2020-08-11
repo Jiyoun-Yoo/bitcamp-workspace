@@ -20,7 +20,6 @@ public class Exam0540 {
     arr1[0] = 100;
 
     // 배열 인스턴스에 저장된 값을 출력해보자!
-
     System.out.println(arr1[0]);
   }
 }

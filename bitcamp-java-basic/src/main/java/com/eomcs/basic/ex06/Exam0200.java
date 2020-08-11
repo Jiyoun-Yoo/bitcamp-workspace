@@ -1,3 +1,5 @@
+// 흐름 제어문 - switch
+
 package com.eomcs.basic.ex06;
 
 public class Exam0200 {

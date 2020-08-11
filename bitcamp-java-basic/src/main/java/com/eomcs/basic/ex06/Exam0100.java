@@ -72,6 +72,7 @@ public class Exam0100 {
       else
         System.out.println("미성년입니다.");
     // 위의 코드를 실행할 경우 아무것도 출력되지 않는다.
+
     // else문은 자신과 가장 가까운 if문에 소속된다.
     // 위의 경우 else문 바깥의 if문에 연결된 것이 아니라 안쪽의 if문에 연결되어 있다.
     // 따라서 바깥의 if문 조건이 false이기 때문에 else문은 아예 실행되지 않는다.

@@ -7,11 +7,11 @@ public class Exam0425 {
     float f1 = 99988.88f;
     float f2 = 11.11111f;
 
-    // 각 변수의 값이 개별적으로 옳은 부동소수점이라도,
     System.out.println(f1);
     System.out.println(f2);
 
     // 주의!
+    // 각 변수의 값이 개별적으로 옳은 부동소수점이라도,
     // 연산 결과가 해당 타입의 크기를 벗어 난다면 그 결과 값이 잘린다.
     float f3 = f1 + f2;
     System.out.println(f3);

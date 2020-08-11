@@ -5,7 +5,7 @@ package com.eomcs.basic.ex06;
 public class Exam0130 {
   public static void main(String[] args) {
 
-    // if문의 조건은 반드시 boolea 데이터여야 한다.
+    // if문의 조건은 반드시 boolean 데이터여야 한다.
     if (true) System.out.println("1111");
     if (false) System.out.println("2222");
     if (10 < 8 + 5) System.out.println("3333");

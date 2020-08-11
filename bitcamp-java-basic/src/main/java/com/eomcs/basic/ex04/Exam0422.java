@@ -1,4 +1,4 @@
-// 부동소수점 변수 - 변수의 메모리 크기II
+// 부동소수점 변수 - 변수의 메모리 크기 II
 package com.eomcs.basic.ex04;
 
 public class Exam0422 {
