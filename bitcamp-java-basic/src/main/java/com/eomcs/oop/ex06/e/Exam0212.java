@@ -1,4 +1,5 @@
-// final 사용법: 상수 필드 만들기
+// final 사용법: 상수 필드 만들기 I
+
 package com.eomcs.oop.ex06.e;
 
 public final class Exam0212 {

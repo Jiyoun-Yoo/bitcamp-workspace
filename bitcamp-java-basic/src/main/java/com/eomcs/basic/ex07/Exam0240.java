@@ -5,7 +5,7 @@ package com.eomcs.basic.ex07;
 public class Exam0240 {
 
   // 예4) 메서드 : 리턴값(O), 파라미터(O)
-  //      => "이 돈 갖고 과자좀 사와!"
+  //      => "이 돈 갖고 과자 좀 사와!"
   static String hello(String name, int age) {
     String retVal = String.format("%d살 %s님 반갑습니다.", age, name);
     return retVal;
