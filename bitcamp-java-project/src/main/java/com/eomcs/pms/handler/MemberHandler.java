@@ -1,4 +1,4 @@
-package com.eomcs.pms;
+package com.eomcs.pms.handler;
 
 import java.sql.Date;
 import com.eomcs.util.Prompt;
@@ -14,28 +14,26 @@ public class MemberHandler {
     String tel;
     Date registeredDate;
   }
-
   static final int LENGTH = 100;
   static Member[] list = new Member[LENGTH];
   static int size = 0;
 
-  static void add() {
+  public static void add() {
     System.out.println("[회원 등록]");
 
     Member m = new Member();
-
     m.no = Prompt.promptInt("번호? ");
     m.name = Prompt.promptString("이름? ");
     m.email = Prompt.promptString("이메일? ");
     m.password = Prompt.promptString("암호? ");
     m.photo = Prompt.promptString("사진? ");
     m.tel = Prompt.promptString("전화? ");
-    m.registeredDate = new Date(System.currentTimeMillis());
+    m.registeredDate = new java.sql.Date(System.currentTimeMillis());
 
     list[size++] = m;
   }
 
-  static void list() {
+  public static void list() {
     System.out.println("[회원 목록]");
 
     for (int i = 0; i < size; i++) {
@@ -44,5 +42,4 @@ public class MemberHandler {
           m.no, m.name, m.email, m.tel, m.registeredDate);
     }
   }
-
 }
