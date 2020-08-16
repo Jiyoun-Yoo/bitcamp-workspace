@@ -30,13 +30,3 @@ public class Exam0110 {
         s1.name, s1.kor, s1.eng, s1.math, s1.sum, s1.aver);
   }
 }
-
-
-
-
-
-
-
-
-
-

@@ -6,7 +6,7 @@ public class MyArrayList01 {
   static Object[] elementDate = new Object[5];
   static int size; // 0으로 자동 초기화된다.
 
-  // size는 추가한 element의 개수
-  // elementDate.length는 배열의 길이
+  // size : 추가한 element의 개수
+  // elementDate.length : 배열의 길이
 
 }
