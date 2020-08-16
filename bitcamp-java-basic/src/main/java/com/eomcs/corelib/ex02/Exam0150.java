@@ -39,18 +39,18 @@ public class Exam0150 {
     String s2 = new String("Hello");
 
     // 비록 s1과 s2는 같은 문자열을 갖고 있지만 인스턴스가 다르다.
-    System.out.println(s1 == s2);
+    System.out.println(s1 == s2); // false
 
     // String 클래스는 Object로부터 상속 받은 hashCode()를 오버라이딩 했다.
-    // => 문자열이 같으면 같은 해시값을 리턴하게 만들었다.
+    //  => 문자열이 같으면 같은 해시값을 리턴하도록 재정의했다.
     System.out.printf("%x, %x\n", s1.hashCode(), s2.hashCode());
 
     // String 클래스는 Object로부터 상속 받은 toString()을 오버라이딩 했다.
-    // => 스트링 인스턴스에 보관된 문자열을 리턴하도록 만들었다.
+    //  => 스트링 인스턴스에 보관된 문자열을 리턴하도록 재정의했다.
     System.out.printf("%s, %s\n", s1.toString(), s2.toString());
 
     // String 클래스는 Object로부터 상속 받은 equals()를 오버라이딩 했다.
-    // => 문자열이 같은지를 비교하도록 만들었다.
+    //  => 문자열이 같은지를 비교하도록 재정의했다.
     System.out.printf("%b\n", s1.equals(s2));
   }
 }

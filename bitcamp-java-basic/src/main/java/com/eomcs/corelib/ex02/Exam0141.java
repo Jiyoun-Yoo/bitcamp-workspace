@@ -30,5 +30,3 @@ public class Exam0141 {
     //     obj.toString()은 String 클래스부터 해당 메서드를 찾는다.
   }
 }
-
-

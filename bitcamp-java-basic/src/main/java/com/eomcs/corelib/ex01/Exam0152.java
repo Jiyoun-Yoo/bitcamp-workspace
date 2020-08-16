@@ -18,10 +18,12 @@ public class Exam0152 {
     public String toString() {
       return "MyKey [contents=" + contents + "]";
     }
+
+    // hashCode()와 equals()를 오버라이딩하지 않았다.
   }
 
   public static void main(String[] args) {
-    HashMap<MyKey,Student> map = new HashMap<>();
+    HashMap<MyKey, Student> map = new HashMap<>();
 
     MyKey k1 = new MyKey("ok");
     MyKey k2 = new MyKey("no");
@@ -47,7 +49,9 @@ public class Exam0152 {
     MyKey k6 = new MyKey("haha");
 
     System.out.println(map.get(k6)); // 엥? 값을 꺼낼 수가 없다.
-    // 두 키의 객체 k3와 k6이 내용물이 같다 하더라도, (둘다 "haha")
+    // k6에 "haha"라는 키 값을 저장했기 때문에
+    // "유관순"의 정보를 꺼낼 것으로 예상했지만, 출력 결과는 null이다.
+    // 두 키의 객체 k3와 k6이 내용물이 "haha"로 같다 하더라도,
     // hashCode()의 리턴 값이 다르고, equals() 비교 결과도 false라면
     // HashMap 클래스에서는 서로 다른 key라고 간주한다.
 

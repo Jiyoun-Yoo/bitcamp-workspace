@@ -34,6 +34,7 @@ public class Exam0223 {
 
     System.out.println(i);
     System.out.println(obj);
+    System.out.println(obj2);
   }
 }
 

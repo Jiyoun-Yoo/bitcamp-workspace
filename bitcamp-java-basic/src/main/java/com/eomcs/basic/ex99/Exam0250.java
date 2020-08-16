@@ -1,5 +1,5 @@
 // 키보드 입력 받기
-// - 여러 개의 데이터를 한 번에 입력하고 쪼개서 읽기
+//  - 여러 개의 데이터를 한 번에 입력하고 쪼개서 읽기
 
 package com.eomcs.basic.ex99;
 
@@ -21,18 +21,3 @@ public class Exam0250 {
     System.out.printf("%d, %s, %b\n", age, name, working);
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

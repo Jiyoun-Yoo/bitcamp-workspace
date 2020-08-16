@@ -43,9 +43,12 @@ public class Exam0153 {
         return false;
       return true;
     }
+
+    // hashCode()와 equals()를 오버라이딩하였다.
   }
+
   public static void main(String[] args) {
-    HashMap<MyKey2,Student> map = new HashMap<>();
+    HashMap<MyKey2, Student> map = new HashMap<>();
 
     MyKey2 k1 = new MyKey2("ok");
     MyKey2 k2 = new MyKey2("no");
@@ -67,8 +70,7 @@ public class Exam0153 {
     MyKey2 k6 = new MyKey2("haha");
 
     System.out.println(map.get(k6)); // OK! 값을 정상적으로 꺼낼 수 있다.
-    // k3와 k6는
-    // hashCode()의 리턴 값이 같다.
+    // k3와 k6는 hashCode()의 리턴 값이 같다.
     // equals() 비교 결과도 true 이기 때문에
     // HashMap 클래스에서는 서로 같은 key라고 간주한다.
 
@@ -78,13 +80,5 @@ public class Exam0153 {
     System.out.println(k6.hashCode()); // hash code는 같다.
     System.out.println(k3.equals(k6)); // equals()의 비교 결과도 같다.
 
-
   }
 }
-
-
-
-
-
-
-

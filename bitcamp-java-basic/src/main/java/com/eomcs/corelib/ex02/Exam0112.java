@@ -13,5 +13,3 @@ public class Exam0112 {
     System.out.println(s2 instanceof String);
   }
 }
-
-

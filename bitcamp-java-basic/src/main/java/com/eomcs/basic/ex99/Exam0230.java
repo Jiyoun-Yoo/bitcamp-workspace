@@ -25,8 +25,8 @@ public class Exam0230 {
     boolean b = keyboard.nextBoolean();
 
     // nextInt()에서 입력된 줄바꿈 문자(쓰레기 값)가 있을 경우
-    // 다음에 nextFloat과 nextBoolean이 오면 그 쓰레기 값을 지우지만,
-    // 다음에 nextLine()이 오면 그 쓰레기 값을 지우는 기능이 없다.
+    //  - 다음에 nextFloat과 nextBoolean이 오면 그 쓰레기 값을 지우지만,
+    //  - 다음에 nextLine()이 오면 그 쓰레기 값을 지우는 기능이 없다.
 
     keyboard.close();
 

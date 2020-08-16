@@ -31,8 +31,8 @@ public class Exam0230 {
     System.out.println(obj3 == obj5); // true
 
     // 주의!
-    // -128 ~ 127 범위를 넘어가는 경우
-    // 무조건 새 객체를 만들고 캐시에 보관하지 않는다.
+    //  -128 ~ 127 범위를 넘어가는 경우
+    //  무조건 새 객체를 만들고 캐시에 보관하지 않는다.
     Integer obj7 = 128;
     Integer obj8 = 128;
     Integer obj9 = 128;
@@ -43,5 +43,6 @@ public class Exam0230 {
     // 따라서 auto-boxing된 wrapper 객체의 값을 비교할 때도
     // String처럼 equals()로 비교하라!
     System.out.println(obj7.equals(obj8));
+
   }
 }

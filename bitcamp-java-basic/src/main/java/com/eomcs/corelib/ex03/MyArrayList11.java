@@ -74,8 +74,6 @@ public class MyArrayList11 {
       elementDate[i] = elementDate[i+1];
     }
     size--;
-    // 쓰지 않는 인스턴스의 주소를 제거하여
-    // 가비지가 될 수 있게 한다.
     elementDate[size] = null;
     return old;
   }

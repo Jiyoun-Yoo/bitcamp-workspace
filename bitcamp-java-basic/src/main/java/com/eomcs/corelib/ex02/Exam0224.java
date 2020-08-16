@@ -48,6 +48,5 @@ public class Exam0224 {
   static void printObject(Object obj) {
     System.out.println(obj);
   }
+
 }
-
-
