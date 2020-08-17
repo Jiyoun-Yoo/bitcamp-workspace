@@ -23,6 +23,7 @@ package com.eomcs.corelib.ex03;
 //      MyArrayList에 선언된 레퍼런스 배열을 스태틱 대신 인스턴스로 전환한다.
 //      - 개별적으로 관리해야 할 데이터는 인스턴수 변수를 사용해야 한다.
 public class MyArrayList12 {
+  // static을 모두 제거한다.
   Object[] elementDate = new Object[5];
   int size;
 

@@ -1,4 +1,5 @@
 // indexOf()에서 객체를 찾을 때 equals()로 비교하여 찾는다.
+
 package com.eomcs.corelib.ex03;
 
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ public class Exam0320 {
     // Member 클래스는 equals()를 오버라이딩 하지 않았다.
     // 따라서 같은 값을 갖더라도 인스턴스가 다르면
     // equals()의 검사 결과도 false가 될 것이다.
+    System.out.println(s2.equals(s4)); // false
   }
 
   static void print(ArrayList list) {
@@ -46,5 +48,3 @@ public class Exam0320 {
     System.out.println();
   }
 }
-
-

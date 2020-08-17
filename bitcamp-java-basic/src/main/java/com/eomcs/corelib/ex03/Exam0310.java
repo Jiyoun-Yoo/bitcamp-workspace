@@ -1,5 +1,8 @@
 // indexOf()의 사용
+
 package com.eomcs.corelib.ex03;
+
+import java.util.ArrayList;
 
 public class Exam0310 {
   public static void main(String[] args) {
@@ -15,8 +18,8 @@ public class Exam0310 {
     print(list);
 
     // 잊지말자!
-    // => ArrayList가 객체를 비교할 때 equals()를 사용한다!
-    System.out.println(list.indexOf(s4));
+    //  => ArrayList가 객체를 비교할 때 equals()를 사용한다!
+    System.out.println(list.indexOf(s4)); // 같은 객체의 인덱스를 리턴한다.
   }
 
   static void print(ArrayList list) {
@@ -26,5 +29,3 @@ public class Exam0310 {
     System.out.println();
   }
 }
-
-

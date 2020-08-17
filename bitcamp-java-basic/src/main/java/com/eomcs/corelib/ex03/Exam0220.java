@@ -1,4 +1,5 @@
 // java.util.ArrayList의 contains()의 동작 원리 확인
+
 package com.eomcs.corelib.ex03;
 
 import java.util.ArrayList;
@@ -48,5 +49,3 @@ public class Exam0220 {
     System.out.println();
   }
 }
-
-
