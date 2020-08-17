@@ -108,8 +108,14 @@ public class MyLL {
       throw new IndexOutOfBoundsException ("인덱스가 유효하지 않습니다.");
     }
 
+    Node cursor = this.first;
+    for(int i = 1; i <= index; i++) {
+      cursor = cursor.next;
+    }
 
-  return Object;
+
+
+    return Object;
   }
 
 
