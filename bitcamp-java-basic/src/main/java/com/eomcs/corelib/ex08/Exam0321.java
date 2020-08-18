@@ -1,4 +1,5 @@
 // HashMap과 Iterator
+
 package com.eomcs.corelib.ex08;
 
 import java.util.HashMap;
@@ -24,7 +25,8 @@ public class Exam0321 {
     Iterator iterator = keys.iterator();
     // Iterator 객체를 생성할 때,
     // 현재 목록 객체(keys)를 바탕으로 생성한다.
-    //
+    // Iterator는 keys의 목록을 가지고 있다.
+
     // 따라서 다음과 같이 Iterator를 생성한 후에 목록의 값을 변경하면,
     // 기존 목록에서 뽑은 Iterator는 무효한 객체가 된다.
     map.remove("s01");
@@ -32,11 +34,10 @@ public class Exam0321 {
     map.remove("s03");
 
     // 무효한 Iterator를 사용하면 실행오류가 발생할 것이다.
+    // ConcurrentModificationException
     while (iterator.hasNext()) {
       System.out.println(iterator.next());
     }
   }
 
 }
-
-

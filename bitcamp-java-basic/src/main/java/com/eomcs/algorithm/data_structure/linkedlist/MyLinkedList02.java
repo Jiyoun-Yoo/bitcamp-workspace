@@ -1,7 +1,7 @@
 package com.eomcs.algorithm.data_structure.linkedlist;
 
-// 1) LinkedList 클래스 정의
-// 2) 값을 담을 노드 클래스를 설계한다.
+// 01) LinkedList 클래스 정의
+// 02) 값을 담을 노드 클래스를 설계한다.
 public class MyLinkedList02 {
 
   // 용도?

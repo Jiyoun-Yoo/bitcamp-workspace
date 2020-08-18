@@ -13,4 +13,6 @@ public class Member {
   public String toString() {
     return "Member [name=" + name + ", age=" + age + "]";
   }
+
+  //hashCode()와 equals()를 오버라이딩하지 않았다.
 }

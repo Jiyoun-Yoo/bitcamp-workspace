@@ -1,8 +1,8 @@
 // Iterator 의 사용
+
 package com.eomcs.corelib.ex07;
 
 import java.util.Iterator;
-import java.util.Stack;
 import java.util.concurrent.ArrayBlockingQueue;
 
 public class Exam0240 {
@@ -14,11 +14,11 @@ public class Exam0240 {
     String s5 = new String("eee");
 
     ArrayBlockingQueue queue = new ArrayBlockingQueue(100);
-    queue.add(s1);
-    queue.add(s2);
-    queue.add(s3);
-    queue.add(s4);
-    queue.add(s5);
+    queue.offer(s1);
+    queue.offer(s2);
+    queue.offer(s3);
+    queue.offer(s4);
+    queue.offer(s5);
 
     Iterator 컬렉션에서값을꺼내주는객체 = queue.iterator();
     while (컬렉션에서값을꺼내주는객체.hasNext()) {

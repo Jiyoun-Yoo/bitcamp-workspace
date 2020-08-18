@@ -1,8 +1,8 @@
 // java.util.HashSet vs ArrayList
+
 package com.eomcs.corelib.ex07;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 
 // ArrayList는 중복을 허용한다.
 public class Exam0120 {
@@ -18,7 +18,8 @@ public class Exam0120 {
     list.add(v2);
     list.add(v3);
     list.add(v4);
-    list.add(v5); 
+    list.add(v5); // 같은 값을 가지지만 다른 인스턴스를 저장할 수 있다.
+    list.add(v2); // 같은 인스턴스를 또 저장할 수 있다.
 
     print(list);
   }
@@ -31,12 +32,3 @@ public class Exam0120 {
     System.out.println();
   }
 }
-
-
-
-
-
-
-
-
-

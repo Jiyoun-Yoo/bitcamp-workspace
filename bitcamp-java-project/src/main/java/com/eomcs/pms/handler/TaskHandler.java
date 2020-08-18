@@ -4,7 +4,6 @@ import java.sql.Date;
 import com.eomcs.util.Prompt;
 
 public class TaskHandler {
-
   static class Task {
     int no;
     String content;
@@ -27,6 +26,20 @@ public class TaskHandler {
     t.status = Prompt.promptInt("상태?\n0: 신규\n1: 진행중\n2: 완료\n> ");
     t.owner = Prompt.promptString("담당자? ");
 
+
+    while(true) {
+      String name = Prompt.promptString("담당자?(취소: 빈 문자열) ");
+
+      if (name.equals("")) {
+        System.out.println("작업 등록을 취소합니다.");
+        return;
+      } else if (MemberHandler.findByName(name) != null) {
+        t.owner = name;
+        break;
+      }
+      System.out.println("등록되지 않은 회원입니다.");
+    }
+
     list[size++] = t;
   }
 
@@ -46,9 +59,9 @@ public class TaskHandler {
         default:
           stateLabel = "신규";
       }
+      // 번호, 작업명, 마감일, 프로젝트, 상태, 담당자
       System.out.printf("%d, %s, %s, %s, %s\n", // 출력 형식 지정
           t.no, t.content, t.deadline, stateLabel, t.owner);
     }
   }
-
 }

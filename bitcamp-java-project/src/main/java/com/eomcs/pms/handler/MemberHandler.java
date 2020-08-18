@@ -14,6 +14,7 @@ public class MemberHandler {
     String tel;
     Date registeredDate;
   }
+
   static final int LENGTH = 100;
   static Member[] list = new Member[LENGTH];
   static int size = 0;
@@ -22,6 +23,7 @@ public class MemberHandler {
     System.out.println("[회원 등록]");
 
     Member m = new Member();
+
     m.no = Prompt.promptInt("번호? ");
     m.name = Prompt.promptString("이름? ");
     m.email = Prompt.promptString("이메일? ");
@@ -42,4 +44,15 @@ public class MemberHandler {
           m.no, m.name, m.email, m.tel, m.registeredDate);
     }
   }
+
+  public static Member findByName(String name) {
+    for(int i = 0; i < size; i++) {
+      Member member = list[i];
+      if(member.name == name) {
+        return member;
+      }
+    }
+    return null;
+  }
+
 }

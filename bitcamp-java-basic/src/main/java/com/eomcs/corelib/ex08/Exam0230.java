@@ -1,4 +1,5 @@
 // java.util.HashMap - value 목록만 꺼내기
+
 package com.eomcs.corelib.ex08;
 
 import java.util.Collection;
@@ -6,6 +7,7 @@ import java.util.HashMap;
 
 public class Exam0230 {
   public static void main(String[] args) {
+
     Member v1 = new Member("홍길동", 20);
     Member v2 = new Member("임꺽정", 30);
     Member v3 = new Member("유관순", 16);
@@ -23,14 +25,10 @@ public class Exam0230 {
     // key 객체 목록은 Set 에 담아서 리턴한다.
     // value 객체는 중복 저장될 수 있기 때문에
     // value 객체 목록은 Collection 에 담아서 리턴한다.
-    //
     Collection values = map.values();
     for (Object value : values) {
       System.out.println(value);
     }
 
   }
-
 }
-
-

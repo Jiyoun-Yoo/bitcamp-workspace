@@ -54,7 +54,7 @@ public class MyArrayList17 {
   }
 
   private void grow() {
-    System.out.println("오호라! 배열을 늘리자!");
+    //System.out.println("오호라! 배열을 늘리자!");
     Object[] newArray = new Object[elementDate.length + (elementDate.length >> 1)];
     for(int i = 0; i < elementDate.length; i++) {
       newArray[i] = elementDate[i];

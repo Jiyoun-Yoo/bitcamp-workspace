@@ -1,4 +1,5 @@
 // java.util.HashMap - 사용자 정의 데이터 타입을 key로 사용할 경우
+
 package com.eomcs.corelib.ex08;
 
 import java.util.HashMap;
@@ -27,6 +28,8 @@ public class Exam0140 {
       result = prime * result + no;
       return result;
     }
+
+    // hashCode()만 오버라이딩
   }
 
   public static void main(String[] args) {

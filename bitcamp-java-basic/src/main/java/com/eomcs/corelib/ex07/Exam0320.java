@@ -1,4 +1,5 @@
 // HashSet과 사용자 정의 데이터 타입 - equals()만 오버라이딩
+
 package com.eomcs.corelib.ex07;
 
 import java.util.HashSet;
@@ -39,7 +40,7 @@ public class Exam0320 {
       return true;
     }
 
-
+    // equals()만 오버라이딩
   }
 
   public static void main(String[] args) {
@@ -69,5 +70,3 @@ public class Exam0320 {
     }
   }
 }
-
-

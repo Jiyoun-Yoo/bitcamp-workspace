@@ -46,6 +46,8 @@ public class Exam0150 {
         return false;
       return true;
     }
+
+    // hashCode()와 equals()를 모두 오버라이딩
   }
 
   public static void main(String[] args) {

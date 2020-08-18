@@ -58,7 +58,7 @@ public class MyArrayList19 {
   }
 
   private void grow() {
-    System.out.println("오호라! 배열을 늘리자!");
+    //System.out.println("오호라! 배열을 늘리자!");
     int newCapacity = elementDate.length + (elementDate.length >> 1);
     elementDate  = Arrays.copyOf(elementDate, newCapacity);
   }

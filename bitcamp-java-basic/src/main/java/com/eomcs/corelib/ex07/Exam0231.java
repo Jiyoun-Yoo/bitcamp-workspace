@@ -2,10 +2,10 @@
 
 package com.eomcs.corelib.ex07;
 
+import java.util.ArrayDeque;
 import java.util.Iterator;
-import java.util.LinkedList;
 
-public class Exam0220 {
+public class Exam0231 {
   public static void main(String[] args) {
     String s1 = new String("aaa");
     String s2 = new String("bbb");
@@ -13,14 +13,14 @@ public class Exam0220 {
     String s4 = new String("ddd");
     String s5 = new String("eee");
 
-    LinkedList list = new LinkedList();
-    list.add(s1);
-    list.add(s2);
-    list.add(s3);
-    list.add(s4);
-    list.add(s5);
+    ArrayDeque stack = new ArrayDeque();
+    stack.push(s1);
+    stack.push(s2);
+    stack.push(s3);
+    stack.push(s4);
+    stack.push(s5);
 
-    Iterator 컬렉션에서값을꺼내주는객체 = list.iterator();
+    Iterator 컬렉션에서값을꺼내주는객체 = stack.iterator();
     while (컬렉션에서값을꺼내주는객체.hasNext()) {
       System.out.print(컬렉션에서값을꺼내주는객체.next() + ", ");
     }
