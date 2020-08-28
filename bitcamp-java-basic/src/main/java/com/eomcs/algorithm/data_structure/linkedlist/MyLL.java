@@ -1,0 +1,7 @@
+package com.eomcs.algorithm.data_structure.linkedlist;
+
+public class MyLL {
+
+
+
+}

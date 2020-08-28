@@ -73,7 +73,12 @@
     **도메인(domain)** 클래스라 부른다.
   - 도메인 클래스를 저장할 패키지를 따로 생성한다.
 - com.eomcs.pms.domain.Board 클래스 생성
+- com.eomcs.pms.handler.BoardHandler 클래스 변경
+- com.eomcs.pms.handler.BoardList 클래스 변경
 
+### 3단계 - MemberHandler 클래스를 UI 처리와 데이터 처리 코드를 별도의 클래스로 분리한다.
+
+- BoardHandler와 마찬가지로 UI 데이터 처리 역할 
 
 
 
