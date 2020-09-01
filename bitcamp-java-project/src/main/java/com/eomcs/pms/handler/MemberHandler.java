@@ -1,25 +1,26 @@
 package com.eomcs.pms.handler;
 
 import com.eomcs.pms.domain.Member;
+import com.eomcs.util.ArrayList;
 import com.eomcs.util.Prompt;
 
 public class MemberHandler {
 
   // MemberHandler가 데이터를 다루기 위해 의존하는 객체를 준비한다.
-  MemberList memberList = new MemberList();
+  ArrayList<Member> memberList = new ArrayList<>();
 
   // 다른 패키지에서 이 메서드를 사용할 수 있도록 public 으로 사용 범위를 공개한다.
   public void add() {
     System.out.println("[회원 등록]");
 
     Member member = new Member();
-    member.no = Prompt.inputInt("번호? ");
-    member.name = Prompt.inputString("이름? ");
-    member.email = Prompt.inputString("이메일? ");
-    member.password = Prompt.inputString("암호? ");
-    member.photo = Prompt.inputString("사진? ");
-    member.tel = Prompt.inputString("전화? ");
-    member.registeredDate = new java.sql.Date(System.currentTimeMillis());
+    member.setNo(Prompt.inputInt("번호? "));
+    member.setName(Prompt.inputString("이름? "));
+    member.setEmail(Prompt.inputString("이메일? "));
+    member.setPassword(Prompt.inputString("암호? "));
+    member.setPhoto(Prompt.inputString("사진? "));
+    member.setTel(Prompt.inputString("전화? "));
+    member.setRegisteredDate(new java.sql.Date(System.currentTimeMillis()));
 
     memberList.add(member);
   }
@@ -27,27 +28,112 @@ public class MemberHandler {
   public void list() {
     System.out.println("[회원 목록]");
 
-    Member[] members = memberList.toArray();
+    Member[] members = memberList.toArray(new Member[] {});
+    // 빈 배열을 만들어서 넣어주면, 자동으로 더 큰 배열을 만든다.
+    // 이 방법은 코드가 간결하긴 하나, 배열을 만들자마자 가비지로 만든다.
 
-    for (Member member : members) {
+    for (Object obj : members) {
+      Member member = (Member)obj;
       System.out.printf("%d, %s, %s, %s, %s\n",
-          member.no,
-          member.name,
-          member.email,
-          member.tel,
-          member.registeredDate);
+          member.getNo(),
+          member.getName(),
+          member.getEmail(),
+          member.getTel(),
+          member.getRegisteredDate());
     }
   }
 
   public Member findByName(String name) {
+    Member[] members = memberList.toArray(new Member[] {});
 
-    Member[] members = memberList.toArray();
-
-    for (Member member : members) {
-      if (member.name.equals(name)) {
+    for (Object obj : members) {
+      Member member = (Member)obj;
+      if (member.getName().equals(name)) {
         return member;
       }
     }
     return null;
   }
+
+  public void detail() {
+    System.out.println("[회원 상세보기]");
+    int no = Prompt.inputInt("번호? ");
+    Member member = findByNo(no);
+    if(member == null) {
+      System.out.println("해당 번호의 회원이 없습니다.");
+      return;
+    }
+
+    System.out.printf("이름: %s\n", member.getName());
+    System.out.printf("이메일: %s\n", member.getEmail());
+    System.out.printf("사진: %s\n", member.getPhoto());
+    System.out.printf("전화: %s\n", member.getTel());
+    System.out.printf("등록일: %s\n", member.getRegisteredDate());
+  }
+
+  public void update() {
+    System.out.println("[회원 변경]");
+    int no = Prompt.inputInt("번호? ");
+    Member member = findByNo(no);
+
+    if(member == null) {
+      System.out.println("해당 번호의 회원이 없습니다.");
+      return;
+    } else {
+      String name = Prompt.inputString(String.format("이름(%s)? ", member.getName()));
+      String email = Prompt.inputString(String.format("이름(%s)? ", member.getEmail()));
+      String photo = Prompt.inputString(String.format("이름(%s)? ", member.getPhoto()));
+      String tel = Prompt.inputString(String.format("이름(%s)? ", member.getTel()));
+
+      String response = Prompt.inputString("계속 입력하시겠습니까?(y/N) ");
+      if(response.equalsIgnoreCase("y")) {
+        member.setName(name);
+        member.setEmail(email);
+        member.setPhoto(photo);
+        member.setTel(tel);
+
+        System.out.println("회원을 변경하였습니다.");
+      }
+    }
+  }
+
+  public void delete() {
+    System.out.println("[회원 삭제]");
+    int no = Prompt.inputInt("번호? ");
+    int index = indexOf(no);
+
+    if(index == -1) {
+      System.out.println("해당 번호의 회원이 없습니다.");
+      return;
+    }
+
+    String response = Prompt.inputString("정말 삭제하시겠습니까?(y/N) ");
+    if (response.equalsIgnoreCase("y")) {
+      memberList.remove(index);
+     System.out.println("회원을 삭제하였습니다.");
+    } else {
+      System.out.println("회원 삭제를 취소하였습니다.");
+    }
+  }
+
+  private int indexOf(int no) {
+    for (int i = 0; i < memberList.size(); i++) {
+      Member member = memberList.get(i);
+      if(member.getNo() == no) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
+  private Member findByNo(int no) {
+    for(int i = 0; i < memberList.size(); i++) {
+      Member member = memberList.get(i);
+      if(member.getNo() == no) {
+        return member;
+      }
+    }
+    return null;
+  }
+
 }
