@@ -10,29 +10,35 @@ package com.eomcs.algorithm.data_structure.linkedlist;
 //  06) 목록에서 특정 인덱스 위치에 값을 삽입하는 add(int, Object) 메서드를 정의한다.
 //      - Node의 생성자를 추가한다.
 //  07) 목록에서 특정 인덱스의 값을 제거하는 remove(int) 메서드를 정의한다.
-public class MyLinkedList07 {
+//  08) 목록에서 특정 인덱스의 값을 바꾸는 set(int, Object) 메서드를 정의한다.
+//  09) 목록의 데이터를 새 배열에 담아 리턴하는 toArray() 메서드를 정의한다.
+//  10) 인스턴스 필드에 대해 캡슐화를 적용한다.
+//      - 목록 크기를 리턴하는 size()를 추가로 정의한다.
 
-  Node first;
-  Node last;
-  int size;
+// 테스트2: MyLinkedListTest2
+//  11) 제네릭을 적용한다.
+public class MyLinkedList11<E> {
 
-  static class Node {
-    Object value;
-    Node next;
+  private Node<E> first;
+  private Node<E> last;
+  private int size;
+
+  static class Node<E> {
+    E value;
+    Node<E> next;
 
     public Node() {}
 
-    public Node(Object value) {
+    public Node(E value) {
       this.value = value;
     }
-
   }
 
-  public boolean add(Object e) {
-    Node node = new Node();
+  public boolean add(E e) {
+    Node<E> node = new Node<>();
     node.value = e;
 
-    if (first == null) {
+    if(first == null) {
       first = node;
     } else {
       last.next = node;
@@ -43,12 +49,12 @@ public class MyLinkedList07 {
     return true;
   }
 
-  public Object get(int index) {
+  public E get(int index) {
     if (index < 0 || index >= this.size) {
       throw new IndexOutOfBoundsException("인덱스가 유효하지 않습니다.");
     }
 
-    Node cursor = this.first;
+    Node<E> cursor = this.first;
     for (int i = 1; i <= index; i++) {
       cursor = cursor.next;
     }
@@ -56,12 +62,12 @@ public class MyLinkedList07 {
     return cursor.value;
   }
 
-  public void add(int index, Object element) {
+  public void add(int index, E element) {
     if (index < 0 || index > this.size) {
       throw new IndexOutOfBoundsException("인덱스가 유효하지 않습니다.");
     }
 
-    Node node = new Node(element);
+    Node<E> node = new Node<>(element);
 
     size++;
 
@@ -71,7 +77,7 @@ public class MyLinkedList07 {
       return;
     }
 
-    Node cursor = this.first;
+    Node<E> cursor = this.first;
     for (int i = 1; i <= index - 1; i++) {
       cursor = cursor.next;
     }
@@ -84,47 +90,71 @@ public class MyLinkedList07 {
     }
   }
 
-  public Object remove(int index) {
-    // 인덱스의 유효성을 검증한다.
-    // 데이터가 실제로 들어있는 인덱스인지 검사한다.
-    if (index < 0 || index >= this.size) {
+  public E remove(int index) {
+    if(index < 0 || index >= this.size) {
       throw new IndexOutOfBoundsException("인덱스가 유효하지 않습니다.");
     }
 
     size--;
 
-    // 첫 번째 node를 삭제하려는 경우
-    // first에 그 다음 객체를 저장하면 된다.
-    if (index == 0) {
-      Node old = first;
+    if(index == 0) {
+      Node<E> old = first;
       first = old.next;
-      old.next = null; // 가비지가 다른 인스턴스를 가리키지 않게 한다.
+      old.next = null;
       return old.value;
     }
 
-    // 삭제하려는 인덱스의 바로 전의 node를 찾는다.
-    Node cursor = this.first;
+    Node<E> cursor = this.first;
     for (int i = 1; i <= index - 1; i++) {
       cursor = cursor.next;
     }
 
-    // 삭제하려는 객체를 old에 담는다.
-    Node old = cursor.next;
+    Node<E> old = cursor.next;
 
-    // 삭제하려는 항목의 next가 가리키는 next의 주소를 cursor.next에 둔다.
     cursor.next = old.next;
 
-    // 삭제하려는 객체를 가비지로 만든다.
-    // 가비지가 다른 인스턴스를 가리키지 않게 한다.
     old.next = null;
 
-    // 마지막 node를 삭제한 경우
-    // last에 마지막 바로 전의 객체(새로 마지막이 된 객체)를 저장하면 된다.
-    if (cursor.next == null) {
+    if(cursor.next == null) {
       last = cursor;
     }
 
     return old.value;
+  }
+
+  public E set(int index, E element) {
+    if(index < 0 || index >= this.size) {
+      throw new IndexOutOfBoundsException("인덱스가 유효하지 않습니다.");
+    }
+
+    Node<E> cursor = this.first;
+    for (int i = 1; i <= index; i++) {
+      cursor = cursor.next;
+    }
+
+    E old = cursor.value;
+    cursor.value = element;
+
+    return old;
+  }
+
+  public Object[] toArray() {
+    Object[] arr = new Object[this.size];
+
+    int i = 0;
+    Node<E> cursor = first;
+    // while문의 조건에 따라
+    // cursor는 first부터 last까지 이동한다.
+    while (cursor != null) {
+      arr[i++] = cursor.value;
+      cursor = cursor.next;
+    }
+
+    return arr;
+  }
+
+  public int size() {
+    return this.size;
   }
 
 }

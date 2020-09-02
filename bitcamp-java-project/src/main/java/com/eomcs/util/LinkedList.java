@@ -1,4 +1,4 @@
-package com.eomcs.algorithm.data_structure.linkedlist;
+package com.eomcs.util;
 
 import java.lang.reflect.Array;
 
@@ -23,7 +23,7 @@ import java.lang.reflect.Array;
 // 테스트3: MyLinkedListTest3
 //  12) 파라미터로 받은 배열에 값을 채워주는 toArray(E[]) 메서드를 추가한다.
 
-public class MyLinkedList<E> {
+public class LinkedList<E> {
 
   private Node<E> first;
   private Node<E> last;

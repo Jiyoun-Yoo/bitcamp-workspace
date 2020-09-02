@@ -1,6 +1,6 @@
 package com.eomcs.algorithm.data_structure.array;
 
-// 테스트1 - MyArrayListTest
+// 테스트1: MyArrayListTest
 //  01) 인스턴스/객체 (의 주소)를 담을 레퍼런스 배열을 준비한다.
 //  02) 인스턴스를 추가하는 add() 메서드를 정의한다.
 //  03) 특정 인덱스의 인스턴스를 리턴하는 get() 메서드를 정의한다.
@@ -8,7 +8,7 @@ package com.eomcs.algorithm.data_structure.array;
 //  05) 특정 위치의 값을 항목을 인스턴스로 교체하는 set(int, Object) 메서드를 정의한다.
 //  06) 특정 위치의 항목을 제거하는 remove(int) 메서드를 정의한다.
 
-// 테스트2 - MyArrayListTest2
+// 테스트2: MyArrayListTest2
 //  07) add()할 때 배열의 크기를 넘는 경우, 배열의 크기를 늘린다.
 //  08) add(int, Object)로 임의의 위치로 삽입할 때
 //      - 배열의 크기가 작으면 크기를 늘린다.

@@ -1,206 +1,88 @@
-# 18 - CRUD
+# 21 - 큐 자료구조 구현과 활용
 
-이번 훈련에서는 게시글, 회원, 프로젝트, 작업 정보 각각에 대해 CRUD를 완성해보자.
+이번 훈련에서는 **큐(queue)** 방식으로 데이터를 저장하는 자료 구조를 만들어보자.
 
-**CRUD** 는 데이터의 생성(Create), 조회(Read/Retrieve), 변경(Update), 삭제(Delete)을 가리키는 용어이다.
+**큐(queue)** 는
+
+- FIFO(First In First Out) 방식으로 데이터를 넣고 꺼낸다.
+- 데이터를 넣는 것을 `offer`라고 하고 목록의 맨 끝에 추가한다.
+- 데이터를 꺼내는 것을 `poll`이라 하고 목록의 맨 앞의 값을 꺼낸다.
+- 보통 입력한 순으로 데이터를 꺼내야 하는 상황에서 이 자료구조를 사용한다.
+- 예)
+  - 등록된 예약을 처리할 때 
+  - 네트워킹에서 연결된 순서대로 소켓을 승인하고 처리할 때
+
 
 ## 훈련 목표
 
-- 관리 시스템에서 데이터 처리의 기본 기능인 CRUD를 연습한다.
-- 자바에서 기본으로 제공하는 java.util.ArrayList를 모방하여 CRUD에서 사용할 메서드를 ArrayList에 추가한다.
-  - 이를 통해 배열을 다루는 방법과 조건문, 반복문, 메서드 등 자바 기본 문법을 다루는 방법을 연습한다.
+- 큐(queue) 자료구조를 구현하고 구동 원리를 이해한다.
+- Object.clone() 메서드의 용도와 인스턴스를 복제하는 방법을 배운다.
+- 얕은 복제(shallow copy)와 깊은 복제(deep copy)의 차이점을 이해한다.
 
 ## 훈련 내용
 
-- 기존의 ArrayList 에 값을 조회, 삽입, 변경, 삭제하는 기능을 추가한다.  
-- 게시글의 상세 조회, 변경, 삭제 기능을 추가한다.
-- 회원 정보의 상세 조회, 변경, 삭제 기능을 추가한다.
-- 프로젝트 정보의 상세 조회, 변경, 삭제 기능을 추가한다.
-- 작업 정보의 상세 조회, 변경, 삭제 기능을 추가한다.
+- `java.util.Queue` 인터페이스의 메서드를 모방하여 `Queue` 클래스를 구현한다. 
+- 큐를 이용하여 사용자가 입력한 명령을 보관한다.
+- 사용자가 입력한 명령을 순서대로 출력하는 `history2` 명령을 추가한다.
   
 ## 실습
 
-### 1단계 - `java.util.ArrayList` 를 모방하여 `ArrayList` 클래스에 메서드를 추가한다. 
+### 1단계 - `java.util.Queue` 인터페이스의 메서드를 모방하여 `Queue` 클래스를 구현한다. 
 
-데이터의 CRUD 작업에 필요한 기능을 `ArrayList` 클래스에 추가한다.
-단 자바에서 기본으로 제공하는 `java.util.ArrayList` 를 모방하여 메서드를 추가한다.
-이를 통해 자바의 클래스가 어떤 식으로 동작하는지 이해할 수 있다. 
+**큐(queue)** 자료 구조를 직접 구현해본다.
 
-- 레퍼런스 배열의 이름을 `java.util.ArrayList` 클래스처럼 `list` 에서 `elementData`로 변경한다.
-- `add(E)` 의 메서드 시그너처를 `java.util.ArrayList.add(E)` 와 같게 한다.
-- 배열의 크기를 늘리는 코드를 `grow()` 메서드로 분리한다.
-- 값을 삽입하는 `add(int,E)` 메서드를 추가한다.
-- 값을 조회하는 `get(int)` 메서드를 추가한다.
-- 값을 변경하는 `set(int,E)` 메서드를 추가한다.
-- 값을 삭제하는 `remove(int)` 메서드를 추가한다.
-- 목록에 저장된 항목의 개수를 리턴하는 `size()` 메서드를 추가한다.
-- Object[] 배열을 리턴하는 `toArray()` 메서드를 추가한다.
-- E[] 배열을 리턴하는 기존의 `toArray(Class<E[]))` 메서드를 `java.util.ArrayList` 에서 
-  제공하는 메서드와 시그너처가 같도록 변경한다.
+- `Queue` 클래스를 작성한다.
 
 #### 작업 파일
 
-- com.eomcs.util.ArrayList 클래스 변경
+- com.eomcs.util.Queue 클래스 생성
 
 
-### 2단계 - 변경한 `ArrayList` 의 사용법에 따라 XxxHandler 코드를 변경한다.
+### 2단계 - 사용자가 입력한 명령을 스택에 보관한다. 
 
-- `BoardHandler` 의 `list()` 메서드를 변경한다.
-- `MemberHandler` 의 `list()` 메서드를 변경한다.  
-- `ProjectHandler` 의 `list()` 메서드를 변경한다.  
-- `TaskHandler` 의 `list()` 메서드를 변경한다.  
-
-#### 작업 파일
-
-- com.eomcs.pms.handler.BoardHandler 클래스 변경
-- com.eomcs.pms.handler.MemberHandler 클래스 변경
-- com.eomcs.pms.handler.ProjectHandler 클래스 변경
-- com.eomcs.pms.handler.TaskHandler 클래스 변경
-
-### 3단계 - 게시글의 상세 조회 기능을 추가한다.
-
-- `BoardHandler`에 상세 조회 기능을 수행하는 `detail()` 메서드를 추가한다.
-- 호출될 때 마다 조회수 필드의 값을 1 증가시킨다.
-- 목록에서 번호로 게시글을 찾는 `findByNo(int)` 메서드를 추가한다.
-- `App` 클래스에 `/board/detail` 명령을 추가한다.
-
-
-```
-명령> /board/add
-[새 게시글]
-번호? 1
-제목? 제목1
-내용? 내용입니다.
-작성자? 홍길동
-게시글을 등록하였습니다.
-
-명령> /board/list
-[게시글 목록]
-1, 제목1, 홍길동, 2020-01-10, 0
-2, 제목2, 임꺽정, 2020-01-20, 12
-3, 제목3, 유관순, 2020-01-30, 7
-
-명령> /board/detail
-[게시글 상세보기]
-번호? 1
-제목: 제목1
-내용: 내용입니다.
-작성자: 홍길동
-등록일: 2020-01-10
-조회수: 1
-
-명령> /board/detail
-[게시글 상세보기]
-번호? 100
-해당 번호의 게시글이 없습니다.
-```
-
-#### 작업 파일
-
-- com.eomcs.pms.handler.BoardHandler 클래스 변경
-- com.eomcs.pms.App 클래스 변경
-
-
-### 4단계 - 게시글의 변경 기능을 추가한다.
-
-- `BoardHandler`에 변경 기능을 수행하는 `update()` 메서드를 추가한다.
-- `App` 클래스에 `/board/update` 명령을 추가한다.
-
-
-```
-명령> /board/update
-[게시글 변경]
-번호? 1
-제목(제목1)? 제목변경
-내용(내용입니다.)? 내용변경
-작성자(홍길동)? 홍길순
-정말 변경하시겠습니까?(y/N) y
-게시글을 변경하였습니다.
-
-명령> /board/update
-[게시글 변경]
-번호? 1
-제목(제목1)? 제목변경
-내용(내용입니다.)? 내용변경
-작성자(홍길동)? 홍길순
-정말 변경하시겠습니까?(y/N) n
-게시글 변경을 취소하였습니다.
-
-명령> /board/detail
-[게시글 상세보기]
-번호? 1
-제목: 제목변경
-내용: 내용변경
-작성자: 홍길순
-등록일: 2020-01-10
-조회수: 2
-
-명령> /board/update
-[게시글 변경]
-번호? 100
-해당 번호의 게시글이 없습니다.
-```
-
-#### 작업 파일
-
-- com.eomcs.pms.handler.BoardHandler 클래스 변경
-- com.eomcs.pms.App 클래스 변경
-  
-
-### 5단계 - 게시글의 삭제 기능을 추가한다.
-
-- `BoardHandler`에 변경 기능을 수행하는 `delete()` 메서드를 추가한다.
-- 삭제할 게시글의 인덱스를 리턴하는 `indexOf(int)` 메서드를 추가한다.
-- `App` 클래스에 `/board/delete` 명령을 추가한다.
-
-
-```
-명령> /board/delete
-[게시글 삭제]
-번호? 1
-정말 삭제하시겠습니까?(y/N) y
-게시글을 삭제하였습니다.
-
-명령> /board/delete
-[게시글 삭제]
-번호? 1
-정말 변경하시겠습니까?(y/N) n
-게시글 삭제를 취소하였습니다.
-
-명령> /board/delete
-[게시글 삭제]
-번호? 100
-해당 번호의 게시글이 없습니다.
-```
-
-#### 작업 파일
-
-- com.eomcs.pms.handler.BoardHandler 클래스 변경
-- com.eomcs.pms.App 클래스 변경
-
-
-### 6단계 - 버전 12 에서 만든 나머지 게시판은 삭제한다.
-
-- 첫 번째 게시판만 남겨두고 나머지는 제거한다.
+- `Queue` 객체를 준비하여 사용자가 명령어를 입력할 때 마다 저장한다.
 
 #### 작업 파일
 
 - com.eomcs.pms.App 클래스 변경
 
 
-### 7단계 - 게시글 CRUD를 참고하여 회원, 프로젝트, 작업에 대해서도 CRUD를 완성한다.
+### 3단계 - 사용자가 입력한 명령을 최신순으로 출력하는 `history2` 명령을 추가한다. 
+
+- 사용자가 입력한 명령을 최신순으로 출력하는 `printCommandHistory2()` 메서드를 정의한다.
+- `history2` 명령을 처리하는 분기문을 추가한다.
+
+```
+명령> history2
+/board/add
+/board/add
+/board/add
+/board/list
+/board/detail
+:
+/member/add
+/member/add
+/member/add
+/member/list
+/member/detail
+:
+/member/detail
+/project/add
+/project/list
+history
+history2
+:q
+
+명령> 
+
+```
 
 #### 작업 파일
 
-- com.eomcs.pms.handler.MemberHandler 클래스 변경
-- com.eomcs.pms.handler.ProjectHandler 클래스 변경
-- com.eomcs.pms.handler.TaskHandler 클래스 변경
 - com.eomcs.pms.App 클래스 변경
+
 
 ## 실습 결과
 
-- src/main/java/com/eomcs/util/ArrayList.java 변경
-- src/main/java/com/eomcs/pms/handler/BoardHandler.java 변경
-- src/main/java/com/eomcs/pms/handler/MemberHandler.java 변경
-- src/main/java/com/eomcs/pms/handler/ProjectHandler.java 변경
-- src/main/java/com/eomcs/pms/handler/TaskHandler.java 변경
+- src/main/java/com/eomcs/util/Queue.java 추가
+- src/main/java/com/eomcs/pms/App.java 변경
