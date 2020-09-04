@@ -2,32 +2,10 @@ package com.eomcs.util;
 
 import java.lang.reflect.Array;
 
-// 테스트1: MyLinkedListTest
-//  01) LinkedList 클래스 정의
-//  02) 값을 담을 노드 클래스를 설계한다.
-//  03) 첫 번째 노드와 마지막 노드의 주소를 담을 필드를 추가한다.
-//      목록 크기를 저장할 필드를 추가한다.
-//  04) 목록에 값을 추가하는 add() 메서드를 정의한다.
-//  05) 목록에서 값을 조회하는 get() 메서드를 정의한다.
-//  06) 목록에서 특정 인덱스 위치에 값을 삽입하는 add(int, Object) 메서드를 정의한다.
-//      - Node의 생성자를 추가한다.
-//  07) 목록에서 특정 인덱스의 값을 제거하는 remove(int) 메서드를 정의한다.
-//  08) 목록에서 특정 인덱스의 값을 바꾸는 set(int, Object) 메서드를 정의한다.
-//  09) 목록의 데이터를 새 배열에 담아 리턴하는 toArray() 메서드를 정의한다.
-//  10) 인스턴스 필드에 대해 캡슐화를 적용한다.
-//      - 목록 크기를 리턴하는 size()를 추가로 정의한다.
-
-// 테스트2: MyLinkedListTest2
-//  11) 제네릭을 적용한다.
-
-// 테스트3: MyLinkedListTest3
-//  12) 파라미터로 받은 배열에 값을 채워주는 toArray(E[]) 메서드를 추가한다.
-
-public class LinkedList<E> {
+public class LinkedList<E> extends AbstractList<E> {
 
   private Node<E> first;
   private Node<E> last;
-  private int size;
 
   static class Node<E> {
     E value;
@@ -40,6 +18,7 @@ public class LinkedList<E> {
     }
   }
 
+  @Override
   public boolean add(E e) {
     Node<E> node = new Node<>();
     node.value = e;
@@ -55,6 +34,7 @@ public class LinkedList<E> {
     return true;
   }
 
+  @Override
   public E get(int index) {
     if (index < 0 || index >= this.size) {
       throw new IndexOutOfBoundsException("인덱스가 유효하지 않습니다.");
@@ -68,6 +48,7 @@ public class LinkedList<E> {
     return cursor.value;
   }
 
+  @Override
   public void add(int index, E element) {
     if (index < 0 || index > this.size) {
       throw new IndexOutOfBoundsException("인덱스가 유효하지 않습니다.");
@@ -96,6 +77,7 @@ public class LinkedList<E> {
     }
   }
 
+  @Override
   public E remove(int index) {
     if(index < 0 || index >= this.size) {
       throw new IndexOutOfBoundsException("인덱스가 유효하지 않습니다.");
@@ -128,6 +110,7 @@ public class LinkedList<E> {
     return old.value;
   }
 
+  @Override
   public E set(int index, E element) {
     if(index < 0 || index >= this.size) {
       throw new IndexOutOfBoundsException("인덱스가 유효하지 않습니다.");
@@ -144,6 +127,7 @@ public class LinkedList<E> {
     return old;
   }
 
+  @Override
   public Object[] toArray() {
     Object[] arr = new Object[this.size];
 
@@ -157,10 +141,6 @@ public class LinkedList<E> {
     }
 
     return arr;
-  }
-
-  public int size() {
-    return this.size;
   }
 
   @SuppressWarnings("unchecked")

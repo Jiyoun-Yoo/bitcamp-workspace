@@ -2,13 +2,18 @@ package com.eomcs.pms.handler;
 
 import java.sql.Date;
 import com.eomcs.pms.domain.Board;
-import com.eomcs.util.LinkedList;
+import com.eomcs.util.List;
 import com.eomcs.util.Prompt;
 
 public class BoardHandler {
 
-  // BoardHandler가 사용할 BoardList 객체를 준비한다.
-  LinkedList<Board> boardList = new LinkedList<>();
+  // 데이터 목록을 다루는 객체를 교체하기 쉽도록 인터페이스 타입으로 필드를 변경한다.
+  List<Board> boardList;
+
+  // 기존의 AbstractList 타입 보다는 List 인터페이스가 더 많은 종류의 객체를 받을 수 있다.
+  public BoardHandler(List<Board> list) {
+    this.boardList = list;
+  }
 
   public void add() {
     System.out.println("[게시물 등록]");
