@@ -2,6 +2,7 @@ package com.eomcs.pms.handler;
 
 import java.sql.Date;
 import com.eomcs.pms.domain.Board;
+import com.eomcs.util.Iterator;
 import com.eomcs.util.List;
 import com.eomcs.util.Prompt;
 
@@ -34,16 +35,18 @@ public class BoardHandler {
   public void list() {
     System.out.println("[게시물 목록]");
 
-    for (int i = 0; i < boardList.size(); i++) {
-      Board board = boardList.get(i);
+    Iterator<Board> iterator = boardList.iterator();
+
+    while (iterator.hasNext()) {
+      Board board = iterator.next();
       System.out.printf("%d, %s, %s, %s, %d\n",
           board.getNo(),
           board.getTitle(),
           board.getWriter(),
           board.getRegisteredDate(),
           board.getViewCount());
+      }
     }
-  }
 
   public void detail() {
     System.out.println("[게시물 상세보기]");

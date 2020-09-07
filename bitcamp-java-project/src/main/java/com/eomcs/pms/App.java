@@ -9,6 +9,7 @@ import com.eomcs.pms.handler.MemberHandler;
 import com.eomcs.pms.handler.ProjectHandler;
 import com.eomcs.pms.handler.TaskHandler;
 import com.eomcs.util.ArrayList;
+import com.eomcs.util.Iterator;
 import com.eomcs.util.LinkedList;
 import com.eomcs.util.List;
 import com.eomcs.util.Prompt;
@@ -69,8 +70,8 @@ public class App {
           case "/board/detail": boardHandler.detail(); break;
           case "/board/update": boardHandler.update(); break;
           case "/board/delete": boardHandler.delete(); break;
-          case "history": printCommandHistory(commandList); break;
-          case "history2": printCommandHistory2(commandList2); break;
+          case "history": printCommandHistory(commandList.iterator()); break;
+          case "history2": printCommandHistory(commandList2.iterator()); break;
           case "quit":
           case "exit":
             System.out.println("안녕!");
@@ -84,11 +85,12 @@ public class App {
     Prompt.close();
   }
 
-  private static void printCommandHistory2(Queue<String> commandList2) {
+  static void printCommandHistory(Iterator<String> iterator) {
     try {
-      Queue<String> commandQueue = commandList2.clone();
-      for(int count = 1; commandQueue.size() > 0; count++) {
-        System.out.println(commandQueue.poll());
+      int count = 1;
+
+      while(iterator.hasNext()) {
+        System.out.println(iterator.next());
 
         if((count % 5) == 0) {
           String response = Prompt.inputString(":");
@@ -97,26 +99,6 @@ public class App {
           }
         }
       }
-
-    } catch (Exception e) {
-      System.out.println("history 명령 처리 중 오류 발생!");
-    }
-  }
-
-  static void printCommandHistory(Stack<String> commandList) {
-    try {
-      Stack<String> CommandStack = commandList.clone();
-      for(int count = 1; !CommandStack.empty(); count++) {
-        System.out.println(CommandStack.pop());
-
-        if((count % 5) == 0) {
-          String response = Prompt.inputString(":");
-          if (response.equalsIgnoreCase("q")) {
-            break;
-          }
-        }
-      }
-
     } catch (Exception e) {
       System.out.println("history 명령 처리 중 오류 발생!");
     }

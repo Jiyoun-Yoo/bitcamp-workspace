@@ -1,4 +1,5 @@
 // non-static nested class = inner class의 생성자
+
 package com.eomcs.oop.ex11.a;
 
 public class Exam0231 {

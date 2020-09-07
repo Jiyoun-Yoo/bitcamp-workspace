@@ -31,6 +31,7 @@ public class MyStack05 extends MyLinkedList {
 
   public boolean empty() {
     return this.size() == 0;
+    // Stack이 비어있으면 true를 리턴
   }
 
 }
