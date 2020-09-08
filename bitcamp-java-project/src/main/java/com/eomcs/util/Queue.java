@@ -42,33 +42,33 @@ public class Queue<E> extends LinkedList<E> implements Cloneable {
   // 따라서 Queue 방식에 맞게 동작하는 Iterator를 리턴하도록 하라.
   @Override
   public Iterator<E> iterator() {
-    try {
-      return new QueueIterator<E>(this.clone());
-    } catch (Exception e) {
-      throw new RuntimeException("큐를 복제하는 중에 오류 발생!");
-    }
-  }
 
-  private static class QueueIterator<E> implements Iterator<E> {
-    Queue<E> queue;
+    class QueueIterator implements Iterator<E> {
+      Queue<E> queue;
 
-    public QueueIterator(Queue<E> queue) {
-      this.queue = queue;
-    }
-
-    @Override
-    public boolean hasNext() {
-      return queue.size() > 0;
-    }
-
-    @Override
-    public E next() {
-      if(queue.size() == 0) {
-        throw new NoSuchElementException();
+      public QueueIterator() {
+        try {
+          this.queue = Queue.this.clone();
+        } catch (Exception e) {
+          throw new RuntimeException("큐를 복제하는 중에 오류 발생!");
+        }
       }
-      return queue.poll();
-    }
-  }
 
+      @Override
+      public boolean hasNext() {
+        return queue.size() > 0;
+      }
+
+      @Override
+      public E next() {
+        if(queue.size() == 0) {
+          throw new NoSuchElementException();
+        }
+        return queue.poll();
+      }
+    }
+
+    return new QueueIterator();
+  }
 
 }
