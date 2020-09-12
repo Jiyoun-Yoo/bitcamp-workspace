@@ -1,75 +1,96 @@
 package com.eomcs.pms;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Queue;
 import com.eomcs.pms.domain.Board;
 import com.eomcs.pms.domain.Member;
 import com.eomcs.pms.domain.Project;
 import com.eomcs.pms.domain.Task;
-import com.eomcs.pms.handler.BoardHandler;
-import com.eomcs.pms.handler.MemberHandler;
-import com.eomcs.pms.handler.ProjectHandler;
-import com.eomcs.pms.handler.TaskHandler;
-import com.eomcs.util.ArrayList;
-import com.eomcs.util.Iterator;
-import com.eomcs.util.LinkedList;
-import com.eomcs.util.List;
+import com.eomcs.pms.handler.BoardAddCommand;
+import com.eomcs.pms.handler.BoardDeleteCommand;
+import com.eomcs.pms.handler.BoardDetailCommand;
+import com.eomcs.pms.handler.BoardListCommand;
+import com.eomcs.pms.handler.BoardUpdateCommand;
+import com.eomcs.pms.handler.Command;
+import com.eomcs.pms.handler.HelloCommand;
+import com.eomcs.pms.handler.MemberAddCommand;
+import com.eomcs.pms.handler.MemberDeleteCommand;
+import com.eomcs.pms.handler.MemberDetailCommand;
+import com.eomcs.pms.handler.MemberListCommand;
+import com.eomcs.pms.handler.MemberUpdateCommand;
+import com.eomcs.pms.handler.ProjectAddCommand;
+import com.eomcs.pms.handler.ProjectDeleteCommand;
+import com.eomcs.pms.handler.ProjectDetailCommand;
+import com.eomcs.pms.handler.ProjectListCommand;
+import com.eomcs.pms.handler.ProjectUpdateCommand;
+import com.eomcs.pms.handler.TaskAddCommand;
+import com.eomcs.pms.handler.TaskDeleteCommand;
+import com.eomcs.pms.handler.TaskDetailCommand;
+import com.eomcs.pms.handler.TaskListCommand;
+import com.eomcs.pms.handler.TaskUpdateCommand;
 import com.eomcs.util.Prompt;
-import com.eomcs.util.Queue;
-import com.eomcs.util.Stack;
 
 public class App {
 
   public static void main(String[] args) {
 
-    // 추상 클래스는 인스턴스를 만들 수 없다.
-    //  => 그 추상클래스를 만든 개발자는 서브 클래스를 만들 때 상속받는 용으로 쓰라고 만든 클래스다.
-    //  => 그러니 일반 용도로 사용하지 못하게 막는 것은 당연하다.
-    //List<Board> boardList = new List<>(); // 컴파일 에러!
+    // 커맨드 객체를 저장할 맵 객체를 준비한다.
+    Map<String, Command> commandMap = new HashMap<>();
 
+    // 앱 객체에 커맨드 객체를 보관한다.
     List<Board> boardList = new ArrayList<>();
-    // BoardHandler가 작업하는 데 필요한 객체(의존 객체)를 이렇게 외부에서 생성자를 통해 주입한다.
-    //  => '의존 객체 주입(Dependency Injection; DI)'이라 부른다.
-    BoardHandler boardHandler = new BoardHandler(boardList);
+    commandMap.put("/board/add", new BoardAddCommand(boardList));
+    commandMap.put("/board/list", new BoardListCommand(boardList));
+    commandMap.put("/board/detail", new BoardDetailCommand(boardList));
+    commandMap.put("/board/update", new BoardUpdateCommand(boardList));
+    commandMap.put("/board/delete", new BoardDeleteCommand(boardList));
 
     List<Member> memberList = new ArrayList<>();
-    MemberHandler memberHandler = new MemberHandler(memberList);
+    MemberListCommand memberListCommand = new MemberListCommand(memberList);
+    commandMap.put("/member/add", new MemberAddCommand(memberList));
+    commandMap.put("/member/list", new MemberAddCommand(memberList));
+    commandMap.put("/member/detail", new MemberDetailCommand(memberList));
+    commandMap.put("/member/update", new MemberUpdateCommand(memberList));
+    commandMap.put("/member/delete", new MemberDeleteCommand(memberList));
 
     List<Project> projectList = new LinkedList<>();
-    ProjectHandler projectHandler = new ProjectHandler(projectList, memberHandler);
+    commandMap.put("/project/add", new ProjectAddCommand(projectList, memberListCommand));
+    commandMap.put("/project/list", new ProjectListCommand(projectList, memberListCommand));
+    commandMap.put("/project/detail", new ProjectDetailCommand(projectList, memberListCommand));
+    commandMap.put("/project/update", new ProjectUpdateCommand(projectList, memberListCommand));
+    commandMap.put("/project/delete", new ProjectDeleteCommand(projectList, memberListCommand));
 
     List<Task> taskList = new ArrayList<>();
-    TaskHandler taskHandler = new TaskHandler(taskList, memberHandler);
+    commandMap.put("/task/add", new TaskAddCommand(taskList, memberListCommand));
+    commandMap.put("/task/list", new TaskListCommand(taskList, memberListCommand));
+    commandMap.put("/task/detail", new TaskDetailCommand(taskList, memberListCommand));
+    commandMap.put("/task/update", new TaskUpdateCommand(taskList, memberListCommand));
+    commandMap.put("/task/delete", new TaskDeleteCommand(taskList, memberListCommand));
 
-    Stack<String> commandList = new Stack<>();
-    Queue<String> commandList2 = new Queue<>();
+    commandMap.put("/hello", new HelloCommand());
+
+    Deque<String> commandList = new ArrayDeque<>();
+    Queue<String> commandList2 = new LinkedList<>();
 
     loop:
       while (true) {
-        String command = Prompt.inputString("명령> ");
+        String inputStr = Prompt.inputString("명령> ");
 
-        commandList.push(command);
-        commandList2.offer(command);
+        if (inputStr.length() == 0) {
+          continue;
+        }
 
-        switch (command) {
-          case "/member/add": memberHandler.add(); break;
-          case "/member/list": memberHandler.list(); break;
-          case "/member/detail": memberHandler.detail(); break;
-          case "/member/update": memberHandler.update(); break;
-          case "/member/delete": memberHandler.delete(); break;
-          case "/project/add": projectHandler.add(); break;
-          case "/project/list": projectHandler.list(); break;
-          case "/project/detail": projectHandler.detail(); break;
-          case "/project/update": projectHandler.update(); break;
-          case "/project/delete": projectHandler.delete(); break;
-          case "/task/add": taskHandler.add(); break;
-          case "/task/list": taskHandler.list(); break;
-          case "/task/detail": taskHandler.detail(); break;
-          case "/task/update": taskHandler.update(); break;
-          case "/task/delete": taskHandler.delete(); break;
-          case "/board/add": boardHandler.add(); break;
-          case "/board/list": boardHandler.list(); break;
-          case "/board/detail": boardHandler.detail(); break;
-          case "/board/update": boardHandler.update(); break;
-          case "/board/delete": boardHandler.delete(); break;
+        commandList.push(inputStr);
+        commandList2.offer(inputStr);
+
+        switch (inputStr) {
           case "history": printCommandHistory(commandList.iterator()); break;
           case "history2": printCommandHistory(commandList2.iterator()); break;
           case "quit":
@@ -77,7 +98,12 @@ public class App {
             System.out.println("안녕!");
             break loop;
           default:
-            System.out.println("실행할 수 없는 명령입니다.");
+            Command command = commandMap.get(inputStr);
+            if(command != null) {
+              command.execute();
+            } else {
+              System.out.println("실행할 수 없는 명령입니다.");
+            }
         }
         System.out.println(); // 이전 명령의 실행을 구분하기 위해 빈 줄 출력
       }

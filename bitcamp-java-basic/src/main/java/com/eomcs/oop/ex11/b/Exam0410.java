@@ -1,4 +1,5 @@
 //static nested class : import static 사용 전
+
 package com.eomcs.oop.ex11.b;
 
 import com.eomcs.oop.ex11.b.sub.M;

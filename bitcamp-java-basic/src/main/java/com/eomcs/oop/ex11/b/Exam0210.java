@@ -1,4 +1,5 @@
 // static nested class : 다른 멤버에 접근하기
+
 package com.eomcs.oop.ex11.b;
 
 class B {
@@ -17,8 +18,8 @@ class B {
       B.m1();
 
       // 바깥 클래스 이름 생략 가능
-      v1 = 200; 
-      m1(); 
+      v1 = 200;
+      m1();
 
       // 스태틱 멤버는 인스턴스 멤버 접근 불가능!
       //v2 = 100; // 컴파일 오류!

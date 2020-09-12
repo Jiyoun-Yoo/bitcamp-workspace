@@ -11,7 +11,6 @@ class A2 {
     int v2;
     void m2() {}
     {}
-
   }
 }
 

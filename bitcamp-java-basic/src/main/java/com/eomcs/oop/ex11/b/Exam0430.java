@@ -1,4 +1,5 @@
 //static nested class : import static 사용 후
+
 package com.eomcs.oop.ex11.b;
 
 // 각각의 스태틱 멤버를 지정하는 대신 
