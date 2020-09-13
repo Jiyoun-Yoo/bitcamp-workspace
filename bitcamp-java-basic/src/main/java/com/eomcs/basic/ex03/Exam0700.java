@@ -1,19 +1,21 @@
 // 이스케이프 문자(escape character) = 문자 제어 코드
-//  - 화면에 출력하는 문자가 아니라 문자 출력을 제어하는 문자이다.
-//  - 제어 문자
-//    \n - Line Feed(LF), 0x0a
-//    \r - Carrage Return(CR), 0x0d
-//    \f - Form Feed, 0x0c
-//    \t - Tab, 0x09
-//    \b - Backspace, 0x08
-//    \' - Single Quote, 0x27
-//    \" - Double Quote, 0x22
-//    \\ - Backslash, 0x5c
-//
+
 package com.eomcs.basic.ex03;
 
 public class Exam0700 {
   public static void main(String[] args) {
+    // 이스케이프 문자?
+    //  - 화면에 출력하는 문자가 아니라 문자 출력을 제어하는 문자이다.
+    //  - 제어 문자
+    //    \n - Line Feed(LF), 0x0a
+    //    \r - Carrage Return(CR), 0x0d
+    //    \f - Form Feed, 0x0c
+    //    \t - Tab, 0x09
+    //    \b - Backspace, 0x08
+    //    \' - Single Quote, 0x27
+    //    \" - Double Quote, 0x22
+    //    \\ - Backslash, 0x5c
+
     System.out.println("Hello,world!");
     System.out.println("Hello,\nworld!"); // 줄바꿈 문자
     System.out.println("Hello,\rabc"); // 커서(cursor)를 처음으로 돌리는 문자 => abclo, 출력

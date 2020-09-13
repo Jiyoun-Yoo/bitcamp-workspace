@@ -31,8 +31,8 @@ public class Exam0200 {
   */
 
   // 별도의 클래스를 만든다 => result를 그 클래스 안에서 관리한다.
-  // => 동시에 여러 식을 계산하기 위해 non-static 변수로 선언한다.
-  // => 레퍼런스를 편하게 사용하기 위해 non-static 메서드를 사용한다.
+  //  => 동시에 여러 식을 계산하기 위해 non-static 변수로 선언한다.
+  //  => 레퍼런스를 편하게 사용하기 위해 non-static 메서드를 사용한다.
 
   public static void main(String[] args) {
     // 연산자 우선순위를 고려하지 말고 나온 순서대로 계산하라!

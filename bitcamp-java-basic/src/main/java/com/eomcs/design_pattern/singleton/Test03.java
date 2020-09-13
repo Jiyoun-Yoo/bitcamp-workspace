@@ -9,7 +9,7 @@ class Kimbap {
 
   private Kimbap () {}
 
-  public   static Kimbap getInstance() {
+  public static Kimbap getInstance() {
     if(Kimbap.instance == null) {
       Kimbap.instance = new Kimbap();
     }

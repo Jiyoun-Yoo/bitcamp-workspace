@@ -10,6 +10,4 @@ public class Student extends Member {
   public void setShool(String shool) {
     this.shool = shool;
   }
-
-
 }

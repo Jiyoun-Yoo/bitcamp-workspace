@@ -35,3 +35,6 @@ public class Exam0321 {
 
   }
 }
+
+// break는 반복문을 탈출하는 것
+// continue는 조건문으로 가서 다음 반복을 실행하는 것

@@ -9,12 +9,11 @@ public class Exam0413 {
 
     // 조건문 제거
     int i = 1;
-    for(;;) {
+    for(;;) { // for(;;)는 while(true)와 동일!
       if (i > 5)
         break;
       System.out.println(i);
       i++;
     }
-    // for(;;)는 while(true)와 동일!
   }
 }

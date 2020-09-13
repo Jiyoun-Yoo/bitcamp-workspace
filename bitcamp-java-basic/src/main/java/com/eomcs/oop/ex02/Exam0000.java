@@ -1,23 +1,8 @@
-// 클래스 사용 전
-
 package com.eomcs.oop.ex02;
 
+import com.eomcs.oop.ex02.util.Score;
+
 public class Exam0000 {
-
-  static class Score {
-    String name;
-    int kor;
-    int eng;
-    int math;
-    int sum;
-    float aver;
-
-    void compute() {
-      this.sum = this.kor + this.eng + this.math;
-      this.aver = this.sum / 3f;
-    }
-  }
-
 
   public static void main(String[] args) {
 
@@ -40,6 +25,7 @@ public class Exam0000 {
     printScore(s1);
     printScore(s2);
   }
+
 
   static void printScore(Score s) {
     System.out.printf("%s: %d, %d, %d, %d, %.1f\n", s.name, s.kor, s.eng, s.math, s.sum, s.aver );

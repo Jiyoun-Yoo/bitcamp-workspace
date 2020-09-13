@@ -1,5 +1,4 @@
-// 키보드 입력 받기
-//  - int, float, boolean 값 읽기
+// 키보드 입력 받기 - int, float, boolean 값 읽기
 
 package com.eomcs.basic.ex99;
 

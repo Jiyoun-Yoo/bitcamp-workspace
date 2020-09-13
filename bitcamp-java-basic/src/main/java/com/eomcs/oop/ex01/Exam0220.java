@@ -23,7 +23,7 @@ public class Exam0220 {
     //
     Score[] arr = new Score[3];
     // 강사님, 인스턴스 배열을 만들 수는 없나요?
-    // => 없다!
+    //  => 없다!
 
     // 레퍼런스 배열을 생성하면 모든 항목이 null로 초기화 된다.
     // 아직 레퍼런스 배열의 각 항목에 인스턴스 주소가 없는 상태이다.
@@ -54,3 +54,4 @@ public class Exam0220 {
 //  - 단 자바 기본 타입(byte, short, int, long, float, double, boolean, char)은
 //    해당 타입의 메모리를 배열로 만들 수 있다.
 //  - 그 외 모든 타입은 오직 레퍼런스 배열만 생성한다.
+

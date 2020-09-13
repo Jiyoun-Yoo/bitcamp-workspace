@@ -5,7 +5,7 @@ package com.eomcs.oop.ex04;
 public class Exam0112 {
   public static void main(String[] args) throws Exception {
 
-    //한글 문자 코드의 바이트 배열을 가지고 String 인스턴스 초기화시키기
+    // 한글 문자 코드의 바이트 배열을 가지고 String 인스턴스 초기화시키기
     byte[] bytes = {
         (byte)0xb0, (byte)0xa1, // 가
         (byte)0xb0, (byte)0xa2, // 각
@@ -16,7 +16,7 @@ public class Exam0112 {
     System.out.println(s1);
 
     // 결과
-    // => 한글 출력이 깨진다.
+    //  => 한글 출력이 깨진다.
 
     // 이유?
     //  => String 클래스는 파라미터로 넘겨 받은 바이트 배열을 가지고

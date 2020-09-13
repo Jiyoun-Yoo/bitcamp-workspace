@@ -1,5 +1,4 @@
 // 논리 연산자 : || vs |
-//  - 두 개의 논리 값 중 한 개라도 true이면 결과는 true
 
 package com.eomcs.basic.ex05;
 
@@ -13,6 +12,7 @@ public class Exam0340 {
     //  r = true || (b = true)
     //    => || 왼쪽 값으로 이미 결과를 알 수 있기 때문에
     //       || 오른쪽 문장은 실행하지 않는다.
+    //    => 그래서 (b = true) 문장은 아예 실행되지 않는다. b는 false로 남는다.
     //  r = true
     System.out.printf("a=%b, b=%b, r=%b\n", a, b, r);
 

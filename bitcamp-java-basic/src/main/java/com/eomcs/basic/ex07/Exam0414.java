@@ -32,5 +32,4 @@ public class Exam0414 {
     Score s = new Score();
     return s;
   }
-
 }

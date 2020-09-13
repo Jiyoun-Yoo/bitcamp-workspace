@@ -35,7 +35,7 @@ public class Exam0110 {
     s.kor = 100;
     s.eng = 90;
     s.math = 85;
-    s.sum= s.kor + s.eng + s.eng;
+    s.sum= s.kor + s.eng + s.math;
     s.aver = s.sum / 3f;
 
     printScore(s);

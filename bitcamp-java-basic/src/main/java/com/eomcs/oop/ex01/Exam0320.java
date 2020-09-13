@@ -1,4 +1,5 @@
 // 레퍼런스와 인스턴스 - 가비지
+
 package com.eomcs.oop.ex01;
 
 public class Exam0320 {
@@ -43,3 +44,4 @@ public class Exam0320 {
 // 언제 작업하는가?
 //  - JVM이 관리하는 메모리가 부족할 때
 //  - CPU가 한가할 때
+

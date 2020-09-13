@@ -20,7 +20,7 @@ public class Exam0610 {
 
     System.out.println(i); // 4
 
-    System.out.println(i++); // 4
+    System.out.println(i++); // 4 출력 후 i는 1 증가
     // System.out.println(4);
     // i = i + 1;
     System.out.println(i); // 5

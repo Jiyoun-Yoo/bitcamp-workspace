@@ -3,12 +3,12 @@
 package com.eomcs.basic.ex04;
 
 public class Exam0800
-{ // 클래스 블록 => 클래스 정의
+{ // 클래스 블록   =>   클래스 정의
 
   static int x;
 
   public static void main(String[] args) // 메서드 선언
-  { // 메서드 블록 => 메서드 정의
+  { // 메서드 블록   =>   메서드 정의
 
     int a;
 

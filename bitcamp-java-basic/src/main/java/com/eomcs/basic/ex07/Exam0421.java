@@ -31,14 +31,14 @@ public class Exam0421 {
 
   }
 
-  //호출하는 쪽에서 결과를 담을 배열을 주는 경우
+  // 호출하는 쪽에서 결과를 담을 배열을 주는 경우
   static void compute1(int[] moneys, float[] totals, float interest) {
     for (int i = 0; i < moneys.length; i++) {
       totals[i] = moneys[i] + (moneys[i] * interest);
     }
   }
 
-  //메서드 쪽에서 결과를 담을 배열을 만들어 리턴하는 경우
+  // 메서드 쪽에서 결과를 담을 배열을 만들어 리턴하는 경우
   static float[] compute2(int[] moneys, float interest) {
     float[] totals = new float[moneys.length];
     for (int i = 0; i < moneys.length; i++) {
@@ -46,6 +46,5 @@ public class Exam0421 {
     }
     return totals;
   }
-
 
 }

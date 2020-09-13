@@ -1,5 +1,4 @@
-// 키보드 입력 받기
-//  - System.in 과 java.util.Scanner
+// 키보드 입력 받기 - System.in 과 java.util.Scanner
 
 package com.eomcs.basic.ex99;
 

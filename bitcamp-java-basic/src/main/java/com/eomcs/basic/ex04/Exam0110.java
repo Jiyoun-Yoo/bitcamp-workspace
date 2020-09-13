@@ -1,5 +1,4 @@
-// 변수 선언
-//  - 데이터를 저장할 메모리를 확보하는 명령
+// 변수 선언 - 데이터를 저장할 메모리를 확보하는 명령
 
 package com.eomcs.basic.ex04;
 
@@ -70,3 +69,4 @@ public class Exam0110 {
 //    - 부동소수점: float(4), double(8)
 //    - 문자: char(2)
 //    - 논리: boolean(4 or 1)
+

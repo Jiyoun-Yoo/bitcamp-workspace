@@ -23,9 +23,8 @@ public class Exam0212 {
     list1.add(new Integer(10));
     list1.add(new StringBuffer());
 
-
     // Object의 일부만 담는 그릇을 만들면 컴파일 오류!
-    //list1 = new ArrayList<String>>(); // 컴파일 오류!
+    //list1 = new ArrayList<String>(); // 컴파일 오류!
     //list1 = new ArrayList<Integer>(); // 컴파일 오류!
   }
 }

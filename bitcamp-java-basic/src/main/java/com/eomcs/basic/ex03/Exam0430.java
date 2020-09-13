@@ -23,11 +23,11 @@ public class Exam0430 {
     // 그 결과는 더이상 문자 코드가 아니라 일반적인 정수가 된다.
     // 그래서 println()은 그 값에 대한 문자를 출력하는 것이 아니라
     // 그냥 정수를 출력하는 것이다.
-    System.out.println('A' + 1);
+    System.out.println('A' + 1); // 66
 
     // 해당 계산 결과를 문자 코드로 바꾸고 싶다면,
     // 이전에 했던대로 (char) 명령을 붙여라
-    System.out.println('A' + 1);
+    System.out.println((char)('A' + 1)); // B
     System.out.println("---------------------------");
 
     for(int i = 'A'; i <= 'z'; i++) {

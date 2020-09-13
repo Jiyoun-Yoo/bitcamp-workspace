@@ -10,6 +10,4 @@ public class Teacher extends Member {
   public void setPayPerHour(int payPerHour) {
     this.payPerHour = payPerHour;
   }
-
-
 }

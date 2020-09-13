@@ -1,5 +1,4 @@
 // 논리 연산자 : && vs &
-//  - 두 개의 논리 값이 모두 true일 때 결과가 true
 
 package com.eomcs.basic.ex05;
 
@@ -13,7 +12,7 @@ public class Exam0330 {
     //  r = false && (b = true)
     //    => && 연산에서 왼쪽 값이 이미 false이기 때문에 결과는 확정되었다.
     //    => 이렇게 && 연산의 오른쪽을 실행하기 전에 결과를 알 수 있다면
-    //      JVM은 실행의 효율을 위해 && 연산의 오른쪽을 실행하지 않는다.
+    //       JVM은 실행의 효율을 위해 && 연산의 오른쪽을 실행하지 않는다.
     //    => 그래서 (b = true) 문장은 아예 실행되지 않는다. b는 false로 남는다.
     //  r = false
     System.out.printf("a=%b, b=%b, r=%b\n", a, b, r);

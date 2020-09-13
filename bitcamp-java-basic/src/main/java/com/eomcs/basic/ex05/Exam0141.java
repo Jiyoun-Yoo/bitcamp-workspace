@@ -52,15 +52,17 @@ public class Exam0141 {
 //     내부적으로 int로 자동 형변환을 수행한 다음에 연산을 수행한다.
 //     내부적으로 자동 형변환하는 것을
 //     "암시적 형변환(implicit type conversion)"이라 부른다.
-//      => byte + byte = int
-//      => short + short = int
-//      => byte + short = int
+//       => byte + byte = int
+//       => short + short = int
+//       => byte + short = int
 //
 // 2) 연산 결과는 항상 피연산자의 타입과 같다.
-//      => int + int = int
-//      => long + long = long
-//      => float + float = float
-//      => double + double = double
+//       => int + int = int
+//       => long + long = long
+//       => float + float = float
+//       => double + double = double
 //
 // 3) 다른 타입과 연산을 수행할 때는
 //    내부적으로 같은 타입으로 맞춘 다음에 실행한다.
+
+

@@ -20,7 +20,7 @@ public class Exam0260 {
 
   public static void main(String[] args) {
 
-   // 가변 파라미터의 메서드를 호출할 때는
+    // 가변 파라미터의 메서드를 호출할 때는
     // 다음과 같이 낱개의 값을 여러 개 줄 수도 있고,
     hello("홍길동","임꺽정","유관순");
     System.out.println("----------------");

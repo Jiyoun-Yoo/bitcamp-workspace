@@ -27,7 +27,7 @@ public class Exam0110 {
   }
 
   public static void main(String[] args) {
-    // 제네릭이 적용되지 않은 메서드의 리턴 타입은  Object[]이다.
+    // 제네릭이 적용되지 않은 메서드의 리턴 타입은 Object[]이다.
     Object[] arr = reverse(new String[] {"a","b","c","d","e","f","g","h","i","j"});
     for (Object value : arr) {
       System.out.print(value + ", ");

@@ -1,5 +1,4 @@
-// 리터럴(literal)
-//  - 자바 언어로 표현한 값
+// 리터럴(literal) - 자바 언어로 표현한 값
 
 package com.eomcs.basic.ex03;
 
