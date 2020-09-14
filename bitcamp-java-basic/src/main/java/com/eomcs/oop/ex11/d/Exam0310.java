@@ -1,4 +1,5 @@
 // 인스턴스 메서드에 정의된 local class : 변수 접근
+
 package com.eomcs.oop.ex11.d;
 
 class D {

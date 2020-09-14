@@ -19,6 +19,7 @@ public class Exam0310 {
     public void print() {
       System.out.println(name);
     }
+
   }
 
   public static void main(final String[] args) {

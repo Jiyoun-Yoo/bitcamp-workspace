@@ -54,3 +54,4 @@ public interface Computer {
   //     기존 프로젝트에 영향을 끼치지 않기 위함이다.
   //     따라서 새 인터페이스를 정의할 때는 default의 사용을 자제해야 한다.
 }
+

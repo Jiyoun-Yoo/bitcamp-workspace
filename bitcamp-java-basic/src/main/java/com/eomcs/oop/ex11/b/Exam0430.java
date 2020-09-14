@@ -1,4 +1,4 @@
-//static nested class : import static 사용 후
+// static nested class : import static 사용 후
 
 package com.eomcs.oop.ex11.b;
 

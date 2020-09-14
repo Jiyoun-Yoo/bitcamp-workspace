@@ -12,7 +12,6 @@ public class Exam0130 {
   //  => 이 클래스는 인스턴스가 있어야만 사용할 수 있다.
   //  => 보통 인스턴스 멤버를 사용하는 중첩 클래스를 만들 때 inner class로 정의한다.
   //  => 당연히 inner 클래스는 인스턴스 메서드에서 주로 사용할 것이다.
-  //
 
   // inner class = non-static nested class
   //  => 바깥 클래스의 인스턴스를 사용하는 경우 inner class로 정의하라.

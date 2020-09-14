@@ -18,7 +18,7 @@ public class Exam0340 {
     // 로컬 클래스의 객체가 로컬 변수의 값을 조회용으로만 사용하는 이유?
     //  => 위의 코드에서 createRunner() 호출이 끝나면 이 메서드가 실행되는 동안
     //     생성되었던 모든 로컬 변수는 스택 메모리에서 제거된다.
-    //      즉 createRunner()의 name 파라미터가 제거된다는 것이다.
+    //     즉 createRunner()의 name 파라미터가 제거된다는 것이다.
   }
 
   Runner createRunner(final String name) {

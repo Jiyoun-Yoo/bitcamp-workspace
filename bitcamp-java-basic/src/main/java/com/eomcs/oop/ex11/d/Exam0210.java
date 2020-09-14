@@ -1,4 +1,5 @@
 // local class : 인스턴스 메서드와 로컬 클래스
+
 package com.eomcs.oop.ex11.d;
 
 class C {

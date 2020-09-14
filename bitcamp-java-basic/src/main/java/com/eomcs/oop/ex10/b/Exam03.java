@@ -13,6 +13,7 @@ public class Exam03 extends AbstractServlet {
   @Override
   public void service() {}
 }
+
 // 즉 이렇게 인터페이스의 메서드가 많을 경우
 // 일부 메서드를 미리 구현함으로써
 // 개발자가 좀 더 쉽게 인터페이스를 구현할 수 있게 도와주는 용도로

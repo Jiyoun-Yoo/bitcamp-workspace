@@ -1,11 +1,12 @@
 // local class : 스태틱 메서드와 로컬 클래스
+
 package com.eomcs.oop.ex11.d;
 
 class C2 {
   int v1 = 1;
 
   static void m1() {
-    // 스태틱 메서드는 C 인스턴스 주소를 변수가 없다.
+    // 스태틱 메서드는 C 인스턴스 주소를 받을 변수가 없다.
 
     class X {
       // 그래서 바깥 클래스의 인스턴스를 사용할 수 없다.
