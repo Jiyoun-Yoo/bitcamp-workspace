@@ -15,6 +15,7 @@ class C {
     obj.test();
   }
 
+  // static nested class
   static class X {
     void test() {
       System.out.println("X.test()");

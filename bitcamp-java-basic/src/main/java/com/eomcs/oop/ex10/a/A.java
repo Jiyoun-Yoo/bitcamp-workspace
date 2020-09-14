@@ -8,5 +8,4 @@ package com.eomcs.oop.ex10.a;
 //  => 직접 사용하지 않는다.
 public abstract class A {
 
-
 }

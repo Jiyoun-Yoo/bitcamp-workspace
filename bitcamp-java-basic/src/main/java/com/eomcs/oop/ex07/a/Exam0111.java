@@ -17,7 +17,7 @@ public class Exam0111 {
     s1.sum = 300;
     s1.aver = 100f;
 
-    // 원래 프로그램에서 의도한 대로 계산 겨로가가 나오지 않는다.
+    // 원래 프로그램에서 의도한 대로 계산 결과가 나오지 않는다.
     System.out.printf("%s, %d, %d, %d, %d, %.1f\n",
         s1.name, s1.kor, s1.eng, s1.math, s1.sum, s1.aver);
 

@@ -86,7 +86,7 @@ public class MyLinkedList06 {
     }
 
     // 새 node에는 인덱스 node 주소를 넣고,
-    // cursor 위치의 nod\\에는 새 node의 주소를 넣는다.
+    // cursor 위치의 node에는 새 node의 주소를 넣는다.
     node.next = cursor.next;
     cursor.next = node;
 

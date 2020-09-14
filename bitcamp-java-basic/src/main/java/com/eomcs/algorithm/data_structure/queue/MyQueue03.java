@@ -13,7 +13,7 @@ public class MyQueue03 extends MyLinkedList{
   }
 
   // 가장 처음의 것을 꺼내고 제거한다.
-  // - 첫 번째 element를 제거하면 자연스레 두 번째 element가 첫 번째가 된다.
+  //  - 첫 번째 element를 제거하면 자연스레 두 번째 element가 첫 번째가 된다.
   public Object poll() {
     if (size() == 0) {
       return null;

@@ -49,6 +49,6 @@ public class Exam0210 {
       public void m1() {
         System.out.println("Hello!");
       }
-    };
-  }
+    }; // 익명 클래스 끝
+  } // main() 끝
 }

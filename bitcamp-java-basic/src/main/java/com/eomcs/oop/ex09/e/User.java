@@ -21,6 +21,5 @@ public class User {
     computer.compute();
     computer.touch();
     System.out.println("------------------------");
-
   }
 }

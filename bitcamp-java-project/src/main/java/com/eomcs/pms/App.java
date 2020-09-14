@@ -1,5 +1,9 @@
 package com.eomcs.pms;
 
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
@@ -8,7 +12,9 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Queue;
+import java.util.Scanner;
 import com.eomcs.pms.domain.Board;
 import com.eomcs.pms.domain.Member;
 import com.eomcs.pms.domain.Project;
@@ -39,13 +45,17 @@ import com.eomcs.util.Prompt;
 
 public class App {
 
+  // 앱 객체에 커맨드 객체를 보관한다.
+  static List<Board> boardList = new ArrayList<>();
+
   public static void main(String[] args) {
+
+    // 파일에서 데이터를 읽어 List에 저장한다.
+    loadBoards();
 
     // 커맨드 객체를 저장할 맵 객체를 준비한다.
     Map<String, Command> commandMap = new HashMap<>();
 
-    // 앱 객체에 커맨드 객체를 보관한다.
-    List<Board> boardList = new ArrayList<>();
     commandMap.put("/board/add", new BoardAddCommand(boardList));
     commandMap.put("/board/list", new BoardListCommand(boardList));
     commandMap.put("/board/detail", new BoardDetailCommand(boardList));
@@ -100,7 +110,13 @@ public class App {
           default:
             Command command = commandMap.get(inputStr);
             if(command != null) {
-              command.execute();
+              try {
+                command.execute();
+              } catch (Exception e) {
+                System.out.printf("명령 처리 중 오류 발생!: %s\n%s\n",
+                    e.getClass().getName(),
+                    e.getMessage());
+              }
             } else {
               System.out.println("실행할 수 없는 명령입니다.");
             }
@@ -109,6 +125,9 @@ public class App {
       }
 
     Prompt.close();
+
+    // 프로그램을 종료하기 전에 List에 보관된 객체를 파일에 저장한다.
+    saveBoards();
   }
 
   static void printCommandHistory(Iterator<String> iterator) {
@@ -129,4 +148,87 @@ public class App {
       System.out.println("history 명령 처리 중 오류 발생!");
     }
   }
+
+  static void saveBoards() {
+    System.out.println("[게시글 저장]");
+
+    // 데이터를 저장할 파일의 정보
+    File file = new File("./board.csv");
+
+    FileWriter out = null;
+    try {
+      // 데이터를 파일에 출력할 때 사용할 도구
+      out = new FileWriter(file);
+
+      for(Board board : boardList) {
+        String record = String.format("%d, %s, %s, %s, %s, %d\n",
+            board.getNo(),
+            board.getTitle(),
+            board.getContent(),
+            board.getWriter(),
+            board.getRegisteredDate().toString(),
+            board.getViewCount());
+        out.write(record);
+      }
+
+    } catch(IOException e) {
+      System.out.println("파일 출력 작업 중에 오류 발생!");
+
+    } finally {
+      try {
+        out.close();
+      } catch (Exception e) {
+        // close() 에서 오류가 발생할 때 마땅히 할 것이 없다.
+        // 그래서 그냥 무시한다.
+      }
+    }
+  }
+
+  static void loadBoards() {
+    System.out.println("[게시글 파일 로딩]");
+
+    // 데이터를 읽어올 파일의 정보
+    File file = new File("./board.csv");
+
+    FileReader out = null;
+    Scanner scanner = null;
+    try {
+      // 파일에서 데이터를 읽을 때 사용할 도구
+      out = new FileReader(file);
+      scanner = new Scanner(out);
+
+      while(true) {
+        try {
+          // 파일에서 한 줄 읽는다.
+          String record = scanner.nextLine();
+        } catch (NoSuchElementException e) {
+          break;
+        }
+      }
+
+      for(Board board : boardList) {
+        String record = String.format("%d, %s, %s, %s, %s, %d\n",
+            board.getNo(),
+            board.getTitle(),
+            board.getContent(),
+            board.getWriter(),
+            board.getRegisteredDate().toString(),
+            board.getViewCount());
+        out.write(record);
+      }
+
+    } catch(IOException e) {
+      System.out.println("파일 출력 작업 중에 오류 발생!");
+
+    } finally {
+      try {
+        out.close();
+      } catch (Exception e) {
+        // close() 에서 오류가 발생할 때 마땅히 할 것이 없다.
+        // 그래서 그냥 무시한다.
+      }
+    }
+
+  }
+
 }

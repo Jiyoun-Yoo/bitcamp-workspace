@@ -5,6 +5,7 @@ package com.eomcs.oop.ex10.d;
 //  => 이런 설계 기법을 "템플릿 메서드 패턴"이라고 한다.
 
 public abstract class Student {
+
   public void introduce() {
     // 이렇게 수퍼클래스에서는 학생들이 자신을 소개할 때 어떻게 행동해야 하는지
     // 기본 흐름을 정한다.

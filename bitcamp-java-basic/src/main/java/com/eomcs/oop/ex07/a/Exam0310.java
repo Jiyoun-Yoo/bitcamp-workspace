@@ -96,3 +96,4 @@ public class Exam0310 {
         s1.getSum(), s1.getAver());
   }
 }
+

@@ -44,7 +44,6 @@ public class Exam0610 {
 
     G.X obj = outer.new X();
     obj.m1(100);
-
   }
 
 }

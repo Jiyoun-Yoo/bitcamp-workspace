@@ -1,132 +1,130 @@
-# 28-1. 커맨드 디자인 패턴을 적용하기 : 메서드를 객체로 분리하기
+# 30-a. 파일 입출력 API를 활용하여 데이터를 읽고 쓰기 : CSV 파일 포맷
 
-이번 훈련에서는 **커맨드 패턴(command pattern)** 을 프로젝트에 적용할 것이다.
+이번 훈련에서는 **파일 입출력 API** 를 활용하여 데이터를 파일로 저장하고
+파일에서 데이터를 읽는 것을 연습할 것이다.
 
-**커맨드 디자인 패턴** 은, 
+지금까지,
+- 사용자가 입력한 데이터를 컬렉션 객체에 저장했다.
+- 즉 RAM에 데이터가 저장되어 있어서 프로그램을 종료하거나 컴퓨터를 끄면 데이터가 지워지는 문제가 있었다.
 
-- 메서드의 객체화 설계 기법이다.
-- 한 개의 명령어를 처리하는 메서드를 별개의 클래스로 분리하는 기법이다. 
-- 이렇게 하면 명령어가 추가될 때마다 새 클래스를 만들면 되기 때문에  
-  기존 코드를 손대지 않아 유지보수에 좋다.
-- 즉 기존 소스에 영향을 끼치지 않고 새 기능을 추가하는 방식이다.
-- 명령처리를 별도의 객체로 분리하기 때문에 실행 내역을 관리하기 좋고,
-  각 명령이 수행했던 작업을 다루기가 편하다.
-- 인터페이스를 이용하면 메서드 호출 규칙을 단일화 할 수 있기 때문에 
-  코딩의 일관성을 높혀줄 수 있다.
-- 단 기능 추가할 때마다 해당 기능을 처리하는 새 클래스가 추가되기 때문에 
-  클래스 개수는 늘어난다.
-- 그러나 유지보수 측면에서는 기존 코드를 변경하는 것 보다는 
-  클래스 개수가 늘어나는 것이 좋다.
-- 유지보수 관점에서는 소스 코드를 일관성 있게 유지보수 할 수 있는게 더 중요한다.
+프로그램을 종료하더라도 데이터가 지워지지 않게 하려면,
+- 외부 저장장치(예: 하드 디스크, SSD 등)에 저장해야 한다.
+- 즉 데이터를 파일로 출력해야 한다.
 
+**파일 입출력 API** 는,
+- 데이터를 파일로 입출력하는 다양한 도구(*클래스*, *인터페이스*)를 제공한다.
+
+
+**CSV 파일 포맷** 은,
+
+- **Comma-Seperated Values** 의 약자이다.
+- 확장자는 `.csv` 를 사용한다.
+- MIME 형식은 `text/csv` 로 표현한다.
+- 각 레코드(한 단위의 값)는 한 줄의 문자열로 표현한다.
+- 한 줄은 줄바꿈 기호(CRLF)로 구분한다.
+- 레코드를 구성하는 필드는 콤마(,)로 구분한다.
+```csv
+aaa, bbb, ccc (CRLF)
+```
+- 각 필드는 큰 따옴표를 쳐도 되고 안쳐도 된다.
+```csv
+aaa, "bbb", ccc (CRLF)
+```
+- 파일에 저장할 때 마지막 레코드는 줄바꿈 기호가 있을 수도 있고 없을 수도 있다.
+``` csv
+aaa, bbb, ccc (CRLF)
+aaa, bbb, ccc (CRLF)
+aaa, bbb, ccc
+```
+- CSV에 대한 자세한 정의는 [RFC 4180](https://tools.ietf.org/html/rfc4180) 명세에 있다.
+
+
+**레코드(record)** 는
+
+- 컴퓨터 과학에서 한 단위의 정보를 가리키는 용어다.
+  - 예) 학생정보, 성적정보, 도서정보, 주문정보, 결제정보, 고객정보 등
+- 한 개의 이상의 필드(field)로 구성된다.
+  - 예) 학생정보: 이름, 전화번호, 나이, 우편번호, 주소, 이메일, 암호 등
+- 객체지향 프로그래밍에서 레코드는 보통 클래스로 정의한다.
+```java
+class Student { // 학생 정보
+  ...
+}
+```
+- 필드는 클래스의 인스턴스 필드로 정의한다.
+```java
+class Student {
+    String name; // 이름
+    String tel; // 전화번호
+    int age; // 나이
+    String email; // 이메일
+}
+```
 
 ## 훈련 목표
 
-- **커맨드 패턴** 의 클래스 구조와 구동원리를 이해한다.
-- **커맨드 패턴** 을 구현하는 방법을 배운다.
+- 파일 입출력 API를 활용하여 데이터를 파일로 입출력 하는 방법을 연습한다.
+- 파일 입출력 API에 적용된 `Decorator` 디자인 패턴의 특징과 이점을 이해한다.
 
 
 ## 훈련 내용
 
-- 사용자 명령을 처리할 때 호출할 메서드의 규칙을 인터페이스로 정의한다.
-- 명령어를 처리하는 메서드를 인터페이스에 맞춰 별개의 클래스로 캡슐화 한다. 
+- 사용자가 입력한 게시글, 회원, 프로젝트, 작업 데이터를 파일로 저장하고 파일에서 읽는다.
+
 
 ## 실습
 
-### 0단계 - 커맨드 패턴 적용 전 :  게시물 검색 기능을 추가해보자.
 
-```console
-명령> /board/search
-검색어? aa
-검색어에 해당하는 게시글이 없습니다.
+### 1단계 - 게시글 데이터를 파일에 보관한다.
 
-명령> /board/search
-검색어? bbb
-1, aa bbb, ok, 2020-1-1, 3
-7, bbacc, no, 2020-2-3, 23
-
-```
-
-
-### 1단계 - 사용자 명령을 처리하는 메서드의 호출 규칙을 정의한다.
-
-- `Command` 인터페이스를 정의한다.
-  - 사용자 명령을 처리할 때 호출되는 메서드를 선언한다.
+- App 클래스
+  - 애플리케이션을 실행했을 때 파일에서 게시글 데이터를 읽어오는 `loadBoards()`를 정의한다.
+  - 애플리케이션을 종료할 때 게시글 데이터를 파일에 저장하는 `saveBoards()`를 정의한다.
+  - 게시글 데이터를 저장할 List 객체는 위에서 만든 메서드에서 접근할 수 있도록 스태틱 필드로 전환한다.
 
 #### 작업 파일
 
-- com.eomcs.pms.handler.Command 생성
+- com.eomcs.pms.App 변경
+  - 백업: App01.java
 
+### 2단계 - 회원 데이터를 파일에 보관한다.
 
-### 2단계 - 명령을 처리하는 XxxHandler 의 각 메서드를 `Command` 구현체로 분리한다.
-
-- 각 명령어를 처리하는 메서드를 별도의 XxxCommand 클래스를 만들어 분리한다.
-  - `Command` 인터페이스 규칙에 따라 클래스를 정의한다.
-
-#### 작업 파일
- 
-- com.eomcs.pms.handler.BoardAddCommand 생성
-- com.eomcs.pms.handler.BoardListCommand 생성
-- com.eomcs.pms.handler.BoardDetailCommand 생성
-- com.eomcs.pms.handler.BoardUpdateCommand 생성
-- com.eomcs.pms.handler.BoardDeleteCommand 생성
-- com.eomcs.pms.handler.BoardHandler 삭제
-- com.eomcs.pms.handler.MemberAddCommand 생성
-- com.eomcs.pms.handler.MemberListCommand 생성
-- com.eomcs.pms.handler.MemberDetailCommand 생성
-- com.eomcs.pms.handler.MemberUpdateCommand 생성
-- com.eomcs.pms.handler.MemberDeleteCommand 생성
-- com.eomcs.pms.handler.MemberHandler 삭제
-- com.eomcs.pms.handler.ProjectAddCommand 생성
-- com.eomcs.pms.handler.ProjectListCommand 생성
-- com.eomcs.pms.handler.ProjectDetailCommand 생성
-- com.eomcs.pms.handler.ProjectUpdateCommand 생성
-- com.eomcs.pms.handler.ProjectDeleteCommand 생성
-- com.eomcs.pms.handler.ProjectHandler 삭제
-- com.eomcs.pms.handler.TaskAddCommand 생성
-- com.eomcs.pms.handler.TaskListCommand 생성
-- com.eomcs.pms.handler.TaskDetailCommand 생성
-- com.eomcs.pms.handler.TaskUpdateCommand 생성
-- com.eomcs.pms.handler.TaskDeleteCommand 생성
-- com.eomcs.pms.handler.TaskHandler 삭제
-
-
-### 3단계 - 사용자가 명령어를 입력했을 때 `Command` 구현체를 실행하도록 변경한다.
-
-- `App` 클래스가 XxxCommand 객체를 통해 처리하도록 변경한다.
+- App 클래스
+  - 애플리케이션을 실행했을 때 파일에서 회원 데이터를 읽어오는 `loadMembers()`를 정의한다.
+  - 애플리케이션을 종료할 때 회원 데이터를 파일에 저장하는 `saveMembers()`를 정의한다.
+  - 회원 데이터를 저장할 List 객체는 위에서 만든 메서드에서 접근할 수 있도록 스태틱 필드로 전환한다.
 
 #### 작업 파일
 
-- com.eocms.pms.App 클래스 변경
+- com.eomcs.pms.App 변경
+  - 백업: App02.java
+
+
+### 3단계 - 프로젝트 데이터를 파일에 보관한다.
+
+- App 클래스
+  - 애플리케이션을 실행했을 때 파일에서 프로젝트 데이터를 읽어오는 `loadProjects()`를 정의한다.
+  - 애플리케이션을 종료할 때 프로젝트 데이터를 파일에 저장하는 `saveProjects()`를 정의한다.
+  - 프로젝트 데이터를 저장할 List 객체는 위에서 만든 메서드에서 접근할 수 있도록 스태틱 필드로 전환한다.
+
+#### 작업 파일
+
+- com.eomcs.pms.App 변경
+  - 백업: App03.java
+
+
+### 4단계 - 작업 데이터를 파일에 보관한다.
+
+- App 클래스
+  - 애플리케이션을 실행했을 때 파일에서 작업 데이터를 읽어오는 `loadTasks()`를 정의한다.
+  - 애플리케이션을 종료할 때 작업 데이터를 파일에 저장하는 `saveTasks()`를 정의한다.
+  - 작업 데이터를 저장할 List 객체는 위에서 만든 메서드에서 접근할 수 있도록 스태틱 필드로 전환한다.
+
+#### 작업 파일
+
+- com.eomcs.pms.App 변경
 
 
 ## 실습 결과
 
-- src/main/java/com/eomcs/pms/handler/Command.java 생성
-- src/main/java/com/eomcs/pms/handler/BoardAddCommand.java 생성
-- src/main/java/com/eomcs/pms/handler/BoardListCommand.java 생성
-- src/main/java/com/eomcs/pms/handler/BoardDetailCommand.java 생성
-- src/main/java/com/eomcs/pms/handler/BoardUpdateCommand.java 생성
-- src/main/java/com/eomcs/pms/handler/BoardDeleteCommand.java 생성
-- src/main/java/com/eomcs/pms/handler/BoardHandler.java 삭제
-- src/main/java/com/eomcs/pms/handler/MemberAddCommand.java 생성
-- src/main/java/com/eomcs/pms/handler/MemberListCommand.java 생성
-- src/main/java/com/eomcs/pms/handler/MemberDetailCommand.java 생성
-- src/main/java/com/eomcs/pms/handler/MemberUpdateCommand.java 생성
-- src/main/java/com/eomcs/pms/handler/MemberDeleteCommand.java 생성
-- src/main/java/com/eomcs/pms/handler/MemberHandler.java 삭제
-- src/main/java/com/eomcs/pms/handler/ProjectAddCommand.java 생성
-- src/main/java/com/eomcs/pms/handler/ProjectListCommand.java 생성
-- src/main/java/com/eomcs/pms/handler/ProjectDetailCommand.java 생성
-- src/main/java/com/eomcs/pms/handler/ProjectUpdateCommand.java 생성
-- src/main/java/com/eomcs/pms/handler/ProjectDeleteCommand.java 생성
-- src/main/java/com/eomcs/pms/handler/ProjectHandler.java 삭제
-- src/main/java/com/eomcs/pms/handler/TaskAddCommand.java 생성
-- src/main/java/com/eomcs/pms/handler/TaskListCommand.java 생성
-- src/main/java/com/eomcs/pms/handler/TaskDetailCommand.java 생성
-- src/main/java/com/eomcs/pms/handler/TaskUpdateCommand.java 생성
-- src/main/java/com/eomcs/pms/handler/TaskDeleteCommand.java 생성
-- src/main/java/com/eomcs/pms/handler/TaskHandler.java 삭제
 - src/main/java/com/eomcs/pms/App.java 변경
-
-  

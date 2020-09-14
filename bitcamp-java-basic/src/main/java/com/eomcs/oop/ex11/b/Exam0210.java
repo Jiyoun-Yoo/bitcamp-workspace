@@ -11,6 +11,7 @@ class B {
   int v2;
   void m2() {}
 
+  // static nested class
   static class X {
     void test() {
       // 같은 클래스 멤버 접근 가능

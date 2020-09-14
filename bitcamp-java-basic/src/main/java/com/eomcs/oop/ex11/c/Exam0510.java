@@ -65,8 +65,6 @@ public class Exam0510 {
     //  - 위의 코드를 자바 소스 코드로 표현해보면,
     //      E.x obj = new X(outer);
     //
-    //
-    //
   }
 
 }

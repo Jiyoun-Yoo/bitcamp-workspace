@@ -64,3 +64,5 @@ public class Exam0210 {
         s1.name, s1.kor, s1.eng, s1.math, s1.getSum(), s1.getAver());
   }
 }
+
+

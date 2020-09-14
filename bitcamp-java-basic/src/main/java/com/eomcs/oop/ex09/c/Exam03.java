@@ -34,10 +34,3 @@ public class Exam03 implements B, C, D {
 
   }
 }
-
-
-
-
-
-
-

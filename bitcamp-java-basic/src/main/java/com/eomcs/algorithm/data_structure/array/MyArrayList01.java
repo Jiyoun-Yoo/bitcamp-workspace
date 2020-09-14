@@ -8,5 +8,4 @@ public class MyArrayList01 {
 
   // size : 추가한 element의 개수
   // elementDate.length : 배열의 길이
-
 }
