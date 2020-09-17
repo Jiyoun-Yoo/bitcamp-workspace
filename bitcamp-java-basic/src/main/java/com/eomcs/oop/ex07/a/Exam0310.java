@@ -61,7 +61,7 @@ class Score3 {
 
   // 직접 계산할 필요가 없기 때문에 public으로 공개할 필요가 없다.
   // 공개할 필요가 없는 메서드는 private으로 접근을 막아라.
-  // 보통 private 으로 막는 메서드는
+  // 보통 private으로 막는 메서드는
   // 해당 클래스 내부에서만 사용되는 메서드이다.
   private void compute() {
     this.sum = this.kor + this.eng + this.math;

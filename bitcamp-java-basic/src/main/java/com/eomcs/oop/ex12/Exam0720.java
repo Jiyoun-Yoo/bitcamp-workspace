@@ -1,4 +1,5 @@
 // 메서드 레퍼런스 - 생성자 레퍼런스 구현 원리
+
 package com.eomcs.oop.ex12;
 
 import java.util.ArrayList;
@@ -11,7 +12,6 @@ public class Exam0720 {
   }
 
   public static void main(String[] args) {
-
     // 생성자 레퍼런스를 지정하는 것은
     // 다음과 같이 익명 클래스를 만드는 것과 같다.
     // => ListFactory f1 = ArrayList::new;
@@ -19,7 +19,7 @@ public class Exam0720 {
     ListFactory f1 = new ListFactory() {
       @Override
       public List create() {
-        return new ArrayList();
+        return new ArrayList(); // 생성자를 리턴한다.
       }
     };
 
@@ -28,6 +28,7 @@ public class Exam0720 {
     System.out.println(list instanceof ArrayList);
     System.out.println(list.getClass().getName());
   }
+
 }
 
 

@@ -15,12 +15,12 @@ public class Restaurant extends Unit {
   @Override
   public void install() {
     System.out.println("내부 배선과 창을 붙인다.");
-    
+
   }
 
   @Override
-  public void interio() {
+  public void interior() {
     System.out.println("식탁과 의자를 배치한다.");
   }
-  
+
 }

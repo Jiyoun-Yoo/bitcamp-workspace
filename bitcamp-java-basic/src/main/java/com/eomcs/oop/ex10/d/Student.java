@@ -17,8 +17,6 @@ public abstract class Student {
     fighting(); // 어떤 각오로 임할 것인기 얘기한다.
   }
 
-  // 서브 클래스를 추상메서드로 정의하여
-
   public abstract void greet();
   public abstract void say();
   public abstract void fighting();

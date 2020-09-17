@@ -1,6 +1,6 @@
 // 메서드 레퍼런스 - 인스턴스 메서드 레퍼런스 구현 원리
-package com.eomcs.oop.ex12;
 
+package com.eomcs.oop.ex12;
 
 public class Exam0620 {
 

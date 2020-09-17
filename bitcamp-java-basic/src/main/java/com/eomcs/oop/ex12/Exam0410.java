@@ -1,4 +1,5 @@
 // 리턴 문장에 람다(lambda) 활용
+
 package com.eomcs.oop.ex12;
 
 public class Exam0410 {
@@ -12,6 +13,7 @@ public class Exam0410 {
     class InterestImpl implements Interest {
       double rate;
 
+      // 이자율에 따른 생성자가 필요하다.
       public InterestImpl(double rate) {
         this.rate = rate;
       }
@@ -33,5 +35,7 @@ public class Exam0410 {
   }
 
 }
+
+// 로컬클래스 -> 익명클래스 -> 익명클래스를 파라미터로 바로 삽입 -> 람다문법 적용
 
 

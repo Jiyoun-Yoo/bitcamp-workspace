@@ -1,4 +1,5 @@
 // 메서드 레퍼런스 - 생성자 레퍼런스
+
 package com.eomcs.oop.ex12;
 
 import java.util.ArrayList;
@@ -11,7 +12,6 @@ public class Exam0710 {
   }
 
   public static void main(String[] args) {
-
     // 인터페이스에 정의된 메서드가
     // 생성자의 형식과 일치하다면
     // 메서드 레퍼런스로 생성자를 지정할 수 있다.
@@ -25,6 +25,7 @@ public class Exam0710 {
     System.out.println(list instanceof ArrayList);
     System.out.println(list.getClass().getName());
   }
+
 }
 
 

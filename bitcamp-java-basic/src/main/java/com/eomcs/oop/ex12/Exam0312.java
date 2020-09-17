@@ -1,4 +1,5 @@
-// 아규먼트에 람다(lambda) 활용
+// 아규먼트에 람다(lambda) 활용 I
+
 package com.eomcs.oop.ex12;
 
 public class Exam0312 {
