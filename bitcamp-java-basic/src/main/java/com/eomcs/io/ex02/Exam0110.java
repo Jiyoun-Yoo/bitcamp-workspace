@@ -20,7 +20,7 @@ public class Exam0110 {
     FileOutputStream out = new FileOutputStream("temp/test1.data");
 
     // 2) 1바이트를 출력한다.
-    // - int 값을 아규먼트로 넘기더라도 맨 마지막 1바이트만 출력한다.
+    //  - int 값을 아규먼트로 넘기더라도 맨 마지막 1바이트만 출력한다.
     out.write(0x7a6b5c4d); // 출력하는 값은 0x4d 이다.
 
     // 3) 출력 도구를 닫는다.

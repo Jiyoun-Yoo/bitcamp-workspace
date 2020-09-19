@@ -16,7 +16,6 @@ public class Exam0310 {
     out.close();
 
     System.out.println("데이터 출력 완료!");
-
   }
 
 }

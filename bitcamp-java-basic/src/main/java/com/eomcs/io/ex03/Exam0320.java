@@ -12,7 +12,7 @@ public class Exam0320 {
     char[] buf = new char[100];
 
     // read(버퍼의주소, 저장할위치, 읽을바이트개수)
-    // => 리턴 값은 실제 읽은 문자의 개수이다.
+    //  => 리턴 값은 실제 읽은 문자의 개수이다.
     int count = in.read(buf, 10, 40); // 40개의 문자를 읽어 10번 방부터 저장한다.
 
     in.close();
@@ -23,7 +23,6 @@ public class Exam0320 {
       System.out.printf("%c(%x) ", buf[i], (int) buf[i]);
 
     System.out.println();
-
   }
 
 }
