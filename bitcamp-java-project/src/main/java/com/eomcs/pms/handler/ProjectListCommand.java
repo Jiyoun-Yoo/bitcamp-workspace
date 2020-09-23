@@ -7,11 +7,9 @@ import com.eomcs.pms.domain.Project;
 public class ProjectListCommand implements Command {
 
   List<Project> projectList;
-  MemberListCommand memberListCommand;
 
-  public ProjectListCommand(List<Project> list, MemberListCommand memberListCommand) {
+  public ProjectListCommand(List<Project> list) {
     this.projectList = list;
-    this.memberListCommand = memberListCommand;
   }
 
   @Override
@@ -20,7 +18,7 @@ public class ProjectListCommand implements Command {
 
     Iterator<Project> iterator = projectList.iterator();
 
-    while(iterator.hasNext()) {
+    while (iterator.hasNext()) {
       Project project = iterator.next();
       System.out.printf("%d, %s, %s, %s, %s, [%s]\n",
           project.getNo(),
@@ -31,5 +29,4 @@ public class ProjectListCommand implements Command {
           project.getMembers());
     }
   }
-
 }

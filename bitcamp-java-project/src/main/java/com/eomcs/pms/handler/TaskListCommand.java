@@ -7,22 +7,21 @@ import com.eomcs.pms.domain.Task;
 public class TaskListCommand implements Command {
 
   List<Task> taskList;
-  MemberListCommand memberListCommand;
 
-  public TaskListCommand(List<Task> list, MemberListCommand memberListCommand) {
+  public TaskListCommand(List<Task> list) {
     this.taskList = list;
-    this.memberListCommand = memberListCommand;
   }
 
   @Override
   public void execute() {
     System.out.println("[작업 목록]");
 
+    // 전체 목록을 조회할 때 `Iterator` 객체를 사용한다.
+    // 만약 목록의 일부만 조회하면다면 인덱스를 직접 다루는 이전 방식을 사용해야 한다.
     Iterator<Task> iterator = taskList.iterator();
 
-    while(iterator.hasNext()) {
+    while (iterator.hasNext()) {
       Task task = iterator.next();
-
       String stateLabel = null;
       switch (task.getStatus()) {
         case 1:
@@ -42,5 +41,4 @@ public class TaskListCommand implements Command {
           task.getOwner());
     }
   }
-
 }

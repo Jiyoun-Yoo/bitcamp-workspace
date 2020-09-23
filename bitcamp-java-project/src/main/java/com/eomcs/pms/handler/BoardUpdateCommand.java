@@ -6,7 +6,7 @@ import com.eomcs.util.Prompt;
 
 public class BoardUpdateCommand implements Command {
 
-  private List<Board> boardList;
+  List<Board> boardList;
 
   public BoardUpdateCommand(List<Board> list) {
     this.boardList = list;
@@ -14,7 +14,7 @@ public class BoardUpdateCommand implements Command {
 
   @Override
   public void execute() {
-    System.out.println("[게시글 변경]");
+    System.out.println("[게시물 변경]");
     int no = Prompt.inputInt("번호? ");
     Board board = findByNo(no);
 
@@ -23,9 +23,12 @@ public class BoardUpdateCommand implements Command {
       return;
     }
 
-    String title = Prompt.inputString(String.format("제목(%s)?", board.getTitle()));
-    String content = Prompt.inputString(String.format("내용(%s)?", board.getContent()));
-    String writer = Prompt.inputString(String.format("작성자(%s)?", board.getWriter()));
+    String title = Prompt.inputString(
+        String.format("제목(%s)? ", board.getTitle()));
+    String content = Prompt.inputString(
+        String.format("내용(%s)? ", board.getContent()));
+    String writer = Prompt.inputString(
+        String.format("작성자(%s)? ", board.getWriter()));
 
     String response = Prompt.inputString("정말 변경하시겠습니까?(y/N) ");
     if (!response.equalsIgnoreCase("y")) {
@@ -40,13 +43,12 @@ public class BoardUpdateCommand implements Command {
   }
 
   private Board findByNo(int no) {
-    for(int i = 0; i < boardList.size(); i++) {
+    for (int i = 0; i < boardList.size(); i++) {
       Board board = boardList.get(i);
-      if(board.getNo() == no) {
+      if (board.getNo() == no) {
         return board;
       }
     }
     return null;
   }
-
 }

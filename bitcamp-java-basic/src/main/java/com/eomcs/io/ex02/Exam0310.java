@@ -11,7 +11,7 @@ public class Exam0310 {
 
     byte[] bytes = new byte[] {0x7a, 0x6b, 0x5c, 0x4d, 0x3e, 0x2f, 0x30};
 
-    out.write(bytes, 2, 3); // 2번 데이터부터 3 바이트를 출력한다.
+    out.write(bytes, 2, 3); // 2번 데이터부터 3 바이트를 출력한다. (0x5c, 0x4d, 0x3e)
 
     out.close();
 

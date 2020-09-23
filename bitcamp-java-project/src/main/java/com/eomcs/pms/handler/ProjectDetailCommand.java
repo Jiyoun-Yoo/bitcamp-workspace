@@ -7,11 +7,9 @@ import com.eomcs.util.Prompt;
 public class ProjectDetailCommand implements Command {
 
   List<Project> projectList;
-  MemberListCommand memberListCommand;
 
-  public ProjectDetailCommand(List<Project> list, MemberListCommand memberListCommand) {
+  public ProjectDetailCommand(List<Project> list) {
     this.projectList = list;
-    this.memberListCommand = memberListCommand;
   }
 
   @Override
@@ -20,7 +18,7 @@ public class ProjectDetailCommand implements Command {
     int no = Prompt.inputInt("번호? ");
     Project project = findByNo(no);
 
-    if(project == null) {
+    if (project == null) {
       System.out.println("해당 번호의 프로젝트가 없습니다.");
       return;
     }
@@ -33,13 +31,12 @@ public class ProjectDetailCommand implements Command {
   }
 
   private Project findByNo(int no) {
-    for(int i = 0; i < projectList.size(); i++) {
+    for (int i = 0; i < projectList.size(); i++) {
       Project project = projectList.get(i);
-      if(project.getNo() == no) {
+      if (project.getNo() == no) {
         return project;
       }
     }
     return null;
   }
-
 }

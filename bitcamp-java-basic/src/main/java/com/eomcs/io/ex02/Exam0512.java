@@ -14,7 +14,7 @@ public class Exam0512 {
 
     //  => UTF-16BE로 인코딩 하기
     System.out.printf("file.encoding=%s\n", System.getProperty("file.encoding"));
-    byte[] bytes = str.getBytes("UTF-16BE"); // UCS2  ==>  UTF-16BE
+    byte[] bytes = str.getBytes("UTF-16BE"); // UCS2  ==>  UTF-16BE // 00 41 00 42 AC 00 AC 01
 
     for(byte b : bytes) {
       System.out.printf("%x ", b);

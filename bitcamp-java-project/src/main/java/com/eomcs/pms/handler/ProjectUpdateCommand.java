@@ -21,40 +21,43 @@ public class ProjectUpdateCommand implements Command {
     int no = Prompt.inputInt("번호? ");
     Project project = findByNo(no);
 
-    if(project == null) {
+    if (project == null) {
       System.out.println("해당 번호의 프로젝트가 없습니다.");
       return;
     }
 
-    String title = Prompt.inputString(String.format("제목(%s)? ", project.getTitle()));
-    String content = Prompt.inputString(String.format("내용(%s)? ", project.getContent()));
-    Date startDate = Prompt.inputDate(String.format("시작일(%s)? ", project.getStartDate()));
-    Date endDate = Prompt.inputDate(String.format("시작일(%s)? ", project.getEndDate()));
+    String title = Prompt.inputString(
+        String.format("프로젝트명(%s)? ", project.getTitle()));
+    String content = Prompt.inputString(
+        String.format("내용(%s)? ", project.getContent()));
+    Date startDate = Prompt.inputDate(
+        String.format("시작일(%s)? ", project.getStartDate()));
+    Date endDate = Prompt.inputDate(
+        String.format("종료일(%s)? ", project.getEndDate()));
 
     String owner = null;
-    while(true) {
+    while (true) {
       String name = Prompt.inputString(
           String.format("만든이(%s)?(취소: 빈 문자열) ", project.getOwner()));
-      if(name.length() == 0) {
-        System.out.println("프로젝트 변경을 취소하였습니다.");
+      if (name.length() == 0) {
+        System.out.println("프로젝트 등록을 취소합니다.");
         return;
       } else if (memberListCommand.findByName(name) != null) {
         owner = name;
         break;
-      } else {
-        System.out.println("등록된 회원이 아닙니다.");
       }
+      System.out.println("등록된 회원이 아닙니다.");
     }
 
-    StringBuffer members = new StringBuffer();
-    while(true) {
+    StringBuilder members = new StringBuilder();
+    while (true) {
       String name = Prompt.inputString(
           String.format("팀원(%s)?(완료: 빈 문자열) ", project.getMembers()));
-      if(name.length() == 0) {
+      if (name.length() == 0) {
         break;
       } else if (memberListCommand.findByName(name) != null) {
-        if(members.length() > 0) {
-          members.append(":");
+        if (members.length() > 0) {
+          members.append(",");
         }
         members.append(name);
       } else {
@@ -79,13 +82,12 @@ public class ProjectUpdateCommand implements Command {
   }
 
   private Project findByNo(int no) {
-    for(int i = 0; i < projectList.size(); i++) {
+    for (int i = 0; i < projectList.size(); i++) {
       Project project = projectList.get(i);
-      if(project.getNo() == no) {
+      if (project.getNo() == no) {
         return project;
       }
     }
     return null;
   }
-
 }

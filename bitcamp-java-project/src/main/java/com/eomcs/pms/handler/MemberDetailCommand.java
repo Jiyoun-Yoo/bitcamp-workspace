@@ -18,7 +18,7 @@ public class MemberDetailCommand implements Command {
     int no = Prompt.inputInt("번호? ");
     Member member = findByNo(no);
 
-    if(member == null) {
+    if (member == null) {
       System.out.println("해당 번호의 회원이 없습니다.");
       return;
     }
@@ -31,13 +31,12 @@ public class MemberDetailCommand implements Command {
   }
 
   private Member findByNo(int no) {
-    for(int i = 0; i < memberList.size(); i++) {
+    for (int i = 0; i < memberList.size(); i++) {
       Member member = memberList.get(i);
-      if(member.getNo() == no) {
+      if (member.getNo() == no) {
         return member;
       }
     }
     return null;
   }
-
 }

@@ -21,8 +21,7 @@ public class Exam0510 {
     //  => 그래서 getBytes()가 리턴한 바이트 배열의 인코딩은 UTF-8이 되는 것이다.
     //  => 만약 이 예제를 이클립스가 아니라 콘솔창에서
     //     -Dfile.encoding=UTf-8 옵션 없이 실행한다면
-    //     getBytes()가 리턴하는 바이트 배열은
-    //     OS의 기본 인코딩으로 변환할 것이다.
+    //     getBytes()가 리턴하는 바이트 배열은 OS의 기본 인코딩으로 변환할 것이다.
     //  => OS 기본 인코딩
     //      Windows : MS949
     //      Linux/Unix/MacOS : UTF-8
@@ -32,7 +31,7 @@ public class Exam0510 {
     //      str.getBytes("UTF-8")
     //
     System.out.printf("file.encoding = %s\n", System.getProperty("file.encoding"));
-    byte[] bytes = str.getBytes();
+    byte[] bytes = str.getBytes(); // 41 42 EA B0 80 EA B0 81
     // 이클립스: UCS2  ==>  UTF-8
     // Windows: UCS2  ==> MS949
     // Linux : UCS2  ==> UTF-8

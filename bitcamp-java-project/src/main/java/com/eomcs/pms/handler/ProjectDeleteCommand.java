@@ -7,11 +7,9 @@ import com.eomcs.util.Prompt;
 public class ProjectDeleteCommand implements Command {
 
   List<Project> projectList;
-  MemberListCommand memberListCommand;
 
-  public ProjectDeleteCommand(List<Project> list, MemberListCommand memberListCommand) {
+  public ProjectDeleteCommand(List<Project> list) {
     this.projectList = list;
-    this.memberListCommand = memberListCommand;
   }
 
   @Override
@@ -20,13 +18,13 @@ public class ProjectDeleteCommand implements Command {
     int no = Prompt.inputInt("번호? ");
     int index = indexOf(no);
 
-    if(index == -1) {
+    if (index == -1) {
       System.out.println("해당 번호의 프로젝트가 없습니다.");
       return;
     }
 
     String response = Prompt.inputString("정말 삭제하시겠습니까?(y/N) ");
-    if(!response.equalsIgnoreCase("y")) {
+    if (!response.equalsIgnoreCase("y")) {
       System.out.println("프로젝트 삭제를 취소하였습니다.");
       return;
     }
@@ -36,13 +34,12 @@ public class ProjectDeleteCommand implements Command {
   }
 
   private int indexOf(int no) {
-    for(int i = 0; i < projectList.size(); i++) {
+    for (int i = 0; i < projectList.size(); i++) {
       Project project = projectList.get(i);
-      if(project.getNo() == no) {
+      if (project.getNo() == no) {
         return i;
       }
     }
     return -1;
   }
-
 }

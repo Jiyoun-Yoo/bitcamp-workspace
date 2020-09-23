@@ -6,7 +6,7 @@ import com.eomcs.util.Prompt;
 
 public class BoardDetailCommand implements Command {
 
-  private List<Board> boardList;
+  List<Board> boardList;
 
   public BoardDetailCommand(List<Board> list) {
     this.boardList = list;
@@ -29,17 +29,16 @@ public class BoardDetailCommand implements Command {
     System.out.printf("내용: %s\n", board.getContent());
     System.out.printf("작성자: %s\n", board.getWriter());
     System.out.printf("등록일: %s\n", board.getRegisteredDate());
-    System.out.printf("조회수: %s\n", board.getViewCount());
+    System.out.printf("조회수: %d\n", board.getViewCount());
   }
 
   private Board findByNo(int no) {
-    for(int i = 0; i < boardList.size(); i++) {
+    for (int i = 0; i < boardList.size(); i++) {
       Board board = boardList.get(i);
-      if(board.getNo() == no) {
+      if (board.getNo() == no) {
         return board;
       }
     }
     return null;
   }
-
 }

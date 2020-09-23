@@ -54,33 +54,5 @@ public class Member {
     this.registeredDate = registeredDate;
   }
 
-  // member 객체의 데이터를 문자열로 바꾸는 일을 하는 메서드
-  public String toCsvString() {
-    return String.format("%d,%s,%s,%s,%s,%s,%s\n",
-        this.getNo(),
-        this.getName(),
-        this.getEmail(),
-        this.getPassword(),
-        this.getPhoto(),
-        this.getTel(),
-        this.getRegisteredDate().toString());
-  }
-
-  // 문자열을 member 객체로 생성하는 메서드
-  public static Member valueOfCsv(String csv) {
-    String[] values = csv.split(",");
-    Member member = new Member();
-
-    member.setNo(Integer.parseInt(values[0]));
-    member.setName(values[1]);
-    member.setEmail(values[2]);
-    member.setPassword(values[3]);
-    member.setPhoto(values[4]);
-    member.setTel(values[5]);
-    member.setRegisteredDate(Date.valueOf(values[6])); // "yyyy-MM-dd" ==> java.sql.Date
-
-    return member;
-  }
-
 
 }

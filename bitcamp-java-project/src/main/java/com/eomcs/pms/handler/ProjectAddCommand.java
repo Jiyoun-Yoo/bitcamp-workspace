@@ -47,7 +47,7 @@ public class ProjectAddCommand implements Command {
         break;
       } else if (memberListCommand.findByName(name) != null) {
         if (members.length() > 0) {
-          members.append(":");
+          members.append(",");
         }
         members.append(name);
       } else {
@@ -58,5 +58,4 @@ public class ProjectAddCommand implements Command {
 
     projectList.add(project);
   }
-
 }

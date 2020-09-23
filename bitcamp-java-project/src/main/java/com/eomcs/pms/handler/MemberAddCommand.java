@@ -27,5 +27,4 @@ public class MemberAddCommand implements Command {
 
     memberList.add(member);
   }
-
 }
