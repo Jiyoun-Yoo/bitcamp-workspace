@@ -1,4 +1,4 @@
-// 통신 방식 - Stateful + 여러 클라이언트 요청 처리
+// 통신 방식 - Stateful + 여러 클라이언트 요청 처리 + 서버 종료
 
 package com.eomcs.net.ex04;
 
@@ -9,15 +9,14 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class Server0120 {
+public class Server0130 {
   public static void main(String[] args) {
-
     try (Scanner keyboard = new Scanner(System.in);
         ServerSocket serverSocket = new ServerSocket(8888)) {
 
       System.out.println("서버 실행!");
 
-      while (true) {
+      loop: while (true) {
         // 한 클라이언트와 대화가 끝다면 다음 클라이언트와 대화를 한다.
         try (Socket socket = serverSocket.accept();
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -27,11 +26,16 @@ public class Server0120 {
 
           while (true) {
             String name = in.readLine();
-            if (name.equalsIgnoreCase("quit")) {
+            if (name.equalsIgnoreCase("quit")) { // 클라이언트와 연결 끊기
               out.println("Goodbye!");
               out.flush();
               break;
+            } else if (name.equalsIgnoreCase("stop")) { // 서버 종료하기
+              out.println("Goodbye!");
+              out.flush();
+              break loop;
             }
+
             out.printf("%s 님 반갑습니다!\n", name);
             out.flush();
           }

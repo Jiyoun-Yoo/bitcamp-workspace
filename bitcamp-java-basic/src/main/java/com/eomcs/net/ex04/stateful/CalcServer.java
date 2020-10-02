@@ -1,4 +1,5 @@
 // stateful 방식 - 계산기 서버 만들기
+
 package com.eomcs.net.ex04.stateful;
 
 import java.io.DataInputStream;
@@ -54,7 +55,7 @@ public class CalcServer {
 
         out.printf("%d %s %d = %d\n", a, op, b, result);
       }
-      out.println("quit");
+      out.println("Goodbye!");
     }
   }
 }

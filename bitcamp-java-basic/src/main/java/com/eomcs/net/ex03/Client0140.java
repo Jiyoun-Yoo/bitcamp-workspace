@@ -1,4 +1,5 @@
 // 서버와 입출력 테스트 - byte stream : Data 주고 받기 II
+
 package com.eomcs.net.ex03;
 
 import java.io.DataInputStream;
@@ -8,9 +9,9 @@ import java.util.Scanner;
 
 public class Client0140 {
   public static void main(String[] args) {
-    Scanner keyScan = new Scanner(System.in);
 
-    try (Socket socket = new Socket("localhost", 8888);
+    try (Scanner keyScan = new Scanner(System.in);
+        Socket socket = new Socket("localhost", 8888);
         DataOutputStream out = new DataOutputStream(socket.getOutputStream());
         DataInputStream in = new DataInputStream(socket.getInputStream())) {
 
@@ -43,7 +44,6 @@ public class Client0140 {
       e.printStackTrace();
     }
 
-    keyScan.close();
   }
 }
 

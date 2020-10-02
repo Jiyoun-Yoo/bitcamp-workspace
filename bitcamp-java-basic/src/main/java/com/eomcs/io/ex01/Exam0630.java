@@ -27,7 +27,9 @@ public class Exam0630 {
     File[] files = dir.listFiles(filter);
 
     for (File file : files) {
-      System.out.printf("%s %12d %s\n", file.isDirectory() ? "d" : "-", file.length(),
+      System.out.printf("%s %12d %s\n",
+          file.isDirectory() ? "d" : "-",
+          file.length(),
           file.getName());
     }
 

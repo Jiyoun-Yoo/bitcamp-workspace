@@ -15,7 +15,7 @@ public class Receiver {
     // 1) 다른 컴퓨터의 연결 요청을 기다린다.
     ServerSocket serverSocket = new ServerSocket(8888);
 
-    // 2) 연결하기 위해 대기하고 있는 컴퓨터 중에서 한 개를 연결 허락한다.
+    // 2) 연결하기 위해 대기하고 있는 컴퓨터 중에서 한 개의 연결을 허락한다.
     Socket socket = serverSocket.accept();
 
     // 3) 소켓 객체를 통해 읽고 쓸 수 있도록 입출력 스트림을 얻는다.

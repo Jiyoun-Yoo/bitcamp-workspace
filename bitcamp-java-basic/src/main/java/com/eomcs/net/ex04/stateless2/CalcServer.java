@@ -1,4 +1,5 @@
 // stateless 방식에서 클라이언트를 구분하고 작업 결과를 유지하는 방법
+
 package com.eomcs.net.ex04.stateless2;
 
 import java.io.DataInputStream;
@@ -11,7 +12,7 @@ import java.util.Map;
 public class CalcServer {
 
   // 각 클라이언트의 작업 결과를 보관할 맵 객체
-  // => Map<clientID, result>
+  //  => Map<clientID, result>
   static Map<Long, Integer> resultMap = new HashMap<>();
 
   public static void main(String[] args) throws Exception {
@@ -38,8 +39,8 @@ public class CalcServer {
         DataOutputStream out = new DataOutputStream(socket.getOutputStream());) {
 
       // 클라이언트를 구분하기 위한 아이디
-      // => 0: 아직 클라이언트 아이디가 없다는 의미
-      // => x: 서버가 클라이언트에게 아이디를 부여했다는 의미
+      //  => 0: 아직 클라이언트 아이디가 없다는 의미
+      //  => x: 서버가 클라이언트에게 아이디를 부여했다는 의미
       long clientId = in.readLong();
 
       // 연산자와 값을 입력 받는다.
@@ -74,10 +75,10 @@ public class CalcServer {
           break;
       }
       // 클라이언트로 응답할 때 항상 클라이언트 아이디와 결과를 출력한다.
-      // => 클라이언트 아이디 출력
+      //  => 클라이언트 아이디 출력
       out.writeLong(clientId);
 
-      // => 계산 결과 출력
+      //  => 계산 결과 출력
       out.writeInt(result);
 
       out.flush();

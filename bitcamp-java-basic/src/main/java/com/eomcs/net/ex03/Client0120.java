@@ -1,4 +1,5 @@
 // 서버와 입출력 테스트 - byte stream : 바이트 배열 보내고 받기
+
 package com.eomcs.net.ex03;
 
 import java.io.InputStream;
@@ -21,7 +22,7 @@ public class Client0120 {
       keyScan.nextLine();
 
       // 서버에 보낼 바이트 배열을 준비한다.
-      // => 0 ~ 99 의 값을 가진 배열이다.
+      //  => 0 ~ 99 의 값을 가진 배열이다.
       byte[] bytes = new byte[100];
       for (int i = 0; i < 100; i++) {
         bytes[i] = (byte) i;

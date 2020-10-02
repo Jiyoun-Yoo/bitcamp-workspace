@@ -1,4 +1,5 @@
 // stateless 방식에서 클라이언트를 구분하고 작업 결과를 유지하는 방법
+
 package com.eomcs.net.ex04.stateless2;
 
 import java.io.DataInputStream;
@@ -11,7 +12,7 @@ public class CalcClient {
     Scanner keyScan = new Scanner(System.in);
 
     // 서버에서 이 클라이언트를 구분할 때 사용하는 번호이다.
-    // => 0 번으로 서버에 요청하면, 서버가 신규 번호를 발급해 줄 것이다.
+    //  => 0 번으로 서버에 요청하면, 서버가 신규 번호를 발급해 줄 것이다.
     long clientId = 0;
 
     while (true) {
@@ -25,18 +26,19 @@ public class CalcClient {
           DataOutputStream out = new DataOutputStream(socket.getOutputStream());
           DataInputStream in = new DataInputStream(socket.getInputStream())) {
 
-        // => 서버에 클라이언트 아이디를 보낸다.
+        //  => 서버에 클라이언트 아이디를 보낸다.
         out.writeLong(clientId);
 
-        // => 서버에 연산자와 값을 보낸다.
+        //  => 서버에 연산자와 값을 보낸다.
         out.writeUTF(op);
         out.writeInt(value);
+        // DataOutputStream은 byte stream이기 때문에 값을 바로바로 보낸다.
         out.flush();
 
-        // => 서버에서 보낸 클라이언트 아이디를 읽는다.
+        //  => 서버에서 보낸 클라이언트 아이디를 읽는다.
         clientId = in.readLong();
 
-        // => 서버에서 보낸 결과를 읽는다.
+        //  => 서버에서 보낸 결과를 읽는다.
         int result = in.readInt();
         System.out.printf("계산 결과: %d\n", result);
 

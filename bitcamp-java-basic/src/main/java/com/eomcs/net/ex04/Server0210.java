@@ -1,4 +1,5 @@
 // 통신 방식 - Stateless
+
 package com.eomcs.net.ex04;
 
 import java.io.BufferedReader;
@@ -6,12 +7,10 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Scanner;
 
 public class Server0210 {
   public static void main(String[] args) {
-    try (Scanner keyboard = new Scanner(System.in);
-        ServerSocket serverSocket = new ServerSocket(8888)) {
+    try (ServerSocket serverSocket = new ServerSocket(8888)) {
 
       System.out.println("서버 실행!");
 
@@ -33,6 +32,7 @@ public class Server0210 {
           System.out.println("클라이언트와 통신 중 오류 발생!");
         }
         System.out.println("클라이언트와의 연결을 끊었음.");
+        // try문을 벗어나면 클라이언트와의 연결이 자동으로 끊어진다.
       }
     } catch (Exception e) {
       e.printStackTrace();

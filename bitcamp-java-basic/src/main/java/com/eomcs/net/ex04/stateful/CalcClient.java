@@ -1,4 +1,5 @@
 // stateful 방식 - 계산기 클라이언트 만들기
+
 package com.eomcs.net.ex04.stateful;
 
 import java.io.DataOutputStream;
@@ -26,7 +27,7 @@ public class CalcClient {
       String str = in.nextLine();
       System.out.println(str);
 
-      if (str.equals("quit"))
+      if (str.equals("Goodbye!"))
         break;
     }
 
