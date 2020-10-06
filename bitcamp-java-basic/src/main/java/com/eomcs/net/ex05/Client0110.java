@@ -1,4 +1,5 @@
 // connection-oriented 클라이언트 - 연결 후 데이터 송수신
+
 package com.eomcs.net.ex05;
 
 import java.io.PrintStream;
@@ -15,6 +16,7 @@ public class Client0110 {
 
     out.println("Hello!");
     System.out.println("데이터 보냄!");
+    // 서버가 데이터를 읽을 때까지 기다리지 않는다.
 
     String str = in.nextLine();
     System.out.println("데이터 받음!");

@@ -1,5 +1,3 @@
-// 데이터 출력 - int 값 출력
-
 package com.eomcs.io.ex04;
 
 import java.io.FileOutputStream;

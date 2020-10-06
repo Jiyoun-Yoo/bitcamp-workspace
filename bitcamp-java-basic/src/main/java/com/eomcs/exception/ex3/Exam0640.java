@@ -12,7 +12,7 @@ public class Exam0640 {
     }
   }
 
-  static class  C implements AutoCloseable {
+  static class C implements AutoCloseable {
     @Override
     public void close() throws Exception {
       System.out.println("C 클래스의 자원을 해제하였습니다.");

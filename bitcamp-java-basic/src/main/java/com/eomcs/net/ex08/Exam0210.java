@@ -1,4 +1,5 @@
 // URL 요청하기 - URLConnection 사용
+
 package com.eomcs.net.ex08;
 
 import java.io.BufferedReader;
@@ -15,10 +16,21 @@ public class Exam0210 {
     URL url = new URL("https://www.daum.net");
 
     // => URL 정보를 가지고 HTTP 요청을 수행할 객체를 얻는다.
-    URLConnection con = url.openConnection();
+    URLConnection con = url.openConnection(); // 아직 서버에 요청하지 않은 상태
 
     // => 웹서버와 연결한 후 HTTP 요청한다.
     con.connect();
+
+    // URL.openStream()을 사용하는 것보다 이점?
+    //  - 응답 헤더의 다양한 값을 추출할 수 있다.
+    System.out.printf("Content-Type: %s\n", con.getContentType());
+    System.out.printf("Content-Length: %s\n", con.getContentLength());
+    System.out.printf("Content-Encoding: %s\n", con.getContentEncoding());
+
+    //  - 직접 헤더 이름을 사용해서 헤더 값을 추출할 수 있다.
+    System.out.printf("Content-Type: %s\n", con.getHeaderField("Content-Type"));
+    System.out.printf("Server: %s\n", con.getHeaderField("Server"));
+    System.out.println();
 
     // => 웹서버의 응답 데이터를 읽어들일 도구를 리턴한다.
     InputStream in = con.getInputStream();

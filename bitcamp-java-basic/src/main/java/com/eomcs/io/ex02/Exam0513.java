@@ -14,7 +14,7 @@ public class Exam0513 {
 
     //  => UTF-16LE로 인코딩 하기
     System.out.printf("file.encoding=%s\n", System.getProperty("file.encoding"));
-    byte[] bytes = str.getBytes("UTF-16LE"); // UCS2  ==>  UTF-16LE // 41 00 42 00 00 AC 01 AC                            A.B..,.,
+    byte[] bytes = str.getBytes("UTF-16LE"); // UCS2  ==>  UTF-16LE // 41 00 42 00 00 AC 01 AC
 
     for(byte b : bytes) {
       System.out.printf("%x ", b);

@@ -1,4 +1,5 @@
 // HTTP 서버 만들기
+
 package com.eomcs.net.ex06;
 
 import java.io.PrintStream;
@@ -27,13 +28,13 @@ public class HttpServer {
       while (true) {
         String str = in.nextLine();
         System.out.println(str);
-        if (str.equals(""))
+        if (str.equals("")) // 클라이언트에서 빈줄을 보내면 더이상 보낼 데이터가 없다는 의미!
           break;
       }
 
       // HTTP 응답 프로토콜에 따라 클라이언트에게 데이터를 보낸다.
-      // => macOS에서 JVM을 실행할 때, println()은 문자열 뒤에 0a(LF) 코드만 붙인다.
-      // => 이를 해결하려면, 다음과 같이 명확하게 CRLF 코드를 붙여라.
+      //  => macOS에서 JVM을 실행할 때, println()은 문자열 뒤에 0a(LF) 코드만 붙인다.
+      //  => 이를 해결하려면, 다음과 같이 명확하게 CRLF 코드를 붙여라.
       //
       out.print("HTTP/1.1 200 OK\r\n");
       out.print("Content-Type: text/html; charset=UTF-8\r\n");
