@@ -1,4 +1,5 @@
 // stateless 에서 다중 클라이언트 요청 처리하기
+
 package com.eomcs.net.ex04.stateless3;
 
 import java.io.DataInputStream;
@@ -11,7 +12,7 @@ public class CalcClient {
     Scanner keyScan = new Scanner(System.in);
 
     // 서버에서 이 클라이언트를 구분할 때 사용하는 번호이다.
-    // => 0 번으로 서버에 요청하면, 서버가 신규 번호를 발급해 줄 것이다.
+    //  => 0 번으로 서버에 요청하면, 서버가 신규 번호를 발급해 줄 것이다.
     long clientId = 0;
 
     while (true) {

@@ -10,7 +10,7 @@ import java.net.Socket;
 
 public class CalcServer {
 
-  // 클라이언트와 통신하는 부분을 별도의 분리하여
+  // 클라이언트와 통신하는 부분을 별도의 코드로 분리하여
   // 독립적으로 실행하게 한다.
   static class RequestHandler extends Thread {
 
@@ -49,7 +49,7 @@ public class CalcServer {
       // 대기하고 있는 다른 클라이언트의 요청을 처리할 수 없다.
       // 이것이 스레드를 사용하기 전의 문제점이다.
       // 해결책?
-      // 클라이언트와 대화하는 부분을 스레드로 분리하여 실행하라!
+      //  - 클라이언트와 대화하는 부분을 스레드로 분리하여 실행하라!
       RequestHandler requestHandler = new RequestHandler(socket);
       requestHandler.start();
       // 스레드를 실행하려면 start() 를 호출하라.

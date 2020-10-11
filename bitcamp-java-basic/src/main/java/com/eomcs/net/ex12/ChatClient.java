@@ -34,8 +34,8 @@ public class ChatClient extends Frame implements ActionListener {
     this.setSize(600, 480);
 
     // 윈도우 관련 이벤트를 처리할 담당자를 설정한다.
-    // => 옵저버 패턴
-    // => 윈도우 이벤트가 발생했을 때 보고를 받을 객체를 등록한다.
+    //  => 옵저버 패턴
+    //  => 윈도우 이벤트가 발생했을 때 보고를 받을 객체를 등록한다.
     this.addWindowListener(new WindowAdapter() {
       @Override
       public void windowClosing(WindowEvent e) {

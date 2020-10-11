@@ -63,7 +63,7 @@ public class Server0110 {
         // out.flush();
         // byte stream 을 사용할 때는 바로 출력한다.
         // 따라서 flush()를 호출하지 않아도 된다.
-        System.out.println("클라인트에게 데이터를 보냈음.");
+        System.out.println("클라이언트에게 데이터를 보냈음.");
 
       } catch (Exception e) {
         e.printStackTrace();
@@ -76,6 +76,7 @@ public class Server0110 {
       }
     } catch (Exception e) {
       e.printStackTrace();
+
     } finally {
       try { keyboard.close(); } catch (Exception e) {}
       try { serverSocket.close();} catch (Exception e) {}

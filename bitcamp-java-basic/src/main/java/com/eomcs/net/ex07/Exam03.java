@@ -19,7 +19,6 @@ public class Exam03 {
     System.out.printf("참조경로(내부위치): %s\n", url.getRef());
     // 자원 경로 다음에 문서의 내부 위치를 지정하면
     // 웹브라우저는 해당 위치로 자동 스크롤 한다.
-
   }
 
 }

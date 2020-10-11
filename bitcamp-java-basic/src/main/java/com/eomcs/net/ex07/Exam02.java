@@ -21,7 +21,6 @@ public class Exam02 {
 
     System.out.printf("자원경로: %s\n", url.getPath());
     System.out.printf("QueryString: %s\n", url.getQuery()); // 없으면 null 리턴
-
   }
 
 }

@@ -22,9 +22,7 @@ public class Exam04 {
     //  - 자원의 경로(예: /index.php) 다음(물음표 ? 다음)에 오는 파라미터
     //  - 형식: 파라미터명=값&파라미터명=값&파라미터명=값
     //  - 예) sm=top_hty&fbm=1&ie=utf8&query=비트캠프
-
   }
 
 }
-
 

@@ -9,9 +9,9 @@ import java.util.Scanner;
 
 public class Client0120 {
   public static void main(String[] args) {
-    Scanner keyScan = new Scanner(System.in);
 
-    try (Socket socket = new Socket("localhost", 8888);
+    try (Scanner keyScan = new Scanner(System.in);
+        Socket socket = new Socket("localhost", 8888);
         OutputStream out = socket.getOutputStream();
         InputStream in = socket.getInputStream()) {
 
@@ -51,7 +51,6 @@ public class Client0120 {
       e.printStackTrace();
     }
 
-    keyScan.close();
   }
 }
 

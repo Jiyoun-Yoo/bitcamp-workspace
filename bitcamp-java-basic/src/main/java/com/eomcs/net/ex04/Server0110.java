@@ -32,6 +32,7 @@ public class Server0110 {
           out.printf("%s 님 반갑습니다!\n", name);
           out.flush();
         }
+
       }
       System.out.println("클라이언트와의 연결을 끊었음.");
 

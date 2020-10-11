@@ -9,7 +9,6 @@ public class Server0210 {
   public static void main(String[] args) throws Exception {
     // 중간에 실행을 잠깐 멈출 때 사용하기 위함.
     Scanner keyboard = new Scanner(System.in);
-
     System.out.println("서버 실행");
 
     // 대기열?

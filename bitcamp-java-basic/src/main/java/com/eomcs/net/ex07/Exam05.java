@@ -19,9 +19,7 @@ public class Exam05 {
     System.out.printf("서버주소: %s\n", url.getHost());
     System.out.printf("포트번호: %d\n", url.getPort());
     System.out.printf("자원경로: %s\n", url.getPath());
-
   }
 
 }
-
 
