@@ -1,9 +1,10 @@
 package com.eomcs.pms.domain;
 
 import java.sql.Date;
-import com.eomcs.util.CsvObject;
 
-public class Project implements CsvObject {
+//Project 클래스는 더이상 CsvObject를 구현할 필요가 없다.
+//
+public class Project {
   private int no;
   private String title;
   private String content;
@@ -54,30 +55,4 @@ public class Project implements CsvObject {
   public void setMembers(String members) {
     this.members = members;
   }
-
-  @Override
-  public String toCsvString() {
-    return String.format("%d,%s,%s,%s,%s,%s,%s\n",
-        this.getNo(),
-        this.getTitle(),
-        this.getStartDate(),
-        this.getEndDate(),
-        this.getOwner(),
-        this.getMembers());
-  }
-
-  public Project() {}
-
-  public Project(String csv) {
-    String[] fields = csv.split(",");
-
-    this.setNo(Integer.parseInt(fields[0]));
-    this.setTitle(fields[1]);
-    this.setContent(fields[2]);
-    this.setStartDate(Date.valueOf(fields[3]));
-    this.setEndDate(Date.valueOf(fields[4]));
-    this.setOwner(fields[5]);
-    this.setMembers(fields[6]);
-  }
-
 }

@@ -1,9 +1,10 @@
 package com.eomcs.pms.domain;
 
 import java.sql.Date;
-import com.eomcs.util.CsvObject;
 
-public class Member implements CsvObject {
+//Member 클래스는 더이상 CsvObject를 구현할 필요가 없다.
+//
+public class Member {
   private int no;
   private String name;
   private String email;
@@ -54,31 +55,4 @@ public class Member implements CsvObject {
   public void setRegisteredDate(Date registeredDate) {
     this.registeredDate = registeredDate;
   }
-
-  @Override
-  public String toCsvString() {
-    return String.format("%d,%s,%s,%s,%s,%s,%s\n",
-        this.getNo(),
-        this.getName(),
-        this.getEmail(),
-        this.getPassword(),
-        this.getPhoto(),
-        this.getTel(),
-        this.getRegisteredDate());
-  }
-
-  public Member() {}
-
-  public Member(String csv) {
-    String[] fields = csv.split(",");
-
-    this.setNo(Integer.parseInt(fields[0]));
-    this.setName(fields[1]);
-    this.setEmail(fields[2]);
-    this.setPassword(fields[3]);
-    this.setPhoto(fields[4]);
-    this.setTel(fields[5]);
-    this.setRegisteredDate(Date.valueOf(fields[6]));
-  }
-
 }

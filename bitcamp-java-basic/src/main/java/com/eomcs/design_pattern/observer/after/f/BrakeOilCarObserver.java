@@ -1,6 +1,6 @@
-package com.eomcs.design_pattern.observer.after.d;
+package com.eomcs.design_pattern.observer.after.f;
 
-public class BreakOilCarObserver implements CarObserver {
+public class BrakeOilCarObserver implements CarObserver {
 
   @Override
   public void carStarted() {

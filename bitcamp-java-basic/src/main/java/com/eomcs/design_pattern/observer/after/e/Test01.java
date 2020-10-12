@@ -7,7 +7,7 @@ public class Test01 {
 
     car.addCarObserver(new SafeBeltCarObserver());
     car.addCarObserver(new EngineOilCarObserver());
-    car.addCarObserver(new BreakOilCarObserver());
+    car.addCarObserver(new BrakeOilCarObserver());
 
     // 전조등을 끄는 옵저버를 추가한다.
     // - 기존 구조에서는 Car 클래스에 코드를 추가하였다!!!
@@ -22,8 +22,8 @@ public class Test01 {
 
     // 업그레이드를 수행한 다음 시간이 지난 후
     // 4) 시동 끌 때 자동차 전조등을 자동으로 끄는 기능을 추가한다.
-    // => 전조등을 자동으로 끄는 옵저버(LightOffCarObserver)를 정의한다.
-    // => Car 객체에 등록한다.
+    //  => 전조등을 자동으로 끄는 옵저버(LightOffCarObserver)를 정의한다.
+    //  => Car 객체에 등록한다.
     //
   }
 

@@ -21,8 +21,7 @@ public class Car {
   public void start() {
     System.out.println("시동을 건다.");
 
-    // 자동차의 시동을 걸면,
-    // 등록된 관찰자들에게 알린다.
+    // 자동차의 시동을 걸면, 등록된 관찰자들에게 알린다.
     for (CarObserver observer : observers) {
       observer.carStarted();
     }
@@ -35,8 +34,7 @@ public class Car {
   public void stop() {
     System.out.println("시동을 끈다.");
 
-    // 자동차의 시동을 끄면,
-    // 등록된 관찰자들에게 보고한다.
+    // 자동차의 시동을 끄면,등록된 관찰자들에게 보고한다.
     for (CarObserver observer : observers) {
       observer.carStopped();
     }
