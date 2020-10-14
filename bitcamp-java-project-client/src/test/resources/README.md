@@ -1,0 +1,1 @@
+src/test/resorces 폴더

@@ -10,7 +10,7 @@ public class BrakeOilCarObserver extends AbstractCarObserver {
   }
 
   // 어? carStopped() 구현하지 않았네요?
-  // - 수퍼 클래스에서 구현했습니다.
-  // - 물론 빈 코드를 가진 메서드이죠!
+  //  - 수퍼 클래스에서 구현했습니다.
+  //  - 물론 빈 코드를 가진 메서드이죠!
   //
 }
