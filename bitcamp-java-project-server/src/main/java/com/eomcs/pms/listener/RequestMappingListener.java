@@ -69,6 +69,8 @@ public class RequestMappingListener implements ApplicationContextListener {
   }
 
   @Override
-  public void contextDestroyed(Map<String, Object> context) {}
+  public void contextDestroyed(Map<String, Object> context) {
+
+  }
 
 }
