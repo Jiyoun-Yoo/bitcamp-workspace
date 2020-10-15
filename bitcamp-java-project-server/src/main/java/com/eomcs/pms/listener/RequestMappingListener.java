@@ -12,6 +12,7 @@ import com.eomcs.pms.handler.BoardDeleteCommand;
 import com.eomcs.pms.handler.BoardDetailCommand;
 import com.eomcs.pms.handler.BoardListCommand;
 import com.eomcs.pms.handler.BoardUpdateCommand;
+import com.eomcs.pms.handler.CalculatorCommand;
 import com.eomcs.pms.handler.HelloCommand;
 import com.eomcs.pms.handler.MemberAddCommand;
 import com.eomcs.pms.handler.MemberDeleteCommand;
@@ -66,6 +67,8 @@ public class RequestMappingListener implements ApplicationContextListener {
     context.put("/task/delete", new TaskDeleteCommand(taskList));
 
     context.put("/hello", new HelloCommand());
+
+    context.put("/calc", new CalculatorCommand());
   }
 
   @Override
