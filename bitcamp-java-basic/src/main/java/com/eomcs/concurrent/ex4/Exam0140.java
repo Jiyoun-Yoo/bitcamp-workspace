@@ -21,7 +21,7 @@ public class Exam0140 {
     MyThread t3 = new MyThread("우헤헤 ##");
 
     // 스레드를 시작시키는 순간 running 상태로 접어든다.
-    // running 상태는 실행하고 있는 상태 뿐만 아니라,
+    // running 상태는 실행하고 있는 상태일뿐만 아니라,
     // CPU를 받을 수 있는 상태이기도 하다.
     //  => CPU는 OS의 관리 정책(CPU Scheduling)에 따라 스레드나 프로세스에 배분된다.
     //     물론 OS가 CPU를 배분한 후 임의시간 후에

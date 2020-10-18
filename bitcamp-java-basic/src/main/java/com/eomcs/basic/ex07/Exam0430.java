@@ -39,3 +39,4 @@ public class Exam0430 {
 //  => JVM Stack : main() 관련 메모리 제거
 // 5) JVM 종료
 //  => JVM이 사용한 모든 메모리(Method Area, JVM Stack, Heap 등)를 반납
+
