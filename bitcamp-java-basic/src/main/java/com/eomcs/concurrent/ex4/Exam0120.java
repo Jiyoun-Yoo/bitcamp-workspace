@@ -24,5 +24,4 @@ public class Exam0120 {
     //  => 즉 종료된 스레드는 다시 running 할 수 없다.
     // t.start();
   }
-
 }
