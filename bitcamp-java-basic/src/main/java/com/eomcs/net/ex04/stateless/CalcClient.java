@@ -20,6 +20,9 @@ public class CalcClient {
       System.out.print("값2? ");
       int b = Integer.parseInt(keyScan.nextLine());
 
+      // 값을 입력받는 동안 굳이 서버와 연결할 필요가 없다.
+      // 서버에게 계산을 요청할 때 연결한다.
+
       try (Socket socket = new Socket("localhost", 8888);
           Scanner in = new Scanner(socket.getInputStream());
           DataOutputStream out = new DataOutputStream(socket.getOutputStream())) {
@@ -35,7 +38,7 @@ public class CalcClient {
         System.out.println("서버와 통신 중 오류 발생!");
       }
 
-      System.out.print("계속하시겠습니까?(Y/n)");
+      System.out.print("계속하시겠습니까?(Y/n) ");
       if (keyScan.nextLine().equalsIgnoreCase("n")) {
         break;
       }

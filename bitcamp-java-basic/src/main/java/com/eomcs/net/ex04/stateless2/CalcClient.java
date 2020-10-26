@@ -46,8 +46,9 @@ public class CalcClient {
         System.out.println("서버와 통신 중 오류 발생!");
       }
 
-      System.out.print("계속하시겠습니까?(Y/n)");
+      System.out.print("계속하시겠습니까?(Y/n) ");
       if (keyScan.nextLine().equalsIgnoreCase("n")) {
+        // Y를 입력하면 반복문의 처음으로 돌아간다.
         break;
       }
     }
