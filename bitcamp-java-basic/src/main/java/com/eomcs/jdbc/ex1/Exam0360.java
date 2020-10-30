@@ -1,0 +1,25 @@
+// JDBC 프로그래밍 - DBMS에 SQL문 보내기 : delet
+
+package com.eomcs.jdbc.ex1;
+
+import java.sql.DriverManager;
+
+public class Exam0360 {
+  public static void main(String[] args) {
+
+    try (java.sql.Connection con = DriverManager.getConnection(
+        "jdbc:mariadb://localhost:3306/studydb?user=study&password=1111");
+        java.sql.Statement stmt = con.createStatement();) {
+
+      // executeUpdate()
+      //  => DBMS 서버에 delete 문을 보낸다.
+      //  => 리턴 값: 삭제된 레코드의 개수이다.
+      int count = stmt.executeUpdate(
+          "delete from x_board where board_id = 1");
+      System.out.printf("%d개 삭제 성공!", count);
+
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+}

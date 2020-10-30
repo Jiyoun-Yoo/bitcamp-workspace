@@ -7,13 +7,8 @@
  */
 
 plugins {
-    // Apply the java plugin to add support for Java
     id 'java'
-
-    // Apply the application plugin to add support for building a CLI application.
     id 'application'
-
-    // eclipse ide 설정 파일을 생성할 때 사용할 도구(플러그인) 추가
     id 'eclipse'
 }
 
@@ -22,12 +17,16 @@ repositories {
 }
 
 dependencies {
+    // Oracle JDBC Driver
+    implementation 'com.oracle.database.jdbc:ojdbc10-production:19.8.0.0'
+    // MSSQL JDBC Driver
+    implementation 'com.microsoft.sqlserver:mssql-jdbc:8.4.1.jre11'
+    // MaridDB JDBC Driver
     implementation 'org.mariadb.jdbc:mariadb-java-client:2.7.0'
     implementation 'com.google.guava:guava:29.0-jre'
     testImplementation 'junit:junit:4.13'
 }
 
 application {
-    // Define the main class for the application.
     mainClassName = 'com.eomcs.App'
 }
