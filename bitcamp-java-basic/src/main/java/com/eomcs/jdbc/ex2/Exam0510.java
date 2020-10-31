@@ -24,7 +24,6 @@ public class Exam0510 {
       System.out.print("내용? ");
       contents = keyScan.nextLine();
 
-      // 사용자로부터 첨부파일 입력받기
       while(true) {
         System.out.print("첨부파일:(완료는 그냥 엔터!) ");
         String filename = keyScan.nextLine();
@@ -86,12 +85,12 @@ public class Exam0510 {
       //  - 여러 개의 작업을 한 단위로 묶은 것을
       //    "트랜잭션(transaction)"이라 부른다.
 
-      // 즉 "트랜잭션"을 다룰 때 auto commit을 수동 상태로 만든다.
+      // "트랜잭션"을 다룰 때 auto commit을 수동 상태로 만든다.
       //  => 여러 개의 작업을 한 단위로 다룰 때 auto commit을 수동 상태로 만든다.
 
       // 위에서 입력한 게시글의 PK 값을 알아내기
       ResultSet keyRS = boardStmt.getGeneratedKeys();
-      keyRS.next();
+      keyRS.next(); // PK가 들어있는 레코드를 한 개 가져온다.
       int boardId = keyRS.getInt(1); // 레코드에서 컬럼 값을 꺼낸다.
 
       // 첨부파일 입력
@@ -110,4 +109,3 @@ public class Exam0510 {
   }
 }
 
-// 주석확인

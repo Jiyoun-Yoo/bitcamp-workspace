@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.util.Scanner;
 
 public class Exam0310 {
-  public static void main(String[] args) throws Exception {
+  public static void main(String[] args) {
     String title = null;
     String contents = null;
 
@@ -44,6 +44,8 @@ public class Exam0310 {
       // 실행할 때는 SQL문을 파라미터로 넘길 필요가 없다.
       int count = stmt.executeUpdate();
       System.out.printf("%d 개 입력 성공!", count);
+    } catch (Exception e) {
+      e.printStackTrace();
     }
   }
 }

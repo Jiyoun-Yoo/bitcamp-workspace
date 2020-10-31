@@ -21,7 +21,7 @@ public class BoardAddCommand implements Command {
     try (Connection con = DriverManager.getConnection(
         "jdbc:mysql://localhost:3306/studydb?user=study&password=1111");
         PreparedStatement stmt = con.prepareStatement(
-            "insert into pms_board(title,content,writer) values(?,?)")) {
+            "insert into pms_board(title,content,writer) values(?,?,?)")) {
 
       stmt.setString(1, board.getTitle());
       stmt.setString(2, board.getContent());
