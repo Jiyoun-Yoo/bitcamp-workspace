@@ -12,7 +12,7 @@ public class Exam0310 {
 
         // java.sql.Statement 구현 객체를 얻는다.
         //  - SQL문을 DBMS의 형식에 따라 인코딩하여 서버에 전달하는 일을 하는 객체
-        java.sql.Statement stmt = con.createStatement();) {
+        java.sql.Statement stmt = con.createStatement()) {
 
       // MariaDB의 Statement 구현체가 리턴한 Statement 구현체의 클래스 이름은?
       System.out.println(stmt.getClass().getName());
@@ -28,9 +28,9 @@ public class Exam0310 {
       //
       // 용어정리
       //  "DML(Data Manipulation Language)"
-      //   => insert, update, delete 처럼 데이터를 조작하는 sql 명령을 말한다.
+      //    => insert, update, delete 처럼 데이터를 조작하는 sql 명령을 말한다.
       //  "DQL(Data Query Language)"
-      //   => select처럼 data를 조회하는 sql 명령을 말한다.
+      //    => select처럼 data를 조회하는 sql 명령을 말한다.
 
       int count = stmt.executeUpdate(
           "insert into x_board(title, contents) values('제목10', '내용')");
