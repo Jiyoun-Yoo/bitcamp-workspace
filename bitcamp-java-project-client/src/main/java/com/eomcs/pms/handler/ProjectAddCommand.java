@@ -2,6 +2,7 @@ package com.eomcs.pms.handler;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import com.eomcs.pms.dao.MemberDao;
 import com.eomcs.pms.dao.ProjectDao;
 import com.eomcs.pms.domain.Member;
@@ -13,15 +14,13 @@ public class ProjectAddCommand implements Command {
   ProjectDao projectDao;
   MemberDao memberDao;
 
-  MemberListCommand memberListCommand;
-
   public ProjectAddCommand(ProjectDao projectDao, MemberDao memberDao) {
     this.projectDao = projectDao;
     this.memberDao = memberDao;
   }
 
   @Override
-  public void execute() {
+  public void execute(Map<String,Object> context) {
     System.out.println("[프로젝트 등록]");
 
     try {

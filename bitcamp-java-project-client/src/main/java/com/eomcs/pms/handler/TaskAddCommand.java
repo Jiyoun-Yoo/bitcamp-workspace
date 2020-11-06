@@ -2,6 +2,7 @@ package com.eomcs.pms.handler;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import com.eomcs.pms.dao.MemberDao;
 import com.eomcs.pms.dao.ProjectDao;
 import com.eomcs.pms.dao.TaskDao;
@@ -21,9 +22,8 @@ public class TaskAddCommand implements Command {
     this.projectDao = projectDao;
     this.memberDao = memberDao;
   }
-
   @Override
-  public void execute() {
+  public void execute(Map<String,Object> context) {
     System.out.println("[작업 등록]");
 
     // 작업 정보를 입력 받을 객체 준비
