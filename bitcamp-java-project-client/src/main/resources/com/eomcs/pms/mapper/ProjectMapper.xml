@@ -6,89 +6,92 @@
 
 <mapper namespace="ProjectDao">
 
-
-  <resultMap type="com.eomcs.pms.domain.Board" id="boardMap">
-
-    <id column="no"           property="no"/>
+  <resultMap type="com.eomcs.pms.domain.Project" id="ProjectMap">
+    <id column="no"       property="no"/>
     <result column="title"    property="title"/>
     <result column="content"  property="content"/>
-    <result column="cdt"      property="registeredDate"/>
+    <result column="sdt"      property="startDate"/>
+    <result column="edt"      property="endDate"/>
     <result column="vw_cnt"   property="viewCount"/>
     
-    <!--
-      Member m = new Member();
-      m.setNo(rs.getInt("no"));
-      m.setName(rs.getString("name"));
-      b.setWriter(m); 
-    -->
-    <association property="writer" javaType="com.eomcs.pms.domain.Member">
-      <id column="writer_no" property="no"/>
-      <result column="name"  property="name"/>
+    <association property="owner" javaType="com.eomcs.pms.domain.Member">
+      <id column="owner_no"   property="no"/>
+      <result column="owner_name" property="name"/>
     </association>
+    
+    <collection property="members" ofType="com.eomcs.pms.domain.Member">
+      <id column="member_no"       property="no"/>
+      <result column="member_name" property="name"/>
+    </collection>
+    
   </resultMap>
 
-  <!-- select 태그
-     - select SQL 문을 정의하는 태그다.
-     - id 속성 
-       - mybatis에서 SQL을 찾을 때 사용할 이름이다.
-       - 보통 이 SQL을 사용하는 메서드 이름으로 설정한다.
-       - 이렇게 하면 다른 개발자가 이해하기 쉬울 것이다.
-     - resultType 속성 : select 결과물에서 한 개의 레코드 값을 담을 도메인 클래스 객체 이름이다. 
-     - select의 결과가 여러 개라면, ,해당 도메인 객체도 여러 개가 생성될 것이다.
-     - 이렇게 여러 개 생성된 모에닉 객체는 List 컬렉션 객체에 저장된다.
-     - 그리고 List 컬렉션 객체가 최종적으로 리턴된다.
-    -->
-  <select id="findAll" resultMap="boardMap">
+  <select id="findAll" resultMap="ProjectMap">
     select 
-      b.no, 
-      b.title, 
-      b.cdt, 
-      b.vw_cnt, 
-      m.no writer_no, 
-      m.name
+      p.no, 
+      p.title, 
+      p.sdt, 
+      p.edt, 
+      m.no owner_no, 
+      m.name owner_name,
+      mp.member_no,
+      m2.name member_name
     from 
-      pms_board b 
-      inner join pms_member m on b.writer=m.no
-    order by
-      no desc
+      pms_project p 
+      inner join pms_member m on p.owner=m.no
+      left outer join pms_member_project mp on p.no=mp.project_no
+      left outer join pms_member m2 on mp.member_no=m2.no
+    order by p.no desc
   </select>
   
-  <insert id="insert" parameterType="com.eomcs.pms.domain.Board">
-    insert into pms_board(title,content,writer) 
-    values(#{title}, #{content}, #{writer.no})
+  <insert id="insert" parameterType="com.eomcs.pms.domain.Project"
+          useGeneratedKeys="true" keyColumn="no" keyProperty="no">
+    insert into pms_project(title,content,sdt,edt,owner)
+    values(#{title},#{content},#{startDate},#{endDate},#{owner.no})
   </insert>
   
-  <select id="findByNo" 
-    parameterType="java.lang.Integer"
-    resultMap="boardMap">
-    select
-      b.no,
-      b.title,
-      b.content,
-      b.cdt,
-      b.vw_cnt,
-      m.no writer_no,
-      m.name
-    from
-      pms_board b inner join pms_member m on b.writer=m.no
-    where b.no = #{no}
+  <insert id="insertMember" parameterType="java.util.Map">
+    insert into pms_member_project(member_no, project_no) 
+    values(#{memberNo},#{projectNo})
+  </insert>
+  
+  <delete id="deleteMembers" parameterType="java.lang.Integer">
+    delete from pms_member_project 
+    where project_no=#{no}
+  </delete>
+  
+  <select id="findByNo" resultMap="ProjectMap" parameterType="java.lang.Integer">
+    select 
+      p.no, 
+      p.title,
+      p.content, 
+      p.sdt, 
+      p.edt, 
+      m.no owner_no, 
+      m.name owner_name,
+      mp.member_no,
+      m2.name member_name
+    from 
+      pms_project p 
+      inner join pms_member m on p.owner=m.no
+      left outer join pms_member_project mp on p.no=mp.project_no
+      left outer join pms_member m2 on mp.member_no=m2.no
+    where 
+      p.no = #{no}
   </select>
   
-  <update id="updateViewCount" parameterType="java.lang.Integer">
-    update pms_board set
-      vw_cnt = vw_cnt + 1
-    where no = #{no}
-  </update>
-  
-  <update id="update" parameterType="com.eomcs.pms.domain.Board">
-    update pms_board set
-      title = #{title}, 
-      content = #{content}
+  <update id="update" parameterType="com.eomcs.pms.domain.Project">
+    update pms_project set
+      title = #{title},
+      content = #{content},
+      sdt = #{startDate},
+      edt = #{endDate},
+      owner = #{owner.no}
     where no = #{no}
   </update>
   
   <delete id="delete" parameterType="java.lang.Integer">
-    delete from pms_board
+    delete from pms_project
     where no=#{no}
   </delete>
   

@@ -19,7 +19,7 @@
        - id 속성 : 컬럼-프로퍼티의 연결 정보를 가리킬 이름,
                    SQL문을 정의할 때 사용
   -->
-  <resultMap type="com.eomcs.pms.domain.Board" id="boardMap">
+  <resultMap type="com.eomcs.pms.domain.Board" id="BoardMap">
     <!-- 자바 코드
          Board b =  new Board();
          b.setNo(rs.getInt("no));
@@ -56,7 +56,7 @@
      - 이렇게 여러 개 생성된 모에닉 객체는 List 컬렉션 객체에 저장된다.
      - 그리고 List 컬렉션 객체가 최종적으로 리턴된다.
     -->
-  <select id="findAll" resultMap="boardMap">
+  <select id="findAll" resultMap="BoardMap">
     select 
       b.no, 
       b.title, 
@@ -78,7 +78,7 @@
   
   <select id="findByNo" 
     parameterType="java.lang.Integer"
-    resultMap="boardMap">
+    resultMap="BoardMap">
     select
       b.no,
       b.title,
