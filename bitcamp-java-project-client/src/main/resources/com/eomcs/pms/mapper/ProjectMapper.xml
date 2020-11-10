@@ -4,29 +4,11 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 
-<!-- SQL문 목록
-  - namespace속성
-    - SQL 문을 가리킬 때 사용할 그룹명이다.
-    - 보통 SQL을 사용하는 객체 이름으로 설정한다.
-    - 즉 DAO 인터페이스 또는 클래스명으로 설정한다.
-    - 그래야만 유지보수할 때 DAO와 연결된 SQL을 바로 찾을 수 있다. 
--->
-<mapper namespace="BoardDao">
+<mapper namespace="ProjectDao">
 
-  <!-- 컬럼의 값을 어떤 자바 객체에 담을 것인지
-       다음과 같이 따로 정의할 수 있다.
-       - type 속성 : 자바 클래스명
-       - id 속성 : 컬럼-프로퍼티의 연결 정보를 가리킬 이름,
-                   SQL문을 정의할 때 사용
-  -->
+
   <resultMap type="com.eomcs.pms.domain.Board" id="boardMap">
-    <!-- 자바 코드
-         Board b =  new Board();
-         b.setNo(rs.getInt("no));
-         b.setTitle(rs.getString("title"));
-         b.setRegisteredDate(rs.getDate("cdt"));
-         b.setViewCount(rs.getInt("vm_cnt")); 
-    -->
+
     <id column="no"           property="no"/>
     <result column="title"    property="title"/>
     <result column="content"  property="content"/>
