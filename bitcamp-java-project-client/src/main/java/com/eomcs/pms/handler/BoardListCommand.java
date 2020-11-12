@@ -20,7 +20,7 @@ public class BoardListCommand implements Command {
     try {
       System.out.println("번호, 제목, 작성자, 등록일, 조회수");
 
-      List<Board> list = boardDao.findAll();
+      List<Board> list = boardDao.findAll(null);
 
       for(Board board : list) {
         System.out.printf("%d, %s, %s, %s, %d\n",
