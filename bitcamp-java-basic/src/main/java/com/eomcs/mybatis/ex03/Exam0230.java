@@ -1,4 +1,5 @@
 // dynamic sql 다루기 - <set> 사용법
+
 package com.eomcs.mybatis.ex03;
 
 import java.io.InputStream;
@@ -20,9 +21,9 @@ public class Exam0230 {
     SqlSession sqlSession = factory.openSession();
 
     // 실행 예:
-    // => 게시글 변경하기
-    // => 제목만 바꿀 경우, 내용만 바꿀 경우, 둘 다 바꿀 경우에 대해
-    // <set>과 <if>를 이용하면 한 개의 SQL로 처리할 수 있다.
+    //  => 게시글 변경하기
+    //  => 제목만 바꿀 경우, 내용만 바꿀 경우, 둘 다 바꿀 경우에 대해
+    //     <set>과 <if>를 이용하면 한 개의 SQL로 처리할 수 있다.
 
     HashMap<String, Object> params = new HashMap<>();
 

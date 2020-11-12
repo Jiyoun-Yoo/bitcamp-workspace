@@ -180,6 +180,7 @@
 	  </choose>
   </select>  
   
+  <!-- Exam0220 -->
   <update id="update1" parameterType="map">
     update x_board set
       title=#{title}
@@ -197,15 +198,18 @@
     where board_id=#{no}
   </update>
   
+  <!-- Exam0230 -->
   <update id="update4" parameterType="map">
     update x_board 
     <set>
       <if test="title != null">title=#{title},</if>   
-      <if test="content != null">contents=#{content}</if>  
+      <if test="content != null">contents=#{content}</if>
+      <!-- 현업에서는 ,를 앞에 붙인다. 예) ,contents=#{contents} -->
     </set> 
     where board_id=#{no}
   </update>
   
+  <!-- Exam0240 -->
   <select id="select22" resultMap="BoardMap" parameterType="map">
     select 
       board_id,
@@ -232,6 +236,8 @@
       </if>
     </where>
   </select>  
+  
+  <!-- Exam0250 -->
   <select id="select23" resultMap="BoardMap" parameterType="map">
     select 
       board_id,
@@ -242,10 +248,23 @@
     from x_board
     <where>
       <foreach collection="noList" item="no">
-        or board_id = #{no}
+      <!--  noList에서 값을 하나 깨내서 "no"라고 하겠다는 의미 -->
+        <if test="no != ''">
+          or board_id = #{no}
+        </if>
       </foreach>
+      <!-- 자바코드:
+           ArrayList<Object> = map.get("noList");
+           for(Object no : list) {
+            if(!no.equals("")) {
+              sql += " or board_id = " + no;
+            }
+           }
+      -->
     </where>
   </select>
+  
+  <!-- Exam0260 -->
   <select id="select24" resultMap="BoardMap" parameterType="map">
     select 
       board_id,
@@ -261,6 +280,8 @@
       </foreach>
     </where>
   </select>
+  
+  <!-- Exam0270 -->
   <select id="select25" resultMap="BoardMap" parameterType="map">
     select 
       board_id,
@@ -275,7 +296,10 @@
       </foreach>
     </where>
   </select>
+
+  <!-- Exam0280 -->
   <select id="select26" resultMap="BoardMap" parameterType="map">
+    <!--bind는 변수를 만드는 태그 -->
     <bind name="titlePattern" value="'%' + _parameter.title + '%'"/>
     select 
       board_id,

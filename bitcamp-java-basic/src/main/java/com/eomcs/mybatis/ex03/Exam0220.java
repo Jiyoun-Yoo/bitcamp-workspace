@@ -1,4 +1,5 @@
 // dynamic sql 다루기 - <set> 사용 전 문제점
+
 package com.eomcs.mybatis.ex03;
 
 import java.io.InputStream;
@@ -20,9 +21,9 @@ public class Exam0220 {
     SqlSession sqlSession = factory.openSession();
 
     // 실행 예:
-    // => 게시글 변경하기
-    // => 제목만 바꿀 경우, 내용만 바꿀 경우, 둘 다 바꿀 경우에 대해
-    // 각각의 update SQL을 준비한다.
+    //  => 게시글 변경하기
+    //  => 제목만 바꿀 경우, 내용만 바꿀 경우, 둘 다 바꿀 경우에 대해
+    //     각각의 update SQL을 준비한다.
 
     HashMap<String, Object> params = new HashMap<>();
 
@@ -55,13 +56,13 @@ public class Exam0220 {
     System.out.println(count);
 
     // dynamic sql을 사용하지 않으면,
-    // => 위와 같이 여러 개의 SQL문을 만들어 사용해야 한다.
-    // => 제목만 변경하는 update, 내용만 변경하는 update, 모두 변경하는 update.
+    //  => 위와 같이 여러 개의 SQL문을 만들어 사용해야 한다.
+    //  => 제목만 변경하는 update, 내용만 변경하는 update, 모두 변경하는 update.
     //
     // 실무
-    // => 특정 컬럼의 값만 바꾸기 위해 여러 개의 SQL을 만드는 것은 번거롭다.
-    // => 그래서 전체 컬럼의 값을 바꾸는 방식을 주로 사용한다.
-    // => 문제점? 바꾸지 않아도 될 항목까지 변경하기 때문에 성능이 떨어진다.
+    //  => 특정 컬럼의 값만 바꾸기 위해 여러 개의 SQL을 만드는 것은 번거롭다.
+    //  => 그래서 전체 컬럼의 값을 바꾸는 방식을 주로 사용한다.
+    //  => 문제점? 바꾸지 않아도 될 항목까지 변경하기 때문에 성능이 떨어진다.
     //
     sqlSession.commit();
     sqlSession.close();

@@ -1,4 +1,5 @@
 // dynamic sql 다루기 - <foreach> 사용 전
+
 package com.eomcs.mybatis.ex03;
 
 import java.io.InputStream;
@@ -21,7 +22,7 @@ public class Exam0240 {
     SqlSession sqlSession = factory.openSession();
 
     // 실행 예:
-    // => 게시물 번호를 여러 개 지정하여 조회하기
+    //  => 게시물 번호를 여러 개 지정하여 조회하기
     //
 
     HashMap<String, Object> params = new HashMap<>();
@@ -40,6 +41,8 @@ public class Exam0240 {
     keyScan.close();
 
     List<Board> list = sqlSession.selectList("BoardMapper.select22", params);
+    // <foreach>는 자바 코드로 반복문을 여러번 돌려야 하는 경우에 사용하기 적합하다.
+    // mapper에 <foreach>를 넣으면 sql문을 여러번 실행하지 않아도 된다.
 
     for (Board board : list) {
       System.out.printf("%d, %s, %s, %s, %d\n", //

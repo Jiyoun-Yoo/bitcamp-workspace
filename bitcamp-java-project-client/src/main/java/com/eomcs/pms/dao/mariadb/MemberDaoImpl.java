@@ -17,14 +17,14 @@ public class MemberDaoImpl implements com.eomcs.pms.dao.MemberDao {
   @Override
   public int insert(Member member) throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
-      return sqlSession.insert("Memberdao.insert", member);
+      return sqlSession.insert("MemberDao.insert", member);
     }
   }
 
   @Override
   public int delete(int no) throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
-      return sqlSession.insert("Memberdao.delete", no);
+      return sqlSession.delete("MemberDao.delete", no);
     }
   }
 

@@ -1,4 +1,5 @@
-// dynamic sql 다루기 - <foreach> 사용법
+// dynamic sql 다루기 - <foreach> 사용법 I
+
 package com.eomcs.mybatis.ex03;
 
 import java.io.InputStream;
@@ -22,8 +23,7 @@ public class Exam0250 {
     SqlSession sqlSession = factory.openSession();
 
     // 실행 예:
-    // => 게시물 번호를 여러 개 지정하여 조회하기
-    //
+    //  => 게시물 번호를 여러 개 지정하여 조회하기
 
     HashMap<String, Object> params = new HashMap<>();
 
@@ -37,6 +37,8 @@ public class Exam0250 {
       noList.add(value);
     }
     params.put("noList", noList);
+    // ArrayList를 맵에 담아서 넘겨준다.
+    // ArrayList를 바로 넘기면 sql에서는 꺼낼 방법이 없다.
 
     keyScan.close();
 

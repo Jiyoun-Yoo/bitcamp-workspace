@@ -1,4 +1,5 @@
 // 조인 데이터 가져오기 - 각 테이블의 데이터를 별도로 가져오기
+
 package com.eomcs.mybatis.ex04;
 
 import java.io.InputStream;
@@ -18,7 +19,8 @@ public class Exam0110 {
 
     SqlSession sqlSession = factory.openSession();
 
-    Board board = sqlSession.selectOne("BoardMapper.selectBoard", 1);
+    Board board = sqlSession.selectOne("BoardMapper.selectBoard", 7);
+    // 샘플 데이터(x_board) 확인 후 테스트하기
 
     System.out.println("[게시글 조회]");
     System.out.printf("번호: %d\n", board.getNo());
@@ -30,6 +32,7 @@ public class Exam0110 {
 
     // 조인을 사용하지 않으면 다음과 같이
     // 게시글의 첨부파일 데이터를 따로 조회해야 한다.
+    // 즉 SQL문을 두 번 실행해야 한다.
 
     List<AttachFile> files = sqlSession.selectList("BoardMapper.selectFile", 1);
 

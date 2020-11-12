@@ -1,4 +1,5 @@
 // <sql> 사용법
+
 package com.eomcs.mybatis.ex03;
 
 import java.io.InputStream;
@@ -21,7 +22,7 @@ public class Exam0310 {
     SqlSession sqlSession = factory.openSession();
 
     // 실행 예:
-    // => 게시물 번호를 여러 개 지정하여 조회하기
+    //  => 게시물 번호를 여러 개 지정하여 조회하기
     //
 
     HashMap<String, Object> params = new HashMap<>();
@@ -36,10 +37,9 @@ public class Exam0310 {
 
     List<Board> list = sqlSession.selectList("BoardMapper2.select26", params);
     // <sql> 태그를 사용하면
-    // => 여러 SQL 문에서 중복적으로 사용하는 SQL 일부를 별도로 관리할 수 있다.
-    // => 중복된 SQL을 메서드처럼 별도로 관리하기 때문에
-    // 사용하여 SQL을 관리하기가 쉬워진다.
-
+    //  => 여러 SQL 문에서 중복적으로 사용하는 SQL 일부를 별도로 관리할 수 있다.
+    //  => 중복된 SQL을 메서드처럼 별도로 관리하기 때문에
+    //     사용하여 SQL을 관리하기가 쉬워진다.
 
     for (Board board : list) {
       System.out.printf("%d, %s, %s, %s, %d\n", //
@@ -53,5 +53,4 @@ public class Exam0310 {
   }
 
 }
-
 

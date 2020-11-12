@@ -1,4 +1,5 @@
 // dynamic sql 다루기 - <foreach> 사용법 III
+
 package com.eomcs.mybatis.ex03;
 
 import java.io.InputStream;
@@ -22,7 +23,7 @@ public class Exam0270 {
     SqlSession sqlSession = factory.openSession();
 
     // 실행 예:
-    // => 게시물 번호를 여러 개 지정하여 조회하기
+    //  => 게시물 번호를 여러 개 지정하여 조회하기
     //
 
     HashMap<String, Object> params = new HashMap<>();
