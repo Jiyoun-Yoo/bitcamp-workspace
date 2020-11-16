@@ -18,7 +18,7 @@ public class TaskListCommand implements Command {
     System.out.println("[작업 목록]");
 
     try {
-      List<Task> list = taskDao.findAll();
+      List<Task> list = taskDao.findAll(null);
       System.out.println("번호, 작업내용, 마감일, 작업자, 상태");
 
       for (Task task :  list) {
@@ -38,7 +38,7 @@ public class TaskListCommand implements Command {
             task.getNo(),
             task.getContent(),
             task.getDeadline(),
-            task.getOwner(),
+            task.getOwner().getName(),
             stateLabel);
       }
 

@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
-import com.eomcs.pms.domain.Member;
 import com.eomcs.pms.domain.Project;
 
 public class ProjectDaoImpl implements com.eomcs.pms.dao.ProjectDao {
@@ -18,30 +17,38 @@ public class ProjectDaoImpl implements com.eomcs.pms.dao.ProjectDao {
 
   @Override
   public int insert(Project project) throws Exception {
-      try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
 
-        // 프로젝트의 정보 입력
-        int count = sqlSession.insert("ProjectDao.insert", project);
+      // 프로젝트의 정보 입력
+      int count = sqlSession.insert("ProjectDao.insert", project);
 
-        // 프로젝트의 멤버 정보 입력
-        sqlSession.insert("ProjectDao.insertMembers", project);
+      // 프로젝트의 멤버 정보 입력
+      sqlSession.insert("ProjectDao.insertMembers", project);
 
-        sqlSession.commit();
-        return count;
-      }
+      return count;
+    }
   }
 
   @Override
   public int delete(int no) throws Exception {
-
     try  (SqlSession sqlSession = sqlSessionFactory.openSession()){
       // 프로젝트에 소속된 모든 멤버를 삭제한다.
       sqlSession.delete("ProjectDao.deleteMembers", no);
 
+      // 프로젝트 멤버 삭제 후 일부러 예외를 발생시킨다.
+      // 그러면 위에서 수행한 프로젝트 멤버 삭제가 완료되지 않고 취소될 것이다.
+//      if (100 == 100) {
+//        throw new Exception("일부러 예외 발생!");
+//      }
+
+      // 컴파일러는 실행을 시키지는 않는다.
+      // 컴파일러는 코드에 문제가 있는지 없는지만 검사한다.
+      // JVM이 코드를 실행한다.
+      // 100 == 100이 문법적으로만 맞는지 확인하고, 무조건 참인지는 확인하지 않는다.
+
       // 프로젝트를 삭제한다.
       int count = sqlSession.delete("ProjectDao.delete", no);
 
-      sqlSession.commit();
       return count;
     }
   }
@@ -84,24 +91,7 @@ public class ProjectDaoImpl implements com.eomcs.pms.dao.ProjectDao {
   @Override
   public int update(Project project) throws Exception {
     try(SqlSession sqlSession = sqlSessionFactory.openSession()) {
-      int count = sqlSession.update("ProjectDao.update", project);
-      if (count == 0) {
-        return 0;
-      }
-
-      // 프로젝트 팀원을 변경한다.
-      //  => 기존에 설정된 모든 팀원을 삭제한다.
-      sqlSession.delete("ProjectDao.deleteMembers", project.getNo());
-
-      //  => 새로 팀원을 입력한다.
-      for (Member member : project.getMembers()) {
-        HashMap<String, Object> map = new HashMap<>();
-        map.put("memberNo", member.getNo());
-        map.put("projectNo", project.getNo());
-        sqlSession.insert("ProjectDao.insertMember", map);
-      }
-      sqlSession.commit();
-      return 1;
+      return sqlSession.update("ProjectDao.update", project);
     }
   }
 
