@@ -41,30 +41,18 @@
       left outer join pms_member m2 on mp.member_no=m2.no
   </sql>
 
-  <select id="findAll" resultMap="ProjectMap">
+  <select id="findAll" resultMap="ProjectMap" parameterType="String">
     <!-- 별도로 분리된 SQL 코드를 가져오고 싶다면, 다음과 같이 하라! -->
     <include refid="sql1"/>
+    <if test="keyword != null">
+    where 
+      p.title like concat('%', #{keyword}, '%')
+      or m.name like concat('%', #{keyword}, '%')
+      or m2.name like concat('%', #{keyword}, '%')
     order by p.no desc
+    </if>
   </select>
-  
-  <select id="findByKeyword" resultMap="ProjectMap" parameterType="map">
-    <include refid="sql1"/>
-    <where>
-      <choose>
-        <when test="item == 1">
-          p.title like concat('%', #{keyword}, '%')
-        </when>
-        <when test="item == 2">
-           m.name like concat('%', #{keyword}, '%')
-        </when>
-        <otherwise>
-          m2.name like concat('%', #{keyword}, '%')
-        </otherwise>
-      </choose>
-    </where>
-    order by p.no desc
-  </select>
-  
+
   <select id="findByDetailKeyword" resultMap="ProjectMap" parameterType="map">
     <include refid="sql1"/>
     <where>
@@ -126,12 +114,13 @@
   </select>
   
   <update id="update" parameterType="com.eomcs.pms.domain.Project">
-    update pms_project set
-      title = #{title},
-      content = #{content},
-      sdt = #{startDate},
-      edt = #{endDate},
-      owner = #{owner.no}
+    update pms_project
+    <set>
+      <if test="title != ''">title = #{title},</if>
+      <if test="content != ''">content = #{content},</if>
+      <if test="startDate != null">sdt = #{startDate},</if>
+      <if test="endDate != null">edt = #{endDate}</if>
+    </set>
     where no = #{no}
   </update>
 
