@@ -1,20 +1,17 @@
 package com.eomcs.pms.handler;
 
 import java.util.Map;
-import com.eomcs.pms.dao.BoardDao;
-import com.eomcs.pms.dao.MemberDao;
 import com.eomcs.pms.domain.Board;
 import com.eomcs.pms.domain.Member;
+import com.eomcs.pms.service.BoardService;
 import com.eomcs.util.Prompt;
 
 public class BoardAddCommand implements Command {
 
-  BoardDao boardDao;
-  MemberDao memberDao;
+  BoardService boardService;
 
-  public BoardAddCommand(BoardDao boardDao, MemberDao memberDao) {
-    this.boardDao = boardDao;
-    this.memberDao = memberDao;
+  public BoardAddCommand(BoardService boardService) {
+    this.boardService = boardService;
   }
 
   @Override
@@ -26,11 +23,10 @@ public class BoardAddCommand implements Command {
       board.setTitle(Prompt.inputString("제목? "));
       board.setContent(Prompt.inputString("내용? "));
 
-      // 로그인 사용자 정보 가져오기
       Member loginUser = (Member) context.get("loginUser");
       board.setWriter(loginUser);
 
-      boardDao.insert(board);
+      boardService.add(board);
       System.out.println("게시글을 등록하였습니다.");
 
     } catch (Exception e) {

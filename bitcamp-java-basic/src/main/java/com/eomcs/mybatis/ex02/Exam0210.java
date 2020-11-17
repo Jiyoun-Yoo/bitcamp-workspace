@@ -25,14 +25,14 @@ public class Exam0210 {
     // Map 객체에 담아 전달하라!
 
     // 예) 특정 번호 이상의 게시물을 가져온다.
-    List<Board> list = sqlSession.selectList(//
+    List<Board> list = sqlSession.selectList(
         "BoardMapper.selectBoard1", 15);
 
     for (Board board : list) {
-      System.out.printf("%d, %s, %s, %s\n", //
-          board.getNo(), //
-          board.getTitle(), //
-          board.getContent(), //
+      System.out.printf("%d, %s, %s, %s\n",
+          board.getNo(),
+          board.getTitle(),
+          board.getContent(),
           board.getRegisteredDate());
     }
 

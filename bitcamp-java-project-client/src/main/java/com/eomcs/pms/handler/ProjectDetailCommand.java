@@ -12,7 +12,6 @@ public class ProjectDetailCommand implements Command {
   ProjectService projectService;
   TaskService taskService;
 
-
   public ProjectDetailCommand(ProjectService projectService, TaskService taskService) {
     this.projectService = projectService;
     this.taskService = taskService;

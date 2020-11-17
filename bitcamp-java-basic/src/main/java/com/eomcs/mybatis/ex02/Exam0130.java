@@ -12,9 +12,9 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 public class Exam0130 {
 
   public static void main(String[] args) throws Exception {
-    InputStream inputStream = Resources.getResourceAsStream(//
+    InputStream inputStream = Resources.getResourceAsStream(
         "com/eomcs/mybatis/ex02/mybatis-config03.xml");
-    SqlSessionFactory factory = //
+    SqlSessionFactory factory =
         new SqlSessionFactoryBuilder().build(inputStream);
 
     SqlSession sqlSession = factory.openSession();
@@ -22,11 +22,11 @@ public class Exam0130 {
     List<Board> list = sqlSession.selectList("BoardMapper.selectBoard");
 
     for (Board board : list) {
-      System.out.printf("%d, %s, %s, %s, %d\n", //
-          board.getNo(), //
-          board.getTitle(), //
-          board.getContent(), //
-          board.getRegisteredDate(), //
+      System.out.printf("%d, %s, %s, %s, %d\n",
+          board.getNo(),
+          board.getTitle(),
+          board.getContent(),
+          board.getRegisteredDate(),
           board.getViewCount());
     }
 

@@ -1,18 +1,17 @@
 package com.eomcs.pms.handler;
 
 import java.util.Map;
-import com.eomcs.pms.dao.TaskDao;
 import com.eomcs.pms.domain.Task;
+import com.eomcs.pms.service.TaskService;
 import com.eomcs.util.Prompt;
 
 public class TaskDetailCommand implements Command {
 
-  TaskDao taskDao;
+  TaskService taskService;
 
-  public TaskDetailCommand(TaskDao taskDao) {
-    this.taskDao = taskDao;
+  public TaskDetailCommand(TaskService taskService) {
+    this.taskService = taskService;
   }
-
 
   @Override
   public void execute(Map<String,Object> context) {
@@ -21,7 +20,7 @@ public class TaskDetailCommand implements Command {
     try {
       int no = Prompt.inputInt("번호? ");
 
-      Task task = taskDao.findByNo(no);
+      Task task = taskService.get(no);
       if(task == null) {
         System.out.println("해당 번호의 프로젝트가 존재하지 않습니다.");
         return;

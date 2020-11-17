@@ -13,7 +13,6 @@ public class DefaultProjectService implements ProjectService {
   ProjectDao projectDao;
   SqlSessionFactoryProxy factoryProxy;
 
-
   public DefaultProjectService(
       TaskDao taskDao,
       ProjectDao projectDao,
