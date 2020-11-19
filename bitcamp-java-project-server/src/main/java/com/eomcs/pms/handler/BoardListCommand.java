@@ -14,6 +14,7 @@ public class BoardListCommand implements Command {
     this.boardList = list;
   }
 
+
   @Override
   public void execute(PrintWriter out, BufferedReader in) {
     out.println("[게시물 목록]");

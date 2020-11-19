@@ -17,7 +17,7 @@ public class BoardUpdateCommand implements Command {
   @Override
   public void execute(PrintWriter out, BufferedReader in) {
     try {
-      System.out.println("[게시물 변경]");
+      out.println("[게시물 변경]");
       int no = Prompt.inputInt("번호? ", out, in);
       Board board = findByNo(no);
 

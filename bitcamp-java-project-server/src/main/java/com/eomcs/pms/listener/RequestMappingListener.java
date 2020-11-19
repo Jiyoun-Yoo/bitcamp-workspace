@@ -30,11 +30,12 @@ import com.eomcs.pms.handler.TaskDetailCommand;
 import com.eomcs.pms.handler.TaskListCommand;
 import com.eomcs.pms.handler.TaskUpdateCommand;
 
+// 클라이언트 요청을 처리할 커맨드 객체를 준비한다.
 public class RequestMappingListener implements ApplicationContextListener {
 
   @SuppressWarnings("unchecked")
   @Override
-  public void contextInitialized(Map<String, Object> context) {
+  public void contextInitialized(Map<String,Object> context) {
     // 옵저버가 작업한 결과를 맵에서 꺼낸다.
     List<Board> boardList = (List<Board>) context.get("boardList");
     List<Member> memberList = (List<Member>) context.get("memberList");
@@ -72,8 +73,6 @@ public class RequestMappingListener implements ApplicationContextListener {
   }
 
   @Override
-  public void contextDestroyed(Map<String, Object> context) {
-
+  public void contextDestroyed(Map<String,Object> context) {
   }
-
 }

@@ -6,16 +6,17 @@ import com.eomcs.util.Prompt;
 
 // Command 규칙에 따라 클래스를 정의한다.
 public class CalculatorCommand implements Command {
+
   @Override
   public void execute(PrintWriter out, BufferedReader in) {
     try {
       out.println("[계산기]");
 
-      String input = Prompt.inputString("계산식?(예: 5 * 3) ? ", out, in);
+      String input = Prompt.inputString("계산식?(예: 5 * 3) ", out, in);
       String[] arr = input.split(" ");
       if (arr.length != 3) {
         out.println("계산식이 옳지 않습니다.");
-        out.println("계산식 예 : 15 * 45");
+        out.println("계산식 예: 15 * 45");
         return;
       }
 
@@ -27,16 +28,16 @@ public class CalculatorCommand implements Command {
       switch (op) {
         case "+": result = a + b; break;
         case "-": result = a - b; break;
-        case "*": result = a * b; break;
         case "/": result = a / b; break;
+        case "*": result = a * b; break;
         default:
-          out.println("해당 연산자를 지원하지 않습니다.");
+          out.println("해당 연산을 지원하지 않습니다.");
           return;
       }
 
       out.printf("계산 결과: %d %s %d = %d\n", a, op, b, result);
 
-    } catch (Exception e) {
+    } catch(Exception e) {
       out.printf("작업 처리 중 오류 발생! - %s\n", e.getMessage());
     }
   }

@@ -12,7 +12,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 public class Exam0211 {
 
   public static void main(String[] args) throws Exception {
-    InputStream inputStream = Resources.getResourceAsStream(//
+    InputStream inputStream = Resources.getResourceAsStream(
         "com/eomcs/mybatis/ex02/mybatis-config04.xml");
     SqlSessionFactory factory = //
         new SqlSessionFactoryBuilder().build(inputStream);
@@ -25,14 +25,14 @@ public class Exam0211 {
     // Map 객체에 담아 전달하라!
 
     // 예) 게시글 제목에 ohora 를 포함한 게시글을 찾는다.
-    List<Board> list = sqlSession.selectList(//
+    List<Board> list = sqlSession.selectList(
         "BoardMapper.selectBoard2", "%ohora%");
 
     for (Board board : list) {
-      System.out.printf("%d, %s, %s, %s\n", //
-          board.getNo(), //
-          board.getTitle(), //
-          board.getContent(), //
+      System.out.printf("%d, %s, %s, %s\n",
+          board.getNo(),
+          board.getTitle(),
+          board.getContent(),
           board.getRegisteredDate());
     }
 

@@ -45,16 +45,15 @@ public class Exam0250 {
     List<Board> list = sqlSession.selectList("BoardMapper.select23", params);
 
     for (Board board : list) {
-      System.out.printf("%d, %s, %s, %s, %d\n", //
-          board.getNo(), //
-          board.getTitle(), //
-          board.getContent(), //
-          board.getRegisteredDate(), //
+      System.out.printf("%d, %s, %s, %s, %d\n",
+          board.getNo(),
+          board.getTitle(),
+          board.getContent(),
+          board.getRegisteredDate(),
           board.getViewCount());
     }
     sqlSession.close();
   }
 
 }
-
 

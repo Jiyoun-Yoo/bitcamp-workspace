@@ -31,14 +31,14 @@ public class Exam0212 {
     params.put("startIndex", 6);
     params.put("size", 3);
 
-    List<Board> list = sqlSession.selectList(//
+    List<Board> list = sqlSession.selectList(
         "BoardMapper.selectBoard3", params);
 
     for (Board board : list) {
-      System.out.printf("%d, %s, %s, %s\n", //
-          board.getNo(), //
-          board.getTitle(), //
-          board.getContent(), //
+      System.out.printf("%d, %s, %s, %s\n",
+          board.getNo(),
+          board.getTitle(),
+          board.getContent(),
           board.getRegisteredDate());
     }
 

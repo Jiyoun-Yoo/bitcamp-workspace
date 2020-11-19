@@ -20,8 +20,8 @@ public class Exam0220 {
     SqlSession sqlSession = factory.openSession();
 
     // 예) 파라미터로 컬럼 이름을 넘겨주면
-    // 해당 컬럼의 값을 오름차순으로 정렬한다.
-    List<Board> list = sqlSession.selectList(//
+    //     해당 컬럼의 값을 오름차순으로 정렬한다.
+    List<Board> list = sqlSession.selectList(
         "BoardMapper.selectBoard1", "title");
     // => 파라미터 값을 SQL에 그대로 삽입하려면
     //    #{} 문법을 사용해서는 안된다.
@@ -31,10 +31,10 @@ public class Exam0220 {
     //    order by가 정상적으로 적용되지 못했다.
 
     for (Board board : list) {
-      System.out.printf("%d, %s, %s, %s\n", //
-          board.getNo(), //
-          board.getTitle(), //
-          board.getContent(), //
+      System.out.printf("%d, %s, %s, %s\n",
+          board.getNo(),
+          board.getTitle(),
+          board.getContent(),
           board.getRegisteredDate());
     }
 

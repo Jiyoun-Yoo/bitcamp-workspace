@@ -22,7 +22,7 @@ public class Exam0170 {
     SqlSession sqlSession = factory.openSession();
 
     // 실행 예:
-    // => 여러 개의 조건을 합쳐서 검색하기
+    //  => 여러 개의 조건을 합쳐서 검색하기
     HashMap<String, Object> params = new HashMap<>();
 
     Scanner keyScan = new Scanner(System.in);
@@ -48,19 +48,19 @@ public class Exam0170 {
     keyScan.close();
 
 
-    List<Board> list = sqlSession.selectList("BoardMapper.select8", //
+    List<Board> list = sqlSession.selectList("BoardMapper.select8",
         params);
 
     // select8:
-    // => <where> 대신에 <trim>을 사용하여 불필요한 SQL 코드 제거.
-    // => or/and 앞에 조건이 없을 때 or/and를 자동으로 제거한다.
+    //  => <where> 대신에 <trim>을 사용하여 불필요한 SQL 코드 제거.
+    //  => or/and 앞에 조건이 없을 때 or/and를 자동으로 제거한다.
 
     for (Board board : list) {
-      System.out.printf("%d, %s, %s, %s, %d\n", //
-          board.getNo(), //
-          board.getTitle(), //
-          board.getContent(), //
-          board.getRegisteredDate(), //
+      System.out.printf("%d, %s, %s, %s, %d\n",
+          board.getNo(),
+          board.getTitle(),
+          board.getContent(),
+          board.getRegisteredDate(),
           board.getViewCount());
     }
 
@@ -68,5 +68,4 @@ public class Exam0170 {
   }
 
 }
-
 

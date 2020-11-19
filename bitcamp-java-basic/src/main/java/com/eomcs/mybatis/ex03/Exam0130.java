@@ -14,9 +14,9 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 public class Exam0130 {
 
   public static void main(String[] args) throws Exception {
-    InputStream inputStream = Resources.getResourceAsStream(//
+    InputStream inputStream = Resources.getResourceAsStream(
         "com/eomcs/mybatis/ex03/mybatis-config.xml");
-    SqlSessionFactory factory = //
+    SqlSessionFactory factory =
         new SqlSessionFactoryBuilder().build(inputStream);
 
     SqlSession sqlSession = factory.openSession();
@@ -40,15 +40,15 @@ public class Exam0130 {
     params.put("item", item);
     params.put("keyword", keyword);
 
-    List<Board> list = sqlSession.selectList("BoardMapper.select4", //
+    List<Board> list = sqlSession.selectList("BoardMapper.select4",
         params);
 
     for (Board board : list) {
-      System.out.printf("%d, %s, %s, %s, %d\n", //
-          board.getNo(), //
-          board.getTitle(), //
-          board.getContent(), //
-          board.getRegisteredDate(), //
+      System.out.printf("%d, %s, %s, %s, %d\n",
+          board.getNo(),
+          board.getTitle(),
+          board.getContent(),
+          board.getRegisteredDate(),
           board.getViewCount());
     }
 

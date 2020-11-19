@@ -14,7 +14,7 @@ public class Exam0210 {
   public static void main(String[] args) throws Exception {
     InputStream inputStream = Resources.getResourceAsStream(//
         "com/eomcs/mybatis/ex02/mybatis-config04.xml");
-    SqlSessionFactory factory = //
+    SqlSessionFactory factory =
         new SqlSessionFactoryBuilder().build(inputStream);
 
     SqlSession sqlSession = factory.openSession();

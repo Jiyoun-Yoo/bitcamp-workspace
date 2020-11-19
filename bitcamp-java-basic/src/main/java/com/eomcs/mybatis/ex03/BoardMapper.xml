@@ -15,6 +15,7 @@
     <result column="view_count" property="viewCount"/>
   </resultMap>
   
+  <!-- Exam0110 -->
   <!-- 번호가 들어올 때 -->
   <select id="select1" resultMap="BoardMap" parameterType="int">
     select 
@@ -38,6 +39,7 @@
     from x_board
   </select>
   
+  <!-- Exam0120 -->
   <!-- if 조건문
        => 조건에 따라 생성할 SQL문을 제어할 수 있다.
        => 문법) <if test="조건">SQL문</if>
@@ -55,6 +57,7 @@
     </if>
   </select>
   
+  <!-- Exam0130 -->
   <select id="select4" resultMap="BoardMap" parameterType="map">
     select 
       board_id,
@@ -74,6 +77,7 @@
     </if>
   </select>
   
+  <!-- Exam0140 -->
   <select id="select5" resultMap="BoardMap" parameterType="map">
     select 
       board_id,
@@ -94,6 +98,7 @@
     </if>
   </select>
   
+  <!-- Exam0150 -->
   <select id="select6" resultMap="BoardMap" parameterType="map">
     select 
       board_id,
@@ -115,6 +120,7 @@
     </if>
   </select>  
   
+  <!-- Exam0160 -->
   <select id="select7" resultMap="BoardMap" parameterType="map">
     select 
       board_id,
@@ -136,6 +142,7 @@
     </where>
   </select>  
   
+  <!-- Exam0170 -->
   <select id="select8" resultMap="BoardMap" parameterType="map">
     select 
       board_id,
@@ -158,6 +165,7 @@
     </trim>
   </select>  
   
+  <!-- Exam0210 -->
   <select id="select21" resultMap="BoardMap" parameterType="map">
     select 
       board_id,

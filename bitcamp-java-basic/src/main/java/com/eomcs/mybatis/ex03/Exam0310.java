@@ -22,8 +22,7 @@ public class Exam0310 {
     SqlSession sqlSession = factory.openSession();
 
     // 실행 예:
-    //  => 게시물 번호를 여러 개 지정하여 조회하기
-    //
+    //  => 제목에 특정 단어를 포함하는 게시글을 조회하기
 
     HashMap<String, Object> params = new HashMap<>();
 
@@ -42,11 +41,11 @@ public class Exam0310 {
     //     사용하여 SQL을 관리하기가 쉬워진다.
 
     for (Board board : list) {
-      System.out.printf("%d, %s, %s, %s, %d\n", //
-          board.getNo(), //
-          board.getTitle(), //
-          board.getContent(), //
-          board.getRegisteredDate(), //
+      System.out.printf("%d, %s, %s, %s, %d\n",
+          board.getNo(),
+          board.getTitle(),
+          board.getContent(),
+          board.getRegisteredDate(),
           board.getViewCount());
     }
     sqlSession.close();

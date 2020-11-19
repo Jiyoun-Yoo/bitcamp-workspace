@@ -45,11 +45,11 @@ public class Exam0240 {
     // mapper에 <foreach>를 넣으면 sql문을 여러번 실행하지 않아도 된다.
 
     for (Board board : list) {
-      System.out.printf("%d, %s, %s, %s, %d\n", //
-          board.getNo(), //
-          board.getTitle(), //
-          board.getContent(), //
-          board.getRegisteredDate(), //
+      System.out.printf("%d, %s, %s, %s, %d\n",
+          board.getNo(),
+          board.getTitle(),
+          board.getContent(),
+          board.getRegisteredDate(),
           board.getViewCount());
     }
     sqlSession.close();
