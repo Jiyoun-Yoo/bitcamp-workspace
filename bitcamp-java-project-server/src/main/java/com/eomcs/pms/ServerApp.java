@@ -139,6 +139,7 @@ public class ServerApp {
 
       if (requestLine.equalsIgnoreCase("stop")) {
         stop = true; // 서버의 상태를 멈추라는 의미로 true로 설정한다.
+        out.println("SessionID=xxx"); // 응답의 첫 줄은 무조건 세션 아이디가 돼야 한다.
         out.println("서버를 종료하는 중입니다!");
         out.println();
         out.flush();
@@ -155,6 +156,8 @@ public class ServerApp {
       // 필터 체인을 따라가면서 중간에 삽입된 필터가 있다면 실행할 것이다.
       // 마지막 필터에서는 클라이언트가 요청한 명령을 실행할 것이다.
       if (filterChain != null) {
+        // 클라이언트 응답 첫 줄에 세션 ID를 출력한다.
+        out.printf("SessionId=%s\n", sessionId);
         filterChain.doFilter(request);
       }
 

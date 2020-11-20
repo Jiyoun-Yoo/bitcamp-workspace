@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import com.eomcs.pms.service.BoardService;
 import com.eomcs.util.Prompt;
 
+@CommandAnno("/board/delete")
 public class BoardDeleteCommand implements Command {
 
   BoardService boardService;
