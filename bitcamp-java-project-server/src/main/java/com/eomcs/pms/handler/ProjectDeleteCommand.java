@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import com.eomcs.pms.service.ProjectService;
 import com.eomcs.util.Prompt;
 
+@CommandAnno("/project/delete")
 public class ProjectDeleteCommand implements Command {
 
   ProjectService projectService;

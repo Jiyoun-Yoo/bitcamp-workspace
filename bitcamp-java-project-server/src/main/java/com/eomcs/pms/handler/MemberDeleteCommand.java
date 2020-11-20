@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import com.eomcs.pms.service.MemberService;
 import com.eomcs.util.Prompt;
 
+@CommandAnno("/member/delete")
 public class MemberDeleteCommand implements Command {
 
   MemberService memberService;

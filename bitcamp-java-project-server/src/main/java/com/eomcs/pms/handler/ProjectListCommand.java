@@ -6,6 +6,7 @@ import com.eomcs.pms.domain.Member;
 import com.eomcs.pms.domain.Project;
 import com.eomcs.pms.service.ProjectService;
 
+@CommandAnno("/project/list")
 public class ProjectListCommand implements Command {
 
   ProjectService projectService;

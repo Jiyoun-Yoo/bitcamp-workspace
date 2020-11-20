@@ -6,6 +6,7 @@ import com.eomcs.pms.domain.Task;
 import com.eomcs.pms.service.TaskService;
 import com.eomcs.util.Prompt;
 
+@CommandAnno("/task/detail")
 public class TaskDetailCommand implements Command {
 
   TaskService taskService;

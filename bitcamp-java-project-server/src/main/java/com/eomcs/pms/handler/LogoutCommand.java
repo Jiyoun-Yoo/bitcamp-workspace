@@ -4,7 +4,7 @@ import java.io.PrintWriter;
 import java.util.Map;
 import com.eomcs.pms.domain.Member;
 
-// Command 규칙에 따라 클래스를 정의한다.
+@CommandAnno("/logout")
 public class LogoutCommand implements Command {
 
   @Override

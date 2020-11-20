@@ -12,6 +12,7 @@ import com.eomcs.pms.service.ProjectService;
 import com.eomcs.pms.service.TaskService;
 import com.eomcs.util.Prompt;
 
+@CommandAnno("/task/update")
 public class TaskUpdateCommand implements Command {
 
   TaskService taskService;

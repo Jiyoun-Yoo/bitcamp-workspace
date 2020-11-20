@@ -9,6 +9,7 @@ import com.eomcs.pms.domain.Project;
 import com.eomcs.pms.service.ProjectService;
 import com.eomcs.util.Prompt;
 
+@CommandAnno("/project/detailSearch")
 public class ProjectDetailSearchCommand implements Command {
 
   ProjectService projectService;

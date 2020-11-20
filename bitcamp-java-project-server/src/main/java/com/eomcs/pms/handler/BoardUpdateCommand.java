@@ -6,6 +6,7 @@ import com.eomcs.pms.domain.Board;
 import com.eomcs.pms.service.BoardService;
 import com.eomcs.util.Prompt;
 
+@CommandAnno("/board/udpate")
 public class BoardUpdateCommand implements Command {
 
   BoardService boardService;
