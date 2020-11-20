@@ -3,7 +3,6 @@ package com.eomcs.pms.handler;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.util.List;
-import java.util.Map;
 import com.eomcs.pms.domain.Board;
 import com.eomcs.pms.service.BoardService;
 import com.eomcs.util.Prompt;
@@ -17,7 +16,10 @@ public class BoardSearchCommand implements Command {
   }
 
   @Override
-  public void execute(PrintWriter out, BufferedReader in, Map<String,Object> context) {
+  public void execute(Request request) {
+    PrintWriter out = request.getWriter();
+    BufferedReader in = request.getReader();
+
     try {
       out.println("[게시물 검색]");
       String keyword = Prompt.inputString("검색어? ", out, in);

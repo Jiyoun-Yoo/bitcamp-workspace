@@ -18,7 +18,11 @@ public class BoardAddCommand implements Command {
   }
 
   @Override
-  public void execute(PrintWriter out, BufferedReader in, Map<String,Object> context) {
+  public void execute(Request request) {
+    PrintWriter out = request.getWriter();
+    BufferedReader in = request.getReader();
+    Map<String, Object> session = request.getSession();
+
     try {
       out.println("[게시물 등록]");
 
@@ -26,7 +30,7 @@ public class BoardAddCommand implements Command {
       board.setTitle(Prompt.inputString("제목? ", out, in));
       board.setContent(Prompt.inputString("내용? ", out, in));
 
-      Member loginUser = (Member) context.get("loginUser");
+      Member loginUser = (Member) session.get("loginUser");
       board.setWriter(loginUser);
 
       boardService.add(board);

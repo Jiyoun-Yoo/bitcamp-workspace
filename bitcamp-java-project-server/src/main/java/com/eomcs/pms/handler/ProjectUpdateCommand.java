@@ -3,7 +3,6 @@ package com.eomcs.pms.handler;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.sql.Date;
-import java.util.Map;
 import com.eomcs.pms.domain.Project;
 import com.eomcs.pms.service.ProjectService;
 import com.eomcs.util.Prompt;
@@ -17,7 +16,10 @@ public class ProjectUpdateCommand implements Command {
   }
 
   @Override
-  public void execute(PrintWriter out, BufferedReader in, Map<String,Object> context) {
+  public void execute(Request request) {
+    PrintWriter out = request.getWriter();
+    BufferedReader in = request.getReader();
+
     try {
       out.println("[프로젝트 변경]");
       int no = Prompt.inputInt("번호? ", out, in);

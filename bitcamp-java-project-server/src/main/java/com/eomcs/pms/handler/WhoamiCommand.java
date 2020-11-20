@@ -1,6 +1,5 @@
 package com.eomcs.pms.handler;
 
-import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.util.Map;
 import com.eomcs.pms.domain.Member;
@@ -9,8 +8,11 @@ import com.eomcs.pms.domain.Member;
 public class WhoamiCommand implements Command {
 
   @Override
-  public void execute(PrintWriter out, BufferedReader in, Map<String,Object> context) {
-    Member member = (Member) context.get("loginUser");
+  public void execute(Request request) {
+    PrintWriter out = request.getWriter();
+    Map<String, Object> session = request.getSession();
+
+    Member member = (Member) session.get("loginUser");
     if (member == null) {
       out.println("로그인 하지 않았습니다!");
       return;

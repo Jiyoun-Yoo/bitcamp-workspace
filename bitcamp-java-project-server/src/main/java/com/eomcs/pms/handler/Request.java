@@ -9,16 +9,19 @@ public class Request {
   Map<String,Object> context;
   PrintWriter out;
   BufferedReader in;
+  String sessionId;
 
   public Request(String commandPath,
       Map<String,Object> context,
       PrintWriter out,
-      BufferedReader in) {
+      BufferedReader in,
+      String sessionId) {
 
     this.commandPath = commandPath;
     this.context = context;
     this.out = out;
     this.in = in;
+    this.sessionId = sessionId;
   }
 
   public String getCommandPath() {
@@ -37,9 +40,17 @@ public class Request {
     return in;
   }
 
+  // session은 클라이언트 전용 보관소!!!!!!
+  @SuppressWarnings("unchecked")
+  public Map<String,Object> getSession() {
+    return (Map<String, Object>) context.get(sessionId);
+  }
+
+  public void invalidateSession() {
+    context.remove(sessionId);
+  }
+
 }
-
-
 
 
 
