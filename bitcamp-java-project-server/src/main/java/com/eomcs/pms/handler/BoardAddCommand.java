@@ -30,6 +30,7 @@ public class BoardAddCommand implements Command {
       board.setWriter(loginUser);
 
       boardService.add(board);
+
       out.println("게시글을 등록하였습니다.");
 
     } catch(Exception e) {

@@ -16,28 +16,30 @@ public class LoginCommand implements Command {
   }
 
   @Override
-  public void execute(PrintWriter out, BufferedReader in, Map<String, Object> context) {
+  public void execute(PrintWriter out, BufferedReader in, Map<String,Object> context) {
     out.println("[로그인]");
 
-    String email = Prompt.inputString("이메일? ");
-    String password = Prompt.inputString("비밀번호? ");
-
     if (context.get("loginUser") != null) {
-      out.println("이미 로그인 하셨습니다.");
+      out.println("로그인 되어 있습니다!");
       return;
     }
 
     try {
+      String email = Prompt.inputString("이메일? ", out, in);
+      String password = Prompt.inputString("암호? ", out, in);
+
       Member member = memberService.get(email, password);
       if (member == null) {
         out.println("사용자 정보가 맞지 않습니다.");
       } else {
+        // 로그인이 성공했으면 회원 정보를 context 보관소에 저장한다.
         context.put("loginUser", member);
-        out.printf("%s님 반갑습니다!", member.getName());
+        out.printf("%s 님 반갑습니다.\n", member.getName());
       }
-    } catch (Exception e) {
-      out.printf("로그인 중 오류 발생!", e.getMessage());
-    }
 
+    } catch (Exception e) {
+      out.printf("작업 처리 중 오류 발생! - %s\n", e.getMessage());
+      e.printStackTrace();
+    }
   }
 }

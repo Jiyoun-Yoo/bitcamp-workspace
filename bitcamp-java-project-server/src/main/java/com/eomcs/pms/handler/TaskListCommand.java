@@ -16,13 +16,13 @@ public class TaskListCommand implements Command {
   }
 
   @Override
-  public void execute(PrintWriter out, BufferedReader in, Map<String, Object> context) {
+  public void execute(PrintWriter out, BufferedReader in, Map<String,Object> context) {
+    out.println("[작업 목록]");
+
     try {
-      out.println("[작업 목록]");
-
       List<Task> list = taskService.list();
+      out.println("번호, 작업내용, 마감일, 작업자, 상태");
 
-      out.println("번호, 내용, 마감일, 상태, 담당자");
       for (Task task : list) {
         String stateLabel = null;
         switch (task.getStatus()) {
@@ -39,11 +39,12 @@ public class TaskListCommand implements Command {
             task.getNo(),
             task.getContent(),
             task.getDeadline(),
-            stateLabel,
-            task.getOwner());
+            task.getOwner().getName(),
+            stateLabel);
       }
     } catch (Exception e) {
       out.printf("작업 처리 중 오류 발생! - %s\n", e.getMessage());
+      e.printStackTrace();
     }
   }
 }

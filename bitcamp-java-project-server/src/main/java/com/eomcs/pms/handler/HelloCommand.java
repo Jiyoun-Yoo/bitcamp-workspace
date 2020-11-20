@@ -8,7 +8,7 @@ import java.util.Map;
 public class HelloCommand implements Command {
 
   @Override
-  public void execute(PrintWriter out, BufferedReader in, Map<String, Object> context) {
+  public void execute(PrintWriter out, BufferedReader in, Map<String,Object> context) {
     out.println("안녕하세요!");
   }
 }

@@ -16,10 +16,11 @@ public class BoardUpdateCommand implements Command {
   }
 
   @Override
-  public void execute(PrintWriter out, BufferedReader in, Map<String, Object> context) {
+  public void execute(PrintWriter out, BufferedReader in, Map<String,Object> context) {
     try {
       out.println("[게시물 변경]");
       int no = Prompt.inputInt("번호? ", out, in);
+
       Board board = boardService.get(no);
 
       if (board == null) {
@@ -27,10 +28,10 @@ public class BoardUpdateCommand implements Command {
         return;
       }
 
-      String title = Prompt.inputString(
-          String.format("제목(%s)? ", board.getTitle()), out, in);
-      String content = Prompt.inputString(
-          String.format("내용(%s)? ", board.getContent()), out, in);
+      board.setTitle(Prompt.inputString(
+          String.format("제목(%s)? ", board.getTitle()), out, in));
+      board.setContent(Prompt.inputString(
+          String.format("내용(%s)? ", board.getContent()), out, in));
 
       String response = Prompt.inputString("정말 변경하시겠습니까?(y/N) ", out, in);
       if (!response.equalsIgnoreCase("y")) {
@@ -38,15 +39,13 @@ public class BoardUpdateCommand implements Command {
         return;
       }
 
-      board.setTitle(title);
-      board.setContent(content);
-
       boardService.update(board);
+
       out.println("게시글을 변경하였습니다.");
 
     } catch (Exception e) {
       out.printf("작업 처리 중 오류 발생! - %s\n", e.getMessage());
+      e.printStackTrace();
     }
   }
-
 }

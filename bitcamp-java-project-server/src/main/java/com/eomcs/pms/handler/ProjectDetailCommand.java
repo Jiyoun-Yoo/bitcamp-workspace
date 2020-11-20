@@ -2,25 +2,32 @@ package com.eomcs.pms.handler;
 
 import java.io.BufferedReader;
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.Map;
-import com.eomcs.pms.domain.Member;
 import com.eomcs.pms.domain.Project;
+import com.eomcs.pms.domain.Task;
 import com.eomcs.pms.service.ProjectService;
+import com.eomcs.pms.service.TaskService;
 import com.eomcs.util.Prompt;
 
 public class ProjectDetailCommand implements Command {
 
   ProjectService projectService;
+  TaskService taskService;
 
-  public ProjectDetailCommand(ProjectService projectService) {
+  public ProjectDetailCommand(
+      ProjectService projectService,
+      TaskService taskService) {
     this.projectService = projectService;
+    this.taskService = taskService;
   }
 
   @Override
-  public void execute(PrintWriter out, BufferedReader in, Map<String, Object> context) {
+  public void execute(PrintWriter out, BufferedReader in, Map<String,Object> context) {
     try {
       out.println("[프로젝트 상세보기]");
       int no = Prompt.inputInt("번호? ", out, in);
+
       Project project = projectService.get(no);
 
       if (project == null) {
@@ -28,23 +35,46 @@ public class ProjectDetailCommand implements Command {
         return;
       }
 
-      StringBuilder members = new StringBuilder();
-      for (Member member : project.getMembers()) {
-        if(members.length() > 0) {
-          members.append(",");
-        }
-        members.append(member.getName());
-      }
-
       out.printf("프로젝트명: %s\n", project.getTitle());
       out.printf("내용: %s\n", project.getContent());
-      out.printf("기간: %s ~ %s\n", project.getStartDate(), project.getEndDate());
-      out.printf("만든이: %s\n", project.getOwner().getName());
-      out.printf("팀원: %s\n", members.toString());
+      out.printf("기간: %s ~ %s\n",
+          project.getStartDate(),
+          project.getEndDate());
+      out.printf("관리자: %s\n", project.getOwner().getName());
+      out.print("팀원: ");
+      project.getMembers().forEach(
+          member -> out.print(member.getName() + " "));
+      out.println();
+
+      out.println("작업:");
+      out.println("--------------------------------");
+
+      List<Task> tasks = taskService.listByProject(no);
+
+      out.println("번호, 작업내용, 마감일, 작업자, 상태");
+      for (Task task : tasks) {
+        String stateLabel = null;
+        switch (task.getStatus()) {
+          case 1:
+            stateLabel = "진행중";
+            break;
+          case 2:
+            stateLabel = "완료";
+            break;
+          default:
+            stateLabel = "신규";
+        }
+        out.printf("%d, %s, %s, %s, %s\n",
+            task.getNo(),
+            task.getContent(),
+            task.getDeadline(),
+            task.getOwner().getName(),
+            stateLabel);
+      }
 
     } catch (Exception e) {
       out.printf("작업 처리 중 오류 발생! - %s\n", e.getMessage());
+      e.printStackTrace();
     }
   }
-
 }

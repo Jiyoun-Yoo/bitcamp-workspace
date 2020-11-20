@@ -17,12 +17,12 @@ public class MemberListCommand implements Command {
 
   @Override
   public void execute(PrintWriter out, BufferedReader in, Map<String,Object> context) {
-    try {
-      out.println("[회원 목록]");
+    out.println("[회원 목록]");
 
+    try {
       List<Member> list = memberService.list();
 
-      out.println("번호, 이름, 이메일, 전화번호, 등록일");
+      out.println("번호, 이름, 이메일, 전화, 등록일");
       for (Member member : list) {
         out.printf("%d, %s, %s, %s, %s\n",
             member.getNo(),
@@ -31,10 +31,9 @@ public class MemberListCommand implements Command {
             member.getTel(),
             member.getRegisteredDate());
       }
-
     } catch (Exception e) {
-      out.printf("작업 처리 중 오류 발생!\n", e.getMessage());
+      out.printf("작업 처리 중 오류 발생! - %s\n", e.getMessage());
+      e.printStackTrace();
     }
   }
-
 }

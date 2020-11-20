@@ -28,10 +28,11 @@ public class MemberAddCommand implements Command {
       member.setTel(Prompt.inputString("전화? ", out, in));
 
       memberService.add(member);
-      out.println("회원을 등록하였습니다.");
+      System.out.println("회원을 등록하였습니다.");
 
     } catch (Exception e) {
       out.printf("작업 처리 중 오류 발생! - %s\n", e.getMessage());
+      e.printStackTrace();
     }
   }
 }

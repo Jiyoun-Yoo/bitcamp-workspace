@@ -16,11 +16,11 @@ public class BoardDetailCommand implements Command {
   }
 
   @Override
-  public void execute(PrintWriter out, BufferedReader in, Map<String, Object> context) {
+  public void execute(PrintWriter out, BufferedReader in, Map<String,Object> context) {
     try {
       out.println("[게시물 상세보기]");
-
       int no = Prompt.inputInt("번호? ", out, in);
+
       Board board = boardService.get(no);
 
       if (board == null) {
@@ -28,17 +28,15 @@ public class BoardDetailCommand implements Command {
         return;
       }
 
-      board.setViewCount(board.getViewCount() + 1);
-
       out.printf("제목: %s\n", board.getTitle());
       out.printf("내용: %s\n", board.getContent());
-      out.printf("작성자: %s\n", board.getWriter());
+      out.printf("작성자: %s\n", board.getWriter().getName());
       out.printf("등록일: %s\n", board.getRegisteredDate());
       out.printf("조회수: %d\n", board.getViewCount());
 
     } catch (Exception e) {
       out.printf("작업 처리 중 오류 발생! - %s\n", e.getMessage());
+      e.printStackTrace();
     }
   }
-
 }

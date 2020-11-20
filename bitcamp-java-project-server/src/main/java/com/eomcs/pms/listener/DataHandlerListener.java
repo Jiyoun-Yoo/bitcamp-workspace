@@ -22,6 +22,7 @@ import com.eomcs.pms.service.ProjectService;
 import com.eomcs.pms.service.TaskService;
 import com.eomcs.util.SqlSessionFactoryProxy;
 
+// 게시물, 회원, 프로젝트, 작업 데이터를 파일에서 로딩하고 파일로 저장하는 일을 한다.
 public class DataHandlerListener implements ApplicationContextListener {
 
   @Override
@@ -39,7 +40,7 @@ public class DataHandlerListener implements ApplicationContextListener {
       ProjectDao projectDao = new ProjectDaoImpl(sqlSessionFactory);
       TaskDao taskDao = new TaskDaoImpl(sqlSessionFactory);
 
-      // 서비스 객체 생성
+      // Service 구현체 생성
       BoardService boardService = new DefaultBoardService(boardDao);
       MemberService memberService = new DefaultMemberService(memberDao);
       ProjectService projectService = new DefaultProjectService(taskDao, projectDao, sqlSessionFactory);
@@ -52,7 +53,7 @@ public class DataHandlerListener implements ApplicationContextListener {
       context.put("taskService", taskService);
 
     } catch (Exception e) {
-      System.out.println("Mybatis 및 DAO 객체 준비 중 오류 발생!");
+      System.out.println("Mybatis 및 DAO, 서비스 객체 준비 중 오류 발생!");
       e.printStackTrace();
     }
   }
@@ -60,5 +61,4 @@ public class DataHandlerListener implements ApplicationContextListener {
   @Override
   public void contextDestroyed(Map<String,Object> context) {
   }
-
 }

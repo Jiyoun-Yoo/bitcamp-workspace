@@ -20,6 +20,7 @@ public class MemberDetailCommand implements Command {
     try {
       out.println("[회원 상세보기]");
       int no = Prompt.inputInt("번호? ", out, in);
+
       Member member = memberService.get(no);
 
       if (member == null) {
@@ -35,6 +36,7 @@ public class MemberDetailCommand implements Command {
 
     } catch (Exception e) {
       out.printf("작업 처리 중 오류 발생! - %s\n", e.getMessage());
+      e.printStackTrace();
     }
   }
 }
