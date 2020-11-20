@@ -2,24 +2,25 @@ package com.eomcs.pms.handler;
 
 import java.io.BufferedReader;
 import java.io.PrintWriter;
-import java.util.List;
+import java.util.Map;
 import com.eomcs.pms.domain.Task;
+import com.eomcs.pms.service.TaskService;
 import com.eomcs.util.Prompt;
 
 public class TaskDetailCommand implements Command {
 
-  List<Task> taskList;
+  TaskService taskService;
 
-  public TaskDetailCommand(List<Task> list) {
-    this.taskList = list;
+  public TaskDetailCommand(TaskService taskService) {
+    this.taskService = taskService;
   }
 
   @Override
-  public void execute(PrintWriter out, BufferedReader in) {
+  public void execute(PrintWriter out, BufferedReader in, Map<String, Object> context) {
     try {
       out.println("[작업 상세보기]");
       int no = Prompt.inputInt("번호? ", out, in);
-      Task task = findByNo(no);
+      Task task = taskService.get(no);
 
       if (task == null) {
         out.println("해당 번호의 작업이 없습니다.");
@@ -45,15 +46,5 @@ public class TaskDetailCommand implements Command {
     } catch (Exception e) {
       out.printf("작업 처리 중 오류 발생! - %s\n", e.getMessage());
     }
-  }
-
-  private Task findByNo(int no) {
-    for (int i = 0; i < taskList.size(); i++) {
-      Task task = taskList.get(i);
-      if (task.getNo() == no) {
-        return task;
-      }
-    }
-    return null;
   }
 }

@@ -2,26 +2,27 @@ package com.eomcs.pms.handler;
 
 import java.io.BufferedReader;
 import java.io.PrintWriter;
-import java.util.List;
+import java.util.Map;
 import com.eomcs.pms.domain.Task;
+import com.eomcs.pms.service.TaskService;
 import com.eomcs.util.Prompt;
 
 public class TaskDeleteCommand implements Command {
 
-  List<Task> taskList;
+  TaskService taskService;
 
-  public TaskDeleteCommand(List<Task> list) {
-    this.taskList = list;
+  public TaskDeleteCommand(TaskService taskService) {
+    this.taskService = taskService;
   }
 
   @Override
-  public void execute(PrintWriter out, BufferedReader in) {
+  public void execute(PrintWriter out, BufferedReader in, Map<String, Object> context) {
     try {
       out.println("[작업 삭제]");
       int no = Prompt.inputInt("번호? ", out, in);
-      int index = indexOf(no);
+      Task task = taskService.get(no);
 
-      if (index == -1) {
+      if (task == null) {
         out.println("해당 번호의 작업이 없습니다.");
         return;
       }
@@ -32,7 +33,7 @@ public class TaskDeleteCommand implements Command {
         return;
       }
 
-      taskList.remove(index);
+      taskService.delete(no);
       out.println("작업을 삭제하였습니다.");
 
     } catch (Exception e) {
@@ -40,13 +41,4 @@ public class TaskDeleteCommand implements Command {
     }
   }
 
-  private int indexOf(int no) {
-    for (int i = 0; i < taskList.size(); i++) {
-      Task task = taskList.get(i);
-      if (task.getNo() == no) {
-        return i;
-      }
-    }
-    return -1;
-  }
 }
