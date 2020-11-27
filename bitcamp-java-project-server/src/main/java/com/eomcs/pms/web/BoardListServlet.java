@@ -1,50 +1,82 @@
-package com.eomcs.pms.handler;
+package com.eomcs.pms.web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.List;
-import javax.servlet.GenericServlet;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import com.eomcs.pms.domain.Board;
 import com.eomcs.pms.service.BoardService;
 
 @WebServlet("/board/list")
-public class BoardListCommand extends GenericServlet {
+public class BoardListServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   @Override
-  public void service(ServletRequest request, ServletResponse response)
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
+    // Servlet container에 들어 있는 BoardService를 꺼낸다.
     ServletContext ctx = request.getServletContext();
     BoardService boardService = (BoardService) ctx.getAttribute("boardService");
 
-    response.setContentType("text/plain;charset=UTF-8");
+    response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
 
+    out.println("<!DOCTYPE html>");
+    out.println("<html>");
+    // 웹브라우저 제목에 출력될 내용
+    out.println("<head><title>게시글 목록</title></head>");
+    out.println("<body>");
+
     try {
-      out.println("[게시물 목록]");
+      out.println("<h1>[게시물 목록]</h1>");
+
+      out.println("<a href='form.html'>새글</a><br>");
 
       List<Board> list = boardService.list();
 
-      out.println("번호, 제목, 작성자, 등록일, 조회수");
+      out.println("<table border='1'>");
+      out.println("<thead><tr>" // table row
+          + "<th>번호</th>" // table header
+          + "<th>제목</th>"
+          + "<th>작성자</th>"
+          + "<th>등록일</th>"
+          + "<th>조회수</th>"
+          + "</tr></thead>");
 
+      out.println("</tbody>");
+      out.println("<tr>");
       for (Board board : list) {
-        out.printf("%d, %s, %s, %s, %d\n",
+        out.printf("<tr>"
+            + "<td>%d</td>"
+            + "<td><a href='detail?no=%d'>%s</td>"
+            + "<td>%s</td>"
+            + "<td>%s</td>"
+            + "<td>%d</td>"
+            + "</tr>\n",
+            board.getNo(),
             board.getNo(),
             board.getTitle(),
             board.getWriter().getName(),
             board.getRegisteredDate(),
             board.getViewCount());
       }
+      out.println("</tbody>");
+      out.println("</table>");
     } catch (Exception e) {
-      out.printf("작업 처리 중 오류 발생! - %s\n", e.getMessage());
-      e.printStackTrace();
+      out.printf("<p>작업 처리 중 오류 발생! - %s</p>\n", e.getMessage());
+      StringWriter errOut = new StringWriter();
+      e.printStackTrace(new PrintWriter(errOut));
+      out.printf("<pre>%s</pre>\n", errOut.toString());
     }
+    out.println("</body>");
+    out.println("</html>");
   }
 
 }
