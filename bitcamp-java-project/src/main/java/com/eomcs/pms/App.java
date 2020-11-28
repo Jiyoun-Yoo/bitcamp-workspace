@@ -43,7 +43,8 @@ import com.eomcs.util.Prompt;
 
 public class App {
 
-  // 옵저버와 공유할 맵 객체
+  // 발행자와 옵저버가 데이터를 공유할 맵 객체
+  // 호출자가 옵저버의 실행 결과를 받을 수 있도록 파라미터로 맵 객체를 전달할 것이다.
   Map<String,Object> context = new Hashtable<>();
 
   // 옵저버를 보관할 컬렉션 객체

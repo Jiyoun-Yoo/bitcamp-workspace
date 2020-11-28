@@ -1,6 +1,5 @@
 package com.eomcs.pms.web;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -32,7 +31,6 @@ public class BoardDetailServlet extends HttpServlet {
 
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
-    BufferedReader in = request.getReader();
 
     out.println("<!DOCTYPE html>");
     out.println("<html>");
@@ -49,11 +47,18 @@ public class BoardDetailServlet extends HttpServlet {
         return;
       }
 
-      out.printf("제목: %s<br>", board.getTitle());
-      out.printf("내용: %s<br>", board.getContent());
-      out.printf("작성자: %s<br>", board.getWriter().getName());
-      out.printf("등록일: %s<br>", board.getRegisteredDate());
-      out.printf("조회수: %d<br>", board.getViewCount());
+      out.println("<form action='update' method='post'>");
+      out.printf("번호: <input type='text' name='no' value='%d' readonly><br>\n", board.getNo());
+      out.printf("제목: <input type='text' name='title' value='%s'><br>\n", board.getTitle());
+      out.printf("내용: <textarea name='content'>%s</textarea><br>\n", board.getContent());
+      out.printf("작성자: %s<br>\n", board.getWriter().getName());
+      out.printf("등록일: %s<br>\n", board.getRegisteredDate());
+      out.printf("조회수: %d<br>\n", board.getViewCount());
+      out.println("<p>");
+      out.println("<button>변경</button>");
+      out.printf("<a href='delete?no=%d'>삭제</a>\n", board.getNo());
+      out.println("</p>");
+      out.println("</form>");
 
     } catch (Exception e) {
       out.printf("<p>작업 처리 중 오류 발생! - %s</p>\n", e.getMessage());
