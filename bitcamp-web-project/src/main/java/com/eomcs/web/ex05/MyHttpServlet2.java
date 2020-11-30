@@ -91,8 +91,6 @@ public abstract class MyHttpServlet2 extends GenericServlet {
     out.println("해당 HTTP 요청을 처리할 수 없습니다.");
   }
 
-
-
 }
 
 

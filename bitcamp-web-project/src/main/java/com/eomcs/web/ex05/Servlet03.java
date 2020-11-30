@@ -24,7 +24,7 @@ public class Servlet03 extends MyHttpServlet2 {
     //
     response.setContentType("text/plain;charset=UTF-8");
     PrintWriter out = response.getWriter();
-    out.println("GET 요청입니다.");
+    out.println("doGet => GET 요청입니다.");
   }
 
   // HTTP POST 요청에 응답하고 싶다면
@@ -33,11 +33,11 @@ public class Servlet03 extends MyHttpServlet2 {
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     // 테스트
-    // - http://localhost:8080/java-web/ex05/test03.html 실행
+    // - http://localhost:9999/bitcamp-web-project/ex05/test03.html 실행
     //
     response.setContentType("text/plain;charset=UTF-8");
     PrintWriter out = response.getWriter();
-    out.println("POST 요청입니다.");
+    out.println("doPost => POST 요청입니다.");
   }
 }
 

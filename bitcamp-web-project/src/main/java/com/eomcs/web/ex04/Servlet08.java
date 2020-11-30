@@ -33,7 +33,7 @@ public class Servlet08 extends GenericServlet {
       throws ServletException, IOException {
 
     // 테스트
-    // - http://localhost:8080/java-web/ex04/test08.html 실행
+    // - http://localhost:9999/bitcamp-web-project/ex04/test08.html 실행
     //
 
     req.setCharacterEncoding("UTF-8");
@@ -72,28 +72,31 @@ public class Servlet08 extends GenericServlet {
     // Thumbnails.of(this.uploadDir + "/" + filename).size(20, 20).outputFormat("jpg")
     // .toFiles(Rename.PREFIX_DOT_THUMBNAIL);
 
-    Thumbnails.of(this.uploadDir + "/" + filename)//
-        .size(20, 20)//
-        .outputFormat("jpg")//
+    Thumbnails.of(this.uploadDir + "/" + filename)
+        .size(20, 20)
+        .outputFormat("jpg")
         .toFiles(new Rename() {
           @Override
           public String apply(String name, ThumbnailParameter param) {
             return name + "_20x20";
           }
         });
+    // 위와 같은 방식으로 썸네일을 생성하면, 원본파일+"_20X20"와 같이 저장된다.
 
-    Thumbnails.of(this.uploadDir + "/" + filename)//
-        .size(80, 80)//
-        .outputFormat("jpg") //
+    Thumbnails.of(this.uploadDir + "/" + filename)
+        .size(80, 80)
+        .outputFormat("jpg")
         .toFiles(Rename.PREFIX_DOT_THUMBNAIL);
 
-    Thumbnails.of(this.uploadDir + "/" + filename)//
-        .size(160, 160) //
-        .outputFormat("jpg") //
+    Thumbnails.of(this.uploadDir + "/" + filename)
+        .size(160, 160)
+        .outputFormat("jpg")
         .toFiles(Rename.PREFIX_DOT_THUMBNAIL);
 
     out.printf("사진=%s<br>\n", filename);
     out.printf("<img src='../upload/%s_20x20.jpg'><br>\n", filename);
+    out.printf("<img src='../upload/%s_80x80.jpg'><br>\n", filename);
+    out.printf("<img src='../upload/%s_160x160.jpg'><br>\n", filename);
     out.printf("<img src='../upload/%s' height='80'><br>\n", filename);
     out.printf("<img src='../upload/%s'><br>\n", filename);
     out.println("</body></html>");

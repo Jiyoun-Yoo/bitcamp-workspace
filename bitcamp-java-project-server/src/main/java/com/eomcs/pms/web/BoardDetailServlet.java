@@ -64,9 +64,9 @@ public class BoardDetailServlet extends HttpServlet {
       out.printf("<p>작업 처리 중 오류 발생! - %s</p>\n", e.getMessage());
       StringWriter errOut = new StringWriter();
       e.printStackTrace(new PrintWriter(errOut));
+      out.println("<h3>상세 오류 내용</h3>");
       out.printf("<pre>%s</pre>\n", errOut.toString());
     }
-
     out.println("</body>");
     out.println("</html>");
   }
