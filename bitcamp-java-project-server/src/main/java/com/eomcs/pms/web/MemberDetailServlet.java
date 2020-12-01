@@ -61,14 +61,14 @@ public class MemberDetailServlet extends HttpServlet {
           member.getName());
       out.printf("이메일: <input type='email' name='email' value='%s'><br>",
           member.getEmail());
-      out.println("암호: <input type='password' name='password'><br>");
-      out.printf("전화: <input type='tel' name='tel' value='%s'><br>",
+      out.println("암호: <input type='password' name='password'><br>\n");
+      out.printf("전화: <input type='tel' name='tel' value='%s'><br>\n",
           member.getTel());
       out.printf("등록일: %s<br>\n", member.getRegisteredDate());
       out.println("<button>변경</button>");
-      out.printf("<a href='delete?no=%d'>[삭제]</a> ",
+      out.printf("<a href='delete?no=%d'>[삭제]</a>\n",
           member.getNo());
-      out.println("<a href='list'>[목록]</a> ");
+      out.println("<a href='list'>[목록]</a>\n");
       out.println("</form>");
 
     } catch (Exception e) {

@@ -1,144 +1,70 @@
 package com.eomcs.pms.web;
 
-import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.StringWriter;
+import java.sql.Date;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import com.eomcs.pms.domain.Member;
-import com.eomcs.pms.domain.Project;
 import com.eomcs.pms.domain.Task;
-import com.eomcs.pms.service.MemberService;
-import com.eomcs.pms.service.ProjectService;
 import com.eomcs.pms.service.TaskService;
-import com.eomcs.util.Prompt;
 
-@CommandAnno("/task/update")
-public class TaskUpdateCommand implements Command {
-
-  TaskService taskService;
-  ProjectService projectService;
-  MemberService memberService;
-
-  public TaskUpdateCommand(
-      TaskService taskService,
-      ProjectService projectService,
-      MemberService memberService) {
-    this.taskService = taskService;
-    this.projectService = projectService;
-    this.memberService = memberService;
-  }
+@WebServlet("/task/update")
+public class TaskUpdateCommand extends HttpServlet {
+  private static final long serialVersionUID = 1L;
 
   @Override
-  public void execute(Request request) {
-    PrintWriter out = request.getWriter();
-    BufferedReader in = request.getReader();
+  protected void doPost(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+
+    ServletContext ctx = request.getServletContext();
+    TaskService taskService = (TaskService) ctx.getAttribute("taskService");
+
+    response.setContentType("text/html;charset=UTF-8");
+    PrintWriter out = response.getWriter();
+
+    out.println("<!DOCTYPE html>");
+    out.println("<html>");
+    out.println("<head>");
+    out.println("<title>작업변경</title></head>");
+    out.println("<body>");
 
     try {
-      out.println("[작업 변경]");
+      out.println("<h1>작업 변경</h1>");
 
-      int no = Prompt.inputInt("번호? ", out, in);
-
-      Task task = taskService.get(no);
-      if (task == null) {
-        out.println("해당 번호의 작업이 존재하지 않습니다.");
-        return;
-      }
-
-      // 프로젝트 변경
-      out.printf("현재 프로젝트: %s\n", task.getProjectTitle());
-
-      List<Project> projects = projectService.list();
-      if (projects.size() == 0) {
-        out.println("프로젝트가 없습니다!");
-        return;
-      }
-
-      ArrayList<Integer> projectNoList = new ArrayList<>();
-      for (Project project : projects) {
-        out.printf("  %d, %s\n", project.getNo(), project.getTitle());
-        projectNoList.add(project.getNo());
-      }
-
-      // 사용자로부터 프로젝트 번호를 입력 받는다.
-      while (true) {
-        int projectNo = Prompt.inputInt("프로젝트 번호?(0: 취소) ", out, in);
-        if (projectNo == 0) {
-          out.println("작업 등록을 취소합니다.");
-          return;
-        } else if (projectNoList.contains(projectNo)) {
-          task.setProjectNo(projectNo);
-          break;
-        }
-        out.println("프로젝트 번호가 맞지 않습니다.");
-      }
-
+      Task task = new Task();
+      task.setNo(Integer.parseInt(request.getParameter("no")));
       // 작업 정보 변경
-      task.setContent(Prompt.inputString(String.format(
-          "내용(%s)? ", task.getContent()), out, in));
-      task.setDeadline(Prompt.inputDate(String.format(
-          "마감일(%s)? ", task.getDeadline()), out, in));
-
-      String stateLabel = null;
-      switch (task.getStatus()) {
-        case 1:
-          stateLabel = "진행중";
-          break;
-        case 2:
-          stateLabel = "완료";
-          break;
-        default:
-          stateLabel = "신규";
-      }
-      task.setStatus(Prompt.inputInt(String.format(
-          "상태(%s)?\n0: 신규\n1: 진행중\n2: 완료\n> ", stateLabel), out, in));
-
-      // 프로젝트의 멤버 중에서 작업을 수행할 담당자를 결정한다.
-      List<Member> members = memberService.listForProject(task.getProjectNo());
-      if (members.size() == 0) {
-        out.println("멤버가 없습니다!");
-        return;
-      }
-
-      // 멤버 번호를 보관할 컬렉션
-      ArrayList<Integer> memberNoList = new ArrayList<>();
-
-      out.println("멤버들:");
-      for (Member member : members) {
-        out.printf("  %d, %s\n", member.getNo(), member.getName());
-        memberNoList.add(member.getNo());
-      }
-
-      // 사용자로부터 멤버 번호를 입력 받는다.
-      while (true) {
-        int memberNo = Prompt.inputInt("담당자 번호?(0: 취소) ", out, in);
-        if (memberNo == 0) {
-          out.println("작업 변경을 취소합니다.");
-          return;
-        } else if (memberNoList.contains(memberNo)) {
-          Member member = new Member();
-          member.setNo(memberNo);
-          task.setOwner(member);
-          break;
-        }
-        out.println("멤버 번호가 맞지 않습니다.");
-      }
-
-      String response = Prompt.inputString("정말 변경하시겠습니까?(y/N) ", out, in);
-      if (!response.equalsIgnoreCase("y")) {
-        out.println("작업 변경을 취소하였습니다.");
-        return;
-      }
+      task.setContent(request.getParameter("content"));
+      task.setDeadline(Date.valueOf(request.getParameter("deadline")));
+      task.setStatus(Integer.parseInt(request.getParameter("status")));
+      task.setOwner(new Member().setNo(Integer.parseInt(request.getParameter("owner"))));
 
       if (taskService.update(task) == 0) {
-        out.println("해당 번호의 작업이 존재하지 않습니다.");
-        return;
+        out.println("<p>해당 작업이 존재하지 않습니다.</p>");
+      } else {
+        out.println("<p>작업을 변경하였습니다.</p>");
       }
 
-      System.out.println("작업을 변경하였습니다.");
+      response.setHeader("Refresh",
+          "1;url=../project/detail?no=" + request.getParameter("projectNo"));
 
     } catch (Exception e) {
-      out.printf("작업 처리 중 오류 발생! - %s\n", e.getMessage());
-      e.printStackTrace();
+      out.println("<h2>작업 처리 중 오류 발생!</h2>");
+      out.printf("<pre>%s</pre>\n", e.getMessage());
+
+      StringWriter errOut = new StringWriter();
+      e.printStackTrace(new PrintWriter(errOut));
+      out.println("<h3>상세 오류 내용</h3>");
+      out.printf("<pre>%s</pre>\n", errOut.toString());
     }
+
+    out.println("</body>");
+    out.println("</html>");
   }
 }
