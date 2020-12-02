@@ -30,12 +30,12 @@ public class LogoutServlet extends HttpServlet {
     out.println("<head><title>로그아웃</title></head>");
     out.println("<body>");
 
-    out.println("<h1>[로그아웃]</h1>");
+    out.println("<h1>로그아웃</h1>");
 
     Member loginUser = (Member) session.getAttribute("loginUser");
     if (loginUser == null) {
       out.println("<p>로그인 된 상태가 아닙니다!</p>");
-      return;
+
     } else {
       out.printf("<p>%s 님 안녕히 가세요!</p>\n", loginUser.getName());
       session.invalidate(); // 로그아웃을 요청한 클라이언트의 세션을 무효화시킨다.

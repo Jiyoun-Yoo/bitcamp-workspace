@@ -8,10 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.eomcs.pms.service.TaskService;
+import com.eomcs.pms.service.ProjectService;
 
-@WebServlet("/task/delete")
-public class TaskDeleteServlet extends HttpServlet {
+@WebServlet("/project/delete")
+public class ProjectDeleteServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   @Override
@@ -19,7 +19,7 @@ public class TaskDeleteServlet extends HttpServlet {
       throws ServletException, IOException {
 
     ServletContext ctx = request.getServletContext();
-    TaskService taskService = (TaskService) ctx.getAttribute("taskService");
+    ProjectService projectService = (ProjectService) ctx.getAttribute("projectService");
 
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
@@ -27,23 +27,21 @@ public class TaskDeleteServlet extends HttpServlet {
     out.println("<!DOCTYPE html>");
     out.println("<html>");
     out.println("<head>");
-    out.println("<title>작업삭제</title></head>");
+    out.println("<meta http-equiv='Refresh' content='1;url=list'>");
+    out.println("<title>프로젝트삭제</title></head>");
     out.println("<body>");
 
     try {
-      out.println("<h1>작업 삭제</h1>");
+      out.println("<h1>프로젝트 삭제</h1>");
 
       int no = Integer.parseInt(request.getParameter("no"));
 
-      if (taskService.delete(no) == 0) {
-        out.println("<p>해당 작업이 존재하지 않습니다.</p>");
+      if (projectService.delete(no) == 0) {
+        out.println("<p>해당 프로젝트가 없습니다.</p>");
       } else {
-        out.println("<p>작업을 삭제하였습니다.</p>");
+        out.println("<p>프로젝트를 삭제하였습니다.</p>");
+
       }
-
-      response.setHeader("Refresh",
-          "1;url=../project/detail?no=" + request.getParameter("projectNo"));
-
     } catch (Exception e) {
       out.printf("작업 처리 중 오류 발생! - %s\n", e.getMessage());
       e.printStackTrace();

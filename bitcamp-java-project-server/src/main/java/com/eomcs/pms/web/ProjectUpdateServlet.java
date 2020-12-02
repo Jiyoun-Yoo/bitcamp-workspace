@@ -34,7 +34,7 @@ public class ProjectUpdateServlet extends HttpServlet {
     out.println("<!DOCTYPE html>");
     out.println("<html>");
     out.println("<head>");
-    //out.println("<meta http-equiv='Refresh' content='1;url=list'>");
+    out.println("<meta http-equiv='Refresh' content='1;url=list'>");
     out.println("<title>프로젝트변경</title></head>");
     out.println("<body>");
 
@@ -53,16 +53,14 @@ public class ProjectUpdateServlet extends HttpServlet {
       String[] memberNoList = request.getParameterValues("members");
       if (memberNoList != null) {
         for (String memberNo : memberNoList) {
-          //          Member member = new Member();
-          //          member.setNo(Integer.parseInt(memberNo));
-          //          members.add(member);
           members.add(new Member().setNo(Integer.parseInt(memberNo)));
         }
       }
       project.setMembers(members);
 
       if (projectService.update(project) == 0) {
-        out.println("<p>해당 번호의 프로젝트가 존재하지 않습니다.</p>");
+        out.println("<p>해당 프로젝트가 존재하지 않습니다.</p>");
+
       } else {
         out.println("<p>프로젝트를 변경하였습니다.</p>");
       }
@@ -81,4 +79,3 @@ public class ProjectUpdateServlet extends HttpServlet {
     out.println("</html>");
   }
 }
-

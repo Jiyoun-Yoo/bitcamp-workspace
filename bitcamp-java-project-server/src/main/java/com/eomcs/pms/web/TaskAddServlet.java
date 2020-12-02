@@ -15,7 +15,7 @@ import com.eomcs.pms.domain.Task;
 import com.eomcs.pms.service.TaskService;
 
 @WebServlet("/task/add")
-public class TaskAddServlet extends HttpServlet{
+public class TaskAddServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   @Override
@@ -42,15 +42,18 @@ public class TaskAddServlet extends HttpServlet{
       task.setContent(request.getParameter("content"));
       task.setDeadline(Date.valueOf(request.getParameter("deadline")));
       task.setStatus(Integer.parseInt(request.getParameter("status")));
-      task.setOwner(new Member().setNo(Integer.parseInt(request.getParameter("owner"))));
+      task.setOwner(
+          new Member()
+          .setNo(Integer.parseInt(request.getParameter("owner")))
+          );
 
-      // 작업 정보를 입력한다.
       taskService.add(task);
 
       out.println("<p>작업을 등록했습니다.</p>");
 
       // 응답 헤더에 refresh 정보를 등록한다.
-      response.setHeader("Refresh", "1;url=../project/detail?no=" + request.getParameter("projectNo"));
+      response.setHeader("Refresh",
+          "1;url=../project/detail?no=" + request.getParameter("projectNo"));
 
     } catch (Exception e) {
       out.println("<h2>작업 처리 중 오류 발생!</h2>");

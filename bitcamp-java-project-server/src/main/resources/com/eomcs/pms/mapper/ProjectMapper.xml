@@ -11,6 +11,7 @@
     <result column="content"  property="content"/>
     <result column="sdt"      property="startDate"/>
     <result column="edt"      property="endDate"/>
+    <result column="state"    property="state"/>
     
     <association property="owner" javaType="member">
 	    <id column="owner_no"          property="no"/>
@@ -20,7 +21,7 @@
     <collection property="members" ofType="member">
       <id column="member_no"          property="no"/>
       <result column="member_name"    property="name"/>
-      <result column="member_state"    property="state"/>
+      <result column="member_state"   property="state"/>
     </collection>
   </resultMap>
   
@@ -32,6 +33,7 @@
       p.title, 
       p.sdt, 
       p.edt, 
+      p.state,
       m.no owner_no, 
       m.name owner_name,
       mp.member_no,
@@ -97,7 +99,7 @@
   
   <update id="updateInactiveMembers" parameterType="project">
     update pms_member_project set
-      state = 0
+      state = 0 
     where project_no=#{no} 
       and member_no in 
     <foreach collection="members" item="member" separator="," open="(" close=")">
@@ -107,7 +109,7 @@
   
   <update id="updateActiveMembers" parameterType="project">
     update pms_member_project set
-      state = 1
+      state = 1 
     where project_no=#{no} 
       and member_no in 
     <foreach collection="members" item="member" separator="," open="(" close=")">
@@ -133,7 +135,7 @@
       left outer join pms_member_project mp on p.no=mp.project_no
       left outer join pms_member m2 on mp.member_no=m2.no
     where 
-      p.no = #{no}
+      p.no = #{no} 
   </select>
   
   <update id="update" parameterType="project">
@@ -152,6 +154,12 @@
     where no=#{no}
   </delete>
 
+  <update id="inactive" parameterType="int">
+    update pms_project set
+      state = 0
+    where no=#{no}
+  </update>
+  
 </mapper>
 
 

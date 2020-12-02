@@ -18,25 +18,24 @@ public class LoginUserServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
+    HttpSession session = request.getSession();
+
+    // 클라이언트로 데이터를 출력할 때 사용할 스트림 준비
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
 
-    // 클라이언트 전용 보관소(HttpSession)를 준비한다.
-    HttpSession session = request.getSession();
-
     out.println("<!DOCTYPE html>");
     out.println("<html>");
-    out.println("<head><title>로그인 사용자 정보</title></head>");
+    out.println("<head><title>로그인사용자</title></head>");
     out.println("<body>");
 
-    out.println("<h1>[로그인 사용자 정보]</h1>");
+    out.println("<h1>로그인 사용자</h1>");
 
     Member member = (Member) session.getAttribute("loginUser");
     if (member == null) {
       out.println("<p>로그인 하지 않았습니다!</p>");
       return;
     }
-
     out.printf("사용자 번호: %d<br>\n", member.getNo());
     out.printf("이름: %s<br>\n", member.getName());
     out.printf("이메일: %s<br>\n", member.getEmail());

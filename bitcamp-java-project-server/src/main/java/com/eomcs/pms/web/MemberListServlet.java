@@ -22,19 +22,18 @@ public class MemberListServlet extends HttpServlet {
       throws ServletException, IOException {
 
     ServletContext ctx = request.getServletContext();
-    MemberService memberService = (MemberService) ctx.getAttribute("memberService");
+    MemberService memberService =
+        (MemberService) ctx.getAttribute("memberService");
 
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
 
     out.println("<!DOCTYPE html>");
     out.println("<html>");
-    // 웹브라우저 제목에 출력될 내용
-    out.println("<head><title>회원 목록</title></head>");
+    out.println("<head><title>회원목록</title></head>");
     out.println("<body>");
-
     try {
-      out.println("<h1>[회원 목록]</h1>");
+      out.println("<h1>회원 목록</h1>");
 
       out.println("<a href='form.html'>새 회원</a><br>");
 
@@ -52,26 +51,26 @@ public class MemberListServlet extends HttpServlet {
       out.println("<tbody>");
 
       for (Member member : list) {
-          out.printf("<tr>"
-              + "<td>%d</td>"
-              + "<td><a href='detail?no=%1$d'><img src='../upload/%s' alt='[%2$s]' height='30px'>%s</td>"
-              + "<td>%s</td>"
-              + "<td>%s</td>"
-              + "<td>%s</td>"
-              + "</tr>\n",
-              member.getNo(),
-              member.getPhoto(),
-              member.getName(),
-              member.getEmail(),
-              member.getTel(),
-              member.getRegisteredDate());
+        out.printf("<tr>"
+            + "<td>%d</td>"
+            + "<td><a href='detail?no=%1$d'><img src='../upload/%s_30x30.jpg' alt='[%2$s]'>%s</a></td>"
+            + "<td>%s</td>"
+            + "<td>%s</td>"
+            + "<td>%s</td>"
+            + "</tr>\n",
+            member.getNo(),
+            member.getPhoto(),
+            member.getName(),
+            member.getEmail(),
+            member.getTel(),
+            member.getRegisteredDate());
       }
       out.println("</tbody>");
       out.println("</table>");
 
     } catch (Exception e) {
       out.println("<h2>작업 처리 중 오류 발생!</h2>");
-      out.printf("<pre>%s</pre>\n",e.getMessage());
+      out.printf("<pre>%s</pre>\n", e.getMessage());
 
       StringWriter errOut = new StringWriter();
       e.printStackTrace(new PrintWriter(errOut));
@@ -83,4 +82,3 @@ public class MemberListServlet extends HttpServlet {
     out.println("</html>");
   }
 }
-

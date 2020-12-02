@@ -56,28 +56,29 @@ public class TaskDetailServlet extends HttpServlet {
             task.getContent());
         out.printf("마감일: <input type='date' name='deadline' value='%s'><br>\n",
             task.getDeadline());
-        out.print("담당자: ");
 
         Project project = projectService.get(task.getProjectNo());
 
+        out.println("담당자: ");
         out.println("<select name='owner'>");
         for (Member m : project.getMembers()) {
           if (m.getState() == 0) continue;
-          out.printf("<option value='%d'%s>%s</option>\n",
+
+          out.printf("<option value='%d' %s>%s</option>\n",
               m.getNo(),
               m.getNo() == task.getOwner().getNo() ? "selected" : "",
-              m.getName());
+                  m.getName());
         }
         out.println("</select><br>");
 
-        String[] stateLabels= {"준비", "진행중", "완료"};
-        out.println("작업 상태: ");
+        String[] stateLabels = {"준비", "진행중", "완료"};
+        out.println("작업상태: ");
         out.println("<select name='status'>");
         for (int i = 0; i < 3; i++) {
-          out.printf("<option value='%d' %s>%s</option>",
+          out.printf("<option value='%d' %s>%s</option>\n",
               i,
-              i == task.getStatus() ? "select" : "",
-              stateLabels[i]);
+              i == task.getStatus() ? "selected" : "",
+                  stateLabels[i]);
         }
         out.println("</select><br>");
         out.println("<button>변경</button>");
@@ -102,4 +103,3 @@ public class TaskDetailServlet extends HttpServlet {
     out.println("</html>");
   }
 }
-

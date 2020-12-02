@@ -15,7 +15,7 @@ import com.eomcs.pms.domain.Task;
 import com.eomcs.pms.service.TaskService;
 
 @WebServlet("/task/update")
-public class TaskUpdateCommand extends HttpServlet {
+public class TaskUpdateServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   @Override
@@ -39,11 +39,11 @@ public class TaskUpdateCommand extends HttpServlet {
 
       Task task = new Task();
       task.setNo(Integer.parseInt(request.getParameter("no")));
-      // 작업 정보 변경
       task.setContent(request.getParameter("content"));
       task.setDeadline(Date.valueOf(request.getParameter("deadline")));
       task.setStatus(Integer.parseInt(request.getParameter("status")));
-      task.setOwner(new Member().setNo(Integer.parseInt(request.getParameter("owner"))));
+      task.setOwner(new Member()
+          .setNo(Integer.parseInt(request.getParameter("owner"))));
 
       if (taskService.update(task) == 0) {
         out.println("<p>해당 작업이 존재하지 않습니다.</p>");

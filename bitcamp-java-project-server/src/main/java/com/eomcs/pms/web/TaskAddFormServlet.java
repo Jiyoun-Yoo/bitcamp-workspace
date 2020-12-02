@@ -22,7 +22,8 @@ public class TaskAddFormServlet extends HttpServlet {
       throws ServletException, IOException {
 
     ServletContext ctx = request.getServletContext();
-    ProjectService projectService = (ProjectService) ctx.getAttribute("projectService");
+    ProjectService projectService =
+        (ProjectService) ctx.getAttribute("projectService");
 
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
@@ -37,11 +38,13 @@ public class TaskAddFormServlet extends HttpServlet {
       out.println("<h1>작업 등록</h1>");
 
       // 프로젝트 번호를 가지고 프로젝트 정보를 꺼내온다.
-      Project project = projectService.get(Integer.parseInt(request.getParameter("projectNo")));
+      Project project = projectService.get(
+          Integer.parseInt(request.getParameter("projectNo")));
 
       out.println("<form action='add' method='post'>");
-      out.printf("<input type='hidden' name='projectNo' value='%d'>\n", project.getNo());
-      out.printf("프로젝트명: %s<br>\n", project.getTitle());
+      out.printf("<input type='hidden' name='projectNo' value='%d'>\n",
+          project.getNo());
+      out.printf("프로젝트명: %s<br>", project.getTitle());
       out.println("작업내용: <textarea name='content' rows='10' cols='60'></textarea><br>");
       out.println("마감일: <input type='date' name='deadline'><br>");
       out.println("담당자: <br>");
@@ -54,7 +57,6 @@ public class TaskAddFormServlet extends HttpServlet {
             m.getNo(),
             m.getName());
       }
-
       out.println("</p>");
 
       out.println("작업상태: ");
@@ -62,7 +64,8 @@ public class TaskAddFormServlet extends HttpServlet {
       out.println("  <option value='0'>준비</option>");
       out.println("  <option value='1'>진행중</option>");
       out.println("  <option value='2'>완료</option>");
-      out.println("</select>");
+      out.println("</select><br>");
+
       out.println("<button>등록</button>");
       out.println("</form>");
 
