@@ -11,9 +11,6 @@
 </head>
 <body>
 <h1>JSTL - c:redirect</h1>
-<pre>
-- redirect 응답하기
-</pre>
 
 <c:if test="${param.search == 'naver'}">
     <c:redirect url="http://www.naver.com"/>
