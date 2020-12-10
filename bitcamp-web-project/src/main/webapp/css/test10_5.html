@@ -8,29 +8,34 @@
     => 가장 가까운 조상 중에 absolute나 relative, fixed 타입 조상이 있으면 
        그 조상을 기준으로 자신의 위치를 조정한다.
        테두리 안쪽을 기준으로 위치를 계산한다.
-    => 만약 조상 중에 absolute나 relative가 없다면,
-       문서 가장자리를 기준으로 자신의 위치를 조정한다.
+    => 만약 조상 중에 absolute나 relative, fixed가 없다면,
+       문서 가장자리(웹 브라우저의 가장자리)를 기준으로 자신의 위치를 조정한다.
     => absolute 태그는 width, height를 지정하지 않으면 콘텐츠의 크기에 맞춘다.
     => 기준이 되는 태그가 움직이면 자신도 같이 움직인다.
+    => 어떤 것을 기준으로 삼아
   */
   html {
-    border: 10px solid navy;
+    border: 10px dotted navy;
     margin: 30px; 
     position: relative;
   }
 
+   /* 보통 html에 대해서는 CSS를 지정하지 않는다.
+    body를 기준으로 하는 것이 가장 깔끔하다. */
+
   body {
-    border: 1px dashed black;
-    padding: 10px;
+    border: 5px dashed black;
+    xpadding: 10px;
     margin: 10px;
     position: relative;
   }
 
   div {
-    border: 1px solid black;
+    border: 1px solid red;
     padding: 10px;
+    margin: 10px;
   }
-
+  
   .c1 {
     width: 100px;
     height: 100px;
@@ -51,6 +56,7 @@
     background-color: green;
     height: 300px;
   }
+
   #d3 {
     background-color: blue;
     height: 400px;
@@ -58,9 +64,14 @@
 
   #d111 {
     position: absolute;
+    margin: 0px;
     right: 200px;
-    top: 15px;
+    top: 0px;
   }
+  
+  /* position absolute가 아니면 브라우저가 태그의 위치를 결정한다.
+  position을 absolute라고 지정하면, 개발자가 임의대로 위치를 지정할 수 있다. */
+
   </style>
 </head>
 <body>

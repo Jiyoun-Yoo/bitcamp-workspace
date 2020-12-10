@@ -13,7 +13,7 @@
        => specificity 계산법
        *              : 0
        태그           : 1
-       클래스         : 10
+       클래스, 조건   : 10
        아이디         : 100
        인라인스타일   : 1000
    */
@@ -25,46 +25,43 @@
     margin: 20px;
   }
 
-  body {
+ 
+   body {
     background-color: blue;
   }
 
-/* = 1 */
+ /* = 1 */
   div { 
     width: 100px;
     height: 100px;
     margin: 10px;
   }
-
-
+ 
 /* = 1 */
   div { 
-    width: 200px; /* 같은 점수일 때 나중에 지정된 스타일이 기존 스타일을 덮어쓴다 */
+    width: 200px;  /* 같은 점수일 때 나중에 지정된 스타일이 기존 스타일을 덮어쓴다 */ 
     background-color: green;
   }
-
-/* = 1 */
+  
+ /* = 1 */
   div { 
     background-color: navy;
   }
-
-/* = 10 */
+ 
+ /* = 10 */
   .c1 { 
-    background-color: blue;
+    background-color: orange;
   }
-
-
+ 
 /* = 100 */
-  #d2, #d3 { 
+  #d2, #d3.c1 { 
     background-color: red;
   }
-
-/* = 1 + 100 = 101 */
+ 
+ /* = 1 + 100 = 101 */
   div#d3 {  
     background-color: ivory;
   }
-
-
 
   </style>
 </head>
