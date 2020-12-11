@@ -2,10 +2,11 @@ package com.eomcs.pms.web;
 
 import java.util.UUID;
 import javax.servlet.ServletContext;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 import com.eomcs.pms.domain.Member;
 import com.eomcs.pms.service.MemberService;
 import net.coobird.thumbnailator.ThumbnailParameter;
@@ -13,9 +14,8 @@ import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.geometry.Positions;
 import net.coobird.thumbnailator.name.Rename;
 
-@MultipartConfig(maxFileSize = 1024 * 1024 * 10)
-@RequestMapping("/member/updatePhoto")
-public class MemberUpdatePhotoController implements Controller {
+@Controller
+public class MemberUpdatePhotoController {
 
   MemberService memberService;
 
@@ -23,7 +23,7 @@ public class MemberUpdatePhotoController implements Controller {
     this.memberService = memberService;
   }
 
-  @Override
+  @RequestMapping("/member/updatePhoto")
   public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
     ServletContext ctx = request.getServletContext();
