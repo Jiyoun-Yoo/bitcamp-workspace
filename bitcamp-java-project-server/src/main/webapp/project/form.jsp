@@ -1,7 +1,6 @@
-<%@page import="com.eomcs.pms.domain.Member"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,13 +17,11 @@
       <input type='date' name='endDate'><br>
 팀원: <br>
 <ul>
-<%
-List<Member> members = (List<Member>)request.getAttribute("members");
-for (Member m : members) {
-%>
-  <li><input type='checkbox' name='members' value='<%=m.getNo()%>'><%=m.getName()%></li>
-<%} %>
-</ul><br>
+<c:forEach items="${members}" var="member">
+  <li><input type='checkbox' name='members' value='${member.no}'>${member.name}</li>
+</c:forEach>
+</ul>
+<br>
 <button>생성</button>
 </form>
 </body>

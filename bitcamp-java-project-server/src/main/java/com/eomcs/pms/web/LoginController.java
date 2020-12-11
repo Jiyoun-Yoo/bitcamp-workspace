@@ -6,10 +6,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 import com.eomcs.pms.domain.Member;
 import com.eomcs.pms.service.MemberService;
 
 @Controller
+@RequestMapping("/auth")
 public class LoginController {
 
   MemberService memberService;
@@ -18,38 +21,32 @@ public class LoginController {
     this.memberService = memberService;
   }
 
-  @RequestMapping("/auth/login")
-  public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-    response.setContentType("text/html;charset=UTF-8");
+  @RequestMapping(value = "login", method = RequestMethod.GET)
+  public ModelAndView loginForm(HttpServletRequest request) throws Exception {
 
-    if (request.getMethod().equals("GET")) {
-      // 웹브라우저가 쿠키로 이메일을 보냈으면 꺼낸다.
-      String email = "";
+    String email = "";
 
-      Cookie[] cookies = request.getCookies();
-      if (cookies != null) {
-        for (Cookie cookie : cookies) {
-          if (cookie.getName().equals("email")) {
-            email = cookie.getValue();
-            break;
-          }
+    Cookie[] cookies = request.getCookies();
+    if (cookies != null) {
+      for (Cookie cookie : cookies) {
+        if (cookie.getName().equals("email")) {
+          email = cookie.getValue();
+          break;
         }
       }
-
-      request.setAttribute("email", email);
-      return "/auth/form.jsp";
     }
+    ModelAndView mv = new ModelAndView();
+    mv.addObject("email", email);
+    mv.setViewName("/auth/form.jsp");
+    return mv;
+  }
 
-    HttpSession session = request.getSession();
-
-    response.setContentType("text/html;charset=UTF-8");
-
-    String email = request.getParameter("email");
-    String password = request.getParameter("password");
+  @RequestMapping(value = "login", method = RequestMethod.POST)
+  public String login(String email, String password, HttpSession session, String savedEmail, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
     Cookie emailCookie = new Cookie("email", email);
 
-    if (request.getParameter("saveEmail") != null) {
+    if (savedEmail != null) {
       emailCookie.setMaxAge(60 * 60 * 24 * 7);
     } else {
       emailCookie.setMaxAge(0); // 유효기간이 0이면 삭제하라는 의미다.
@@ -61,7 +58,6 @@ public class LoginController {
     if (member == null) {
       return "/auth/loginError.jsp";
     }
-
     session.setAttribute("loginUser", member);
     return "redirec:../index.html";
   }

@@ -1,4 +1,3 @@
-<%@page import="com.eomcs.pms.domain.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,7 +12,7 @@
 <input type='hidden' name='no' value='${member.no}'><br>
 <a href='../../upload/${member.photo}'>
 <img src='../../upload/${member.photo}_120x120.jpg'></a><br>
-<input type='file' name='photo'>
+<input type='file' name='photoFile'>
 <button>변경</button>
 </form>
 <br>
