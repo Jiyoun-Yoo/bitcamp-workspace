@@ -11,7 +11,7 @@
 <jsp:include page="/header.jsp"></jsp:include>
 
 <h1>프로젝트 목록(JSP+EL+JSTL)</h1>
-<a href='form'>새 프로젝트</a><br>
+<a href='../project/form'>새 프로젝트</a><br>
 
 <table border='1'>
 <thead>

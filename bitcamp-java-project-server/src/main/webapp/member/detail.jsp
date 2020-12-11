@@ -11,8 +11,8 @@
 <h1>회원 상세 정보(JSP+EL+JSTL)</h1>
 <form action='updatePhoto' method='post' enctype='multipart/form-data'>
 <input type='hidden' name='no' value='${member.no}'><br>
-<a href='../upload/${member.photo}'>
-<img src='../upload/${member.photo}_120x120.jpg'></a><br>
+<a href='../../upload/${member.photo}'>
+<img src='../../upload/${member.photo}_120x120.jpg'></a><br>
 <input type='file' name='photo'>
 <button>변경</button>
 </form>

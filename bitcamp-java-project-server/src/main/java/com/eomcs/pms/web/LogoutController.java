@@ -1,23 +1,16 @@
 package com.eomcs.pms.web;
 
-import java.io.IOException;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import com.eomcs.pms.domain.Member;
 
-@WebServlet("/auth/logout")
-public class LogoutServlet extends HttpServlet {
-  private static final long serialVersionUID = 1L;
+@RequestMapping("/auth/logout")
+public class LogoutController implements Controller {
 
   @Override
-  protected void doGet(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
+  public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-    // 클라이언트 전용 보관소(HttpSession)를 준비한다.
     HttpSession session = request.getSession();
 
     // 클라이언트로 데이터를 출력할 때 사용할 스트림 준비
@@ -28,7 +21,6 @@ public class LogoutServlet extends HttpServlet {
 
     response.setContentType("text/html;charset=UTF-8");
     request.setAttribute("loginUser", loginUser);
-    request.getRequestDispatcher("/auth/logout.jsp").include(request, response);
-
+    return "/auth/logout.jsp";
   }
 }

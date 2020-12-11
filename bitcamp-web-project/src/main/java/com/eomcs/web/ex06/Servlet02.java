@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 // loadOnStartup 프로퍼티 값을 지정하라.
 // <servlet>
 // ...
-// <load-on-startup>1</load-on-startup>
+//   <load-on-startup>1</load-on-startup>
 // </servlet>
 // 미리 생성할 서블릿이 여러 개 있다면, loadOnStartup에 지정한 순서대로 생성한다.
 // 언제 서블릿을 미리 생성하는가?

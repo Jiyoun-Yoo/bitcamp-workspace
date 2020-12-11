@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>로그인(JSP)</h1>
-<form action='login' method='post'>
+<form action='../auth/login' method='post'>
 이메일: <input type='email' name='email' value='<%=request.getAttribute("email")%>'><br>
 암호: <input type='password' name='password'><br>
 <input type='checkbox' name='saveEmail'> 이메일 저장<br>
