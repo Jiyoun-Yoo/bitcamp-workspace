@@ -66,25 +66,28 @@ public class ProjectController {
     return "redirect:list";
   }
 
-  @RequestMapping("/list")
-  public ModelAndView list(String keyword, String keywordTitle, String keywordOwner,
+  @RequestMapping("list")
+  public ModelAndView list(
+      String keyword,
+      String keywordTitle,
+      String keywordOwner,
       String keywordMember) throws Exception {
 
     ModelAndView mv = new ModelAndView();
 
     if (keyword != null) {
-      mv.addObject(projectService.list(keyword));
+      mv.addObject("list", projectService.list(keyword));
 
     } else if (keywordTitle != null) {
-      HashMap<String, Object> keywordMap = new HashMap<>();
+      HashMap<String,Object> keywordMap = new HashMap<>();
       keywordMap.put("title", keywordTitle);
       keywordMap.put("owner", keywordOwner);
       keywordMap.put("member", keywordMember);
 
-      mv.addObject(projectService.list(keywordMap));
+      mv.addObject("list", projectService.list(keywordMap));
 
     } else {
-      mv.addObject(projectService.list());
+      mv.addObject("list", projectService.list());
     }
 
     mv.setViewName("/project/list.jsp");
