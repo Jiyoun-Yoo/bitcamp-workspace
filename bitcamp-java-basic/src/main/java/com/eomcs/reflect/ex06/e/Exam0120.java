@@ -8,15 +8,17 @@ import java.lang.reflect.Proxy;
 public class Exam0120 {
 
   public static void main(String[] args) {
-    
-    // Calculator, Calculator2, Calculator3 인터페이스를 구현한 
+
+    // Calculator, Calculator2, Calculator3 인터페이스를 구현한
     // 클래스를 만들고 그 인스턴스를 생성하여 리턴한다.
+    // 파라미터를 3개 넘긴다.
+    // classLoader, 인터페이스를 담은 배열, 익명 클래스의 구현체(InvocationHandler, 실제 일을 할 객체)
     Object proxy = Proxy.newProxyInstance(
-        Exam0120.class.getClassLoader(), 
+        Exam0120.class.getClassLoader(),
         new Class[] {
-            Calculator.class, 
-            Calculator2.class, 
-            Calculator3.class}, 
+            Calculator.class,
+            Calculator2.class,
+            Calculator3.class},
         new InvocationHandler() {
           @Override
           public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
@@ -43,7 +45,7 @@ public class Exam0120 {
     Calculator c1 = (Calculator) proxy;
     Calculator2 c2 = (Calculator2) proxy;
     Calculator3 c3 = (Calculator3) proxy;
-    
+
     System.out.println(c1.plus(10, 20));
     System.out.println(c1.minus(10, 20));
     System.out.println(c2.multiple(10, 20));

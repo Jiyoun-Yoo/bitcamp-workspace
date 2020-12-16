@@ -10,13 +10,13 @@ public class Exam0110 {
   public static void main(String[] args) {
     // java.lang.reflect.Proxy
     // => 인터페이스 구현체를 만드는 역할을 한다.
-    // 
+    //
     // newProxyInstance(
     //    구현체를 만들기 위해 사용하는 인터페이스의 클래스로더,
     //    구현할 인터페이스 정보 목록,
     //    실제 작업을 수행하는 객체)
     // => 파라미터로 넘겨 받은 인터페이스를 모두 구현한 클래스를 만들어 리턴한다.
-    // 
+    //
     // 클래스 로더
     // => 클래스 정보를 로딩하는 역할을 수행한다.
     // => 클래스 로더를 얻는 방법
@@ -26,9 +26,9 @@ public class Exam0110 {
     //    - 클래스명.class
     //    - Class.forName("패키지명을 포함한 클래스명")
     //
-    // 클래스 정보를 얻는 방법 예: 
+    // 클래스 정보를 얻는 방법 예:
     /*
-    String s = "hello"; 
+    String s = "hello";
     Class<?> c1 = String.class; // 클래스의 static 변수인 class의 값을 사용할 수 있다.
     Class<?> c2 = s.getClass(); // 인스턴스로 알아낼 수 있다.
     Class<?> c3 = Class.forName("java.lang.String"); // 클래스 정보를 리턴하는 도구를 이용.
@@ -37,8 +37,8 @@ public class Exam0110 {
     // 실제 작업을 수행하는 객체
     // => java.lang.reflect.InvocationHandler 인터페이스에 따라 동작하는 객체
     // => 즉 InvocationHandler 구현체
-    // 
-    
+    //
+
     class MyHandler implements InvocationHandler {
       @Override
       public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
@@ -59,8 +59,8 @@ public class Exam0110 {
 
     // Calculator 인터페이스를 구현한 클래스를 만들고 그 인스턴스를 생성하여 리턴한다.
     Calculator c1 = (Calculator) Proxy.newProxyInstance(
-        Calculator.class.getClassLoader(), 
-        new Class[] {Calculator.class}, 
+        Calculator.class.getClassLoader(),
+        new Class[] {Calculator.class},
         new MyHandler());
 
     System.out.println("++++");
@@ -70,9 +70,4 @@ public class Exam0110 {
   }
 
 }
-
-
-
-
-
 

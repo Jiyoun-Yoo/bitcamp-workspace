@@ -11,8 +11,10 @@ import com.eomcs.spring.ioc.ex12.Board;
 public class Exam01 {
 
   public static void main(String[] args) {
-    ApplicationContext iocContainer = //
+    ApplicationContext iocContainer =
         new AnnotationConfigApplicationContext(AppConfig.class);
+        //new AnnotationConfigApplicationContext("com.eomcs.spring.ioc.ex12.e");
+        // 패키지명을 알려주면, AppConfig 파일에 @Configuration을 붙여야 한다.
 
     SpringUtils.printBeanList(iocContainer);
 
@@ -26,7 +28,7 @@ public class Exam01 {
 
     // 2) 게시물 목록 조회
     // => selectList()의 파라미터 값을 한 개만 넘겨야 하기 때문에
-    // 여러 개의 값을 넣고 싶으면 Map에 담아 넘긴다.
+    //    여러 개의 값을 넣고 싶으면 Map에 담아 넘긴다.
     HashMap<String, Object> params = new HashMap<>();
     params.put("startIndex", 0);
     params.put("pageSize", 5);

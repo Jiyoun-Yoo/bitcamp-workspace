@@ -2,11 +2,9 @@ package com.eomcs.spring.ioc.ex12.a;
 
 import java.util.HashMap;
 import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Component;
-
 import com.eomcs.spring.ioc.ex12.Board;
 
 @Component

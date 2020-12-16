@@ -19,6 +19,7 @@ import com.eomcs.spring.ioc.ex12.Board;
 @MapperScan("com.eomcs.spring.ioc.ex12.e")
 public class AppConfig {
 
+/*
   @Value("${jdbc.driver}")
   String jdbcDriver;
 
@@ -30,9 +31,15 @@ public class AppConfig {
 
   @Value("${jdbc.password}")
   String jdbcPassword;
+*/
 
+  // 파마리터로 jdbc 설정 정보를 넘긴다.
   @Bean
-  public DataSource dataSource() {
+  public DataSource dataSource(
+      @Value("${jdbc.driver}") String jdbcDriver,
+      @Value("${jdbc.url}") String jdbcUrl,
+      @Value("${jdbc.username}") String jdbcUsername,
+      @Value("${jdbc.password}") String jdbcPassword) {
     BasicDataSource ds = new BasicDataSource();
     ds.setDriverClassName(jdbcDriver);
     ds.setUrl(jdbcUrl);
@@ -42,23 +49,23 @@ public class AppConfig {
   }
 
   @Bean
-  public PlatformTransactionManager transactionManager(//
+  public PlatformTransactionManager transactionManager(
       DataSource dataSource) {
     return new DataSourceTransactionManager(dataSource);
   }
 
   @Bean
-  public SqlSessionFactory sqlSessionFactory(//
+  public SqlSessionFactory sqlSessionFactory(
       DataSource dataSource, // DB 커넥션풀
       ApplicationContext appCtx // Spring IoC 컨테이너
   ) throws Exception {
     SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
     sqlSessionFactoryBean.setDataSource(dataSource);
-    // sqlSessionFactoryBean.setTypeAliasesPackage("com.eomcs.spring.ioc.ex12");
-    sqlSessionFactoryBean.setTypeAliases(Board.class);
-    sqlSessionFactoryBean.setMapperLocations(//
+    // sqlSessionFactoryBean.setTypeAliasesPackage("com.eomcs.spring.ioc.ex12"); // 패키지에 대해 별명 부여
+    sqlSessionFactoryBean.setTypeAliases(Board.class); // 특정 클래스에 대해 별명 부여
+    sqlSessionFactoryBean.setMapperLocations(
         appCtx.getResources("classpath:com/eomcs/spring/ioc/ex12/e/*Mapper.xml"));
-    return sqlSessionFactoryBean.getObject();
+    return sqlSessionFactoryBean.getObject(); // sqlSessionFactory를 리턴한다.
   }
 }
 

@@ -10,7 +10,8 @@ class A {
 
   static {
     System.out.println("A 클래스 로딩!");
-    // static 블록이 실행되려면, 하드 디스크의 A.class 파일이 JVM의 Method Area에 로딩되어야 한다.
+    // static 블록이 실행되려면,
+    // 하드 디스크의 A.class 파일이 JVM의 Method Area에 로딩되어야 한다.
   }
 }
 
