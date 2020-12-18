@@ -18,21 +18,25 @@ import net.coobird.thumbnailator.name.Rename;
 @RequestMapping("/member")
 public class MemberController {
 
-  @Autowired ServletContext servletContext; // ServletContext는 메서드의 파라미터로 받을 수 없다.
+  @Autowired ServletContext servletContext; // 메서드의 파라미터로 못 받는다.
   @Autowired MemberService memberService;
 
-  @RequestMapping("/add")
-  public String add(String name, String email, String password, String tel, Part photoFile)
-      throws Exception {
-
-    String filename = UUID.randomUUID().toString();
-    String saveFilePath = servletContext.getRealPath("/upload/" + filename);
+  @RequestMapping("add")
+  public String add(
+      String name,
+      String email,
+      String password,
+      String tel,
+      Part photoFile) throws Exception {
 
     Member member = new Member();
     member.setName(name);
     member.setEmail(email);
     member.setPassword(password);
     member.setTel(tel);
+
+    String filename = UUID.randomUUID().toString();
+    String saveFilePath = servletContext.getRealPath("/upload/" + filename);
 
     photoFile.write(saveFilePath);
     member.setPhoto(filename);
@@ -43,21 +47,19 @@ public class MemberController {
     return "redirect:list";
   }
 
-  @RequestMapping("/delete")
+  @RequestMapping("delete")
   public String delete(int no) throws Exception {
     if (memberService.delete(no) == 0) {
       throw new Exception("해당 번호의 회원이 없습니다.");
     }
-
     return "redirect:list";
   }
 
-  @RequestMapping("/detail")
+  @RequestMapping("detail")
   public ModelAndView detail(int no) throws Exception {
-
     Member member = memberService.get(no);
     if (member == null) {
-      throw new Exception("해당 번호의 회원이 없습니다.");
+      throw new Exception("해당 회원이 없습니다!");
     }
 
     ModelAndView mv = new ModelAndView();
@@ -66,7 +68,7 @@ public class MemberController {
     return mv;
   }
 
-  @RequestMapping("/list")
+  @RequestMapping("list")
   public ModelAndView list() throws Exception {
     ModelAndView mv = new ModelAndView();
     mv.addObject("list", memberService.list());
@@ -74,13 +76,13 @@ public class MemberController {
     return mv;
   }
 
-  @RequestMapping("/update")
+  @RequestMapping("update")
   public String update(Member member) throws Exception {
     memberService.update(member);
     return "redirect:list";
   }
 
-  @RequestMapping("/updatePhoto")
+  @RequestMapping("updatePhoto")
   public String updatePhoto(int no, Part photoFile) throws Exception {
 
     Member member = new Member();
@@ -93,6 +95,7 @@ public class MemberController {
       photoFile.write(saveFilePath);
       member.setPhoto(filename);
 
+      // 회원 사진의 썸네일 이미지 파일 생성하기
       generatePhotoThumbnail(saveFilePath);
     }
 
@@ -101,26 +104,32 @@ public class MemberController {
     }
 
     memberService.update(member);
-    return ("redirect:detail?no=" + member.getNo());
+    return "redirect:detail?no=" + member.getNo();
   }
 
   private void generatePhotoThumbnail(String saveFilePath) {
     try {
-      Thumbnails.of(saveFilePath).size(30, 30).outputFormat("jpg").crop(Positions.CENTER)
-          .toFiles(new Rename() {
-            @Override
-            public String apply(String name, ThumbnailParameter param) {
-              return name + "_30x30";
-            }
-          });
+      Thumbnails.of(saveFilePath)
+      .size(30, 30)
+      .outputFormat("jpg")
+      .crop(Positions.CENTER)
+      .toFiles(new Rename() {
+        @Override
+        public String apply(String name, ThumbnailParameter param) {
+          return name + "_30x30";
+        }
+      });
 
-      Thumbnails.of(saveFilePath).size(120, 120).outputFormat("jpg").crop(Positions.CENTER)
-          .toFiles(new Rename() {
-            @Override
-            public String apply(String name, ThumbnailParameter param) {
-              return name + "_120x120";
-            }
-          });
+      Thumbnails.of(saveFilePath)
+      .size(120, 120)
+      .outputFormat("jpg")
+      .crop(Positions.CENTER)
+      .toFiles(new Rename() {
+        @Override
+        public String apply(String name, ThumbnailParameter param) {
+          return name + "_120x120";
+        }
+      });
     } catch (Exception e) {
       e.printStackTrace();
     }

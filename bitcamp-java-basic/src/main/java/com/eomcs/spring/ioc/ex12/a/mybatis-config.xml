@@ -25,10 +25,3 @@
     <mapper resource="com/eomcs/spring/ioc/ex12/a/BoardMapper.xml"/>
   </mappers>
 </configuration>
-
-
-
-
-
-
-

@@ -39,7 +39,7 @@
 
       <!-- SQL 맵퍼 파일이 있는 경로를 설정하면, 
            SqlSessionFactory에서 그 경로에서 SQL 맵퍼 파일을 찾을 것이다. -->
-<!-- mybatis-config.xml파일에서 BoardMapper.xml 정보를 주지 않아도 된다. -->           
+      <!-- mybatis-config.xml파일에서 BoardMapper.xml 정보를 주지 않아도 된다. -->           
       <property name="mapperLocations" 
                 value="classpath*:com/eomcs/spring/ioc/ex12/c/*Mapper.xml" />  
 
@@ -73,5 +73,6 @@
 <!-- 스프링 설정 파일에서 사용할 .properties 파일을 로딩하는 객체 준비 -->
 <!-- mybatis-config.xml 파일에서 jdbc 정보를 주지 않아도 된다. -->
   <context:property-placeholder 
-      location="com/eomcs/spring/ioc/ex12/jdbc.properties"/>  
+      location="com/eomcs/spring/ioc/ex12/jdbc.properties"/>
 </beans>
+

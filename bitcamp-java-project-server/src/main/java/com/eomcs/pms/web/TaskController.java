@@ -1,7 +1,6 @@
 package com.eomcs.pms.web;
 
 import java.beans.PropertyEditorSupport;
-import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
@@ -15,41 +14,37 @@ import com.eomcs.pms.service.ProjectService;
 import com.eomcs.pms.service.TaskService;
 
 @Controller
-@RequestMapping("task")
+@RequestMapping("/task")
 public class TaskController {
 
-  @Autowired TaskService taskService;
   @Autowired ProjectService projectService;
+  @Autowired TaskService taskService;
 
-  @RequestMapping(value = "add", method = RequestMethod.GET)
-  public ModelAndView add(int projectNo  ) throws Exception {
-
+  @RequestMapping(value="add", method=RequestMethod.GET)
+  public ModelAndView addForm(int projectNo) throws Exception {
     ModelAndView mv = new ModelAndView();
     mv.addObject("project", projectService.get(projectNo));
     mv.setViewName("/task/form.jsp");
     return mv;
   }
 
-  @RequestMapping(value = "add", method = RequestMethod.POST)
-  public String add(Task task, int onwerNo) throws Exception {
-    task.setOwner(new Member().setNo(onwerNo));
-
+  @RequestMapping(value="add", method=RequestMethod.POST)
+  public String add(Task task, int ownerNo) throws Exception {
+    task.setOwner(new Member().setNo(ownerNo));
     taskService.add(task);
-    return ("redirect:../project/detail?no=" + task.getProjectNo());
+    return "redirect:../project/detail?no=" + task.getProjectNo();
   }
 
-  @RequestMapping("/delete")
+  @RequestMapping("delete")
   public String delete(int no, int projectNo) throws Exception {
-
     if (taskService.delete(no) == 0) {
       throw new Exception("해당 작업이 존재하지 않습니다.");
     }
-
-    return ("redirect:../project/detail?no=" + projectNo);
+    return "redirect:../project/detail?no=" + projectNo;
   }
 
-  @RequestMapping("/detail")
-  public ModelAndView detail(int no, int projectNo) throws Exception {
+  @RequestMapping("detail")
+  public ModelAndView detail(int no) throws Exception {
 
     Task task = taskService.get(no);
     if (task == null) {
@@ -58,22 +53,18 @@ public class TaskController {
 
     ModelAndView mv = new ModelAndView();
     mv.addObject("task", task);
-    mv.addObject("project", projectService.get(projectNo));
+    mv.addObject("project", projectService.get(task.getProjectNo()));
     mv.setViewName("/task/detail.jsp");
-
     return mv;
   }
 
-  @RequestMapping("/update")
-  public String update(Task task, int ownerNo, HttpServletResponse response) throws Exception {
-
+  @RequestMapping("update")
+  public String update(Task task, int ownerNo) throws Exception {
     task.setOwner(new Member().setNo(ownerNo));
-
     if (taskService.update(task) == 0) {
       throw new Exception("해당 작업이 존재하지 않습니다.");
     }
-
-    return ("redirect:../project/detail?no=" + task.getProjectNo());
+    return "redirect:../project/detail?no=" + task.getProjectNo();
   }
 
   @InitBinder

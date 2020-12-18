@@ -4,6 +4,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,13 +14,9 @@ import com.eomcs.pms.service.MemberService;
 
 @Controller
 @RequestMapping("/auth")
-public class LoginController {
+public class AuthController {
 
-  MemberService memberService;
-
-  public LoginController(MemberService memberService) {
-    this.memberService = memberService;
-  }
+  @Autowired MemberService memberService;
 
   @RequestMapping(value = "login", method = RequestMethod.GET)
   public ModelAndView loginForm(HttpServletRequest request) throws Exception {
@@ -35,23 +32,28 @@ public class LoginController {
         }
       }
     }
+
     ModelAndView mv = new ModelAndView();
     mv.addObject("email", email);
     mv.setViewName("/auth/form.jsp");
     return mv;
   }
 
-  @RequestMapping(value = "login", method = RequestMethod.POST)
-  public String login(String email, String password, HttpSession session, String savedEmail, HttpServletRequest request, HttpServletResponse response) throws Exception {
+  @RequestMapping(value="login", method = RequestMethod.POST)
+  public String login(
+      String email,
+      String password,
+      String saveEmail,
+      HttpServletResponse response,
+      HttpSession session) throws Exception {
 
     Cookie emailCookie = new Cookie("email", email);
 
-    if (savedEmail != null) {
+    if (saveEmail != null) {
       emailCookie.setMaxAge(60 * 60 * 24 * 7);
     } else {
       emailCookie.setMaxAge(0); // 유효기간이 0이면 삭제하라는 의미다.
     }
-
     response.addCookie(emailCookie);
 
     Member member = memberService.get(email, password);
@@ -59,6 +61,25 @@ public class LoginController {
       return "/auth/loginError.jsp";
     }
     session.setAttribute("loginUser", member);
-    return "redirec:../index.html";
+    return "redirect:../../index.html";
+  }
+
+  @RequestMapping("loginUser")
+  public String loginUser() throws Exception {
+    return "/auth/loginUser.jsp";
+  }
+
+  @RequestMapping("logout")
+  public ModelAndView logout(HttpSession session, HttpServletResponse response) throws Exception {
+
+    Member loginUser = (Member) session.getAttribute("loginUser");
+    if (loginUser != null) {
+      session.invalidate();
+    }
+
+    ModelAndView mv = new ModelAndView();
+    mv.addObject("loginUser", loginUser);
+    mv.setViewName("/auth/logout.jsp");
+    return mv;
   }
 }

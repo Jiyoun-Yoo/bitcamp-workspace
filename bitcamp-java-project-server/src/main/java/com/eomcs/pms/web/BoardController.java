@@ -35,7 +35,7 @@ public class BoardController {
   public ModelAndView detail(int no) throws Exception {
     Board board = boardService.get(no);
     if (board == null) {
-      throw new Exception("해당 번호의 게시글이 없습니다.");
+      throw new Exception("해당 번호의 게시글이 없습니다!");
     }
 
     ModelAndView mv = new ModelAndView();
@@ -47,6 +47,7 @@ public class BoardController {
 
   @RequestMapping("list")
   public ModelAndView list(String keyword) throws Exception {
+
     ModelAndView mv = new ModelAndView();
     mv.addObject("list", boardService.list(keyword));
     mv.setViewName("/board/list.jsp");

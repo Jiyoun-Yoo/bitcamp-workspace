@@ -4,8 +4,6 @@ import java.beans.PropertyEditorSupport;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,47 +21,63 @@ import com.eomcs.pms.service.TaskService;
 @RequestMapping("/project")
 public class ProjectController {
 
-  @Autowired
-  ProjectService projectService;
-  @Autowired
-  MemberService memberService;
-  @Autowired
-  TaskService taskService;
+  @Autowired ProjectService projectService;
+  @Autowired MemberService memberService;
+  @Autowired TaskService taskService;
 
-  @RequestMapping("/form")
-  public ModelAndView form(HttpServletRequest request, HttpServletResponse response)
-      throws Exception {
+  @RequestMapping("form")
+  public ModelAndView form() throws Exception {
     ModelAndView mv = new ModelAndView();
-    mv.addObject("list", memberService.list());
+    mv.addObject("members", memberService.list());
     mv.setViewName("/project/form.jsp");
     return mv;
   }
 
-  @RequestMapping("/add")
-  public String add(Project project, int[] memberNo, HttpSession session) throws Exception {
+  @RequestMapping("add")
+  public String add(
+      Project project,
+      int[] memberNo,
+      HttpSession session) throws Exception {
 
     Member loginUser = (Member) session.getAttribute("loginUser");
     project.setOwner(loginUser);
 
-    List<Member> members = new ArrayList<>();
+    List<Member> memberList = new ArrayList<>();
     if (memberNo != null) {
       for (int no : memberNo) {
-        members.add(new Member().setNo(no));
+        memberList.add(new Member().setNo(no));
       }
     }
-    project.setMembers(members);
+    project.setMembers(memberList);
 
     projectService.add(project);
     return "redirect:list";
   }
 
-  @RequestMapping("/delete")
+  @RequestMapping("delete")
   public String delete(int no) throws Exception {
+
     if (projectService.delete(no) == 0) {
       throw new Exception("해당 프로젝트가 없습니다.");
     }
-
     return "redirect:list";
+  }
+
+  @RequestMapping("detail")
+  public ModelAndView detail(int no) throws Exception {
+
+    Project project = projectService.get(no);
+    if (project == null) {
+      throw new Exception("해당 프로젝트가 없습니다!");
+    }
+
+    ModelAndView mv = new ModelAndView();
+    mv.addObject("project", project);
+    mv.addObject("members", memberService.list());
+    mv.addObject("tasks", taskService.listByProject(no));
+    mv.setViewName("/project/detail.jsp");
+
+    return mv;
   }
 
   @RequestMapping("list")
@@ -94,8 +108,10 @@ public class ProjectController {
     return mv;
   }
 
-  @RequestMapping("/update")
-  public String update(Project project, int[] memberNo) throws Exception {
+  @RequestMapping("update")
+  public String update(
+      Project project,
+      int[] memberNo) throws Exception {
 
     List<Member> memberList = new ArrayList<>();
     if (memberNo != null) {
@@ -108,24 +124,7 @@ public class ProjectController {
     if (projectService.update(project) == 0) {
       throw new Exception("해당 프로젝트가 존재하지 않습니다.");
     }
-
     return "redirect:list";
-  }
-
-  @RequestMapping("/detail")
-  public ModelAndView detail(int no, HttpServletResponse response) throws Exception {
-
-    Project project = projectService.get(no);
-    if (project == null) {
-      throw new Exception("해당 번호의 프로젝트가 없습니다.");
-    }
-
-    ModelAndView mv = new ModelAndView();
-    mv.addObject("project", project);
-    mv.addObject("members", memberService.list());
-    mv.addObject("tasks", taskService.listByProject(project.getNo()));
-    mv.setViewName("/project/detail.jsp");
-    return mv;
   }
 
   @InitBinder
