@@ -14,13 +14,13 @@
 var arr = ["aaa", "bbb", true, 100, new Object(), function() {}];
 
 
-console.log(arr.length);
-console.log(arr);
+console.log(arr.length); // 6
+console.log(arr); // (6) ["aaa", "bbb", true, 100, {…}, ƒ]
 
 // 마찬가지로 언제든 임의의 위치에 값을 추가할 수 있다.
 arr[8] = false;
-console.log(arr.length);
-console.log(arr);
+console.log(arr.length); // 8
+console.log(arr); // (9) ["aaa", "bbb", true, 100, {…}, ƒ, empty × 2, false]
 
 </script>
 </body>

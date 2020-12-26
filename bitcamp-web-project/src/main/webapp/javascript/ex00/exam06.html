@@ -21,12 +21,13 @@ var tag1 = document.getElementById("btn1");
 
 tag1.onclick = function() {
   // 서버에 요청
-  var xhr = new XMLHttpRequest();
-  xhr.open("GET", "exam06.jsp", false);
-  xhr.send();
+  var xhr = new XMLHttpRequest(); // 전화기를 준비한다.
+  xhr.open("GET", "exam06.jsp", false); // 전화번호를 누른다. (get 요청으로 exam06.jsp를 실행한다.)
+  xhr.send(); // 전화를 건다.
   
   // 서버가 보낸 데이터를 div 태그에 넣기
   var tag2 = document.getElementById("d1");
+  // innerHTML은 div 태그의 시작태그와 끝태그 사이에 들어갈 값을 설정한다.
   tag2.innerHTML = xhr.responseText;
 };
 

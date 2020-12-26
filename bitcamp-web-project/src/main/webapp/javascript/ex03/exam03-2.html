@@ -7,6 +7,24 @@
 <body>
 <h1>함수 - 함수 아규먼트와 함수 내장 변수 arguments</h1>
 <script>
+
+function my(p1) {
+	console.log("===>", p1);
+}
+// my는 함수의 주소를 가지고 있는 변수
+
+function forEach(f) {
+	var arr = ["aaa", "bbb", "ccc"];
+	for (var i = 0; i < arr.length; i++){
+		f(arr[i]);
+	}
+}
+// f는 my라는 변수를 받는 변수
+
+forEach(my);
+console.log("----------------");
+
+
 // 자바스크립트의 함수는 함수를 호출할 때 전달한 값들을 보관할 배열 변수를 내장하고 있다. 
 // => 그 내장 변수의 이름은 "arguments" 이다.
 function f1(a) { 
@@ -24,10 +42,18 @@ function f1(a) {
   
   console.log("----------------");
   // forEach()를 사용하고 싶다면 진짜 배열로 바꾼후 사용해야 한다.
+  // 자바스크립트에서는 함수도 객체로 취급한다. -> 파라미터로 함수도 넘길 수 있다.
   var arr = Array.from(arguments);
   arr.forEach(function(value) {
     console.log(value);
   });
+  
+  
+  function forEach(f) {
+	  for(var i = 0; i < arr.length; i++) {
+		  f(arr[i]);
+	  }
+  }
   
   console.log("----------------");
   // 참고!

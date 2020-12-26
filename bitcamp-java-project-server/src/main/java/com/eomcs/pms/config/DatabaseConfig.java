@@ -1,0 +1,40 @@
+package com.eomcs.pms.config;
+
+import javax.sql.DataSource;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+
+@PropertySource("classpath:com/eomcs/pms/config/jdbc.properties")
+@EnableTransactionManagement
+public class DatabaseConfig {
+
+  @Bean
+  public DataSource dataSource(
+      @Value("${jdbc.driver}") String jdbcDriver,
+      @Value("${jdbc.url}") String jdbcUrl,
+      @Value("${jdbc.username}") String jdbcUsername,
+      @Value("${jdbc.password}") String jdbcPassword) {
+    // DB 커넥션풀 객체 생성
+    // => DB
+    DriverManagerDataSource ds = new DriverManagerDataSource();
+    ds.setDriverClassName(jdbcDriver);
+    ds.setUrl(jdbcUrl);
+    ds.setUsername(jdbcUsername);
+    ds.setPassword(jdbcPassword);
+    return ds;
+  }
+
+  @Bean
+  public PlatformTransactionManager transactionManager(
+      DataSource dataSource) {
+    return new DataSourceTransactionManager(dataSource);
+  }
+}
+
+

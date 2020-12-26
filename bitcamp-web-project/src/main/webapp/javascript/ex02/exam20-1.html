@@ -16,14 +16,22 @@ var arr = ["홍길동", "1111-2222", true, 20];
 // 보통 한 개의 변수에 값을 받는다.
 var v1 = arr;
 arr[0] = "임꺽정";
-console.log(v1); 
+console.log(v1); // (4) ["임꺽정", "1111-2222", true, 20]
+console.log("---------------------");
 
 // 배열을 분해하여 값을 받을 수 있다.
 var [name, tel, working, age] = arr;
-console.log(name, tel, working, age);
+console.log(name, tel, working, age); // 임꺽정 1111-2222 true 20
 
 var [name2, tel2] = arr;
-console.log(name2, tel2);
+console.log(name2, tel2); // 임꺽정 1111-2222 
+console.log("---------------------");
+
+arr[0] = "유관순";
+console.log(name); // 임꺽정
+
+var [name3, tel3] = arr;
+console.log(name3, tel3); // 유관순 1111-2222 
 
 </script>
 </body>

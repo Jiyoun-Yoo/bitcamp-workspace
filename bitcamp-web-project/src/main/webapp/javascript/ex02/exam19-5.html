@@ -12,7 +12,7 @@
 // iterable 프로토콜을 구현한 객체만이 이 반복문을 사용할 수 있다.
 // 예) Array, Map
 
-var obj = new Object(); 
+var obj = new Object(); // Object는 iterable 객체가 아니다.
 obj.name = "홍길동"; 
 obj.age = 20;
 obj.tel = "1111-1111";
@@ -29,7 +29,7 @@ for (var i of obj) {
 console.log("---------------------");
 
 var obj2 = new Map(); // Map으로 초기화시킨 객체는 iterable 객체이다. 
-obj2.set("name", "홍길동");
+obj2.set("name", "홍길동"); // key, value
 obj2.set("age", 20);
 obj2.set("tel", "1111-1111");
 obj2.set("working", true);
@@ -40,7 +40,7 @@ for (var x of obj2) {
   console.log(x);
   console.log(x[0], "=", x[1]);
 }
-console.log("-----------------")
+console.log("---------------------");
 
 // destructuring 문법을 사용하여 key와 value를 분해하여 받는다.
 for (var [key, value] of obj2) { 

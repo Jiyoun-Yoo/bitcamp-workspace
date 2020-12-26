@@ -10,17 +10,22 @@
 // 자바스크립트의 함수는 함수를 호출할 때 전달한 값들을 보관할 배열 변수를 내장하고 있다. 
 // => 그 내장 변수의 이름은 "arguments" 이다.
 function f1(a) { 
-	console.log("a =", a);
+	console.log("a =", a); // 100
 	console.log("----------------");
 	
-  for (var value of arguments) {
+	console.log(arguments.length); // 5
+	console.log("----------------");
+
+	for (var value of arguments) {
     console.log(value);
   }
   console.log("----------------");
+  
   for (var i in arguments) {
     console.log(arguments[i]);
   }
   console.log("----------------");
+  
   for (var i = 0; i < arguments.length; i++) {
     console.log(arguments[i]);
   }

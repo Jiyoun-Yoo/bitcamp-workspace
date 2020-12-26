@@ -15,14 +15,14 @@
   function f2() {console.log(v2);}
   
   // 아직 v2라는 변수는 존재하지 않기 때문에 f2()를 실행하면 오류 발생!
-  //f2();
+  //f2(); // v2 is not defined
 </script>
 </head>
 <body>
 <h1>script 태그에 선언된 자바스크립트의 사용 범위</h1>
 
 <script>
-  // 이전 script 태그에서 정의한 모든 변수와 함수를 그대로 사용할 수 있다.
+  // 이전 script 태그에서 정의한 모든 변수와 함수를 다음 script 태그에서 그대로 사용할 수 있다.
   console.log(v1);
   f1("안녕하세요!");
   
