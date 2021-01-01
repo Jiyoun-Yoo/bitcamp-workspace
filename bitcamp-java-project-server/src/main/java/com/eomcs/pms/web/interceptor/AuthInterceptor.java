@@ -10,6 +10,7 @@ public class AuthInterceptor implements HandlerInterceptor {
   @Override
   public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
       throws Exception {
+    System.out.println("AuthInterceptor 실행!");
 
     if (request.getPathInfo().startsWith("/auth") ||
         request.getSession().getAttribute("loginUser") != null) {

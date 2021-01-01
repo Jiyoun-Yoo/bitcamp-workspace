@@ -28,8 +28,8 @@ public class ProjectController {
   @Autowired TaskService taskService;
 
   @GetMapping("form")
-  public Map<String, Object> form() throws Exception {
-    Map<String, Object> map = new HashMap<>();
+  public Map<String,Object> form() throws Exception {
+    Map<String,Object> map = new HashMap<>();
     map.put("members", memberService.list());
     // 페이지 컨트롤러의 요청 핸들러가 Map 객체를 리턴하면,
     // 프런트 컨트롤러는 Map 객체에 들어 있는 값을
@@ -41,7 +41,7 @@ public class ProjectController {
   public String add(
       Project project,
       int[] memberNo,
-      @ModelAttribute("loginUser") Member loginUser) throws Exception{
+      @ModelAttribute("loginUser") Member loginUser) throws Exception {
 
     project.setOwner(loginUser);
 
@@ -79,7 +79,7 @@ public class ProjectController {
     model.addAttribute("tasks", taskService.listByProject(no));
   }
 
-  @RequestMapping("list")
+  @GetMapping("list")
   public void list(
       String keyword,
       String keywordTitle,
@@ -101,9 +101,6 @@ public class ProjectController {
     } else {
       model.addAttribute("list", projectService.list());
     }
-
-    // jsp의 위치와 페이지 컨트롤러의 위치가 동일하면
-    // 경로를 리턴하지 않아도 된다.
   }
 
   @PostMapping("update")
@@ -124,5 +121,4 @@ public class ProjectController {
     }
     return "redirect:list";
   }
-
 }

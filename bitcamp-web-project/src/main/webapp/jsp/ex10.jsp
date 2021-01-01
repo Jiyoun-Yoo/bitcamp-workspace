@@ -18,7 +18,7 @@
 request.setAttribute("aaa", "okok");
 session.setAttribute("bbb", "nono");
 application.setAttribute("ccc", "haha");
-out.println("aaa");
+out.println("okok");
 %>
 </body>
 </html>

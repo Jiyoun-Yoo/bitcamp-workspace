@@ -15,9 +15,11 @@ import org.springframework.scheduling.annotation.EnableScheduling;
     excludeFilters = {
         @Filter(type = FilterType.REGEX, pattern = "com.eomcs.pms.web.*")
     })
-// 스케줄링 기능을 다루는 @Schduled, @Aysnc 애노테이션을 활성화시킨다.
+
+// 스케줄링 기능을 다루는 @Scheduled, @Async 애노테이션 처리를 활성화시킨다.
 @EnableAsync
 @EnableScheduling
+
 public class RootConfig {
 
 }

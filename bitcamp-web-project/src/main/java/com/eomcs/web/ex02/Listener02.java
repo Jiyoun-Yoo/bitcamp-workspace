@@ -36,9 +36,6 @@ public class Listener02 implements ServletRequestListener {
     // 요청이 들어 왔을 때 호출된다.
     System.out.println("Listener02.requestInitialized()");
     HttpServletRequest request = (HttpServletRequest) sre.getServletRequest();
-    // sre.getServletRequest()의 리턴 타입은 ServletRequet(빵)이다.
-    // HttpServletRequest(단팥빵)이라고 이야기해준다.
-    // 왜? HttpServletReqeust가 더 기능이 많다.
     System.out.println("클라이언트 IP: " + request.getRemoteAddr());
     System.out.println("요청 URL: " + request.getServletPath());
   }

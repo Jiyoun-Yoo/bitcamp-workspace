@@ -19,7 +19,7 @@ public class MybatisConfig {
       ) throws Exception {
 
     // Log4J2 기능 활성화시키기
-    // /src/main/resources/log4j2.xml 추가
+    // => 로그 출력 형식은 .properties 파일이나 .xml 파일로 설정한다.
     LogFactory.useLog4J2Logging();
 
     SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();

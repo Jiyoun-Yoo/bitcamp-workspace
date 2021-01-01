@@ -1,13 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>     
-<!DOCTYPE html>
-<html>
-<head>
-<title>프로젝트목록</title></head>
-<body>
-
-<jsp:include page="../header.jsp"></jsp:include>
 
 <h1>프로젝트 목록(JSP+EL+JSTL)</h1>
 <a href='form'>새 프로젝트</a><br>
@@ -49,14 +42,10 @@
 
 <hr>
 <h2>상세 검색</h2>
+
 <form action='list' method='get'>
-프로젝트명: <input type='text' name='keywordTitle' 
-  value='${param.keywordTitle}'><br>
-관리자: <input type='text' name='keywordOwner' 
-  value='${param.keywordOwner}'><br>
-멤버: <input type='text' name='keywordMember' 
-  value='${param.keywordMember}'><br>
+프로젝트명: <input type='text' name='keywordTitle' value='${param.keywordTitle}'><br>
+관리자: <input type='text' name='keywordOwner' value='${param.keywordOwner}'><br>
+멤버: <input type='text' name='keywordMember' value='${param.keywordMember}'><br>
 <button>검색</button>
 </form>
-</body>
-</html>

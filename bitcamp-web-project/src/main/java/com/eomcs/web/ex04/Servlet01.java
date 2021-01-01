@@ -103,14 +103,19 @@ public class Servlet01 extends GenericServlet {
 //
 //
 // => 예)
-/*
- * GET /java-web/ex04/s1?name=%ED%99%8D%EA%B8%B8%EB%8F%99&age=20 HTTP/1.1 Host: localhost:8080
- * Connection: keep-alive Pragma: no-cache Cache-Control: no-cache Upgrade-Insecure-Requests: 1
- * User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like
- * Gecko) Chrome/73.0.3683.86 Safari/537.36 Accept:
- * text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng, Accept-Encoding:
- * gzip, deflate, br Accept-Language: ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7,la;q=0.6 빈 줄
- */
+//
+// GET /java-web/ex04/s1?name=%ED%99%8D%EA%B8%B8%EB%8F%99&age=20 HTTP/1.1
+// Host: localhost:8080
+// Connection: keep-alive
+// Pragma: no-cache
+// Cache-Control: no-cache
+// Upgrade-Insecure-Requests: 1
+// User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, likeGecko) Chrome/73.0.3683.86 Safari/537.36
+// Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,
+// Accept-Encoding: gzip, deflate, br
+// Accept-Language: ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7,la;q=0.6
+// 빈 줄
+
 
 // HTTP 응답 프로토콜
 // => 형식
@@ -120,21 +125,26 @@ public class Servlet01 extends GenericServlet {
 // message-body
 //
 // => 예:
-/*
- * HTTP/1.1 200 OK Content-Type: text/plain;charset=UTF-8 Content-Length: 27 Date: Thu, 28 Mar 2019
- * 05:46:08 GMT CRLF 이름=홍길동 나이=20
- */
+//
+// HTTP/1.1 200 OK
+// Content-Type: text/plain;charset=UTF-8
+// Content-Length: 27
+// Date: Thu, 28 Mar 2019 05:46:08 GMT
+//     <== 빈 줄
+// 이름=홍길동
+// 나이=20
+//
 
 // URI (Uniform Resource Identifier)
 // => 웹 자원의 위치를 가리키는 식별자
 // => 종류
-// URL(Uniform Resource Locator)
-// scheme:[//[user:password@]host[:port]][/]path[?query][#fragment]
-// 예) http://localhost:8080/ex04/s1?name=홍길동&age=20
+//    URL(Uniform Resource Locator)
+//      scheme:[//[user:password@]host[:port]][/]path[?query][#fragment]
+//      예) http://localhost:8080/ex04/s1?name=홍길동&age=20
 //
-// URN(Uniform Resource Name)
-// <URN> ::= "urn:" <NID> ":" <NSS>
-// 예) urn:lex:eu:council:directive:2010-03-09;2010-19-UE
+//    URN(Uniform Resource Name)
+//      <URN> ::= "urn:" <NID> ":" <NSS>
+//      예) urn:lex:eu:council:directive:2010-03-09;2010-19-UE
 //
 
 

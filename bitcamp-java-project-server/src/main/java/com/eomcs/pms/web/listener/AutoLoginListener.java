@@ -16,8 +16,8 @@ public class AutoLoginListener implements ServletRequestListener {
     System.out.println("ㅋㅋ 자동 로그인!");
     HttpSession session = ((HttpServletRequest)sre.getServletRequest()).getSession();
 
-    try {
-      if (session.getAttribute("loginUser") == null) {
+    if (session.getAttribute("loginUser") == null) {
+      try {
         // 서블릿 컨테이너의 컴포넌트가 스프링 IoC 컨테이너의 객체를 사용하려면
         // 먼저 스프링 IoC 컨테이너를 알아야 한다.
         WebApplicationContext iocContainer =
@@ -25,9 +25,10 @@ public class AutoLoginListener implements ServletRequestListener {
         MemberService memberService = iocContainer.getBean(MemberService.class);
         Member member = memberService.get("bbb@test.com", "1111");
         session.setAttribute("loginUser", member);
+      } catch (Exception e) {
+        System.out.println("자동 로그인 처리 중 오류 발생!");
+        e.printStackTrace();
       }
-    } catch(Exception e) {
-      e.printStackTrace();
     }
   }
 }

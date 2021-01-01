@@ -13,13 +13,9 @@
     font-size: medium;
     border: 5px solid black;
     margin: 10px;
-    position: relative;
-    min-height:500px;
+    position:relative;
+    min-height: 500px;
   }
-  
-  /* body는 absolute로 하지 않는다.
-     body는 자식 태그의 기준점이 될 수 있도록, 
-     그리고 자기 자리를 고수해야 하므로 relative로 한다. */
 
   address {
     display: inline;
@@ -47,14 +43,6 @@
     top: 0px;
     xfloat: left;
   }
-  
-  /* position을 absolute로 해야 임의로 left와 top을 조절할 수 있다.  
-    기준점이 없을 때는 웹 브라우저를 기준으로 위치를 잡는다. 
-    기준점을 body로 잡으면, body를 기준으로 위치를 잡는다.
-    가장 가까운 직계 조상 중 absolute나 relative인 것이 기준이 된다.
-    
-    absolute는 텍스트를 가린다.
-    */
 
   #menu ul > li {
     font-weight: bold;
@@ -69,13 +57,9 @@
     border: 1px solid red;
     margin-left: 184px;
     padding: 10px;
-    /* height: 850px; */
-    min-height: 430px;
+    xheight: 850px;
+    xmin-height: 430px;
   }
-  
-  /* float으로 지정하면 
-     원래의 위치에서 공중부양 한다. */
-  
 
   #footer {
     font-size: 80%; /* = 0.8em */
@@ -139,8 +123,8 @@
     <li>빅데이터 프로페셔널 과정</li>
   </ul>
   비트캠프는 우수한 개발자를 양성합니다.
-  <br><br><br><br><br><br><br><br><br><br>
-  <br><br><br><br><br><br><br><br><br><br>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   </div>
 
   <div id="footer">

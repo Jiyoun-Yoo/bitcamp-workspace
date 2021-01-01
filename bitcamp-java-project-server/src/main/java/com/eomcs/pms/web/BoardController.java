@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import com.eomcs.pms.domain.Board;
 import com.eomcs.pms.domain.Member;
@@ -31,7 +32,8 @@ public class BoardController {
   }
 
   @PostMapping("add")
-  public String add(Board board,
+  public String add(
+      Board board,
       @ModelAttribute("loginUser") Member loginUser) throws Exception {
     board.setWriter(loginUser);
     boardService.add(board);
@@ -57,9 +59,118 @@ public class BoardController {
   }
 
   @GetMapping("list")
-  public void list(String keyword, Model model) throws Exception {
-    model.addAttribute("list", boardService.list(keyword));
+  public void list(
+      String keyword,
+      @RequestParam(defaultValue = "1") int pageNo,
+      @RequestParam(defaultValue = "5") int pageSize,
+      Model model) throws Exception {
+
+    if (pageNo < 1) {
+      pageNo = 1;
+    }
+    if (pageSize < 3 || pageSize > 100) {
+      pageSize = 5;
+    }
+
+    model.addAttribute("list", boardService.list(keyword, pageNo, pageSize));
+
+    int size = boardService.size(keyword);
+    int totalPage = size / pageSize;
+    if (size % pageSize > 0) {
+      totalPage++;
+    }
+
+    int prevPageNo = pageNo > 1 ? pageNo - 1 : 1;
+    int nextPageNo = pageNo + 1;
+    if (nextPageNo > totalPage) {
+      nextPageNo = totalPage;
+    }
+
+    model.addAttribute("currPageNo", pageNo);
+    model.addAttribute("prevPageNo", prevPageNo);
+    model.addAttribute("nextPageNo", nextPageNo);
+    model.addAttribute("totalPage", nextPageNo);
+    model.addAttribute("size", size);
+    model.addAttribute("pageSize", pageSize);
+    model.addAttribute("keyword", keyword);
+
     // 최종 JSP URL: /WEB-INF/jsp/ + /board/list + .jsp = /WEB-INF/jsp/board/list.jsp
+  }
+
+  @GetMapping("list2")
+  public void list2(
+      String keyword,
+      @RequestParam(defaultValue = "1") int pageNo,
+      @RequestParam(defaultValue = "5") int pageSize,
+      Model model) throws Exception {
+
+    if (pageNo < 1) {
+      pageNo = 1;
+    }
+    if (pageSize < 3 || pageSize > 100) {
+      pageSize = 5;
+    }
+
+    model.addAttribute("list", boardService.list(keyword, pageNo, pageSize));
+
+    int size = boardService.size(keyword);
+    int totalPage = size / pageSize;
+    if (size % pageSize > 0) {
+      totalPage++;
+    }
+
+    int prevPageNo = pageNo > 1 ? pageNo - 1 : 1;
+    int nextPageNo = pageNo + 1;
+    if (nextPageNo > totalPage) {
+      nextPageNo = totalPage;
+    }
+
+    model.addAttribute("currPageNo", pageNo);
+    model.addAttribute("prevPageNo", prevPageNo);
+    model.addAttribute("nextPageNo", nextPageNo);
+    model.addAttribute("totalPage", nextPageNo);
+    model.addAttribute("size", size);
+    model.addAttribute("pageSize", pageSize);
+    model.addAttribute("keyword", keyword);
+
+    // 최종 JSP URL: /WEB-INF/jsp/ + /board/list + .jsp = /WEB-INF/jsp/board/list.jsp
+  }
+
+  @GetMapping("list3")
+  public void list3(
+      String keyword,
+      @RequestParam(defaultValue = "1") int pageNo,
+      @RequestParam(defaultValue = "5") int pageSize,
+      Model model) throws Exception {
+
+    if (pageNo < 1) {
+      pageNo = 1;
+    }
+    if (pageSize < 3 || pageSize > 100) {
+      pageSize = 5;
+    }
+
+    model.addAttribute("list", boardService.list(keyword, pageNo, pageSize));
+
+    int size = boardService.size(keyword);
+    int totalPage = size / pageSize;
+    if (size % pageSize > 0) {
+      totalPage++;
+    }
+
+    int prevPageNo = pageNo > 1 ? pageNo - 1 : 1;
+    int nextPageNo = pageNo + 1;
+    if (nextPageNo > totalPage) {
+      nextPageNo = totalPage;
+    }
+
+    model.addAttribute("currPageNo", pageNo);
+    model.addAttribute("prevPageNo", prevPageNo);
+    model.addAttribute("nextPageNo", nextPageNo);
+    model.addAttribute("totalPage", nextPageNo);
+    model.addAttribute("size", size);
+    model.addAttribute("pageSize", pageSize);
+    model.addAttribute("keyword", keyword);
   }
 
   @PostMapping("update")

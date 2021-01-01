@@ -9,12 +9,12 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
-// @WebFilter(
-// value="/ex05/*",
-// initParams={
-// @WebInitParam(name="encoding", value="EUC-KR"),
-// @WebInitParam(name="aaa", value="nono")
-// })
+//@WebFilter(
+//    value="/ex05/*",
+//    initParams={
+//        @WebInitParam(name="encoding", value="UTF-8"),
+//        @WebInitParam(name="aaa", value="nono")
+//    })
 public class Filter02 implements Filter {
 
   FilterConfig filterConfig;

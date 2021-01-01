@@ -58,5 +58,4 @@ public class TaskController {
     }
     return "redirect:../project/detail?no=" + task.getProjectNo();
   }
-
 }

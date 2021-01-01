@@ -25,7 +25,7 @@ import javax.servlet.ServletResponse;
 //
 // 서블릿 실행 방법
 // => http://서버주소:포트번호/웹애플리케이션이름/서블릿URL
-// 예) http://localhost:8080/eomcs-java-web/ex01/first
+// 예) http://localhost:8080/eomcs-java-web/ex01/s01
 //
 // 서블릿 구동 과정
 // 1) 웹 브라우저가 서블릿 실행을 요청한다.
@@ -49,10 +49,13 @@ import javax.servlet.ServletResponse;
 //
 // 주의!
 // => 서블릿 인스턴스는 오직 클래스 마다 한 개만 생성된다.
-// 그래서 모든 클라이언트가 같은 서블릿 인스턴스를 사용한다.
-// => 클라이언트마다 구분되어야 할 데이터는 서블릿 인스턴스 변수에 보관해서는 안된다.
-// 왜? 인스턴스는 모든 클라이언트가 공유하기 때문이다.
+//    그래서 모든 클라이언트가 같은 서블릿 인스턴스를 사용한다.
+// => 클라이언트마다 구분되어야 할 데이터는
+//    서블릿 인스턴스 변수에 보관해서는 안된다.
+// => 왜?
+//    인스턴스는 모든 클라이언트가 공유하기 때문이다.
 //
+
 //@WebServlet("/ex01/first")
 public class Servlet01 implements Servlet {
 

@@ -42,8 +42,8 @@ Student.prototype = Object.create(Member.prototype);
 // 2) 교체한 prototype 객체를 가지고 호출할 생성자를 Student로 변경한다.
 Student.prototype.constructor = Student;
 
-var obj1 = new Member("hong", "1111");
-var obj2 = new Student("park", "1111", "대학교", true);
+var obj1 = new Member("hong", "2222");
+var obj2 = new Student("park", "2222", "대학교", true);
 
 console.log(obj1);
 console.log(obj2);
@@ -57,7 +57,7 @@ console.log(obj1 instanceof Student);  // false
 
 console.log("---------------------------")
 console.log(obj2 instanceof Object);  // true
-console.log(obj2 instanceof Member);  // false
+console.log(obj2 instanceof Member);  // true
 console.log(obj2 instanceof Student);  // true
 
 </script>

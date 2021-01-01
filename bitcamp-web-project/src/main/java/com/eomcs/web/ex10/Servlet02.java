@@ -26,10 +26,14 @@ public class Servlet02 extends HttpServlet {
     // 클라이언트 보낸 쿠키 읽기
     // => 요청 헤더에 포함된 쿠키를 읽는다.
     // => HTTP 요청 프로토콜
+
     // GET /java-web/ex10/s2 HTTP/1.1
     // Host: localhost:8080
-    // Connection: keep-alive ...
+    // Connection: keep-alive
     // Cookie: name=hong; age=20; working=true; name2=홍길동; name3=%ED%99%8D%EA%B8%B8%EB%8F%99
+    // ...
+    //
+
 
     // 쿠키 꺼내기
     // => 쿠키를 이름으로 한 개씩 추출할 수 없다.

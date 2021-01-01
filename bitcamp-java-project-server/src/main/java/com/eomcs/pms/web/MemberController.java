@@ -60,7 +60,7 @@ public class MemberController {
     if (memberService.delete(no) == 0) {
       throw new Exception("해당 번호의 회원이 없습니다.");
     }
-    return "redirect:./";
+    return "redirect:.";
   }
 
   @GetMapping("{no}")

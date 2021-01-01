@@ -33,8 +33,8 @@ pageContext.setAttribute("list", names);
  --%>
 
 <%
-for (String n : list) {
-  out.println(n + "<br>");
+for (Object obj : list) {
+  out.println(obj + "<br>");
 }
 %>
 

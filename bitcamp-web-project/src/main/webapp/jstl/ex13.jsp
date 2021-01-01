@@ -12,6 +12,9 @@
 </head>
 <body>
 <h1>JSTL - fmt:formatDate</h1>
+<pre>
+- java.util.Date 객체의 값을 문자열로 만들기
+</pre>
 
 <%
 pageContext.setAttribute("today", new Date());

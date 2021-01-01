@@ -25,7 +25,7 @@ console.log(obj);
 // 자바스크립트에서는 이렇게 완전히 빈 객체를 사용하지 않는다. 
 
 //2) 객체를 만들 때 기본 틀(원형 객체)을 바탕으로 객체를 만들기 
-// => 빈 객체를 만든 후 기본 메서드를 호출하여 필수 프로퍼티 등을 추가한다.
+// => 빈 객체를 만든 후 기본 메서드(생성자)를 호출하여 필수 프로퍼티(변수와 함수) 등을 추가한다.
 var obj2 = Object.create(Object.prototype);
 console.log(obj2); 
 console.log(obj2.toString()); // 객체를 만들 때 사용한 틀에 toString()이 정의되어 있다.
